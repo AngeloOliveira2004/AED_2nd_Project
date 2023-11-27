@@ -1,0 +1,38 @@
+Graph Representation:
+
+    Graph Type:
+        For representing the air travel network, an undirected weighted graph is appropriate. Undirected because flights typically operate in both directions, and weighted to account for the distances between airports.
+
+    Graph Structure:
+        Use an adjacency list to efficiently represent the sparse connections between airports. This structure allows for flexibility and memory efficiency.
+
+    Vertex Representation:
+        Each airport is a vertex in the graph.
+        The vertex should contain information such as the IATA code, name, city, country, latitude, and longitude.
+
+    Edge Representation:
+        Each flight between two airports is an edge.
+        The edge should be weighted based on the great-circle distance between the airports, calculated using the Haversine Formula.
+
+Implementation:
+
+    Data Structures:
+        Define classes for Vertex and Edge to encapsulate the properties and relationships.
+        Use a Graph class that maintains a vector of vertices and their connections.
+
+    Haversine Formula:
+        Use the Haversine Formula to calculate distances between airports, serving as weights for the edges.
+
+    Dijkstra's Algorithm:
+        Implement Dijkstra's algorithm for finding the shortest paths between airports, considering the weights assigned to edges.
+
+    Additional Functionality:
+        Implement functionalities to meet the project requirements, such as statistics about the network, finding optimal routes, and handling user queries.
+
+Conclusion:
+
+The chosen graph representation, utilizing an adjacency list and incorporating the Haversine Formula for edge weights,
+provides a flexible and efficient structure for modeling the air travel network. This approach allows for the implementation
+of various functionalities required for the flight management system while balancing memory efficiency and computational speed.
+The use of Dijkstra's algorithm enables efficient pathfinding in this weighted graph, considering the geographical distances between airports.
+The Vertex and Edge classes encapsulate the necessary information, making the code modular and maintainable.
