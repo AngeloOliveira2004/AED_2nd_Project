@@ -47,6 +47,13 @@ void LoadingFunctions::LoadAirports(Graph<Airport>& g) {
             tokens.push_back(token);
         }
 
+        std::string temp1 = tokens[0];
+        std::string temp2 = tokens[1];
+        std::string temp3 = tokens[2];
+        std::string temp4 = tokens[3];
+        std::string temp5 = tokens[4];
+        std::string temp6 = tokens[5];
+
         Airport airport = Airport(tokens[0] , tokens[1] , tokens[2] , tokens[3] , stod(tokens[4]) ,stod(tokens[5]));
 
         if(!g.addVertex(airport)){
@@ -88,8 +95,6 @@ void LoadingFunctions::LoadAirlines(Graph<Airport> &g) {
 }
 
 void LoadingFunctions::LoadFlights(Graph<Airport> &g) {
-    int failed = 0;
-    int succeded = 0;
     if(airports.empty())
     {
         LoadAirports(g);
@@ -117,33 +122,29 @@ void LoadingFunctions::LoadFlights(Graph<Airport> &g) {
             tokens.push_back(token);
         }
 
+        std::string temp0 = tokens[0];
+        std::string temp1 = tokens[1];
+
         Airport sourceAirport = Airport(tokens[0] , " ", " ", " ", 0.0 , 0.0);
         Airport destAirport = Airport(tokens[1], " ", " "," ",0.0,0.0);
 
         auto it = airports.find(sourceAirport);
         if (it != airports.end()) {
             sourceAirport = *it;
-            succeded++;
         }
-        else{failed++;}
 
         auto it1 = airports.find(destAirport);
         if (it1 != airports.end()) {
             destAirport = *it1;
-            succeded++;
-        }
-        else
-        {
-            failed++;
         }
 
         double result = HaversineAlgorithm(sourceAirport.getLatitude(),sourceAirport.getLongitude(),destAirport.getLatitude(),destAirport.getLongitude());
         g.addEdge(sourceAirport,destAirport,result,tokens[2]);
     }
     file.close();
-    cout << succeded << " " << failed;
 }
 
+// O(logn) as inbuilt sqrt function is used
 double LoadingFunctions::HaversineAlgorithm(double lat1, double lon1,double lat2, double lon2)
 {
     double dLat = (lat2 - lat1) *
