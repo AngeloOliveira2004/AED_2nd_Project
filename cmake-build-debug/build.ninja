@@ -55,6 +55,30 @@ build CMakeFiles/Projeto_2.dir/main.cpp.o: CXX_COMPILER__Projeto_2_unscanned_Deb
   OBJECT_DIR = CMakeFiles/Projeto_2.dir
   OBJECT_FILE_DIR = CMakeFiles/Projeto_2.dir
 
+build CMakeFiles/Projeto_2.dir/Logic/LoadingFunctions.cpp.o: CXX_COMPILER__Projeto_2_unscanned_Debug /home/jose-costa/Documents/Uni/AED/Projeto$ 2/Logic/LoadingFunctions.cpp || cmake_object_order_depends_target_Projeto_2
+  DEP_FILE = CMakeFiles/Projeto_2.dir/Logic/LoadingFunctions.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/Projeto_2.dir
+  OBJECT_FILE_DIR = CMakeFiles/Projeto_2.dir/Logic
+
+build CMakeFiles/Projeto_2.dir/Logic/Airport.cpp.o: CXX_COMPILER__Projeto_2_unscanned_Debug /home/jose-costa/Documents/Uni/AED/Projeto$ 2/Logic/Airport.cpp || cmake_object_order_depends_target_Projeto_2
+  DEP_FILE = CMakeFiles/Projeto_2.dir/Logic/Airport.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/Projeto_2.dir
+  OBJECT_FILE_DIR = CMakeFiles/Projeto_2.dir/Logic
+
+build CMakeFiles/Projeto_2.dir/Logic/Logic.cpp.o: CXX_COMPILER__Projeto_2_unscanned_Debug /home/jose-costa/Documents/Uni/AED/Projeto$ 2/Logic/Logic.cpp || cmake_object_order_depends_target_Projeto_2
+  DEP_FILE = CMakeFiles/Projeto_2.dir/Logic/Logic.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/Projeto_2.dir
+  OBJECT_FILE_DIR = CMakeFiles/Projeto_2.dir/Logic
+
+build CMakeFiles/Projeto_2.dir/Logic/Airline.cpp.o: CXX_COMPILER__Projeto_2_unscanned_Debug /home/jose-costa/Documents/Uni/AED/Projeto$ 2/Logic/Airline.cpp || cmake_object_order_depends_target_Projeto_2
+  DEP_FILE = CMakeFiles/Projeto_2.dir/Logic/Airline.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/Projeto_2.dir
+  OBJECT_FILE_DIR = CMakeFiles/Projeto_2.dir/Logic
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Projeto_2
@@ -63,7 +87,7 @@ build CMakeFiles/Projeto_2.dir/main.cpp.o: CXX_COMPILER__Projeto_2_unscanned_Deb
 #############################################
 # Link the executable Projeto_2
 
-build Projeto_2: CXX_EXECUTABLE_LINKER__Projeto_2_Debug CMakeFiles/Projeto_2.dir/main.cpp.o
+build Projeto_2: CXX_EXECUTABLE_LINKER__Projeto_2_Debug CMakeFiles/Projeto_2.dir/main.cpp.o CMakeFiles/Projeto_2.dir/Logic/LoadingFunctions.cpp.o CMakeFiles/Projeto_2.dir/Logic/Airport.cpp.o CMakeFiles/Projeto_2.dir/Logic/Logic.cpp.o CMakeFiles/Projeto_2.dir/Logic/Airline.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/Projeto_2.dir
   POST_BUILD = :

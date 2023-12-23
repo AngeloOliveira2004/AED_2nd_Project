@@ -1,6 +1,13 @@
 #include <iostream>
+#include "Logic/Graph.h"
+#include "Logic/LoadingFunctions.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+
+    Graph<Airport> g;
+
+    LoadingFunctions::LoadFlights(g);
+
+
     return 0;
 }
