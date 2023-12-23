@@ -9,20 +9,20 @@
 #include "Graph.h"
 #include "Airport.h"
 
-template <typename T>
 
 class Logic {
 private:
-    Graph<T> graph;
+    Graph<Airport> graph;
 
 public:
     Logic();
-    Logic(Graph<T>& g);
-
-    ~Logic();
+    Logic(Graph<Airport>& g);
 
     double HaversineAlgorithm(double lat1, double lon1,double lat2, double lon2);
     void DijkstraAlgorithm();
+    int GlobalNumbers();
+    int GlobalNumberOfAirports();
+    size_t GlobalNumberOfFlights();
 };
 
 

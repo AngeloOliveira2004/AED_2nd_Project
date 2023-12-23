@@ -5,11 +5,10 @@
 #include "Logic.h"
 #include <cmath>
 
-template <typename T>
-Logic<T>::Logic(Graph<T>& g) : graph(g) {}
 
-template <typename T>
-double Logic<T>::HaversineAlgorithm(double lat1, double lon1,double lat2, double lon2)
+Logic::Logic(Graph<Airport>& g) : graph(g) {}
+
+double Logic::HaversineAlgorithm(double lat1, double lon1,double lat2, double lon2)
 {
     double dLat = (lat2 - lat1) *
                   M_PI / 180.0;
@@ -28,4 +27,24 @@ double Logic<T>::HaversineAlgorithm(double lat1, double lon1,double lat2, double
     double rad = 6371;
     double c = 2 * asin(sqrt(a));
     return rad * c;
+}
+
+int Logic::GlobalNumbers() {
+    return GlobalNumberOfAirports() + GlobalNumberOfFlights();
+}
+
+int Logic::GlobalNumberOfAirports() {
+    return graph.getVertexSet().size();
+}
+
+size_t Logic::GlobalNumberOfFlights() {
+
+    size_t numberFlights = 0;
+
+    for(auto vertex : graph.getVertexSet())
+    {
+        numberFlights += vertex->getAdj().size();
+    }
+
+    return numberFlights;
 }
