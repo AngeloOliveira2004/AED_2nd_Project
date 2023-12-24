@@ -20,17 +20,21 @@ public:
     Logic();
     Logic(Graph<Airport>& g);
 
-    double HaversineAlgorithm(double lat1, double lon1,double lat2, double lon2);
-    void DijkstraAlgorithm();
     int GlobalNumbers();
     int GlobalNumberOfAirports();
-    //todo perguntar ao prof se per city é para ou de ou ambos
     int NumberOfFlightsPerCity(std::string city);
     int NumberOfFlightsPerAirline(const std::string& airlineCode);
     int NumberOfCountries(std::string airportCode);
     int NumberOfCountriesThatCityFliesTo(std::string city);
+    std::pair<int , std::vector<unordered_set<std::string>>> DestinationsAtDistanceK(const std::string& airportCode, int k);
     size_t GlobalNumberOfFlights();
     std::pair<int , int> FlightsOutOfAirportAndDifferentAirlines(const std::string& AirportCode);
+
+    //Auxiliary functions
+    double HaversineAlgorithm(double lat1, double lon1,double lat2, double lon2);
+    void DijkstraAlgorithm();
+    vector<Airport>  bfsCount(const Graph<Airport> *g, const Airport &source, int k);
+
 };
 
 

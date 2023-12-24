@@ -28,5 +28,28 @@ int main() {
 
     std::cout << "Paris flies to " << logic.NumberOfCountriesThatCityFliesTo("Paris") << " cities" << endl;
 
+    std::pair<int , std::vector<unordered_set<std::string>>> b = logic.DestinationsAtDistanceK("EKO" , 2);
+
+    std::cout << "Number os possible destinations "<< b.first << " airports : ";
+
+    for(auto c : b.second[0])
+    {
+        std::cout << c << " | ";
+    }
+
+    cout << endl << " Countries: ";
+
+    for(auto c : b.second[1])
+    {
+        std::cout << c << " | ";
+    }
+
+    cout << endl << " Cities: ";
+
+    for(auto c : b.second[2])
+    {
+        std::cout << c << " | ";
+    }
+
     return 0;
 }
