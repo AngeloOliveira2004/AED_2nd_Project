@@ -33,8 +33,6 @@ public:
     //Auxiliary functions
     double HaversineAlgorithm(double lat1, double lon1,double lat2, double lon2);
     void DijkstraAlgorithm();
-    vector<Airport>  bfsCount(const Graph<Airport> *g, const Airport &source, int k);
-
 };
 
 

@@ -159,12 +159,42 @@ int Logic::NumberOfFlightsPerCity(std::string city) {
     return numberFlights;
 }
 
+//||||||||||| Point 6 |||||||||||||||||||||||
+
+//For values of k > 5 it stars breaking for some reason
+
+vector<Airport> bfsCount(const Graph<Airport> *g, const Airport &source, int k);
+std::pair<int , std::vector<unordered_set<std::string>>> Logic::DestinationsAtDistanceK(const string &airportCode, int k) {
+
+    Airport airport = Airport(airportCode);
+
+    vector<Airport> airportsAtDistanceK = bfsCount(&this->graph , airport , k);
+
+    unordered_set<std::string> countries;
+    unordered_set<std::string> cities;
+    unordered_set<std::string> airportsCodes;
+
+    for(const Airport& airport1 : airportsAtDistanceK)
+    {
+        countries.insert(airport1.getCountry());
+        cities.insert(airport1.getCity());
+        airportsCodes.insert(airport1.getCode());
+    }
+
+    std::vector<unordered_set<std::string>> unorderedSets;
+    unorderedSets.push_back(airportsCodes);
+    unorderedSets.push_back(countries);
+    unorderedSets.push_back(cities);
+
+    std::pair<int , std::vector<unordered_set<std::string>>> map;
+    int sum = (int) (countries.size() + cities.size() + airportsCodes.size());
+    map = std::make_pair( sum , unorderedSets);
+
+    return map;
+}
 
 
-
-
-
-vector<Airport> Logic::bfsCount(const Graph<Airport> *g, const Airport &source, int k) {
+vector<Airport> bfsCount(const Graph<Airport> *g, const Airport &source, int k) {
     vector<Airport> res;
     queue<pair<Vertex<Airport>* , int>> q;
 
@@ -199,35 +229,9 @@ vector<Airport> Logic::bfsCount(const Graph<Airport> *g, const Airport &source, 
             }
         }
     }
-
+    int a = res.size();
     return res;
 }
 
-std::pair<int , std::vector<unordered_set<std::string>>> Logic::DestinationsAtDistanceK(const string &airportCode, int k) {
 
-    Airport airport = Airport(airportCode);
-
-    vector<Airport> airportsAtDistanceK = bfsCount(&this->graph , airport , k);
-
-    unordered_set<std::string> countries;
-    unordered_set<std::string> cities;
-    unordered_set<std::string> airportsCodes;
-
-    for(const Airport& airport1 : airportsAtDistanceK)
-    {
-        countries.insert(airport1.getCountry());
-        cities.insert(airport1.getCity());
-        airportsCodes.insert(airport1.getCode());
-    }
-
-    std::vector<unordered_set<std::string>> unorderedSets;
-    unorderedSets.push_back(airportsCodes);
-    unorderedSets.push_back(countries);
-    unorderedSets.push_back(cities);
-
-    std::pair<int , std::vector<unordered_set<std::string>>> map;
-
-    map = std::make_pair( (int) (countries.size() + cities.size() + airportsCodes.size()) , unorderedSets);
-
-    return map;
-}
+//||||||||||||| Point 7 |||||||||||||||||||||

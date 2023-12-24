@@ -28,9 +28,9 @@ int main() {
 
     std::cout << "Paris flies to " << logic.NumberOfCountriesThatCityFliesTo("Paris") << " cities" << endl;
 
-    std::pair<int , std::vector<unordered_set<std::string>>> b = logic.DestinationsAtDistanceK("EKO" , 2);
+    std::pair<int , std::vector<unordered_set<std::string>>> b = logic.DestinationsAtDistanceK("INL" , 5);
 
-    std::cout << "Number os possible destinations "<< b.first << " airports : ";
+    std::cout << "Number os possible destinations "<< b.first << endl << "airports : ";
 
     for(auto c : b.second[0])
     {
