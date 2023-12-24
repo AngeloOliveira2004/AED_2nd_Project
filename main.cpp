@@ -24,6 +24,8 @@ int main() {
 
     std::cout << "Airport JFK flies to " << logic.NumberOfCountries("JFK") << " countries" << endl;
 
+    std::cout << "Elko has " << logic.NumberOfFlightsPerCity("Elko") << " flights available" << endl;
+
     std::cout << "Paris flies to " << logic.NumberOfCountriesThatCityFliesTo("Paris") << " cities" << endl;
 
     return 0;

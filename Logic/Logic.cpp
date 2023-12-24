@@ -7,7 +7,7 @@
 
 
 Logic::Logic(Graph<Airport>& g) : graph(g) {}
-
+// O(log n)
 double Logic::HaversineAlgorithm(double lat1, double lon1,double lat2, double lon2)
 {
     double dLat = (lat2 - lat1) *
@@ -33,10 +33,12 @@ int Logic::GlobalNumbers() {
     return GlobalNumberOfAirports() + GlobalNumberOfFlights();
 }
 
+//O(1)
 int Logic::GlobalNumberOfAirports() {
     return graph.getVertexSet().size();
 }
 
+//O(V)
 size_t Logic::GlobalNumberOfFlights() {
 
     size_t numberFlights = 0;
@@ -49,6 +51,7 @@ size_t Logic::GlobalNumberOfFlights() {
     return numberFlights;
 }
 
+//O(V)
 std::pair<int , int>
 Logic::FlightsOutOfAirportAndDifferentAirlines(const std::string& AirportCode) {
     int NumberOfFlights = 0;
@@ -73,6 +76,7 @@ Logic::FlightsOutOfAirportAndDifferentAirlines(const std::string& AirportCode) {
     return std::make_pair(NumberOfFlights , (int) AirlinesCodes.size());
 }
 
+//O(V + E)
 int Logic::NumberOfFlightsPerAirline(const std::string& airlineCode) {
     int NumberOfFlights = 0;
 
@@ -135,4 +139,22 @@ int Logic::NumberOfCountriesThatCityFliesTo(std::string city) {
     }
 
     return (int) countries.size();
+}
+
+// O(V)
+int Logic::NumberOfFlightsPerCity(std::string city) {
+
+    int numberFlights = 0;
+
+    for(auto vertex : graph.getVertexSet())
+    {
+        auto airport = vertex->getInfo();
+
+        if(vertex->getInfo().getCity() == city)
+        {
+            numberFlights += (int) vertex->getAdj().size();
+        }
+    }
+
+    return numberFlights;
 }
