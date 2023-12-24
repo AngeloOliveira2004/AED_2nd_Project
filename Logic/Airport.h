@@ -31,6 +31,7 @@ public:
     void setLatitude(double newLatitude);
     bool operator==(const Airport& other) const;
     void operator=(const Airport& other);
+    //std::ostream& operator<<(std::ostream& stream, const Airport& airport); not working n sei pq
 
 private:
 

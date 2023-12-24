@@ -31,6 +31,7 @@ public:
     int NumberOfCountriesThatCityFliesTo(std::string city);
     size_t GlobalNumberOfFlights();
     std::pair<int , int> FlightsOutOfAirportAndDifferentAirlines(const std::string& AirportCode);
+    void TopTrafficAirports(int k);
 };
 
 

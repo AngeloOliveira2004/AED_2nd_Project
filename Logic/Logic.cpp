@@ -4,6 +4,7 @@
 
 #include "Logic.h"
 #include <cmath>
+#include <iostream>
 
 
 Logic::Logic(Graph<Airport>& g) : graph(g) {}
@@ -135,4 +136,21 @@ int Logic::NumberOfCountriesThatCityFliesTo(std::string city) {
     }
 
     return (int) countries.size();
+}
+
+void Logic::TopTrafficAirports(int k) {
+    unordered_map<size_t, string> airport_to_traffic;
+    vector<size_t> traffics;
+    size_t s;
+    for(auto vertex: graph.getVertexSet()){
+        s = vertex->getAdj().size();
+        traffics.push_back(s);
+        airport_to_traffic[s] = vertex->getInfo().getName();
+    }
+    std::sort(traffics.begin(), traffics.end(), greater<int>());
+    std::cout << "The " << k << " airports with the most air traffic are:" << endl;
+    for(int i = 0; i < k; i++){
+        auto it = airport_to_traffic.find(traffics[i]);
+        std::cout << it->second << " " <<"with " <<it->first << " flights" << endl;
+    }
 }

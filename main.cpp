@@ -9,7 +9,7 @@ int main() {
     LoadingFunctions::LoadFlights(g);
 
     Logic logic = Logic(g);
-
+    /*
     cout << "Number of Airports: " << logic.GlobalNumberOfAirports() << endl;
 
     cout << "Number of Flights: " << logic.GlobalNumberOfFlights() << endl;
@@ -25,6 +25,7 @@ int main() {
     std::cout << "Airport JFK flies to " << logic.NumberOfCountries("JFK") << " countries" << endl;
 
     std::cout << "Paris flies to " << logic.NumberOfCountriesThatCityFliesTo("Paris") << " cities" << endl;
-
+    */
+    logic.TopTrafficAirports(3);
     return 0;
 }

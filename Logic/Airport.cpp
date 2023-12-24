@@ -75,3 +75,9 @@ void Airport::operator=(const Airport &other) {
         longitude = other.longitude;
     }
 }
+/*
+std::ostream& operator<<(std::ostream& stream, const Airport& airport){
+    stream << airport.getName();
+    return stream;
+}
+ */
