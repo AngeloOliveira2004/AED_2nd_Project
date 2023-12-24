@@ -28,5 +28,18 @@ int main() {
 
     std::cout << "Paris flies to " << logic.NumberOfCountriesThatCityFliesTo("Paris") << " cities" << endl;
 
+    std::cout << "Number of Airport destinations available for airport Jose Marti Intl: " << logic.NumberOfDestinationsForAirport("HAV") << endl;
+
+    std::cout << "Number of City destinations available for airport Jose Marti Intl: " << logic.NumberOfDestinationsForCity("HAV") << endl;
+
+    std::cout << "Number of Country destinations available for airport Jose Marti Intl: " << logic.NumberOfDestinationsForCountry("HAV") << endl;
+
+    vector<Airport> essentialAirports = logic.IdentifyEssentialAirports(g);
+
+    std::cout << "This Airports are essential: " << std::endl;
+    for (const Airport& airport : essentialAirports) {
+        std::cout << airport.getCode() << "|" << airport.getName() << std::endl;
+    }
+
     return 0;
 }

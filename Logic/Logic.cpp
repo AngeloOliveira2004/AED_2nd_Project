@@ -158,3 +158,82 @@ int Logic::NumberOfFlightsPerCity(std::string city) {
 
     return numberFlights;
 }
+
+// O(E)
+int Logic::NumberOfDestinationsForAirport(const std::string& airportCode) {
+    Vertex<Airport> *sourceVertex = graph.findVertex(Airport(airportCode));
+
+    if (sourceVertex == nullptr) {
+        return 0;
+    }
+
+    int destinations = 0;
+    std::unordered_set<std::string> visitedDestinations;
+
+    for (const Edge<Airport>& edge : sourceVertex->getAdj()) {
+        Vertex<Airport>* neighbor = edge.getDest();
+
+        const std::string& destinationCode = neighbor->getInfo().getCode();
+        if (visitedDestinations.find(destinationCode) == visitedDestinations.end()) {
+            destinations++;
+            visitedDestinations.insert(destinationCode);
+        }
+    }
+
+    return destinations;
+}
+
+// O(E)
+int Logic::NumberOfDestinationsForCity(const std::string& airportCode) {
+    Vertex<Airport> *sourceVertex = graph.findVertex(Airport(airportCode));
+
+    if (sourceVertex == nullptr) {
+        return 0;
+    }
+
+    int destinations = 0;
+    std::unordered_set<std::string> visitedDestinations;
+
+    for (const Edge<Airport>& edge : sourceVertex->getAdj()) {
+        Vertex<Airport>* neighbor = edge.getDest();
+
+        const std::string& cityName = neighbor->getInfo().getCity();
+        if (visitedDestinations.find(cityName) == visitedDestinations.end()) {
+            destinations++;
+            visitedDestinations.insert(cityName);
+        }
+    }
+
+    return destinations;
+}
+
+// O(E)
+int Logic::NumberOfDestinationsForCountry(const std::string& airportCode) {
+    Vertex<Airport> *sourceVertex = graph.findVertex(Airport(airportCode));
+
+    if (sourceVertex == nullptr) {
+        return 0;
+    }
+
+    int destinations = 0;
+    std::unordered_set<std::string> visitedDestinations;
+
+    for (const Edge<Airport>& edge : sourceVertex->getAdj()) {
+        Vertex<Airport>* neighbor = edge.getDest();
+
+        const std::string& countryName = neighbor->getInfo().getCountry();
+        if (visitedDestinations.find(countryName) == visitedDestinations.end()) {
+            destinations++;
+            visitedDestinations.insert(countryName);
+        }
+    }
+
+    return destinations;
+}
+
+
+
+
+
+
+
