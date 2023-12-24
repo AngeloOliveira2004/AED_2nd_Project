@@ -6,6 +6,7 @@
 #define PROJETO_2_LOGIC_H
 
 #include <unordered_map>
+#include <memory>
 #include "Graph.h"
 #include "Airport.h"
 
@@ -13,7 +14,8 @@
 class Logic {
 private:
     Graph<Airport> graph;
-
+    //maps Airport names to codes
+    unordered_map<std::string , std::string>;
 public:
     Logic();
     Logic(Graph<Airport>& g);
@@ -22,7 +24,11 @@ public:
     void DijkstraAlgorithm();
     int GlobalNumbers();
     int GlobalNumberOfAirports();
+    //todo perguntar ao prof se per city é para ou de ou ambos
+    int NumberOfFlightsPerCity(std::string city);
+    int NumberOfFlightsPerAirline(const std::string& airlineCode);
     size_t GlobalNumberOfFlights();
+    std::pair<int , int> FlightsOutOfAirportAndDifferentAirlines(const std::string& AirportCode);
 };
 
 

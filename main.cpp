@@ -14,5 +14,12 @@ int main() {
 
     cout << "Number of Flights: " << logic.GlobalNumberOfFlights() << endl;
 
+    std::pair<int, int> a;
+
+    a = logic.FlightsOutOfAirportAndDifferentAirlines("VSA");
+
+    std::cout << "Number of flights: " << a.first << " | Number of different airlines: " << a.second << endl;
+
+    std::cout << "Number of flights of TOK: " << logic.NumberOfFlightsPerAirline("TOK");
     return 0;
 }
