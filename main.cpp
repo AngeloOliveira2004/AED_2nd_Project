@@ -20,6 +20,11 @@ int main() {
 
     std::cout << "Number of flights: " << a.first << " | Number of different airlines: " << a.second << endl;
 
-    std::cout << "Number of flights of TOK: " << logic.NumberOfFlightsPerAirline("TOK");
+    std::cout << "Number of flights of TOK: " << logic.NumberOfFlightsPerAirline("ANG") << endl;
+
+    std::cout << "Airport JFK flies to " << logic.NumberOfCountries("JFK") << " countries" << endl;
+
+    std::cout << "Paris flies to " << logic.NumberOfCountriesThatCityFliesTo("Paris") << " cities" << endl;
+
     return 0;
 }

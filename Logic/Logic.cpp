@@ -89,3 +89,50 @@ int Logic::NumberOfFlightsPerAirline(const std::string& airlineCode) {
 
     return NumberOfFlights;
 }
+
+//O(V)
+int Logic::NumberOfCountries(std::string airportCode) {
+
+    unordered_set<std::string> countries;
+
+    Airport SearchAirport = Airport(airportCode);
+
+    Vertex<Airport>* airport = graph.findVertex(SearchAirport);
+
+    if(airport == NULL)
+    {
+        return 0;
+    }
+
+    for(auto edge : airport->getAdj())
+    {
+        auto child = edge.getDest();
+        std::string country = child->getInfo().getCountry();
+        countries.insert(child->getInfo().getCountry());
+    }
+
+    return (int) countries.size();
+}
+
+
+//O(V + E)
+int Logic::NumberOfCountriesThatCityFliesTo(std::string city) {
+
+    unordered_set<std::string> countries;
+
+    for(auto vertex : graph.getVertexSet())
+    {
+       auto airport = vertex->getInfo();
+
+       if(airport.getCity() == city)
+       {
+           for(auto edge : vertex->getAdj())
+           {
+               auto child = edge.getDest()->getInfo();
+               countries.insert(child.getCountry());
+           }
+       }
+    }
+
+    return (int) countries.size();
+}

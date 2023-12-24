@@ -15,7 +15,7 @@ class Logic {
 private:
     Graph<Airport> graph;
     //maps Airport names to codes
-    unordered_map<std::string , std::string>;
+    unordered_map<std::string , std::string> NamesToCodes;
 public:
     Logic();
     Logic(Graph<Airport>& g);
@@ -27,6 +27,8 @@ public:
     //todo perguntar ao prof se per city é para ou de ou ambos
     int NumberOfFlightsPerCity(std::string city);
     int NumberOfFlightsPerAirline(const std::string& airlineCode);
+    int NumberOfCountries(std::string airportCode);
+    int NumberOfCountriesThatCityFliesTo(std::string city);
     size_t GlobalNumberOfFlights();
     std::pair<int , int> FlightsOutOfAirportAndDifferentAirlines(const std::string& AirportCode);
 };

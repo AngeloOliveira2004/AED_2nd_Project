@@ -9,6 +9,8 @@ Airport::Airport(const std::string &code,const std::string name,const std::strin
                  double longitude, double latitude)
         : code(code), name(name), city(city), country(country), latitude(latitude), longitude(longitude) {}
 
+Airport::Airport(std::string  code) : code(std::move(code)) , name(" ") , city(" ") , latitude(0.0) , longitude(0.0) {}
+
 //Getters
 std::string Airport::getCode() const {
     return code;
