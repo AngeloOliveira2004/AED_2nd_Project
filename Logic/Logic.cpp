@@ -222,14 +222,13 @@ vector<Airport> bfsCount(const Graph<Airport> *g, const Airport &source, int k) 
         }
 
         for (Edge<Airport> edge : currVertex->getAdj()) {
-            // Fix the condition to check if the destination vertex is visited
+
             if (!edge.getDest()->isVisited()) {
                 edge.getDest()->setVisited(true);
                 q.push({edge.getDest(), currDistance +1});
             }
         }
     }
-    int a = res.size();
     return res;
 }
 
