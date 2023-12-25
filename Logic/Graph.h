@@ -105,12 +105,6 @@ public:
     vector<T> bfs(const T &source) const;
     vector<T> topsort() const;
     bool isDAG() const;
-
-    int auxConnectedComponents(Vertex<T> *v);
-
-    int connectedComponents();
-
-    int articulationPoints();
 };
 
 /****************** Provided constructors and functions ********************/
@@ -512,38 +506,6 @@ void Graph<T>::calculateIndegrees() {
     }
 }
 
-template <class T>
-int Graph<T>::auxConnectedComponents(Vertex<T>* v) {
-    int count = 0;
-    v->setVisited(true);
-
-    for (Edge<T> &e : v->getAdj()) {
-        auto w = e.getDest();
-        if (!w->isVisited()) {
-            count += auxConnectedComponents(w);
-        }
-    }
-
-    return count + 1;
-}
-
-template <class T>
-int Graph<T>::connectedComponents() {
-    int count = 0;
-
-    for (Vertex<T> *v : vertexSet) {
-        if (!v->isVisited()) {
-            auxConnectedComponents(v);
-            count++;
-        }
-    }
-
-    for (Vertex<T> *v : vertexSet) {
-        v->setVisited(false);
-    }
-
-    return count;
-}
 
 
 #endif //PROJETO_2_GRAPH_H

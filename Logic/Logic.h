@@ -34,7 +34,8 @@ public:
     int NumberOfDestinationsForAirport(const string &airportCode);
     int NumberOfDestinationsForCity(const string &airportCode);
     int NumberOfDestinationsForCountry(const string &airportCode);
-    vector<Airport> IdentifyEssentialAirports(Graph<Airport> &g);
+    unordered_set<Airport> EssentialAirports();
+    void EssentialAirportsAux(Vertex<Airport> *v, int &id, stack<Airport> &s, unordered_set<Airport> &essentialAirports);
 };
 
 

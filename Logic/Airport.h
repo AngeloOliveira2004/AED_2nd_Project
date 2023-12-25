@@ -31,6 +31,7 @@ public:
     void setLatitude(double newLatitude);
     bool operator==(const Airport& other) const;
     void operator=(const Airport& other);
+    bool operator!=(const Airport& other) const;
 
 private:
 

@@ -34,9 +34,9 @@ int main() {
 
     std::cout << "Number of Country destinations available for airport Jose Marti Intl: " << logic.NumberOfDestinationsForCountry("HAV") << endl;
 
-    vector<Airport> essentialAirports = logic.IdentifyEssentialAirports(g);
+    unordered_set<Airport> essentialAirports = logic.EssentialAirports();
 
-    std::cout << "This Airports are essential: " << std::endl;
+    std::cout << "These airports are essential: " << std::endl;
     for (const Airport& airport : essentialAirports) {
         std::cout << airport.getCode() << "|" << airport.getName() << std::endl;
     }
