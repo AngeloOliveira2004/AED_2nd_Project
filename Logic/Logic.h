@@ -33,6 +33,9 @@ public:
     //Auxiliary functions
     double HaversineAlgorithm(double lat1, double lon1,double lat2, double lon2);
     void DijkstraAlgorithm();
+
+    vector<Airport> nodesAtDistanceBFS(const string &airportCode, int k);
+    vector<int> analyzeReachableAirports(const vector<Airport> &reachableAirports);
 };
 
 
