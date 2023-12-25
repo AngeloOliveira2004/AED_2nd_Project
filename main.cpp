@@ -28,28 +28,15 @@ int main() {
 
     std::cout << "Paris flies to " << logic.NumberOfCountriesThatCityFliesTo("Paris") << " cities" << endl;
 
-    std::pair<int , std::vector<unordered_set<std::string>>> b = logic.DestinationsAtDistanceK("INL" , 5);
+    vector<Airport> tempVector = logic.nodesAtDistanceBFS("INL" , 8);
 
-    std::cout << "Number os possible destinations "<< b.first << endl << "airports : ";
+    vector<int> tempValues = logic.analyzeReachableAirports(tempVector);
 
-    for(auto c : b.second[0])
-    {
-        std::cout << c << " | ";
-    }
+    cout << "Number of distinct airports: " << tempValues[0] << endl;
+    cout << "Number of distinct countries: " << tempValues[1] << endl;
+    cout << "Number of distinct cities: " << tempValues[2] << endl;
 
-    cout << endl << " Countries: ";
 
-    for(auto c : b.second[1])
-    {
-        std::cout << c << " | ";
-    }
-
-    cout << endl << " Cities: ";
-
-    for(auto c : b.second[2])
-    {
-        std::cout << c << " | ";
-    }
 
     return 0;
 }

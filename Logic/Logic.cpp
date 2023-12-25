@@ -161,76 +161,67 @@ int Logic::NumberOfFlightsPerCity(std::string city) {
 
 //||||||||||| Point 6 |||||||||||||||||||||||
 
-//For values of k > 5 it stars breaking for some reason
-
-vector<Airport> bfsCount(const Graph<Airport> *g, const Airport &source, int k);
-std::pair<int , std::vector<unordered_set<std::string>>> Logic::DestinationsAtDistanceK(const string &airportCode, int k) {
-
-    Airport airport = Airport(airportCode);
-
-    vector<Airport> airportsAtDistanceK = bfsCount(&this->graph , airport , k);
-
-    unordered_set<std::string> countries;
-    unordered_set<std::string> cities;
-    unordered_set<std::string> airportsCodes;
-
-    for(const Airport& airport1 : airportsAtDistanceK)
-    {
-        countries.insert(airport1.getCountry());
-        cities.insert(airport1.getCity());
-        airportsCodes.insert(airport1.getCode());
-    }
-
-    std::vector<unordered_set<std::string>> unorderedSets;
-    unorderedSets.push_back(airportsCodes);
-    unorderedSets.push_back(countries);
-    unorderedSets.push_back(cities);
-
-    std::pair<int , std::vector<unordered_set<std::string>>> map;
-    int sum = (int) (countries.size() + cities.size() + airportsCodes.size());
-    map = std::make_pair( sum , unorderedSets);
-
-    return map;
-}
-
-
-vector<Airport> bfsCount(const Graph<Airport> *g, const Airport &source, int k) {
+vector<Airport> Logic::nodesAtDistanceBFS(const string &airportCode, int k) {
     vector<Airport> res;
-    queue<pair<Vertex<Airport>* , int>> q;
 
-    Vertex<Airport>* sourceVertex = g->findVertex(source);
+    Airport SearchAirport = Airport(airportCode);
 
-    for (auto vertex : g->getVertexSet()) {
+    Vertex<Airport>* airport = graph.findVertex(SearchAirport);
+
+    for (auto vertex : graph.getVertexSet()) {
         vertex->setVisited(false);
     }
 
-    if (sourceVertex == nullptr) {
-        return res;
-    }
+    queue<Vertex<Airport>*> q;
+    q.push(airport);
+    airport->setVisited(true);
 
-    q.push({sourceVertex,0});
-    sourceVertex->setVisited(true);
+    while (!q.empty() && k >= 0) {
+        int lvl_size = q.size();
 
-    while (!q.empty()) {
-        Vertex<Airport>* currVertex = q.front().first;
-        int currDistance = q.front().second;
-        q.pop();
+        while (lvl_size != 0) {
+            auto ver = q.front();
 
-        if(currDistance == k)
-        {
-            res.push_back(currVertex->getInfo());
-        }
+            res.push_back(ver->getInfo());
 
-        for (Edge<Airport> edge : currVertex->getAdj()) {
-            // Fix the condition to check if the destination vertex is visited
-            if (!edge.getDest()->isVisited()) {
-                edge.getDest()->setVisited(true);
-                q.push({edge.getDest(), currDistance +1});
+            for (auto edge : ver->getAdj()) {
+                auto destVert = edge.getDest();
+                if (!destVert->isVisited()) {
+                    q.push(destVert);
+                    destVert->setVisited(true);
+                }
             }
+
+            lvl_size--;
+            q.pop();
         }
+
+        k--;
     }
-    int a = res.size();
+
     return res;
+}
+
+
+vector<int> Logic::analyzeReachableAirports(const vector<Airport> &reachableAirports) {
+    unordered_set<Airport> distinctAirports;
+    unordered_set<string> distinctCountries;
+    unordered_set<string> distinctCities;
+
+    vector<int> result;
+
+    for (const auto &airport : reachableAirports) {
+        distinctAirports.insert(airport.getCode());
+        distinctCountries.insert(airport.getCountry());
+        distinctCities.insert(airport.getCity());
+    }
+
+    result.push_back(distinctAirports.size());
+    result.push_back(distinctCountries.size());
+    result.push_back(distinctCities.size());
+
+    return result;
+
 }
 
 
