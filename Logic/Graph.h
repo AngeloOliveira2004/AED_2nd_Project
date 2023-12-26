@@ -112,6 +112,8 @@ public:
     void dfs_articulationPoints(Vertex<T> *v, vector<T> &articPoints, stack<Vertex<T> *> &s, int &index);
 
     vector<T> findArticulationPoints();
+
+    void removeDuplicates(vector<T> &vec);
 };
 
 /****************** Provided constructors and functions ********************/
@@ -520,42 +522,32 @@ void Graph<T>::dfs_articulationPoints(Vertex<T> *v, vector<T> &articPoints, stac
     v->setVisited(true);
     index++;
 
+    int children = 0;
+
     s.push(v);
     v->setProcessing(true);
-
-    int children = 0;
-    bool articPoint = false;
 
     for (auto &e : v->getAdj()) {
         Vertex<T> *w = e.getDest();
         if (!w->isVisited()) {
-            children++;
+
             dfs_articulationPoints(w, articPoints, s, index);
             v->setLow(min(v->getLow(), w->getLow()));
+
             if (w->getLow() >= v->getNum()) {
-                articPoint = true;
+                articPoints.push_back(v->getInfo());
             }
         } else if (w->isProcessing()) {
             v->setLow(min(v->getLow(), w->getNum()));
         }
     }
-
-    if ((v->getNum() == v->getLow() && children > 1) || (v->getNum() != v->getLow() && articPoint)) {
-        Vertex<T> *ver;
-        do {
-            ver = s.top();
-            s.pop();
-            ver->setProcessing(false);
-        } while (ver->getInfo() != v->getInfo());
-
-        articPoints.push_back(ver->getInfo());
-    }
+    s.pop();
 }
 
 template<class T>
 vector<T> Graph<T>::findArticulationPoints() {
+    int index = 1;
     vector<T> articulationPoints;
-    int index = 0;
     stack<Vertex<T>*> s;
 
     for (Vertex<T> *v : vertexSet) {

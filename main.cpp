@@ -16,7 +16,7 @@ int main() {
 
     std::pair<int, int> a;
 
-    a = logic.FlightsOutOfAirportAndDifferentAirlines("ADZ");
+    a = logic.FlightsOutOfAirportAndDifferentAirlines("SOQ");
 
     std::cout << "Number of flights: " << a.first << " | Number of different airlines: " << a.second << endl;
 
@@ -38,7 +38,7 @@ int main() {
 
     std::cout << "These airports are essential: " << std::endl;
     for (const Airport& airport : essentialAirports) {
-        std::cout << airport.getCode() << "|" << airport.getName() << std::endl;
+        std::cout << airport.getName() << "|" << std::endl;
     }
     std::cout << "The number of essential airports is: " << essentialAirports.size();
 
