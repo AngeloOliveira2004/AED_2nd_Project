@@ -13,6 +13,8 @@
 #include <list>
 #include <unordered_set>
 #include <string>
+#include <algorithm>
+#include <limits>
 #include "Airline.h"
 
 using namespace std;
@@ -92,6 +94,7 @@ class Graph {
 public:
     Vertex<T> *findVertex(const T &in) const;
     int getNumVertex() const;
+    int calculateDiameter() const;
     bool addVertex(const T &in);
     bool removeVertex(const T &in);
     bool addEdge(const T &sourc, const T &dest, double w,string airline);
@@ -102,9 +105,32 @@ public:
     void countDestinationsBFS(Vertex<T>* vertex, int maxStops,unordered_set<string>& visitedAirports);
     vector<T> dfs(const T & source) const;
     vector<T> bfs(const T &source) const;
+    void bfsDifferent(T &source) const;
     vector<T> topsort() const;
     bool isDAG() const;
 };
+
+//O(V² + V*E)
+template<class T>
+int Graph<T>::calculateDiameter() const {
+    int max_diameter = 0;
+    for(auto a : getVertexSet())
+    {
+        a->setNum(0);
+    }
+    for (auto a : getVertexSet()){
+        T airport = a->getInfo();
+        this->bfsDifferent(airport);
+        for (Vertex<T>* b : getVertexSet()){
+            if (b->getNum() > max_diameter)
+            {
+                max_diameter = b->getNum();
+            }
+        }
+    }
+
+    return max_diameter;
+}
 
 /****************** Provided constructors and functions ********************/
 
@@ -404,9 +430,32 @@ vector<T> Graph<T>::bfs(const T & source) const {
             }
         }
     }
-    return res;
 }
 
+template<class T>
+void Graph<T>::bfsDifferent(T &source) const {
+    auto s = findVertex(source);
+    if (s == NULL)
+        return ;
+    queue<Vertex<T> *> q;
+    for (auto v : vertexSet)
+        v->setVisited(false);
+    q.push(s);
+    s->setVisited(true);
+    s->setNum(0);
+    while (!q.empty()) {
+        auto v = q.front();
+        q.pop();
+        for (const Edge<T> & e : v->getAdj()) {
+            Vertex<T>* w = e.getDest();
+            if (!w->isVisited()) {
+                q.push(w);
+                w->setVisited(true);
+                w->setNum(v->getNum() + 1);
+            }
+        }
+    }
+}
 
 /****************** isDAG  ********************/
 /*
