@@ -292,9 +292,11 @@ CMakeFiles/Projeto_2.dir/Logic/LoadingFunctions.cpp.o: /home/angelo/Downloads/Un
   /usr/include/alloca.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
+  /usr/include/c++/13/algorithm \
   /usr/include/c++/13/backward/auto_ptr.h \
   /usr/include/c++/13/backward/binders.h \
   /usr/include/c++/13/bit \
+  /usr/include/c++/13/bits/algorithmfwd.h \
   /usr/include/c++/13/bits/align.h \
   /usr/include/c++/13/bits/alloc_traits.h \
   /usr/include/c++/13/bits/allocated_ptr.h \
@@ -353,6 +355,7 @@ CMakeFiles/Projeto_2.dir/Logic/LoadingFunctions.cpp.o: /home/angelo/Downloads/Un
   /usr/include/c++/13/bits/specfun.h \
   /usr/include/c++/13/bits/sstream.tcc \
   /usr/include/c++/13/bits/std_abs.h \
+  /usr/include/c++/13/bits/stl_algo.h \
   /usr/include/c++/13/bits/stl_algobase.h \
   /usr/include/c++/13/bits/stl_bvector.h \
   /usr/include/c++/13/bits/stl_construct.h \
@@ -374,6 +377,7 @@ CMakeFiles/Projeto_2.dir/Logic/LoadingFunctions.cpp.o: /home/angelo/Downloads/Un
   /usr/include/c++/13/bits/streambuf_iterator.h \
   /usr/include/c++/13/bits/string_view.tcc \
   /usr/include/c++/13/bits/stringfwd.h \
+  /usr/include/c++/13/bits/uniform_int_dist.h \
   /usr/include/c++/13/bits/unique_ptr.h \
   /usr/include/c++/13/bits/unordered_map.h \
   /usr/include/c++/13/bits/unordered_set.h \
@@ -413,6 +417,7 @@ CMakeFiles/Projeto_2.dir/Logic/LoadingFunctions.cpp.o: /home/angelo/Downloads/Un
   /usr/include/c++/13/new \
   /usr/include/c++/13/ostream \
   /usr/include/c++/13/pstl/execution_defs.h \
+  /usr/include/c++/13/pstl/glue_algorithm_defs.h \
   /usr/include/c++/13/pstl/glue_memory_defs.h \
   /usr/include/c++/13/pstl/pstl_config.h \
   /usr/include/c++/13/queue \
@@ -559,9 +564,11 @@ CMakeFiles/Projeto_2.dir/Logic/Logic.cpp.o: /home/angelo/Downloads/Universidade/
   /usr/include/alloca.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
+  /usr/include/c++/13/algorithm \
   /usr/include/c++/13/backward/auto_ptr.h \
   /usr/include/c++/13/backward/binders.h \
   /usr/include/c++/13/bit \
+  /usr/include/c++/13/bits/algorithmfwd.h \
   /usr/include/c++/13/bits/align.h \
   /usr/include/c++/13/bits/alloc_traits.h \
   /usr/include/c++/13/bits/allocated_ptr.h \
@@ -608,6 +615,7 @@ CMakeFiles/Projeto_2.dir/Logic/Logic.cpp.o: /home/angelo/Downloads/Universidade/
   /usr/include/c++/13/bits/shared_ptr_base.h \
   /usr/include/c++/13/bits/specfun.h \
   /usr/include/c++/13/bits/std_abs.h \
+  /usr/include/c++/13/bits/stl_algo.h \
   /usr/include/c++/13/bits/stl_algobase.h \
   /usr/include/c++/13/bits/stl_bvector.h \
   /usr/include/c++/13/bits/stl_construct.h \
@@ -627,6 +635,7 @@ CMakeFiles/Projeto_2.dir/Logic/Logic.cpp.o: /home/angelo/Downloads/Universidade/
   /usr/include/c++/13/bits/stl_vector.h \
   /usr/include/c++/13/bits/string_view.tcc \
   /usr/include/c++/13/bits/stringfwd.h \
+  /usr/include/c++/13/bits/uniform_int_dist.h \
   /usr/include/c++/13/bits/unique_ptr.h \
   /usr/include/c++/13/bits/unordered_map.h \
   /usr/include/c++/13/bits/unordered_set.h \
@@ -660,6 +669,7 @@ CMakeFiles/Projeto_2.dir/Logic/Logic.cpp.o: /home/angelo/Downloads/Universidade/
   /usr/include/c++/13/memory \
   /usr/include/c++/13/new \
   /usr/include/c++/13/pstl/execution_defs.h \
+  /usr/include/c++/13/pstl/glue_algorithm_defs.h \
   /usr/include/c++/13/pstl/glue_memory_defs.h \
   /usr/include/c++/13/pstl/pstl_config.h \
   /usr/include/c++/13/queue \
@@ -796,9 +806,11 @@ CMakeFiles/Projeto_2.dir/main.cpp.o: /home/angelo/Downloads/Universidade/Algorit
   /usr/include/alloca.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
+  /usr/include/c++/13/algorithm \
   /usr/include/c++/13/backward/auto_ptr.h \
   /usr/include/c++/13/backward/binders.h \
   /usr/include/c++/13/bit \
+  /usr/include/c++/13/bits/algorithmfwd.h \
   /usr/include/c++/13/bits/align.h \
   /usr/include/c++/13/bits/alloc_traits.h \
   /usr/include/c++/13/bits/allocated_ptr.h \
@@ -853,6 +865,7 @@ CMakeFiles/Projeto_2.dir/main.cpp.o: /home/angelo/Downloads/Universidade/Algorit
   /usr/include/c++/13/bits/shared_ptr_atomic.h \
   /usr/include/c++/13/bits/shared_ptr_base.h \
   /usr/include/c++/13/bits/std_abs.h \
+  /usr/include/c++/13/bits/stl_algo.h \
   /usr/include/c++/13/bits/stl_algobase.h \
   /usr/include/c++/13/bits/stl_bvector.h \
   /usr/include/c++/13/bits/stl_construct.h \
@@ -874,6 +887,7 @@ CMakeFiles/Projeto_2.dir/main.cpp.o: /home/angelo/Downloads/Universidade/Algorit
   /usr/include/c++/13/bits/streambuf_iterator.h \
   /usr/include/c++/13/bits/string_view.tcc \
   /usr/include/c++/13/bits/stringfwd.h \
+  /usr/include/c++/13/bits/uniform_int_dist.h \
   /usr/include/c++/13/bits/unique_ptr.h \
   /usr/include/c++/13/bits/unordered_map.h \
   /usr/include/c++/13/bits/unordered_set.h \
@@ -910,6 +924,7 @@ CMakeFiles/Projeto_2.dir/main.cpp.o: /home/angelo/Downloads/Universidade/Algorit
   /usr/include/c++/13/new \
   /usr/include/c++/13/ostream \
   /usr/include/c++/13/pstl/execution_defs.h \
+  /usr/include/c++/13/pstl/glue_algorithm_defs.h \
   /usr/include/c++/13/pstl/glue_memory_defs.h \
   /usr/include/c++/13/pstl/pstl_config.h \
   /usr/include/c++/13/queue \
@@ -1094,6 +1109,8 @@ CMakeFiles/Projeto_2.dir/main.cpp.o: /home/angelo/Downloads/Universidade/Algorit
 
 /usr/include/c++/13/queue:
 
+/usr/include/c++/13/pstl/glue_algorithm_defs.h:
+
 /usr/include/x86_64-linux-gnu/bits/time.h:
 
 /usr/include/c++/13/pstl/execution_defs.h:
@@ -1148,6 +1165,8 @@ CMakeFiles/Projeto_2.dir/main.cpp.o: /home/angelo/Downloads/Universidade/Algorit
 
 /usr/include/c++/13/bits/stl_bvector.h:
 
+/usr/include/c++/13/bits/stl_algo.h:
+
 /usr/include/c++/13/bits/shared_ptr.h:
 
 /usr/include/c++/13/bits/ostream.tcc:
@@ -1161,6 +1180,10 @@ CMakeFiles/Projeto_2.dir/main.cpp.o: /home/angelo/Downloads/Universidade/Algorit
 /usr/include/x86_64-linux-gnu/c++/13/bits/ctype_base.h:
 
 /usr/include/c++/13/bits/locale_facets.h:
+
+/usr/include/c++/13/bits/locale_classes.h:
+
+/usr/include/c++/13/bits/list.tcc:
 
 /usr/include/stdlib.h:
 
@@ -1179,8 +1202,6 @@ CMakeFiles/Projeto_2.dir/main.cpp.o: /home/angelo/Downloads/Universidade/Algorit
 /usr/include/c++/13/bits/cxxabi_init_exception.h:
 
 /usr/include/c++/13/ext/string_conversions.h:
-
-/usr/include/c++/13/bits/locale_classes.h:
 
 /usr/include/c++/13/bits/nested_exception.h:
 
@@ -1263,6 +1284,8 @@ CMakeFiles/Projeto_2.dir/main.cpp.o: /home/angelo/Downloads/Universidade/Algorit
 /usr/include/c++/13/bits/atomic_lockfree_defines.h:
 
 /usr/include/c++/13/bits/exception_defines.h:
+
+/usr/include/c++/13/bits/uniform_int_dist.h:
 
 /usr/include/c++/13/bits/alloc_traits.h:
 
@@ -1526,11 +1549,15 @@ CMakeFiles/Projeto_2.dir/main.cpp.o: /home/angelo/Downloads/Universidade/Algorit
 
 /home/angelo/Downloads/Universidade/Algoritmo\ e\ Estrutura\ de\ Dados/Projeto_AED_2/Logic/Logic.h:
 
+/usr/include/c++/13/algorithm:
+
 /usr/include/x86_64-linux-gnu/bits/fp-logb.h:
 
 /usr/include/c++/13/bits/hashtable_policy.h:
 
 /usr/include/c++/13/backward/auto_ptr.h:
+
+/usr/include/c++/13/bits/algorithmfwd.h:
 
 /usr/include/c++/13/tr1/gamma.tcc:
 
@@ -1563,5 +1590,3 @@ CMakeFiles/Projeto_2.dir/main.cpp.o: /home/angelo/Downloads/Universidade/Algorit
 /usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
 
 /usr/include/c++/13/bits/hashtable.h:
-
-/usr/include/c++/13/bits/list.tcc:

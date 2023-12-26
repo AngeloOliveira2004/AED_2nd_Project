@@ -232,52 +232,9 @@ int Logic::NumberOfDestinationsForCountry(const std::string& airportCode) {
 }
 
 
-void Logic::EssentialAirportsAux(Vertex<Airport>* v, int& id, stack<Airport>& s, unordered_set<Airport>& essentialAirports) {
-    v->setVisited(true);
-    v->setNum(id);
-    v->setLow(id);
-    id++;
-
-    s.push(v->getInfo());
-    v->setProcessing(true);
-
-    int childCount = 0;
-
-    for (Edge<Airport> edge : v->getAdj()) {
-        Vertex<Airport>* neighbor = edge.getDest();
-        if (!neighbor->isVisited()) {
-            childCount++;
-            EssentialAirportsAux(neighbor, id, s, essentialAirports);
-            v->setLow(std::min(v->getLow(), neighbor->getLow()));
-        } else if (neighbor->isProcessing()) {
-            v->setLow(std::min(v->getLow(), neighbor->getNum()));
-        }
-    }
-
-    v->setProcessing(false);
-
-    if (v->getLow() == v->getNum()) {
-        s.pop();
-    }
-
-    if (childCount > 0 && (v->getLow() >= v->getNum())) {
-        essentialAirports.insert(v->getInfo());
-    }
-}
-
-unordered_set<Airport> Logic::EssentialAirports() {
-    unordered_set<Airport> essentialAirports;
-
-    int id = 0;
-    stack<Airport> s;
-
-    for (Vertex<Airport>* v : graph.getVertexSet()) {
-        if (!v->isVisited()) {
-            EssentialAirportsAux(v, id, s, essentialAirports);
-        }
-    }
-
-    return essentialAirports;
+vector<Airport> Logic::EssentialAirports() {
+    vector<Airport> result = graph.findArticulationPoints();
+    return result;
 }
 
 

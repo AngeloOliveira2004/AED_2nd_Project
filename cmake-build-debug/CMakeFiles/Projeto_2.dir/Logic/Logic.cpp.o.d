@@ -132,7 +132,21 @@ CMakeFiles/Projeto_2.dir/Logic/Logic.cpp.o: \
  /usr/include/c++/13/deque /usr/include/c++/13/bits/stl_deque.h \
  /usr/include/c++/13/bits/deque.tcc /usr/include/c++/13/bits/stl_heap.h \
  /usr/include/c++/13/bits/stl_queue.h /usr/include/c++/13/stack \
- /usr/include/c++/13/bits/stl_stack.h /usr/include/c++/13/list \
+ /usr/include/c++/13/bits/stl_stack.h /usr/include/c++/13/algorithm \
+ /usr/include/c++/13/bits/stl_algo.h \
+ /usr/include/c++/13/bits/algorithmfwd.h \
+ /usr/include/c++/13/bits/uniform_int_dist.h /usr/include/c++/13/cstdlib \
+ /usr/include/stdlib.h /usr/include/x86_64-linux-gnu/bits/waitflags.h \
+ /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
+ /usr/include/x86_64-linux-gnu/sys/types.h /usr/include/endian.h \
+ /usr/include/x86_64-linux-gnu/bits/byteswap.h \
+ /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+ /usr/include/x86_64-linux-gnu/sys/select.h \
+ /usr/include/x86_64-linux-gnu/bits/select.h \
+ /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h \
+ /usr/include/alloca.h /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+ /usr/include/c++/13/bits/std_abs.h \
+ /usr/include/c++/13/pstl/glue_algorithm_defs.h /usr/include/c++/13/list \
  /usr/include/c++/13/bits/stl_list.h /usr/include/c++/13/bits/list.tcc \
  /usr/include/c++/13/unordered_set \
  /usr/include/c++/13/bits/unordered_set.h /usr/include/c++/13/string \
@@ -145,17 +159,7 @@ CMakeFiles/Projeto_2.dir/Logic/Logic.cpp.o: \
  /usr/include/c++/13/bits/cxxabi_forced.h \
  /usr/include/c++/13/bits/basic_string.h /usr/include/c++/13/string_view \
  /usr/include/c++/13/bits/string_view.tcc \
- /usr/include/c++/13/ext/string_conversions.h /usr/include/c++/13/cstdlib \
- /usr/include/stdlib.h /usr/include/x86_64-linux-gnu/bits/waitflags.h \
- /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
- /usr/include/x86_64-linux-gnu/sys/types.h /usr/include/endian.h \
- /usr/include/x86_64-linux-gnu/bits/byteswap.h \
- /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
- /usr/include/x86_64-linux-gnu/sys/select.h \
- /usr/include/x86_64-linux-gnu/bits/select.h \
- /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h \
- /usr/include/alloca.h /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
- /usr/include/c++/13/bits/std_abs.h /usr/include/c++/13/cstdio \
+ /usr/include/c++/13/ext/string_conversions.h /usr/include/c++/13/cstdio \
  /usr/include/stdio.h /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \

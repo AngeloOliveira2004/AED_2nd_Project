@@ -186,7 +186,13 @@ CMakeFiles/Projeto_2.dir/Logic/LoadingFunctions.cpp.o: \
  /usr/include/c++/13/deque /usr/include/c++/13/bits/stl_deque.h \
  /usr/include/c++/13/bits/deque.tcc /usr/include/c++/13/bits/stl_heap.h \
  /usr/include/c++/13/bits/stl_queue.h /usr/include/c++/13/stack \
- /usr/include/c++/13/bits/stl_stack.h /usr/include/c++/13/list \
+ /usr/include/c++/13/bits/stl_stack.h /usr/include/c++/13/algorithm \
+ /usr/include/c++/13/bits/stl_algo.h \
+ /usr/include/c++/13/bits/algorithmfwd.h \
+ /usr/include/c++/13/bits/uniform_int_dist.h \
+ /usr/include/c++/13/bits/stl_tempbuf.h \
+ /usr/include/c++/13/pstl/glue_algorithm_defs.h \
+ /usr/include/c++/13/pstl/execution_defs.h /usr/include/c++/13/list \
  /usr/include/c++/13/bits/stl_list.h \
  /usr/include/c++/13/bits/allocated_ptr.h \
  /usr/include/c++/13/ext/aligned_buffer.h \
@@ -202,7 +208,6 @@ CMakeFiles/Projeto_2.dir/Logic/LoadingFunctions.cpp.o: \
  /home/angelo/Downloads/Universidade/Algoritmo\ e\ Estrutura\ de\ Dados/Projeto_AED_2/Logic/Logic.h \
  /usr/include/c++/13/unordered_map \
  /usr/include/c++/13/bits/unordered_map.h /usr/include/c++/13/memory \
- /usr/include/c++/13/bits/stl_tempbuf.h \
  /usr/include/c++/13/bits/stl_raw_storage_iter.h \
  /usr/include/c++/13/bits/align.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h /usr/include/stdint.h \
@@ -215,5 +220,4 @@ CMakeFiles/Projeto_2.dir/Logic/LoadingFunctions.cpp.o: \
  /usr/include/c++/13/bits/atomic_base.h \
  /usr/include/c++/13/bits/atomic_lockfree_defines.h \
  /usr/include/c++/13/backward/auto_ptr.h \
- /usr/include/c++/13/pstl/glue_memory_defs.h \
- /usr/include/c++/13/pstl/execution_defs.h
+ /usr/include/c++/13/pstl/glue_memory_defs.h

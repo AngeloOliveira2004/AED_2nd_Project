@@ -10,6 +10,7 @@
 #include <vector>
 #include <queue>
 #include <stack>
+#include <algorithm>
 #include <list>
 #include <unordered_set>
 #include <string>
@@ -105,6 +106,12 @@ public:
     vector<T> bfs(const T &source) const;
     vector<T> topsort() const;
     bool isDAG() const;
+
+    unordered_set<T> findEssentialAirports();
+
+    void dfs_articulationPoints(Vertex<T> *v, vector<T> &articPoints, stack<Vertex<T> *> &s, int &index);
+
+    vector<T> findArticulationPoints();
 };
 
 /****************** Provided constructors and functions ********************/
@@ -506,6 +513,63 @@ void Graph<T>::calculateIndegrees() {
     }
 }
 
+template<class T>
+void Graph<T>::dfs_articulationPoints(Vertex<T> *v, vector<T> &articPoints, stack<Vertex<T>*> &s, int &index) {
+    v->setVisited(true);
+    v->setNum(index);
+    v->setLow(index);
+    s.push(v);
+    v->setProcessing(true);
+    index++;
+
+    int children = 0;
+    bool articPoint = false;
+
+    for (auto &e : v->getAdj()) {
+        Vertex<T> *w = e.getDest();
+        if (!w->isVisited()) {
+            children++;
+            dfs_articulationPoints(w, articPoints, s, index);
+            v->setLow(min(v->getLow(), w->getLow()));
+            if (w->getLow() >= v->getNum()) {
+                articPoint = true;
+            }
+        } else if (w->isProcessing()) {
+            v->setLow(min(v->getLow(), w->getNum()));
+        }
+    }
+
+    if ((v->getNum() == v->getLow() && children > 1) || (v->getNum() != v->getLow() && articPoint)) {
+        Vertex<T> *t = nullptr;
+        do {
+            t = s.top();
+            s.pop();
+            t->setProcessing(false);
+        } while (t->getInfo() != v->getInfo());
+
+        articPoints.push_back(t->getInfo());
+    }
+}
+
+template<class T>
+vector<T> Graph<T>::findArticulationPoints() {
+    vector<T> articulationPoints;
+    int index = 0;
+    stack<Vertex<T>*> s;
+
+    for (Vertex<T> *v : vertexSet) {
+        v->setVisited(false);
+        v->setProcessing(false);
+    }
+
+    for (Vertex<T> *v : vertexSet) {
+        if (!v->isVisited()) {
+            dfs_articulationPoints(v, articulationPoints, s, index);
+        }
+    }
+
+    return articulationPoints;
+}
 
 
 #endif //PROJETO_2_GRAPH_H
