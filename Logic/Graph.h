@@ -380,27 +380,6 @@ void Graph<T>::dfsVisit(Vertex<T> *v, vector<T> & res) const {
 }
 
 
-/****************** DFS ********************/
-/*
- * Performs a depth-first search (dfs) in a graph (this).
- * Returns a vector with the contents of the vertices by dfs order,
- * from the source node.
- */
-template <class T>
-vector<T> Graph<T>::dfs(const T & source) const {
-    vector<T> res;
-    auto s = findVertex(source);
-    if (s == nullptr)
-        return res;
-
-    for (auto v : vertexSet)
-        v->visited = false;
-
-    dfsVisit(s, res);
-    return res;
-}
-
-
 /****************** BFS ********************/
 /*
  * Performs a breadth-first search (bfs) in a graph (this), starting

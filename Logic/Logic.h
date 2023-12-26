@@ -26,7 +26,7 @@ public:
     int NumberOfFlightsPerAirline(const std::string& airlineCode);
     int NumberOfCountries(std::string airportCode);
     int NumberOfCountriesThatCityFliesTo(std::string city);
-    std::vector<std::pair<Airport , Airport>> AirportAtMaximumDistance();
+    std::pair<std::vector<std::pair<Airport, Airport>> , int> AirportAtMaximumDistance();
     size_t GlobalNumberOfFlights();
     std::pair<int , int> FlightsOutOfAirportAndDifferentAirlines(const std::string& AirportCode);
 

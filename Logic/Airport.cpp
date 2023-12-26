@@ -4,6 +4,7 @@
 
 #include "Airport.h"
 
+Airport::Airport(): code("") , name(" ") , city(" ") , latitude(0.0) , longitude(0.0) {}
 
 Airport::Airport(const std::string &code,const std::string name,const std::string city,const std::string country,
                  double longitude, double latitude)

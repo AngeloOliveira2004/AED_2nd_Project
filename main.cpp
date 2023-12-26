@@ -18,7 +18,7 @@ int main() {
     std::cout << "Time taken by LoadFlights: " << duration.count()/1000 << " seconds" << std::endl;
 
     Logic logic = Logic(g);
-/*
+
     cout << "Number of Airports: " << logic.GlobalNumberOfAirports() << endl;
 
     cout << "Number of Flights: " << logic.GlobalNumberOfFlights() << endl;
@@ -44,16 +44,23 @@ int main() {
     cout << "Number of distinct airports: " << tempValues[0] << endl;
     cout << "Number of distinct countries: " << tempValues[1] << endl;
     cout << "Number of distinct cities: " << tempValues[2] << endl;
-*/
 
-    cout << "diameter: " << g.calculateDiameter();
-/*
-    std::vector<std::pair<Airport, Airport>> d = logic.AirportAtMaximumDistance();
-    std::cout << "airport: " << d[0].first.getCode() ;
-    for(auto e : d)
+    auto start_time1 = std::chrono::high_resolution_clock::now();
+
+    cout << "diameter: " << g.calculateDiameter() << endl;
+
+    auto end_time1 = std::chrono::high_resolution_clock::now();
+    auto duration1= std::chrono::duration_cast<std::chrono::milliseconds>(end_time1 - start_time1);
+
+    std::cout << "Time taken by calculateDiameter: " << duration1.count()/1000 << " seconds" << std::endl;
+
+    std::pair< std::vector<std::pair<Airport, Airport>> , int> d = logic.AirportAtMaximumDistance();
+
+    for( auto pair : d.first)
     {
-        std::cout << "max_dest :" << e.second.getCode();
+        std::cout << "initial airport : " << pair.first.getCode()
+        << " | end airport: " << pair.second.getCode() << " | number of layovers: " << d.second << endl;
     }
-*/
+
     return 0;
 }

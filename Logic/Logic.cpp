@@ -4,6 +4,7 @@
 
 #include "Logic.h"
 #include <cmath>
+#include <iostream>
 
 
 Logic::Logic(Graph<Airport>& g) : graph(g) {}
@@ -228,66 +229,72 @@ vector<int> Logic::analyzeReachableAirports(const vector<Airport> &reachableAirp
 //||||||||||||| Point 7 |||||||||||||||||||||
 
 void setUnvisited(Graph<Airport> g);
-std::vector<Airport> specialDFS(Vertex<Airport>& v , unordered_map<Airport , int>& aux , int k);
-std::vector<std::pair<Airport, Airport>> Logic::AirportAtMaximumDistance() {
+void specialDFS(Vertex<Airport>* v);
+std::pair< std::vector<std::pair<Airport, Airport>> , int> Logic::AirportAtMaximumDistance() {
 
-    std::vector<Airport> res = {};
-    std::vector<std::pair<Airport, Airport>> res1 = {};
+    std::vector<std::pair<Airport, Airport>> res = {};
+
+    unordered_map<int , std::vector<std::pair<Airport , Airport>>> map;
+
+    Airport initialAirport = Airport();
+    Airport endAirport = Airport();
+
     for(auto vertex : graph.getVertexSet())
     {
-        Vertex<Airport> a = *vertex;
-        std::string code = a.getInfo().getCode();
-        unordered_map<Airport , int> aux;
+        initialAirport = vertex->getInfo();
         setUnvisited(this->graph);
+        specialDFS(vertex);
 
-        res = specialDFS(a , aux , 0);
-
-        for(const auto& airport : res)
+        int max = INT16_MIN;
+        for(auto vertex1 : graph.getVertexSet())
         {
-            res1.emplace_back(vertex->getInfo() , airport);
+            if(vertex1->getNum() > max)
+            {
+                max = vertex1->getNum();
+                endAirport = vertex1->getInfo();
+            }
         }
-    }
 
-    return res1;
-}
-
-std::vector<Airport> specialDFS(Vertex<Airport>& v , unordered_map<Airport , int>& aux , int k)
-{
-    std::vector<Airport>  res;
-    v.setVisited(true);
-    aux.insert(make_pair(v.getInfo() , k));
-
-    for(auto edge : v.getAdj())
-    {
-        if(!edge.getDest()->isVisited())
+        if(map.find(max) == map.end())
         {
-            Vertex<Airport> a = *edge.getDest();
-            specialDFS(a , aux , k+1);
+            map[max] = {std::make_pair(initialAirport , endAirport)};
+        }
+        else
+        {
+            map[max].emplace_back(initialAirport , endAirport);
         }
     }
 
     int max = INT16_MIN;
-
-    for(auto & it : aux)
+    for(auto a : map)
     {
-        const Airport& airport = it.first;
-        int distance = it.second;
-
-        max = std::max(distance , max);
+        if(a.first > max) max = a.first;
     }
 
-    for(auto & it : aux)
+    for(auto a : map)
     {
-        const Airport& airport = it.first;
-        int distance = it.second;
-
-        if(max == distance)
+        if(a.first == max)
         {
-            res.push_back(airport);
+            for(const auto& pair : a.second)
+            {
+                res.push_back(pair);
+            }
         }
     }
 
-    return res;
+    return std::make_pair(res , max);
+}
+
+void specialDFS(Vertex<Airport>* v)
+{
+    v->setVisited(true);
+    for (auto & e : v->getAdj()) {
+        auto w = e.getDest();
+        if ( ! w->isVisited()) {
+            w->setNum(v->getNum() + 1);
+            specialDFS(w);
+        }
+    }
 }
 
 void setUnvisited(Graph<Airport> g)
@@ -295,9 +302,6 @@ void setUnvisited(Graph<Airport> g)
     for(auto& vertex : g.getVertexSet())
     {
         vertex->setVisited(false);
-        for(auto& edge : vertex->getAdj())
-        {
-            edge.getDest()->setVisited(false);
-        }
+        vertex->setNum(0);
     }
 }
