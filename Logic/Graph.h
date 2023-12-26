@@ -98,6 +98,7 @@ public:
     bool removeEdge(const T &sourc, const T &dest);
     vector<Vertex<T> * > getVertexSet() const;
     vector<T> dfs() const;
+    void calculateIndegrees();
     //todo
     void countDestinationsBFS(Vertex<T>* vertex, int maxStops,unordered_set<string>& visitedAirports);
     vector<T> dfs(const T & source) const;
@@ -489,6 +490,20 @@ vector<T> Graph<T>::topsort() const {
         s.pop();
     }
     return res;
+}
+
+template <class T>
+void Graph<T>::calculateIndegrees() {
+    for (auto v : vertexSet) {
+        v->setIndegree(0);
+    }
+
+    for (auto v : vertexSet) {
+        for (auto &e : v->getAdj()) {
+            auto w = e.getDest();
+            w->setIndegree(w->getIndegree() + 1);
+        }
+    }
 }
 
 #endif //PROJETO_2_GRAPH_H

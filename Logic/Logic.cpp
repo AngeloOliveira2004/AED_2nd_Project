@@ -5,6 +5,7 @@
 #include "Logic.h"
 #include <cmath>
 #include <iostream>
+#include <unordered_set>
 
 
 Logic::Logic(Graph<Airport>& g) : graph(g) {}
@@ -138,19 +139,22 @@ int Logic::NumberOfCountriesThatCityFliesTo(std::string city) {
     return (int) countries.size();
 }
 
-void Logic::TopTrafficAirports(int k) {
-    unordered_map<size_t, string> airport_to_traffic;
-    vector<size_t> traffics;
+vector<string> Logic::TopTrafficAirports(int k) {
+    vector<std::pair<int, std::string>> airport_to_traffic;
+    vector<int> traffics;
+    vector<string> result;
     size_t s;
+    graph.calculateIndegrees();
     for(auto vertex: graph.getVertexSet()){
-        s = vertex->getAdj().size();
+        s = vertex->getAdj().size() + vertex->getIndegree();
         traffics.push_back(s);
-        airport_to_traffic[s] = vertex->getInfo().getName();
+        airport_to_traffic.push_back(std::make_pair(s, vertex->getInfo().getCode()));
     }
     std::sort(traffics.begin(), traffics.end(), greater<int>());
-    std::cout << "The " << k << " airports with the most air traffic are:" << endl;
-    for(int i = 0; i < k; i++){
-        auto it = airport_to_traffic.find(traffics[i]);
-        std::cout << it->second << " " <<"with " <<it->first << " flights" << endl;
+    std::sort(airport_to_traffic.rbegin(), airport_to_traffic.rend());
+    for (int i = 0; i < k; i++){
+        result.push_back(airport_to_traffic[i].second);
+        std::cout << airport_to_traffic[i].second << " " << airport_to_traffic[i].first << endl;
     }
+    return result;
 }
