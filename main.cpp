@@ -16,7 +16,7 @@ int main() {
 
     std::pair<int, int> a;
 
-    a = logic.FlightsOutOfAirportAndDifferentAirlines("CDG");
+    a = logic.FlightsOutOfAirportAndDifferentAirlines("ADZ");
 
     std::cout << "Number of flights: " << a.first << " | Number of different airlines: " << a.second << endl;
 

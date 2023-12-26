@@ -515,12 +515,13 @@ void Graph<T>::calculateIndegrees() {
 
 template<class T>
 void Graph<T>::dfs_articulationPoints(Vertex<T> *v, vector<T> &articPoints, stack<Vertex<T>*> &s, int &index) {
-    v->setVisited(true);
     v->setNum(index);
     v->setLow(index);
+    v->setVisited(true);
+    index++;
+
     s.push(v);
     v->setProcessing(true);
-    index++;
 
     int children = 0;
     bool articPoint = false;
@@ -540,14 +541,14 @@ void Graph<T>::dfs_articulationPoints(Vertex<T> *v, vector<T> &articPoints, stac
     }
 
     if ((v->getNum() == v->getLow() && children > 1) || (v->getNum() != v->getLow() && articPoint)) {
-        Vertex<T> *t = nullptr;
+        Vertex<T> *ver;
         do {
-            t = s.top();
+            ver = s.top();
             s.pop();
-            t->setProcessing(false);
-        } while (t->getInfo() != v->getInfo());
+            ver->setProcessing(false);
+        } while (ver->getInfo() != v->getInfo());
 
-        articPoints.push_back(t->getInfo());
+        articPoints.push_back(ver->getInfo());
     }
 }
 
@@ -570,6 +571,7 @@ vector<T> Graph<T>::findArticulationPoints() {
 
     return articulationPoints;
 }
+
 
 
 #endif //PROJETO_2_GRAPH_H
