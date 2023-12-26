@@ -103,6 +103,7 @@ void LoadingFunctions::LoadFlights(Graph<Airport> &g) {
     {
         LoadAirlines(g);
     }
+
     std::ifstream file("dataset/flights.csv");
 
     if (!file.is_open()) {
