@@ -34,7 +34,11 @@ public:
     int NumberOfDestinationsForAirport(const string &airportCode);
     int NumberOfDestinationsForCity(const string &airportCode);
     int NumberOfDestinationsForCountry(const string &airportCode);
-    vector<Airport> EssentialAirports();
+
+    unordered_set<Airport> findArticulationPoints();
+
+
+    void dfs_articulationPoints(Vertex<Airport> *v, Vertex<Airport> *parent, unordered_set<Airport> &articPoints,stack<Vertex<Airport> *> &s, int &index);
 };
 
 

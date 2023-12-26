@@ -16,7 +16,7 @@ int main() {
 
     std::pair<int, int> a;
 
-    a = logic.FlightsOutOfAirportAndDifferentAirlines("SOQ");
+    a = logic.FlightsOutOfAirportAndDifferentAirlines("PDG");
 
     std::cout << "Number of flights: " << a.first << " | Number of different airlines: " << a.second << endl;
 
@@ -34,7 +34,11 @@ int main() {
 
     std::cout << "Number of Country destinations available for airport Jose Marti Intl: " << logic.NumberOfDestinationsForCountry("HAV") << endl;
 
-    vector<Airport> essentialAirports = logic.EssentialAirports();
+    Graph<Airport> tempGraph= g.makeUndirectedGraph(g);
+
+    Logic logicTemp = Logic(tempGraph);
+
+    unordered_set<Airport> essentialAirports = logic.findArticulationPoints();
 
     std::cout << "These airports are essential: " << std::endl;
     for (const Airport& airport : essentialAirports) {

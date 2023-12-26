@@ -60,12 +60,12 @@ Logic::FlightsOutOfAirportAndDifferentAirlines(const std::string& AirportCode) {
     Airport tempAirport = Airport(AirportCode, " ", " ", " ", 0.0, 0.0);
 
     Vertex<Airport>* flight = this->graph.findVertex(tempAirport);
-    
+
     if(flight == nullptr)
     {
         return std::make_pair(NumberOfFlights , (int) AirlinesCodes.size());
     }
-    
+
     NumberOfFlights = static_cast<int>(flight->getAdj().size());
 
     for(const auto& edge : flight->getAdj())
@@ -231,11 +231,70 @@ int Logic::NumberOfDestinationsForCountry(const std::string& airportCode) {
     return destinations;
 }
 
+unordered_set<Airport> Logic::findArticulationPoints() {
+    int index = 1;
+    unordered_set<Airport> articulationPoints;
+    stack<Vertex<Airport>*> s;
 
-vector<Airport> Logic::EssentialAirports() {
-    vector<Airport> result = graph.findArticulationPoints();
-    return result;
+    for (Vertex<Airport>* v : graph.getVertexSet()) {
+        v->setVisited(false);
+        v->setProcessing(false);
+    }
+
+    for (Vertex<Airport>* v : graph.getVertexSet()) {
+        if (!v->isVisited()) {
+            dfs_articulationPoints(v, nullptr, articulationPoints, s, index);
+        }
+    }
+
+    return articulationPoints;
 }
+
+void Logic::dfs_articulationPoints(Vertex<Airport>* v, Vertex<Airport>* parent, unordered_set<Airport>& articPoints, stack<Vertex<Airport>*>& s, int& index) {
+    v->setNum(index);
+    v->setLow(index);
+    v->setVisited(true);
+    index++;
+
+    s.push(v);
+    v->setProcessing(true);
+
+    int children = 0;
+    bool isArticulationPoint = false;
+
+    for (auto &e : v->getAdj()) {
+        Vertex<Airport>* w = e.getDest();
+        if (!w->isVisited()) {
+            children++;
+            dfs_articulationPoints(w, v, articPoints, s, index);
+            v->setLow(min(v->getLow(), w->getLow()));
+
+            if (w->getLow() >= v->getNum()) {
+                isArticulationPoint = true;
+            }
+        } else if (w->isProcessing()) {
+            v->setLow(min(v->getLow(), w->getNum()));
+        }
+    }
+
+    if ((v->getNum() == v->getLow() && children > 1) || (v->getNum() != v->getLow() && isArticulationPoint)) {
+        articPoints.insert(v->getInfo());
+
+        while (!s.empty()) {
+            Vertex<Airport>* poppedVertex = s.top();
+            s.pop();
+            poppedVertex->setProcessing(false);
+
+            if (poppedVertex == v) {
+                break;
+            }
+        }
+    }
+
+}
+
+
+
 
 
 

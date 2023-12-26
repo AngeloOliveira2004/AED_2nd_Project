@@ -114,6 +114,8 @@ public:
     vector<T> findArticulationPoints();
 
     void removeDuplicates(vector<T> &vec);
+
+    Graph<T> makeUndirectedGraph(const Graph<T> &directedGraph);
 };
 
 /****************** Provided constructors and functions ********************/
@@ -516,53 +518,25 @@ void Graph<T>::calculateIndegrees() {
 }
 
 template<class T>
-void Graph<T>::dfs_articulationPoints(Vertex<T> *v, vector<T> &articPoints, stack<Vertex<T>*> &s, int &index) {
-    v->setNum(index);
-    v->setLow(index);
-    v->setVisited(true);
-    index++;
+Graph<T> Graph<T>::makeUndirectedGraph(const Graph<T>& directedGraph) {
+    Graph<T> undirectedGraph;
 
-    int children = 0;
-
-    s.push(v);
-    v->setProcessing(true);
-
-    for (auto &e : v->getAdj()) {
-        Vertex<T> *w = e.getDest();
-        if (!w->isVisited()) {
-
-            dfs_articulationPoints(w, articPoints, s, index);
-            v->setLow(min(v->getLow(), w->getLow()));
-
-            if (w->getLow() >= v->getNum()) {
-                articPoints.push_back(v->getInfo());
-            }
-        } else if (w->isProcessing()) {
-            v->setLow(min(v->getLow(), w->getNum()));
-        }
-    }
-    s.pop();
-}
-
-template<class T>
-vector<T> Graph<T>::findArticulationPoints() {
-    int index = 1;
-    vector<T> articulationPoints;
-    stack<Vertex<T>*> s;
-
-    for (Vertex<T> *v : vertexSet) {
-        v->setVisited(false);
-        v->setProcessing(false);
+    // Add vertices to the undirected graph
+    for (const Vertex<T>* v : directedGraph.getVertexSet()) {
+        undirectedGraph.addVertex(v->getInfo());
     }
 
-    for (Vertex<T> *v : vertexSet) {
-        if (!v->isVisited()) {
-            dfs_articulationPoints(v, articulationPoints, s, index);
+    for (const Vertex<T>* v : directedGraph.getVertexSet()) {
+        const vector<Edge<T>>& outgoingEdges = v->getAdj();
+        for (const Edge<T>& edge : outgoingEdges) {
+            undirectedGraph.addEdge(v->getInfo(), edge.getDest()->getInfo(), edge.getweight(), edge.getAirline());
+            undirectedGraph.addEdge(edge.getDest()->getInfo(), v->getInfo(), edge.getweight(), edge.getAirline());
         }
     }
 
-    return articulationPoints;
+    return undirectedGraph;
 }
+
 
 
 
