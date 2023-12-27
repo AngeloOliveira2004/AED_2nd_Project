@@ -12,4 +12,5 @@ add_executable(Projeto_2 main.cpp
         Logic/LoadingFunctions.cpp
         Logic/Airport.cpp
         Logic/Logic.cpp
-        Logic/Airline.cpp)
+        Logic/Airline.cpp
+        UI/UI.cpp)

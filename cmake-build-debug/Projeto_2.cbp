@@ -109,6 +109,12 @@
 		<Unit filename="/home/angelo/Downloads/Universidade/Algoritmo e Estrutura de Dados/Projeto_AED_2/Logic/Logic.h">
 			<Option target="Projeto_2"/>
 		</Unit>
+		<Unit filename="/home/angelo/Downloads/Universidade/Algoritmo e Estrutura de Dados/Projeto_AED_2/UI/UI.cpp">
+			<Option target="Projeto_2"/>
+		</Unit>
+		<Unit filename="/home/angelo/Downloads/Universidade/Algoritmo e Estrutura de Dados/Projeto_AED_2/UI/UI.h">
+			<Option target="Projeto_2"/>
+		</Unit>
 		<Unit filename="/home/angelo/Downloads/Universidade/Algoritmo e Estrutura de Dados/Projeto_AED_2/main.cpp">
 			<Option target="Projeto_2"/>
 		</Unit>

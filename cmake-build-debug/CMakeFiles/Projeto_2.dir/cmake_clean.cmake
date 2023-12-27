@@ -7,6 +7,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Projeto_2.dir/Logic/LoadingFunctions.cpp.o.d"
   "CMakeFiles/Projeto_2.dir/Logic/Logic.cpp.o"
   "CMakeFiles/Projeto_2.dir/Logic/Logic.cpp.o.d"
+  "CMakeFiles/Projeto_2.dir/UI/UI.cpp.o"
+  "CMakeFiles/Projeto_2.dir/UI/UI.cpp.o.d"
   "CMakeFiles/Projeto_2.dir/main.cpp.o"
   "CMakeFiles/Projeto_2.dir/main.cpp.o.d"
   "Projeto_2"
