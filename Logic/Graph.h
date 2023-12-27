@@ -12,6 +12,7 @@
 #include <stack>
 #include <list>
 #include <unordered_set>
+#include <unordered_map>
 #include <string>
 #include <algorithm>
 #include <limits>
@@ -35,6 +36,7 @@ class Vertex {
     int low;               // auxiliary field
     int indegree;          // auxiliary field
     int num;               // auxiliary field
+    Vertex<T>* parent;
 
     void addEdge(Vertex<T> *dest, double w, string airline);
     bool removeEdgeTo(Vertex<T> *d);
@@ -48,6 +50,7 @@ public:
     void setProcessing(bool p);
     const vector<Edge<T>> &getAdj() const;
     void setAdj(const vector<Edge<T>> &adj);
+    void setParent(Vertex<T>* parent);
 
     int getIndegree() const;
 
@@ -62,7 +65,19 @@ public:
     void setLow(int low);
 
     friend class Graph<T>;
+
+    Vertex<T>* getParent();
 };
+
+template<class T>
+Vertex<T>* Vertex<T>::getParent() {
+    return parent;
+}
+
+template<class T>
+void Vertex<T>::setParent(Vertex<T>* parent) {
+    this->parent = parent;
+}
 
 
 template <class T>
@@ -101,8 +116,8 @@ public:
     bool removeEdge(const T &sourc, const T &dest);
     vector<Vertex<T> * > getVertexSet() const;
     vector<T> dfs() const;
-    //todo
     void countDestinationsBFS(Vertex<T>* vertex, int maxStops,unordered_set<string>& visitedAirports);
+    vector<T> shortestPath(T initial , T destination);
     vector<T> dfs(const T & source) const;
     vector<T> bfs(const T &source) const;
     void bfsDifferent(T &source) const;
@@ -517,6 +532,53 @@ vector<T> Graph<T>::topsort() const {
         s.pop();
     }
     return res;
+}
+
+template<class T>
+vector<T> Graph<T>::shortestPath(T initial, T destination) {
+    vector<T> res;
+    Vertex<T>* initialVertex = findVertex(initial);
+    Vertex<T>* finalVertex = findVertex(destination);
+
+    if (initialVertex == nullptr || finalVertex == nullptr)
+        return res;  // Return an empty vector indicating failure
+
+    // Resetting visited and parent information
+    for (auto v : vertexSet) {
+        v->setVisited(false);
+        v->setParent(nullptr);
+    }
+
+    queue<Vertex<T> *> q;
+    q.push(initialVertex);
+    initialVertex->setVisited(true);
+
+    while (!q.empty()) {
+        auto v = q.front();
+        q.pop();
+
+        if (v == finalVertex) {
+            // Reconstruct the path
+            while (v->getParent() != nullptr) {
+                res.push_back(v->getInfo());
+                v = v->getParent();
+            }
+            res.push_back(initial);  // Add the initial vertex to the path
+            reverse(res.begin(), res.end());  // Reverse the path to get correct order
+            return res;
+        }
+
+        for (const Edge<T> &e : v->getAdj()) {
+            Vertex<T>* w = e.getDest();
+            if (!w->isVisited()) {
+                w->setParent(v);
+                q.push(w);
+                w->setVisited(true);
+            }
+        }
+    }
+
+    return res;  // Return an empty vector indicating that no path was found
 }
 
 #endif //PROJETO_2_GRAPH_H

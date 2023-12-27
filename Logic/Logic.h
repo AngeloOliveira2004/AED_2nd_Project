@@ -26,13 +26,16 @@ public:
     int NumberOfFlightsPerAirline(const std::string& airlineCode);
     int NumberOfCountries(std::string airportCode);
     int NumberOfCountriesThatCityFliesTo(std::string city);
-    std::pair<std::vector<std::pair<Airport, Airport>> , int> AirportAtMaximumDistance();
     size_t GlobalNumberOfFlights();
+
+    std::pair<std::vector<std::pair<Airport, Airport>> , int> AirportAtMaximumDistance();
+
     std::pair<int , int> FlightsOutOfAirportAndDifferentAirlines(const std::string& AirportCode);
+
+    vector<Airport> shortestPath(Airport initialAirport , Airport destAirport);
 
     //Auxiliary functions
     double HaversineAlgorithm(double lat1, double lon1,double lat2, double lon2);
-    void DijkstraAlgorithm();
 
     vector<Airport> nodesAtDistanceBFS(const string &airportCode, int k);
     vector<int> analyzeReachableAirports(const vector<Airport> &reachableAirports);

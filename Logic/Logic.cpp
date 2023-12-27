@@ -305,3 +305,15 @@ void setUnvisited(Graph<Airport> g)
         vertex->setNum(0);
     }
 }
+
+//|||||||||||||||||||||||||| ShortestPath ||||||||||||||||||||||||||
+
+vector<Airport> Logic::shortestPath(Airport initialAirport, Airport destAirport) {
+    vector<Airport> res;
+
+    for(auto& v : graph.getVertexSet())
+        v->setParent(nullptr);
+
+    res = graph.shortestPath(initialAirport, destAirport);
+    return res;
+}
