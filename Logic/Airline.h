@@ -31,7 +31,7 @@ public:
 template <>
 struct std::hash<Airline> {
     /**
-     * @param student The Airline object to hash.
+     * @param airline The Airline object to hash.
      * @return The hash value for the Airline based on their code.
      */
     size_t operator()(const Airline& airline) const {

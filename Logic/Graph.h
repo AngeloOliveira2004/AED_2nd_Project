@@ -12,7 +12,10 @@
 #include <stack>
 #include <list>
 #include <unordered_set>
+#include <unordered_map>
 #include <string>
+#include <algorithm>
+#include <limits>
 #include "Airline.h"
 
 using namespace std;
@@ -33,6 +36,7 @@ class Vertex {
     int low;               // auxiliary field
     int indegree;          // auxiliary field
     int num;               // auxiliary field
+    Vertex<T>* parent;
 
     void addEdge(Vertex<T> *dest, double w, string airline);
     bool removeEdgeTo(Vertex<T> *d);
@@ -46,6 +50,7 @@ public:
     void setProcessing(bool p);
     const vector<Edge<T>> &getAdj() const;
     void setAdj(const vector<Edge<T>> &adj);
+    void setParent(Vertex<T>* parent);
 
     int getIndegree() const;
 
@@ -60,7 +65,19 @@ public:
     void setLow(int low);
 
     friend class Graph<T>;
+
+    Vertex<T>* getParent();
 };
+
+template<class T>
+Vertex<T>* Vertex<T>::getParent() {
+    return parent;
+}
+
+template<class T>
+void Vertex<T>::setParent(Vertex<T>* parent) {
+    this->parent = parent;
+}
 
 
 template <class T>
@@ -92,19 +109,46 @@ class Graph {
 public:
     Vertex<T> *findVertex(const T &in) const;
     int getNumVertex() const;
+    int calculateDiameter() const;
     bool addVertex(const T &in);
     bool removeVertex(const T &in);
     bool addEdge(const T &sourc, const T &dest, double w,string airline);
     bool removeEdge(const T &sourc, const T &dest);
     vector<Vertex<T> * > getVertexSet() const;
     vector<T> dfs() const;
-    //todo
     void countDestinationsBFS(Vertex<T>* vertex, int maxStops,unordered_set<string>& visitedAirports);
+    vector<T> shortestPath(T initial , T destination);
     vector<T> dfs(const T & source) const;
     vector<T> bfs(const T &source) const;
+    void bfsDifferent(T &source) const;
     vector<T> topsort() const;
     bool isDAG() const;
+    void calculateIndegrees() const;
 };
+
+//O(V² + V*E)
+template<class T>
+int Graph<T>::calculateDiameter() const {
+    int max_diameter = 0;
+    for(auto a : getVertexSet())
+    {
+        a->setVisited(false);
+        a->setParent(nullptr);
+        a->setNum(0);
+    }
+    for (auto a : getVertexSet()){
+        T airport = a->getInfo();
+        this->bfsDifferent(airport);
+        for (Vertex<T>* b : getVertexSet()){
+            if (b->getNum() > max_diameter)
+            {
+                max_diameter = b->getNum();
+            }
+        }
+    }
+
+    return max_diameter;
+}
 
 /****************** Provided constructors and functions ********************/
 
@@ -354,27 +398,6 @@ void Graph<T>::dfsVisit(Vertex<T> *v, vector<T> & res) const {
 }
 
 
-/****************** DFS ********************/
-/*
- * Performs a depth-first search (dfs) in a graph (this).
- * Returns a vector with the contents of the vertices by dfs order,
- * from the source node.
- */
-template <class T>
-vector<T> Graph<T>::dfs(const T & source) const {
-    vector<T> res;
-    auto s = findVertex(source);
-    if (s == nullptr)
-        return res;
-
-    for (auto v : vertexSet)
-        v->visited = false;
-
-    dfsVisit(s, res);
-    return res;
-}
-
-
 /****************** BFS ********************/
 /*
  * Performs a breadth-first search (bfs) in a graph (this), starting
@@ -404,9 +427,32 @@ vector<T> Graph<T>::bfs(const T & source) const {
             }
         }
     }
-    return res;
 }
 
+template<class T>
+void Graph<T>::bfsDifferent(T &source) const {
+    auto s = findVertex(source);
+    if (s == NULL)
+        return ;
+    queue<Vertex<T> *> q;
+    for (auto v : vertexSet)
+        v->setVisited(false);
+    q.push(s);
+    s->setVisited(true);
+    s->setNum(0);
+    while (!q.empty()) {
+        auto v = q.front();
+        q.pop();
+        for (const Edge<T> & e : v->getAdj()) {
+            Vertex<T>* w = e.getDest();
+            if (!w->isVisited()) {
+                q.push(w);
+                w->setVisited(true);
+                w->setNum(v->getNum() + 1);
+            }
+        }
+    }
+}
 
 /****************** isDAG  ********************/
 /*
@@ -489,6 +535,67 @@ vector<T> Graph<T>::topsort() const {
         s.pop();
     }
     return res;
+}
+
+template<class T>
+vector<T> Graph<T>::shortestPath(T initial, T destination) {
+    vector<T> res;
+    Vertex<T>* initialVertex = findVertex(initial);
+    Vertex<T>* finalVertex = findVertex(destination);
+
+    if (initialVertex == nullptr || finalVertex == nullptr)
+        return res;  // Return an empty vector indicating failure
+
+    // Resetting visited and parent information
+    for (auto v : vertexSet) {
+        v->setVisited(false);
+        v->setParent(nullptr);
+    }
+
+    queue<Vertex<T> *> q;
+    q.push(initialVertex);
+    initialVertex->setVisited(true);
+
+    while (!q.empty()) {
+        auto v = q.front();
+        q.pop();
+
+        if (v == finalVertex) {
+            // Reconstruct the path
+            while (v->getParent() != nullptr) {
+                res.push_back(v->getInfo());
+                v = v->getParent();
+            }
+            res.push_back(initial);  // Add the initial vertex to the path
+            reverse(res.begin(), res.end());  // Reverse the path to get correct order
+            return res;
+        }
+
+        for (const Edge<T> &e : v->getAdj()) {
+            Vertex<T>* w = e.getDest();
+            if (!w->isVisited()) {
+                w->setParent(v);
+                q.push(w);
+                w->setVisited(true);
+            }
+        }
+    }
+
+    return res;  // Return an empty vector indicating that no path was found
+}
+
+template <class T>
+void Graph<T>::calculateIndegrees() const {
+    for (auto v : vertexSet) {
+        v->setIndegree(0);
+    }
+
+    for (auto v : vertexSet) {
+        for (auto &e : v->getAdj()) {
+            auto w = e.getDest();
+            w->setIndegree(w->getIndegree() + 1);
+        }
+    }
 }
 
 #endif //PROJETO_2_GRAPH_H
