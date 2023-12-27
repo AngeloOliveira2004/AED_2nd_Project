@@ -160,6 +160,80 @@ int Logic::NumberOfFlightsPerCity(std::string city) {
 
     return numberFlights;
 }
+//|||||||||||||||||| Point 5 |||||||||||||||||||||||
+
+
+// O(E)
+int Logic::NumberOfDestinationsForAirport(const std::string& airportCode) {
+    Vertex<Airport> *sourceVertex = graph.findVertex(Airport(airportCode));
+
+    if (sourceVertex == nullptr) {
+        return 0;
+    }
+
+    int destinations = 0;
+    std::unordered_set<std::string> visitedDestinations;
+
+    for (const Edge<Airport>& edge : sourceVertex->getAdj()) {
+        Vertex<Airport>* neighbor = edge.getDest();
+
+        const std::string& destinationCode = neighbor->getInfo().getCode();
+        if (visitedDestinations.find(destinationCode) == visitedDestinations.end()) {
+            destinations++;
+            visitedDestinations.insert(destinationCode);
+        }
+    }
+
+    return destinations;
+}
+
+// O(E)
+int Logic::NumberOfDestinationsForCity(const std::string& airportCode) {
+    Vertex<Airport> *sourceVertex = graph.findVertex(Airport(airportCode));
+
+    if (sourceVertex == nullptr) {
+        return 0;
+    }
+
+    int destinations = 0;
+    std::unordered_set<std::string> visitedDestinations;
+
+    for (const Edge<Airport>& edge : sourceVertex->getAdj()) {
+        Vertex<Airport>* neighbor = edge.getDest();
+
+        const std::string& cityName = neighbor->getInfo().getCity();
+        if (visitedDestinations.find(cityName) == visitedDestinations.end()) {
+            destinations++;
+            visitedDestinations.insert(cityName);
+        }
+    }
+
+    return destinations;
+}
+
+// O(E)
+int Logic::NumberOfDestinationsForCountry(const std::string& airportCode) {
+    Vertex<Airport> *sourceVertex = graph.findVertex(Airport(airportCode));
+
+    if (sourceVertex == nullptr) {
+        return 0;
+    }
+
+    int destinations = 0;
+    std::unordered_set<std::string> visitedDestinations;
+
+    for (const Edge<Airport>& edge : sourceVertex->getAdj()) {
+        Vertex<Airport>* neighbor = edge.getDest();
+
+        const std::string& countryName = neighbor->getInfo().getCountry();
+        if (visitedDestinations.find(countryName) == visitedDestinations.end()) {
+            destinations++;
+            visitedDestinations.insert(countryName);
+        }
+    }
+
+    return destinations;
+}
 
 //||||||||||| Point 6 |||||||||||||||||||||||
 
@@ -378,6 +452,71 @@ vector<string> Logic::GreatestKIndeegrees(int k) {
     }
     return result;
 }
+
+//||||||||||||||||||||||||| Point 9 |||||||||||||||||||||||||||||||||
+
+unordered_set<Airport> Logic::findArticulationPoints() {
+    int index = 1;
+    unordered_set<Airport> articulationPoints;
+    stack<Vertex<Airport>*> s;
+
+    for (Vertex<Airport>* v : graph.getVertexSet()) {
+        v->setVisited(false);
+        v->setProcessing(false);
+    }
+
+    for (Vertex<Airport>* v : graph.getVertexSet()) {
+        if (!v->isVisited()) {
+            dfs_articulationPoints(v, articulationPoints, s, index);
+        }
+    }
+
+    return articulationPoints;
+}
+
+void Logic::dfs_articulationPoints(Vertex<Airport>* v, unordered_set<Airport>& articPoints, stack<Vertex<Airport>*>& s, int& index) {
+    v->setNum(index);
+    v->setLow(index);
+    v->setVisited(true);
+    index++;
+
+    s.push(v);
+    v->setProcessing(true);
+
+    int children = 0;
+    bool isArticulationPoint = false;
+
+    for (auto &e : v->getAdj()) {
+        Vertex<Airport>* w = e.getDest();
+        if (!w->isVisited()) {
+            children++;
+            dfs_articulationPoints(w, articPoints, s, index);
+            v->setLow(min(v->getLow(), w->getLow()));
+
+            if (w->getLow() >= v->getNum()) {
+                isArticulationPoint = true;
+            }
+        } else if (w->isProcessing()) {
+            v->setLow(min(v->getLow(), w->getNum()));
+        }
+    }
+
+    if ((v->getNum() == v->getLow() && children > 1) || (v->getNum() != v->getLow() && isArticulationPoint)) {
+        articPoints.insert(v->getInfo());
+
+        while (!s.empty()) {
+            Vertex<Airport>* poppedVertex = s.top();
+            s.pop();
+            poppedVertex->setProcessing(false);
+
+            if (poppedVertex == v) {
+                break;
+            }
+        }
+    }
+
+}
+
 
 //|||||||||||||||||||||||||| ShortestPath ||||||||||||||||||||||||||
 

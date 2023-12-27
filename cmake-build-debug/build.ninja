@@ -79,6 +79,12 @@ build CMakeFiles/Projeto_2.dir/Logic/Airline.cpp.o: CXX_COMPILER__Projeto_2_unsc
   OBJECT_DIR = CMakeFiles/Projeto_2.dir
   OBJECT_FILE_DIR = CMakeFiles/Projeto_2.dir/Logic
 
+build CMakeFiles/Projeto_2.dir/UI/UI.cpp.o: CXX_COMPILER__Projeto_2_unscanned_Debug /home/jose-costa/Documents/Uni/AED/Projeto$ 2/UI/UI.cpp || cmake_object_order_depends_target_Projeto_2
+  DEP_FILE = CMakeFiles/Projeto_2.dir/UI/UI.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/Projeto_2.dir
+  OBJECT_FILE_DIR = CMakeFiles/Projeto_2.dir/UI
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Projeto_2
@@ -87,7 +93,7 @@ build CMakeFiles/Projeto_2.dir/Logic/Airline.cpp.o: CXX_COMPILER__Projeto_2_unsc
 #############################################
 # Link the executable Projeto_2
 
-build Projeto_2: CXX_EXECUTABLE_LINKER__Projeto_2_Debug CMakeFiles/Projeto_2.dir/main.cpp.o CMakeFiles/Projeto_2.dir/Logic/LoadingFunctions.cpp.o CMakeFiles/Projeto_2.dir/Logic/Airport.cpp.o CMakeFiles/Projeto_2.dir/Logic/Logic.cpp.o CMakeFiles/Projeto_2.dir/Logic/Airline.cpp.o
+build Projeto_2: CXX_EXECUTABLE_LINKER__Projeto_2_Debug CMakeFiles/Projeto_2.dir/main.cpp.o CMakeFiles/Projeto_2.dir/Logic/LoadingFunctions.cpp.o CMakeFiles/Projeto_2.dir/Logic/Airport.cpp.o CMakeFiles/Projeto_2.dir/Logic/Logic.cpp.o CMakeFiles/Projeto_2.dir/Logic/Airline.cpp.o CMakeFiles/Projeto_2.dir/UI/UI.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/Projeto_2.dir
   POST_BUILD = :

@@ -31,9 +31,16 @@ public:
     vector<string> GreatestKIndeegrees(int k);
     size_t GlobalNumberOfFlights();
 
+    std::pair<int , int> FlightsOutOfAirportAndDifferentAirlines(const std::string& AirportCode);
     std::pair<std::vector<std::pair<Airport, Airport>> , int> AirportAtMaximumDistance();
 
-    std::pair<int , int> FlightsOutOfAirportAndDifferentAirlines(const std::string& AirportCode);
+    int NumberOfDestinationsForAirport(const string &airportCode);
+    int NumberOfDestinationsForCity(const string &airportCode);
+    int NumberOfDestinationsForCountry(const string &airportCode);
+
+    unordered_set<Airport> findArticulationPoints();
+
+    void dfs_articulationPoints(Vertex<Airport> *v, unordered_set<Airport> &articPoints, stack<Vertex<Airport> *> &s,int &index);
 
     vector<Airport> shortestPath(const Airport& initialAirport , const Airport& destAirport);
 
