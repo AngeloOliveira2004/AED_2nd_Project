@@ -28,6 +28,7 @@ public:
     int NumberOfCountries(std::string airportCode);
     int NumberOfCountriesThatCityFliesTo(std::string city);
     vector<vector<Airport>> FindMaxTripBfs(const Airport &Airport, int k);
+    vector<string> GreatestKIndeegrees(int k);
     size_t GlobalNumberOfFlights();
 
     std::pair<std::vector<std::pair<Airport, Airport>> , int> AirportAtMaximumDistance();
