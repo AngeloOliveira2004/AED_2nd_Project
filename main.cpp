@@ -74,10 +74,15 @@
         a.insert("ANA");
         a.insert("USA");
         cout << "shortes path: " ;
-        for (auto pair : logic.airlineFilters(airport, airport1 , a))
+        for (auto pair : logic.airlineAvoidFilters(airport, airport1 , a))
         {
             cout << pair.getCode() << " ";
         }
-
+        a.clear();
+        a.insert("RZO");
+        for (auto pair : logic.airlineOnlyFilters(airport, airport1 , a))
+        {
+            cout << pair.getCode() << " ";
+        }
         return 0;
     }

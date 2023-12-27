@@ -35,7 +35,8 @@ public:
 
     vector<Airport> shortestPath(Airport initialAirport , Airport destAirport);
 
-    vector<Airport>  airlineFilters(Airport initialAirport, Airport destAirport , unordered_set<std::string> airlines);
+    vector<Airport>  airlineAvoidFilters(Airport initialAirport, Airport destAirport , unordered_set<std::string> airlines);
+    vector<Airport>  airlineOnlyFilters(Airport initialAirport, Airport destAirport , unordered_set<std::string> airlines);
 
     //Auxiliary functions
     double HaversineAlgorithm(double lat1, double lon1,double lat2, double lon2);
