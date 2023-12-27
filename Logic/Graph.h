@@ -123,6 +123,7 @@ public:
     void bfsDifferent(T &source) const;
     vector<T> topsort() const;
     bool isDAG() const;
+    void calculateIndegrees() const;
 };
 
 //O(V² + V*E)
@@ -581,6 +582,20 @@ vector<T> Graph<T>::shortestPath(T initial, T destination) {
     }
 
     return res;  // Return an empty vector indicating that no path was found
+}
+
+template <class T>
+void Graph<T>::calculateIndegrees() const {
+    for (auto v : vertexSet) {
+        v->setIndegree(0);
+    }
+
+    for (auto v : vertexSet) {
+        for (auto &e : v->getAdj()) {
+            auto w = e.getDest();
+            w->setIndegree(w->getIndegree() + 1);
+        }
+    }
 }
 
 #endif //PROJETO_2_GRAPH_H

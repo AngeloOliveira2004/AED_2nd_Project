@@ -1,13 +1,15 @@
 # ninja log v5
 1	1164	1703705274486227360	CMakeFiles/Projeto_2.dir/Logic/Logic.cpp.o	a87c1cc5550bd7b
-1	165	1703632743458727146	CMakeFiles/Projeto_2.dir/Logic/Airport.cpp.o	918f547879336d18
-1	158	1703641278280970499	CMakeFiles/Projeto_2.dir/Logic/Airline.cpp.o	91792915a7a01fc9
-0	28	1703705922761002139	build.ninja	97d47e642e8d3df
-1	747	1703705274070228348	CMakeFiles/Projeto_2.dir/Logic/LoadingFunctions.cpp.o	88997b66a0b0536a
-1	673	1703705721137332981	CMakeFiles/Projeto_2.dir/main.cpp.o	32e9588a72b1831d
-673	746	1703705721209332857	Projeto_2	b4a983ab9d90a067
-0	26	1703705922761002139	build.ninja	97d47e642e8d3df
-1	164	1703705922929001875	CMakeFiles/Projeto_2.dir/Logic/Airline.cpp.o	91792915a7a01fc9
 1	179	1703705922945001850	CMakeFiles/Projeto_2.dir/Logic/Airport.cpp.o	918f547879336d18
-0	632	1703705934316984044	CMakeFiles/Projeto_2.dir/main.cpp.o	32e9588a72b1831d
+1	164	1703705922929001875	CMakeFiles/Projeto_2.dir/Logic/Airline.cpp.o	91792915a7a01fc9
+0	26	1703706073736771617	build.ninja	97d47e642e8d3df
 0	726	1703705934408983900	CMakeFiles/Projeto_2.dir/Logic/LoadingFunctions.cpp.o	88997b66a0b0536a
+0	632	1703705934316984044	CMakeFiles/Projeto_2.dir/main.cpp.o	32e9588a72b1831d
+673	746	1703705721209332857	Projeto_2	b4a983ab9d90a067
+1	16	1703706073736771617	build.ninja	97d47e642e8d3df
+1	167	1703706073908771361	CMakeFiles/Projeto_2.dir/Logic/Airline.cpp.o	91792915a7a01fc9
+1	184	1703706073924771337	CMakeFiles/Projeto_2.dir/Logic/Airport.cpp.o	918f547879336d18
+1	670	1703706074408770617	CMakeFiles/Projeto_2.dir/main.cpp.o	32e9588a72b1831d
+0	750	1703706074488770497	CMakeFiles/Projeto_2.dir/Logic/LoadingFunctions.cpp.o	88997b66a0b0536a
+1	1314	1703706075048769665	CMakeFiles/Projeto_2.dir/Logic/Logic.cpp.o	a87c1cc5550bd7b
+1314	1391	1703706075128769545	Projeto_2	b4a983ab9d90a067
