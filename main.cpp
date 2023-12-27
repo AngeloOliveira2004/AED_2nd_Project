@@ -137,7 +137,7 @@
         a.insert("TAP");
         a.insert("RZO");
         cout << "shortest path: " << endl;
-        for (const auto& v : logic.CityToAirport(airport1 , "Larnaca" , "Cyprus" , 2 ,a))
+        for (const auto& v : logic.CityToAirport(airport1 , "Larnaca" , "Cyprus" , 3 ,a))
         {
             for(const auto& pair : v)
                 cout << pair.getCode() << " - ";

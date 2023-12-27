@@ -1104,7 +1104,6 @@ vector<vector<Airport>> Logic::AirportToCountryAirlineOnlyFilter(Airport initial
 
 vector<vector<Airport>>
 Logic::CityToAirport(const Airport& destAirport , const std::string& city, const std::string& country, int choice, unordered_set<std::string> airlines) {
-
     vector<Vertex<Airport>*> initialAirports;
     for(auto v : graph.getVertexSet())
     {
@@ -1154,4 +1153,278 @@ Logic::CityToAirport(const Airport& destAirport , const std::string& city, const
     }
 
     return res;
+}
+
+vector<vector<Airport>>
+Logic::CityToCity(const std::string& InitialCity, const std::string& InitialCountry,const std::string& FinalCity, const std::string& FinalCountry, int choice, const unordered_set<std::string>& airlines) {
+
+    vector<Vertex<Airport>*> initialAirports;
+    for(auto v : graph.getVertexSet())
+    {
+        if(v->getInfo().getCountry() == InitialCountry && v->getInfo().getCity() == InitialCity)
+        {
+            initialAirports.push_back(v);
+        }
+    }
+
+    vector<vector<Airport>> res;
+    vector<vector<Airport>> temp;
+
+    switch (choice) {
+        case 1:
+            for(auto v : initialAirports)
+            {
+                temp = AirportToCity(v->getInfo() , FinalCity , FinalCountry);
+                for(const auto& smt : temp)
+                {
+                    res.push_back(smt);
+                }
+                temp.clear();
+            }
+            break;
+        case 2:
+            for(auto v : initialAirports)
+            {
+                temp = AirportToCityAirlineAvoidFilter(v->getInfo() , FinalCity , FinalCountry, airlines);
+                for(const auto& smt : temp)
+                {
+                    res.push_back(smt);
+                }
+                temp.clear();
+            }
+            break;
+        case 3:
+            for(auto v : initialAirports)
+            {
+                temp = AirportToCityAirlineOnlyFilter(v->getInfo() , FinalCity , FinalCountry, airlines);
+                for(const auto& smt : temp)
+                {
+                    res.push_back(smt);
+                }
+                temp.clear();
+            }
+            break;
+    }
+
+    return res;
+}
+
+
+vector<vector<Airport>>
+Logic::CityToCountry(const std::string& Initialcity, const std::string& InitialCountry, const std::string& FinalCountry, int choice, const unordered_set<string>& airlines) {
+    vector<Vertex<Airport>*> initialAirports;
+    for(auto v : graph.getVertexSet())
+    {
+        if(v->getInfo().getCountry() == InitialCountry && v->getInfo().getCity() == Initialcity)
+        {
+            initialAirports.push_back(v);
+        }
+    }
+
+    vector<vector<Airport>> res;
+    vector<vector<Airport>> temp;
+
+    switch (choice) {
+        case 1:
+            for(auto v : initialAirports)
+            {
+                temp = AirportToCountry(v->getInfo() , FinalCountry);
+                for(const auto& smt : temp)
+                {
+                    res.push_back(smt);
+                }
+                temp.clear();
+            }
+            break;
+        case 2:
+            for(auto v : initialAirports)
+            {
+                temp = AirportToCountryAirlineAvoidFilter(v->getInfo() , FinalCountry, airlines);
+                for(const auto& smt : temp)
+                {
+                    res.push_back(smt);
+                }
+                temp.clear();
+            }
+            break;
+        case 3:
+            for(auto v : initialAirports)
+            {
+                temp = AirportToCountryAirlineOnlyFilter(v->getInfo() , FinalCountry, airlines);
+                for(const auto& smt : temp)
+                {
+                    res.push_back(smt);
+                }
+                temp.clear();
+            }
+            break;
+    }
+
+    return res;
+}
+
+vector<vector<Airport>>
+Logic::CountryToAirport(const Airport &destAirport, const string &country, int choice,
+                        unordered_set<std::string> airlines) {
+
+    vector<Vertex<Airport>*> initialAirports;
+    for(auto v : graph.getVertexSet())
+    {
+        if(v->getInfo().getCountry() == country)
+        {
+            initialAirports.push_back(v);
+        }
+    }
+
+    vector<vector<Airport>> res;
+    vector<vector<Airport>> temp;
+
+    switch (choice) {
+        case 1:
+            for(auto v : initialAirports)
+            {
+                temp = AirportToAirport(v->getInfo() , destAirport);
+                for(const auto& smt : temp)
+                {
+                    res.push_back(smt);
+                }
+                temp.clear();
+            }
+            break;
+        case 2:
+            for(auto v : initialAirports)
+            {
+                temp = AirportToAirportAirlineAvoidFilters(v->getInfo() , destAirport, airlines);
+                for(const auto& smt : temp)
+                {
+                    res.push_back(smt);
+                }
+                temp.clear();
+            }
+            break;
+        case 3:
+            for(auto v : initialAirports)
+            {
+                temp = AirportToAirportAirlineOnlyFilters(v->getInfo() , destAirport, airlines);
+                for(const auto& smt : temp)
+                {
+                    res.push_back(smt);
+                }
+                temp.clear();
+            }
+            break;
+    }
+
+    return res;
+}
+
+vector<vector<Airport>>
+Logic::CountryToCity(const string &InitialCountry, const string &FinalCity,
+                     const string &FinalCountry, int choice, const unordered_set<std::string> &airlines) {
+
+    vector<Vertex<Airport>*> initialAirports;
+    for(auto v : graph.getVertexSet())
+    {
+        if(v->getInfo().getCountry() == InitialCountry)
+        {
+            initialAirports.push_back(v);
+        }
+    }
+
+    vector<vector<Airport>> res;
+    vector<vector<Airport>> temp;
+
+    switch (choice) {
+        case 1:
+            for(auto v : initialAirports)
+            {
+                temp = AirportToCity(v->getInfo() , FinalCity , FinalCountry);
+                for(const auto& smt : temp)
+                {
+                    res.push_back(smt);
+                }
+                temp.clear();
+            }
+            break;
+        case 2:
+            for(auto v : initialAirports)
+            {
+                temp = AirportToCityAirlineAvoidFilter(v->getInfo() , FinalCity , FinalCountry, airlines);
+                for(const auto& smt : temp)
+                {
+                    res.push_back(smt);
+                }
+                temp.clear();
+            }
+            break;
+        case 3:
+            for(auto v : initialAirports)
+            {
+                temp = AirportToCityAirlineOnlyFilter(v->getInfo() , FinalCity , FinalCountry, airlines);
+                for(const auto& smt : temp)
+                {
+                    res.push_back(smt);
+                }
+                temp.clear();
+            }
+            break;
+    }
+
+    return res;
+}
+
+vector<vector<Airport>>
+Logic::CountryToCountry(const string &InitialCountry, const string &country, int choice,
+                        const unordered_set<std::string> &airlines) {
+
+    vector<Vertex<Airport>*> initialAirports;
+    for(auto v : graph.getVertexSet())
+    {
+        if(v->getInfo().getCountry() == InitialCountry)
+        {
+            initialAirports.push_back(v);
+        }
+    }
+
+    vector<vector<Airport>> res;
+    vector<vector<Airport>> temp;
+
+    switch (choice) {
+        case 1:
+            for(auto v : initialAirports)
+            {
+                temp = AirportToCountry(v->getInfo() , country);
+                for(const auto& smt : temp)
+                {
+                    res.push_back(smt);
+                }
+                temp.clear();
+            }
+            break;
+        case 2:
+            for(auto v : initialAirports)
+            {
+                temp = AirportToCountryAirlineAvoidFilter(v->getInfo() , country , airlines);
+                for(const auto& smt : temp)
+                {
+                    res.push_back(smt);
+                }
+                temp.clear();
+            }
+            break;
+        case 3:
+            for(auto v : initialAirports)
+            {
+                temp = AirportToCountryAirlineOnlyFilter(v->getInfo() , country , airlines);
+                for(const auto& smt : temp)
+                {
+                    res.push_back(smt);
+                }
+                temp.clear();
+            }
+            break;
+    }
+
+    return res;
+    return vector<vector<Airport>>();
 }
