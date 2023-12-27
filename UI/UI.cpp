@@ -24,7 +24,7 @@ bool UI::validate_input(char &op, const char lower_bound, const char upper_bound
         std::cout << "\n";
         op = tempValue[0];
         op = std::toupper(op);
-        if (std::cin.fail() || tempValue.length() != 1 || !isdigit(op)) {
+        if (std::cin.fail() || tempValue.length() != 1) {
             std::cout << "Introduce a valid option (" << lower_bound << "-" << upper_bound << "): ";
         }else{
             break;
@@ -81,15 +81,18 @@ void UI::menu_options() {
          << "G. Consult trip(s) with the greatest number of stops in between them" << endl
          << "H. Consult top-k airport with the greatest air traffic capacity, " << endl
          << "I. Consult essential airports to the network's circulation capability" << endl
-         << "J. Consult best flight option(s) for a given source and destination locations"
+         << "J. Consult best flight option(s) for a given source and destination locations" << endl
          << "Insert the letter: ";
     validate_input(op,'A','B');
     switch(op){
         case 'A':
+            global_numbers();
             break;
         case 'B':
+            number_out();
             break;
         case 'C':
+            number_flights();
             break;
         case 'D':
             break;
@@ -106,4 +109,43 @@ void UI::menu_options() {
         case 'J':
             break;
     }
+}
+
+void UI::global_numbers() {
+    char op;
+    cout << "Number of Airports: " << logic.GlobalNumberOfAirports() << endl;
+    cout << "Number of Flights: " << logic.GlobalNumberOfFlights() << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl;
+    std::cout << "Press A to go back to the menu: ";
+    validate_input(op,'A','A');
+    menu_options();
+}
+
+void UI::number_out() {
+    char op;
+    bool validate = false;
+    std::pair<int, int> z;
+    string airport_code;
+    while(!validate){
+        airport_code = "";
+        cout << "What's the code of the airport you would like to know the information?: ";
+        cin >> airport_code;
+        Airport airport = Airport(airport_code);
+        if(g.findVertex(airport)){
+            break;
+        }else{
+            cout << "Please insert a valid airport code" << endl;
+        }
+    }
+
+    cout << endl;
+    z = logic.FlightsOutOfAirportAndDifferentAirlines(airport_code);
+    std::cout << "Number of flights: " << z.first << endl << "Number of different airlines: " << z.second << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl;
+    std::cout << "Press A to go back to the menu: ";
+    validate_input(op,'A','A');
+    menu_options();
+}
+
+void UI::number_flights() {
+    char op;
+    cout << "Would you like to consult the flights per city?: ";
 }

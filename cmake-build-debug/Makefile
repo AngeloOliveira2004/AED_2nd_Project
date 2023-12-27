@@ -225,6 +225,30 @@ Logic/Logic.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Projeto_2.dir/build.make CMakeFiles/Projeto_2.dir/Logic/Logic.cpp.s
 .PHONY : Logic/Logic.cpp.s
 
+UI/UI.o: UI/UI.cpp.o
+.PHONY : UI/UI.o
+
+# target to build an object file
+UI/UI.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Projeto_2.dir/build.make CMakeFiles/Projeto_2.dir/UI/UI.cpp.o
+.PHONY : UI/UI.cpp.o
+
+UI/UI.i: UI/UI.cpp.i
+.PHONY : UI/UI.i
+
+# target to preprocess a source file
+UI/UI.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Projeto_2.dir/build.make CMakeFiles/Projeto_2.dir/UI/UI.cpp.i
+.PHONY : UI/UI.cpp.i
+
+UI/UI.s: UI/UI.cpp.s
+.PHONY : UI/UI.s
+
+# target to generate assembly for a file
+UI/UI.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Projeto_2.dir/build.make CMakeFiles/Projeto_2.dir/UI/UI.cpp.s
+.PHONY : UI/UI.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -270,6 +294,9 @@ help:
 	@echo "... Logic/Logic.o"
 	@echo "... Logic/Logic.i"
 	@echo "... Logic/Logic.s"
+	@echo "... UI/UI.o"
+	@echo "... UI/UI.i"
+	@echo "... UI/UI.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

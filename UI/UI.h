@@ -25,6 +25,12 @@ public:
 private:
     Graph<Airport> g;
     Logic logic = Logic(g);
+
+    void global_numbers();
+
+    void number_out();
+
+    void number_flights();
 };
 
 

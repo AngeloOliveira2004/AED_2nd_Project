@@ -1,1 +1,1 @@
-/usr/bin/c++ -g CMakeFiles/Projeto_2.dir/main.cpp.o CMakeFiles/Projeto_2.dir/Logic/LoadingFunctions.cpp.o CMakeFiles/Projeto_2.dir/Logic/Airport.cpp.o CMakeFiles/Projeto_2.dir/Logic/Logic.cpp.o CMakeFiles/Projeto_2.dir/Logic/Airline.cpp.o -o Projeto_2 
+/usr/bin/c++ -g CMakeFiles/Projeto_2.dir/main.cpp.o CMakeFiles/Projeto_2.dir/Logic/LoadingFunctions.cpp.o CMakeFiles/Projeto_2.dir/Logic/Airport.cpp.o CMakeFiles/Projeto_2.dir/Logic/Logic.cpp.o CMakeFiles/Projeto_2.dir/Logic/Airline.cpp.o CMakeFiles/Projeto_2.dir/UI/UI.cpp.o -o Projeto_2 

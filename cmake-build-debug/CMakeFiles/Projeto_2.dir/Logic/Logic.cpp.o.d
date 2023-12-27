@@ -167,7 +167,12 @@ CMakeFiles/Projeto_2.dir/Logic/Logic.cpp.o: \
  /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
  /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
  /usr/include/c++/13/bits/charconv.h \
- /usr/include/c++/13/bits/basic_string.tcc \
+ /usr/include/c++/13/bits/basic_string.tcc /usr/include/c++/13/algorithm \
+ /usr/include/c++/13/bits/stl_algo.h \
+ /usr/include/c++/13/bits/algorithmfwd.h \
+ /usr/include/c++/13/bits/uniform_int_dist.h \
+ /usr/include/c++/13/pstl/glue_algorithm_defs.h \
+ /usr/include/c++/13/limits \
  /home/angelo/Downloads/Universidade/Algoritmo\ e\ Estrutura\ de\ Dados/Projeto_AED_2/Logic/Airline.h \
  /home/angelo/Downloads/Universidade/Algoritmo\ e\ Estrutura\ de\ Dados/Projeto_AED_2/Logic/Airport.h \
  /usr/include/c++/13/cmath /usr/include/math.h \
@@ -180,8 +185,7 @@ CMakeFiles/Projeto_2.dir/Logic/Logic.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h \
  /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
- /usr/include/c++/13/bits/specfun.h /usr/include/c++/13/limits \
- /usr/include/c++/13/tr1/gamma.tcc \
+ /usr/include/c++/13/bits/specfun.h /usr/include/c++/13/tr1/gamma.tcc \
  /usr/include/c++/13/tr1/special_function_util.h \
  /usr/include/c++/13/tr1/bessel_function.tcc \
  /usr/include/c++/13/tr1/beta_function.tcc \
@@ -192,4 +196,30 @@ CMakeFiles/Projeto_2.dir/Logic/Logic.cpp.o: \
  /usr/include/c++/13/tr1/modified_bessel_func.tcc \
  /usr/include/c++/13/tr1/poly_hermite.tcc \
  /usr/include/c++/13/tr1/poly_laguerre.tcc \
- /usr/include/c++/13/tr1/riemann_zeta.tcc
+ /usr/include/c++/13/tr1/riemann_zeta.tcc /usr/include/c++/13/iostream \
+ /usr/include/c++/13/ostream /usr/include/c++/13/ios \
+ /usr/include/c++/13/bits/ios_base.h \
+ /usr/include/c++/13/bits/locale_classes.h \
+ /usr/include/c++/13/bits/locale_classes.tcc \
+ /usr/include/c++/13/system_error \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/error_constants.h \
+ /usr/include/c++/13/stdexcept /usr/include/c++/13/streambuf \
+ /usr/include/c++/13/bits/streambuf.tcc \
+ /usr/include/c++/13/bits/basic_ios.h \
+ /usr/include/c++/13/bits/locale_facets.h /usr/include/c++/13/cwctype \
+ /usr/include/wctype.h /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/ctype_base.h \
+ /usr/include/c++/13/bits/streambuf_iterator.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/ctype_inline.h \
+ /usr/include/c++/13/bits/locale_facets.tcc \
+ /usr/include/c++/13/bits/basic_ios.tcc \
+ /usr/include/c++/13/bits/ostream.tcc /usr/include/c++/13/istream \
+ /usr/include/c++/13/bits/istream.tcc /usr/include/c++/13/climits \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/limits.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/syslimits.h \
+ /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/local_lim.h \
+ /usr/include/linux/limits.h \
+ /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/uio_lim.h
