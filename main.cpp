@@ -18,16 +18,16 @@
         std::cout << "Time taken by LoadFlights: " << duration.count()/1000 << " seconds" << std::endl;
 
         Logic logic = Logic(g);
-/*
+        /*
         cout << "Number of Airports: " << logic.GlobalNumberOfAirports() << endl;
 
         cout << "Number of Flights: " << logic.GlobalNumberOfFlights() << endl;
 
-        std::pair<int, int> a;
+        std::pair<int, int> z;
 
-        a = logic.FlightsOutOfAirportAndDifferentAirlines("VSA");
+        z = logic.FlightsOutOfAirportAndDifferentAirlines("YHO");
 
-        std::cout << "Number of flights: " << a.first << " | Number of different airlines: " << a.second << endl;
+        std::cout << "Number of flights: " << z.first << " | Number of different airlines: " << z.second << endl;
 
         std::cout << "Number of flights of TOK: " << logic.NumberOfFlightsPerAirline("ANG") << endl;
 
@@ -61,7 +61,7 @@
             std::cout << "initial airport : " << pair.first.getCode()
             << " | end airport: " << pair.second.getCode() << " | number of layovers: " << d.second << endl;
         }
-*/
+
         Airport airport = Airport("INL");
         Airport airport1 = Airport("LIS");
         unordered_set<std::string> a;
@@ -84,5 +84,49 @@
         {
             cout << pair.getCode() << " ";
         }
+
+        vector<Airport> tempVector1 = logic.nodesAtDistanceBFS("INL" , 11);
+
+        vector<int> tempValues1 = logic.analyzeReachableAirports(tempVector1);
+
+        cout << "Number of distinct airports: " << tempValues1[0] << endl;
+        cout << "Number of distinct countries: " << tempValues1[1] << endl;
+        cout << "Number of distinct cities: " << tempValues1[2] << endl;
+        stack<pair<Airport, Airport>> pairs;
+
+        for(auto v : g.getVertexSet())
+        {
+            logic.FindMaxTripBfs(pairs , v);
+            while (!pairs.empty())
+            {
+                cout << pairs.top().first.getCode() << " " << pairs.top().second.getCode() << endl;
+                pairs.pop();
+            }
+        }*/
+        auto start_time1 = std::chrono::high_resolution_clock::now();
+
+        int diameter = g.calculateDiameter();
+
+        auto start_time2 = std::chrono::high_resolution_clock::now();
+
+        for(auto v : g.getVertexSet())
+        {
+            vector<vector<Airport>> a = logic.FindMaxTripBfs(v->getInfo() , diameter);
+            if(!a.empty()) {
+                for (auto v: a) {
+                    vector<Airport> d = v;
+                    Airport z = d[0];
+                    Airport p = d[d.size() -1];
+                    cout << z.getCode() << " to " << p.getCode();
+                    cout << endl;
+                }
+            }
+        }
+
+        auto end_time1 = std::chrono::high_resolution_clock::now();
+        auto duration1 = std::chrono::duration_cast<std::chrono::milliseconds>(end_time1 - start_time1);
+
+        std::cout << "Time taken by everything: " << duration1.count()/1000 << " seconds" << std::endl;
+
         return 0;
     }

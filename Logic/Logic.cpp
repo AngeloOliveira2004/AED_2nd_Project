@@ -5,6 +5,7 @@
 #include "Logic.h"
 #include <cmath>
 #include <iostream>
+#include <climits>
 
 
 Logic::Logic(Graph<Airport>& g) : graph(g) {}
@@ -304,6 +305,56 @@ void setUnvisited(Graph<Airport> g)
         vertex->setVisited(false);
         vertex->setNum(0);
     }
+}
+
+vector<vector<Airport>> Logic::FindMaxTripBfs(const Airport &airport_, int diameter) {
+    vector<vector<Airport>> res;
+
+    Vertex<Airport>* airportVertex = graph.findVertex(airport_);
+
+    if(airportVertex == nullptr)
+    {
+        return {};
+    }
+
+    for (auto vertex : graph.getVertexSet()) {
+        vertex->setVisited(false);
+        vertex->setNum(0);
+        vertex->setParent(nullptr);
+    }
+
+    queue<Vertex<Airport>*> q;
+    q.push(airportVertex);
+    airportVertex->setVisited(true);
+    airportVertex->setNum(0);
+    airportVertex->setParent(nullptr);
+    while (!q.empty()) {
+        auto v = q.front();
+        q.pop();
+        if(v->getNum() == diameter)
+        {
+            vector<Airport> temp;
+            temp.push_back(v->getInfo());
+            while (v->getParent() != nullptr)
+            {
+                temp.push_back(v->getParent()->getInfo());
+                v = v->getParent();
+            }
+            std::reverse(temp.begin(), temp.end());
+            res.push_back(temp);
+        }
+        for (auto & e : v->getAdj()) {
+            auto w = e.getDest();
+            if ( ! w->isVisited() ) {
+                q.push(w);
+                w->setVisited(true);
+                w->setParent(v);
+                w ->setNum(v->getNum() +1);
+            }
+        }
+    }
+
+    return res;
 }
 
 //|||||||||||||||||||||||||| ShortestPath ||||||||||||||||||||||||||
