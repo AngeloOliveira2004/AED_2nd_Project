@@ -359,7 +359,7 @@ vector<vector<Airport>> Logic::FindMaxTripBfs(const Airport &airport_, int diame
 
 //|||||||||||||||||||||||||| ShortestPath ||||||||||||||||||||||||||
 
-vector<Airport> Logic::shortestPath(Airport initialAirport, Airport destAirport) {
+vector<Airport> Logic::shortestPath(const Airport& initialAirport, const Airport& destAirport) {
     vector<Airport> res;
     Vertex<Airport>* initialVertex;
     Vertex<Airport>* finalVertex;
@@ -419,8 +419,8 @@ vector<Airport> Logic::shortestPath(Airport initialAirport, Airport destAirport)
 
 //|||||||||||||||||| FILTERS ||||||||||||||||||
 
-vector<Airport>  Logic::airlineAvoidFilters(Airport initialAirport, Airport destAirport , unordered_set<std::string> airlines) {
-    vector<Airport> res;
+vector<vector<Airport>> Logic::AirportToAirport(const Airport& initialAirport, const Airport& destAirport) {
+    vector<vector<Airport>> res;
     Vertex<Airport>* initialVertex;
     Vertex<Airport>* finalVertex;
 
@@ -453,13 +453,138 @@ vector<Airport>  Logic::airlineAvoidFilters(Airport initialAirport, Airport dest
         q.pop();
 
         if (v == finalVertex) {
+            vector<Airport> temp;
             while (v->getParent() != nullptr) {
-                res.push_back(v->getInfo());
+                temp.push_back(v->getInfo());
                 v = v->getParent();
             }
-            res.push_back(initialAirport);
-            reverse(res.begin(), res.end());
-            return res;
+            temp.push_back(initialAirport);
+            reverse(temp.begin() , temp.end());
+            res.push_back(temp);
+        }
+
+        for (const Edge<Airport> &e : v->getAdj()) {
+
+            Vertex<Airport>* w = e.getDest();
+            if (!w->isVisited()) {
+                w->setParent(v);
+                q.push(w);
+                w->setVisited(true);
+            }
+
+        }
+    }
+
+    return res;
+}
+
+vector<vector<Airport>>
+Logic::AirportToAirportAirlineOnlyFilters(const Airport& initialAirport, const Airport& destAirport, unordered_set<std::string> airlines) {
+    vector<vector<Airport>> res;
+    Vertex<Airport>* initialVertex;
+    Vertex<Airport>* finalVertex;
+
+    for(auto v : graph.getVertexSet())
+    {
+        if(v->getInfo() == initialAirport)
+        {
+            initialVertex = v;
+        }
+        if(v->getInfo() == destAirport)
+        {
+            finalVertex = v;
+        }
+    }
+
+    if (initialVertex == nullptr || finalVertex == nullptr)
+        return res;  // Return an empty vector indicating failure
+
+    for (auto v : graph.getVertexSet()) {
+        v->setVisited(false);
+        v->setParent(nullptr);
+    }
+
+    queue<Vertex<Airport> *> q;
+    q.push(initialVertex);
+    initialVertex->setVisited(true);
+
+    while (!q.empty()) {
+        auto v = q.front();
+        q.pop();
+
+        if (v == finalVertex) {
+            vector<Airport> temp;
+            while (v->getParent() != nullptr) {
+                temp.push_back(v->getInfo());
+                v = v->getParent();
+            }
+            temp.push_back(initialAirport);
+            reverse(temp.begin() , temp.end());
+            res.push_back(temp);
+        }
+
+        for (const Edge<Airport> &e : v->getAdj()) {
+
+            if(airlines.find(e.getAirline()) != airlines.end())
+            {
+                Vertex<Airport>* w = e.getDest();
+                if (!w->isVisited()) {
+                    w->setParent(v);
+                    q.push(w);
+                    w->setVisited(true);
+                }
+            }
+        }
+    }
+
+    return res;
+}
+
+vector<vector<Airport>>
+Logic::AirportToAirportAirlineAvoidFilters(const Airport &initialAirport, const Airport &destAirport,
+                                           unordered_set<std::string> airlines) {
+
+    vector<vector<Airport>> res;
+    Vertex<Airport>* initialVertex;
+    Vertex<Airport>* finalVertex;
+
+    for(auto v : graph.getVertexSet())
+    {
+        if(v->getInfo() == initialAirport)
+        {
+            initialVertex = v;
+        }
+        if(v->getInfo() == destAirport)
+        {
+            finalVertex = v;
+        }
+    }
+
+    if (initialVertex == nullptr || finalVertex == nullptr)
+        return res;  // Return an empty vector indicating failure
+
+    for (auto v : graph.getVertexSet()) {
+        v->setVisited(false);
+        v->setParent(nullptr);
+    }
+
+    queue<Vertex<Airport> *> q;
+    q.push(initialVertex);
+    initialVertex->setVisited(true);
+
+    while (!q.empty()) {
+        auto v = q.front();
+        q.pop();
+
+        if (v == finalVertex) {
+            vector<Airport> temp;
+            while (v->getParent() != nullptr) {
+                temp.push_back(v->getInfo());
+                v = v->getParent();
+            }
+            temp.push_back(initialAirport);
+            reverse(temp.begin() , temp.end());
+            res.push_back(temp);
         }
 
         for (const Edge<Airport> &e : v->getAdj()) {
@@ -479,11 +604,10 @@ vector<Airport>  Logic::airlineAvoidFilters(Airport initialAirport, Airport dest
     return res;
 }
 
-vector<Airport>
-Logic::airlineOnlyFilters(Airport initialAirport, Airport destAirport, unordered_set<std::string> airlines) {
-    vector<Airport> res;
+
+vector<vector<Airport>> Logic::AirportToCity(const Airport& initialAirport, const std::string& city ,const std::string& country) {
+    vector<vector<Airport>> res;
     Vertex<Airport>* initialVertex;
-    Vertex<Airport>* finalVertex;
 
     for(auto v : graph.getVertexSet())
     {
@@ -491,13 +615,9 @@ Logic::airlineOnlyFilters(Airport initialAirport, Airport destAirport, unordered
         {
             initialVertex = v;
         }
-        if(v->getInfo() == destAirport)
-        {
-            finalVertex = v;
-        }
     }
 
-    if (initialVertex == nullptr || finalVertex == nullptr)
+    if (initialVertex == nullptr)
         return res;  // Return an empty vector indicating failure
 
     for (auto v : graph.getVertexSet()) {
@@ -513,14 +633,126 @@ Logic::airlineOnlyFilters(Airport initialAirport, Airport destAirport, unordered
         auto v = q.front();
         q.pop();
 
-        if (v == finalVertex) {
+        if (v->getInfo().getCity() == city && v->getInfo().getCountry() == country) {
+            vector<Airport> temp;
             while (v->getParent() != nullptr) {
-                res.push_back(v->getInfo());
+                temp.push_back(v->getInfo());
                 v = v->getParent();
             }
-            res.push_back(initialAirport);
-            reverse(res.begin(), res.end());
-            return res;
+            temp.push_back(initialAirport);
+            reverse(temp.begin() , temp.end());
+            res.push_back(temp);
+        }
+
+        for (const Edge<Airport> &e : v->getAdj()) {
+            Vertex<Airport>* w = e.getDest();
+            if (!w->isVisited()) {
+                w->setParent(v);
+                q.push(w);
+                w->setVisited(true);
+            }
+        }
+    }
+
+    return res;
+}
+
+vector<vector<Airport>> Logic::AirportToCityAirlineAvoidFilter(const Airport& initialAirport, const std::string& city,
+                                                          const std::string& country , unordered_set<std::string> airlines) {
+    vector<vector<Airport>> res;
+    Vertex<Airport>* initialVertex;
+
+    for(auto v : graph.getVertexSet())
+    {
+        if(v->getInfo() == initialAirport)
+        {
+            initialVertex = v;
+        }
+    }
+
+    if (initialVertex == nullptr)
+        return res;  // Return an empty vector indicating failure
+
+    for (auto v : graph.getVertexSet()) {
+        v->setVisited(false);
+        v->setParent(nullptr);
+    }
+
+    queue<Vertex<Airport> *> q;
+    q.push(initialVertex);
+    initialVertex->setVisited(true);
+
+    while (!q.empty()) {
+        auto v = q.front();
+        q.pop();
+
+        if (v->getInfo().getCity() == city && v->getInfo().getCountry() == country) {
+            vector<Airport> temp;
+            while (v->getParent() != nullptr) {
+                temp.push_back(v->getInfo());
+                v = v->getParent();
+            }
+            temp.push_back(initialAirport);
+            reverse(temp.begin() , temp.end());
+            res.push_back(temp);
+        }
+
+        for (const Edge<Airport> &e : v->getAdj()) {
+
+            if(airlines.find(e.getAirline()) == airlines.end())
+            {
+                Vertex<Airport>* w = e.getDest();
+                if (!w->isVisited()) {
+                    w->setParent(v);
+                    q.push(w);
+                    w->setVisited(true);
+                }
+            }
+        }
+    }
+
+    return res;
+}
+
+vector<vector<Airport>>
+Logic::AirportToCityAirlineOnlyFilter(const Airport& initialAirport, const std::string& city, const std::string& country,
+                                      unordered_set<std::string> airlines) {
+    vector<vector<Airport>> res;
+    Vertex<Airport>* initialVertex;
+
+    for(auto v : graph.getVertexSet())
+    {
+        if(v->getInfo() == initialAirport)
+        {
+            initialVertex = v;
+        }
+    }
+
+    if (initialVertex == nullptr)
+        return res;  // Return an empty vector indicating failure
+
+    for (auto v : graph.getVertexSet()) {
+        v->setVisited(false);
+        v->setParent(nullptr);
+    }
+
+    queue<Vertex<Airport> *> q;
+    q.push(initialVertex);
+    initialVertex->setVisited(true);
+
+    while (!q.empty()) {
+        auto v = q.front();
+        q.pop();
+
+        if (v->getInfo().getCity() == city && v->getInfo().getCountry() == country) {
+            vector<Airport> temp;
+            while (v->getParent() != nullptr) {
+                temp.push_back(v->getInfo());
+                v = v->getParent();
+            }
+            temp.push_back(initialAirport);
+            reverse(temp.begin() , temp.end());
+            res.push_back(temp);
         }
 
         for (const Edge<Airport> &e : v->getAdj()) {
@@ -535,6 +767,229 @@ Logic::airlineOnlyFilters(Airport initialAirport, Airport destAirport, unordered
                 }
             }
         }
+    }
+
+    return res;
+}
+
+
+//||||||||||||||||||||||||||||||||||| AIRPORTS TO COUNTRY |||||||||||||||||||||||||||||||||||||||||
+
+vector<vector<Airport>> Logic::AirportToCountry(const Airport& initialAirport, const std::string& country) {
+    vector<vector<Airport>> res;
+    Vertex<Airport>* initialVertex;
+
+    for(auto v : graph.getVertexSet())
+    {
+        if(v->getInfo() == initialAirport)
+        {
+            initialVertex = v;
+        }
+    }
+
+    if (initialVertex == nullptr)
+        return res;  // Return an empty vector indicating failure
+
+    for (auto v : graph.getVertexSet()) {
+        v->setVisited(false);
+        v->setParent(nullptr);
+    }
+
+    queue<Vertex<Airport> *> q;
+    q.push(initialVertex);
+    initialVertex->setVisited(true);
+
+    while (!q.empty()) {
+        auto v = q.front();
+        q.pop();
+
+        if (v->getInfo().getCountry() == country) {
+            vector<Airport> temp;
+            while (v->getParent() != nullptr) {
+                temp.push_back(v->getInfo());
+                v = v->getParent();
+            }
+            temp.push_back(initialAirport);
+            reverse(temp.begin() , temp.end());
+            res.push_back(temp);
+        }
+
+        for (const Edge<Airport> &e : v->getAdj()) {
+            Vertex<Airport>* w = e.getDest();
+            if (!w->isVisited()) {
+                w->setParent(v);
+                q.push(w);
+                w->setVisited(true);
+            }
+        }
+    }
+
+    return res;
+}
+
+vector<vector<Airport>> Logic::AirportToCountryAirlineAvoidFilter(Airport initialAirport, std::string country,
+                                                                  unordered_set<std::string> airlines) {
+    vector<vector<Airport>> res;
+    Vertex<Airport>* initialVertex;
+
+    for(auto v : graph.getVertexSet())
+    {
+        if(v->getInfo() == initialAirport)
+        {
+            initialVertex = v;
+        }
+    }
+
+    if (initialVertex == nullptr)
+        return res;  // Return an empty vector indicating failure
+
+    for (auto v : graph.getVertexSet()) {
+        v->setVisited(false);
+        v->setParent(nullptr);
+    }
+
+    queue<Vertex<Airport> *> q;
+    q.push(initialVertex);
+    initialVertex->setVisited(true);
+
+    while (!q.empty()) {
+        auto v = q.front();
+        q.pop();
+
+        if (v->getInfo().getCountry() == country) {
+            vector<Airport> temp;
+            while (v->getParent() != nullptr) {
+                temp.push_back(v->getInfo());
+                v = v->getParent();
+            }
+            temp.push_back(initialAirport);
+            reverse(temp.begin() , temp.end());
+            res.push_back(temp);
+        }
+
+        for (const Edge<Airport> &e : v->getAdj()) {
+
+            if(airlines.find(e.getAirline()) == airlines.end())
+            {
+                Vertex<Airport>* w = e.getDest();
+                if (!w->isVisited()) {
+                    w->setParent(v);
+                    q.push(w);
+                    w->setVisited(true);
+                }
+            }
+        }
+    }
+
+    return res;
+}
+
+vector<vector<Airport>> Logic::AirportToCountryAirlineOnlyFilter(Airport initialAirport, std::string country,
+                                                                 unordered_set<std::string> airlines){
+    vector<vector<Airport>> res;
+    Vertex<Airport>* initialVertex;
+
+    for(auto v : graph.getVertexSet())
+    {
+        if(v->getInfo() == initialAirport)
+        {
+            initialVertex = v;
+        }
+    }
+
+    if (initialVertex == nullptr)
+        return res;  // Return an empty vector indicating failure
+
+    for (auto v : graph.getVertexSet()) {
+        v->setVisited(false);
+        v->setParent(nullptr);
+    }
+
+    queue<Vertex<Airport> *> q;
+    q.push(initialVertex);
+    initialVertex->setVisited(true);
+
+    while (!q.empty()) {
+        auto v = q.front();
+        q.pop();
+
+        if (v->getInfo().getCountry() == country) {
+            vector<Airport> temp;
+            while (v->getParent() != nullptr) {
+                temp.push_back(v->getInfo());
+                v = v->getParent();
+            }
+            temp.push_back(initialAirport);
+            reverse(temp.begin() , temp.end());
+            res.push_back(temp);
+        }
+
+        for (const Edge<Airport> &e : v->getAdj()) {
+
+            if(airlines.find(e.getAirline()) != airlines.end())
+            {
+                Vertex<Airport>* w = e.getDest();
+                if (!w->isVisited()) {
+                    w->setParent(v);
+                    q.push(w);
+                    w->setVisited(true);
+                }
+            }
+        }
+    }
+
+    return res;
+}
+
+vector<vector<Airport>>
+Logic::CityToAirport(const Airport& destAirport , const std::string& city, const std::string& country, int choice, unordered_set<std::string> airlines) {
+
+    vector<Vertex<Airport>*> initialAirports;
+    for(auto v : graph.getVertexSet())
+    {
+        if(v->getInfo().getCountry() == country && v->getInfo().getCity() == city)
+        {
+            initialAirports.push_back(v);
+        }
+    }
+
+    vector<vector<Airport>> res;
+    vector<vector<Airport>> temp;
+
+    switch (choice) {
+        case 1:
+            for(auto v : initialAirports)
+            {
+                temp = AirportToAirport(v->getInfo() , destAirport);
+                for(const auto& smt : temp)
+                {
+                    res.push_back(smt);
+                }
+                temp.clear();
+            }
+            break;
+        case 2:
+            for(auto v : initialAirports)
+            {
+                temp = AirportToAirportAirlineAvoidFilters(v->getInfo() , destAirport , airlines);
+                for(const auto& smt : temp)
+                {
+                    res.push_back(smt);
+                }
+                temp.clear();
+            }
+            break;
+        case 3:
+            for(auto v : initialAirports)
+            {
+                temp = AirportToAirportAirlineOnlyFilters(v->getInfo() , destAirport , airlines);
+                for(const auto& smt : temp)
+                {
+                    res.push_back(smt);
+                }
+                temp.clear();
+            }
+            break;
     }
 
     return res;

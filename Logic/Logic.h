@@ -34,16 +34,29 @@ public:
 
     std::pair<int , int> FlightsOutOfAirportAndDifferentAirlines(const std::string& AirportCode);
 
-    vector<Airport> shortestPath(Airport initialAirport , Airport destAirport);
+    vector<Airport> shortestPath(const Airport& initialAirport , const Airport& destAirport);
 
-    vector<Airport>  airlineAvoidFilters(Airport initialAirport, Airport destAirport , unordered_set<std::string> airlines);
-    vector<Airport>  airlineOnlyFilters(Airport initialAirport, Airport destAirport , unordered_set<std::string> airlines);
+    vector<vector<Airport>> AirportToAirport(const Airport& initialAirport, const Airport& destAirport);
+    vector<vector<Airport>> AirportToAirportAirlineOnlyFilters(const Airport& initialAirport, const Airport& destAirport , unordered_set<std::string> airlines);
+    vector<vector<Airport>> AirportToAirportAirlineAvoidFilters(const Airport& initialAirport, const Airport& destAirport , unordered_set<std::string> airlines);
+
+    vector<vector<Airport>> AirportToCity(const Airport& initialAirport, const std::string& city , const std::string& country);
+    vector<vector<Airport>> AirportToCityAirlineAvoidFilter(const Airport& initialAirport ,const std::string& city , const std::string& country,unordered_set<std::string> airlines);
+    vector<vector<Airport>> AirportToCityAirlineOnlyFilter(const Airport& initialAirport ,const std::string& city , const std::string& country,unordered_set<std::string> airlines);
+
+    vector<vector<Airport>> AirportToCountry(const Airport& initialAirport, const std::string& country);
+    vector<vector<Airport>> AirportToCountryAirlineAvoidFilter(Airport initialAirport , std::string country,unordered_set<std::string> airlines);
+    vector<vector<Airport>> AirportToCountryAirlineOnlyFilter(Airport initialAirport , std::string country,unordered_set<std::string> airlines);
+
+    vector<vector<Airport>> CityToAirport(const Airport& destAirport , const std::string& city, const std::string& country , int choice , unordered_set<std::string> airlines);
+    vector<vector<Airport>> CityToCity(std::string city, std::string country , int choice , unordered_set<std::string> airlines);
+    vector<vector<Airport>> CityToCountry(std::string city, std::string country , int choice , unordered_set<std::string> airlines);
 
     //Auxiliary functions
     double HaversineAlgorithm(double lat1, double lon1,double lat2, double lon2);
-
     vector<Airport> nodesAtDistanceBFS(const string &airportCode, int k);
     vector<int> analyzeReachableAirports(const vector<Airport> &reachableAirports);
+    vector<Vertex<Airport>*> AiportsInCountry(const std::string& country) ;
 };
 
 

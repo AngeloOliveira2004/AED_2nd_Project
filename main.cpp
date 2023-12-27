@@ -102,7 +102,7 @@
                 cout << pairs.top().first.getCode() << " " << pairs.top().second.getCode() << endl;
                 pairs.pop();
             }
-        }*/
+        }
         auto start_time1 = std::chrono::high_resolution_clock::now();
 
         int diameter = g.calculateDiameter();
@@ -128,6 +128,30 @@
 
 
         std::cout << "Time taken by everything: " << duration1.count()/1000 << " seconds" << std::endl;
+*/
+        //TODO NORMALISE LIST OF VECTORS FUNCTION
+        Airport airport = Airport("INL");
+        Airport airport1 = Airport("LIS");
+        unordered_set<std::string> a;
+        a.insert("TSC");
+        a.insert("TAP");
+        a.insert("RZO");
+        cout << "shortest path: " << endl;
+        for (const auto& v : logic.CityToAirport(airport1 , "Larnaca" , "Cyprus" , 1 ,a))
+        {
+            for(const auto& pair : v)
+                cout << pair.getCode() << " ";
+            cout << endl;
+        }
+
+        for(auto v : g.getVertexSet())
+        {
+            if(v->getInfo().getName().size() == 3)
+            {
+                cout << v->getInfo().getName() << endl;
+            }
+        }
+
 
         return 0;
     }

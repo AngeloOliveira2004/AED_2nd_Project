@@ -131,6 +131,8 @@ int Graph<T>::calculateDiameter() const {
     int max_diameter = 0;
     for(auto a : getVertexSet())
     {
+        a->setVisited(false);
+        a->setParent(nullptr);
         a->setNum(0);
     }
     for (auto a : getVertexSet()){
