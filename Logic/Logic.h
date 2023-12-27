@@ -32,6 +32,7 @@ public:
     size_t GlobalNumberOfFlights();
     std::pair<int , int> FlightsOutOfAirportAndDifferentAirlines(const std::string& AirportCode);
     vector<string> TopTrafficAirports(int k);
+    vector<string> GreatestKIndeegrees(int k);
 };
 
 

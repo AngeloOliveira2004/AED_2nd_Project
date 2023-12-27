@@ -158,3 +158,23 @@ vector<string> Logic::TopTrafficAirports(int k) {
     }
     return result;
 }
+
+vector<string> Logic::GreatestKIndeegrees(int k) {
+    vector<std::pair<int, std::string>> airport_to_traffic;
+    vector<int> traffics;
+    vector<string> result;
+    size_t s;
+    graph.calculateIndegrees();
+    for(auto vertex: graph.getVertexSet()){
+        s = vertex->getIndegree();
+        traffics.push_back(s);
+        airport_to_traffic.push_back(std::make_pair(s, vertex->getInfo().getCode()));
+    }
+    std::sort(traffics.begin(), traffics.end(), greater<int>());
+    std::sort(airport_to_traffic.rbegin(), airport_to_traffic.rend());
+    for (int i = 0; i < k; i++){
+        result.push_back(airport_to_traffic[i].second);
+        std::cout << airport_to_traffic[i].second << " " << airport_to_traffic[i].first << endl;
+    }
+    return result;
+}
