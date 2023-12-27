@@ -578,6 +578,94 @@ vector<Airport> Logic::shortestPath(const Airport& initialAirport, const Airport
     return res;  // Return an empty vector indicating that no path was found
 }
 
+//|||||||||||||||||||||||||| 4.3 ||||||||||||||||||||||||||
+
+vector<Airport> Logic::FindClosestAirportsToLocation(double Latitude, double Longitude){
+    vector<Airport> res;
+    double min_distance = INT64_MAX;
+    for(auto v: graph.getVertexSet()){
+        Airport temp = v->getInfo();
+        if(HaversineAlgorithm(temp.getLatitude(), temp.getLongitude(), Latitude, Longitude) <= min_distance){
+            min_distance = HaversineAlgorithm(temp.getLatitude(), temp.getLongitude(), Latitude, Longitude);
+            res.push_back(temp);
+        }
+    }
+    return res;
+}
+
+vector<vector<Airport>> Logic::LocationToAirport(double source_latitude, double source_longitude, Airport dest){
+    vector<Airport> sources = FindClosestAirportsToLocation(source_latitude, source_longitude);
+    vector<vector<Airport>> res;
+    for(auto airport: sources){
+        for(auto trip: AirportToAirport(airport, dest)){
+            res.push_back(trip);
+        }
+    }
+    return res;
+}
+
+vector<vector<Airport>> Logic::LocationToCity(double source_latitude, double source_longitude, const std::string city, const std::string& country){
+    vector<Airport> sources = FindClosestAirportsToLocation(source_latitude, source_longitude);
+    vector<vector<Airport>> res;
+    for(auto airport: sources){
+        for(auto trip: AirportToCity(airport, city, country)){
+            res.push_back(trip);
+        }
+    }
+    return res;
+}
+
+vector<vector<Airport>> Logic::LocationToCountry(double source_latitude, double source_longitude, const std::string country){
+    vector<Airport> sources = FindClosestAirportsToLocation(source_latitude, source_longitude);
+    vector<vector<Airport>> res;
+    for(auto airport: sources){
+        for(auto trip: AirportToCountry(airport, country)){
+            res.push_back(trip);
+        }
+    }
+    return res;
+}
+
+vector<vector<Airport>> Logic::AirportToLocation(Airport source, double dest_latitude, double dest_longitude){
+    vector<Airport> destinies = FindClosestAirportsToLocation(dest_latitude, dest_longitude);
+    vector<vector<Airport>> res;
+    for(auto airport: destinies){
+        for(auto trip: AirportToAirport(source, airport)){
+            res.push_back(trip);
+        }
+    }
+    return res;
+}
+
+vector<vector<Airport>> Logic::CityToLocation(const std::string city, const std::string country, double dest_latitude, double dest_longitude){
+    vector<Airport> destinies = FindClosestAirportsToLocation(dest_latitude, dest_longitude);
+    vector<vector<Airport>> res;
+    unordered_set<std::string> airline_names;
+    for(auto airport: destinies){
+        for(auto trip: CityToAirport(airport, city, country, 1, airline_names)){
+            res.push_back(trip);
+        }
+    }
+    return res;
+}
+
+vector<vector<Airport>> Logic::CountryToLocation(const std::string country, double dest_latitude, double dest_longitude){
+    vector<Airport> destinies = FindClosestAirportsToLocation(dest_latitude, dest_longitude);
+    vector<vector<Airport>> res;
+    vector<Airport> country_airports;
+    for(auto v: graph.getVertexSet()){
+        if (v->getInfo().getCountry() == country){
+            country_airports.push_back(v->getInfo());
+        }
+    }
+    for(auto dest : destinies){
+        for(auto source: country_airports){
+            for(auto trip: AirportToAirport(source, dest));
+        }
+    }
+    return res;
+}
+
 //|||||||||||||||||| FILTERS ||||||||||||||||||
 
 vector<vector<Airport>> Logic::AirportToAirport(const Airport& initialAirport, const Airport& destAirport) {

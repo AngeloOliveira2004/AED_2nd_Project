@@ -9,6 +9,7 @@
 #include <memory>
 #include "Graph.h"
 #include "Airport.h"
+#include "LoadingFunctions.h"
 
 
 class Logic {
@@ -59,6 +60,15 @@ public:
     vector<vector<Airport>> CityToAirport(const Airport& destAirport , const std::string& city, const std::string& country , int choice , unordered_set<std::string> airlines);
     vector<vector<Airport>> CityToCity(std::string city, std::string country , int choice , unordered_set<std::string> airlines);
     vector<vector<Airport>> CityToCountry(std::string city, std::string country , int choice , unordered_set<std::string> airlines);
+
+    vector<vector<Airport>> LocationToAirport(double source_latitude, double source_longitude, Airport dest);
+    vector<vector<Airport>> LocationToCity(double source_latitude, double source_longitude, const std::string city, const std::string& country);
+    vector<vector<Airport>> LocationToCountry(double source_latitude, double source_longitude, const std::string country);
+    vector<vector<Airport>> AirportToLocation(Airport source, double dest_latitude, double dest_longitude);
+    vector<vector<Airport>> CityToLocation(const std::string city, const std::string country, double dest_latitude, double dest_longitude);
+    vector<vector<Airport>> CountryToLocation(const std::string country, double dest_latitude, double dest_longitude);
+
+    vector<Airport> FindClosestAirportsToLocation(double Latitude, double Longitude);
 
     //Auxiliary functions
     double HaversineAlgorithm(double lat1, double lon1,double lat2, double lon2);
