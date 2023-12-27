@@ -266,7 +266,7 @@ void Logic::dfs_articulationPoints(Vertex<Airport>* v, unordered_set<Airport>& a
         Vertex<Airport>* w = e.getDest();
         if (!w->isVisited()) {
             children++;
-            dfs_articulationPoints(w, v, articPoints, s, index);
+            dfs_articulationPoints(w, articPoints, s, index);
             v->setLow(min(v->getLow(), w->getLow()));
 
             if (w->getLow() >= v->getNum()) {
