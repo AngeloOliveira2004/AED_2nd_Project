@@ -64,10 +64,17 @@
 */
         Airport airport = Airport("INL");
         Airport airport1 = Airport("LIS");
-
-
+        unordered_set<std::string> a;
+        a.insert("TSC");
+        a.insert("TAP");
+        a.insert("RZO");
+        a.insert("AAL");
+        a.insert("FIN");
+        a.insert("BAW");
+        a.insert("ANA");
+        a.insert("USA");
         cout << "shortes path: " ;
-        for (auto pair : logic.shortestPath(airport, airport1))
+        for (auto pair : logic.airlineFilters(airport, airport1 , a))
         {
             cout << pair.getCode() << " ";
         }

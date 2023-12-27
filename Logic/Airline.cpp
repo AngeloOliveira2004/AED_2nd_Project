@@ -1,5 +1,7 @@
 #include "Airline.h"
 
+Airline::Airline() {}
+
 Airline::Airline(const std::string code, const std::string name, const std::string callSign, const std::string country) :
         code(code), name(name), callSign(callSign), country(country) {}
 
@@ -22,3 +24,5 @@ std::string Airline::getCountry() const {
 bool Airline::operator==(const Airline &other) const {
     return this->code == other.code;
 }
+
+

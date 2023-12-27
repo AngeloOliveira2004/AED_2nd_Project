@@ -16,6 +16,7 @@ private:
     Graph<Airport> graph;
     //maps Airport names to codes
     unordered_map<std::string , std::string> NamesToCodes;
+    unordered_map<std::string , Airline> AirlinesCodes;
 public:
     Logic();
     Logic(Graph<Airport>& g);
@@ -33,6 +34,8 @@ public:
     std::pair<int , int> FlightsOutOfAirportAndDifferentAirlines(const std::string& AirportCode);
 
     vector<Airport> shortestPath(Airport initialAirport , Airport destAirport);
+
+    vector<Airport>  airlineFilters(Airport initialAirport, Airport destAirport , unordered_set<std::string> airlines);
 
     //Auxiliary functions
     double HaversineAlgorithm(double lat1, double lon1,double lat2, double lon2);
