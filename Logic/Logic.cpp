@@ -243,14 +243,14 @@ unordered_set<Airport> Logic::findArticulationPoints() {
 
     for (Vertex<Airport>* v : graph.getVertexSet()) {
         if (!v->isVisited()) {
-            dfs_articulationPoints(v, nullptr, articulationPoints, s, index);
+            dfs_articulationPoints(v, articulationPoints, s, index);
         }
     }
 
     return articulationPoints;
 }
 
-void Logic::dfs_articulationPoints(Vertex<Airport>* v, Vertex<Airport>* parent, unordered_set<Airport>& articPoints, stack<Vertex<Airport>*>& s, int& index) {
+void Logic::dfs_articulationPoints(Vertex<Airport>* v, unordered_set<Airport>& articPoints, stack<Vertex<Airport>*>& s, int& index) {
     v->setNum(index);
     v->setLow(index);
     v->setVisited(true);

@@ -37,8 +37,7 @@ public:
 
     unordered_set<Airport> findArticulationPoints();
 
-
-    void dfs_articulationPoints(Vertex<Airport> *v, Vertex<Airport> *parent, unordered_set<Airport> &articPoints,stack<Vertex<Airport> *> &s, int &index);
+    void dfs_articulationPoints(Vertex<Airport> *v, unordered_set<Airport> &articPoints, stack<Vertex<Airport> *> &s,int &index);
 };
 
 
