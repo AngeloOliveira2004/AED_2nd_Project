@@ -137,19 +137,11 @@
         a.insert("TAP");
         a.insert("RZO");
         cout << "shortest path: " << endl;
-        for (const auto& v : logic.CityToAirport(airport1 , "Larnaca" , "Cyprus" , 1 ,a))
+        for (const auto& v : logic.CityToAirport(airport1 , "Larnaca" , "Cyprus" , 2 ,a))
         {
             for(const auto& pair : v)
-                cout << pair.getCode() << " ";
+                cout << pair.getCode() << " - ";
             cout << endl;
-        }
-
-        for(auto v : g.getVertexSet())
-        {
-            if(v->getInfo().getName().size() == 3)
-            {
-                cout << v->getInfo().getName() << endl;
-            }
         }
 
 
