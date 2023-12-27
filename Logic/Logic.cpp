@@ -580,8 +580,8 @@ vector<Airport> Logic::shortestPath(const Airport& initialAirport, const Airport
 
 //|||||||||||||||||| FILTERS ||||||||||||||||||
 
-vector<vector<Airport>> Logic::AirportToAirport(const Airport& initialAirport, const Airport& destAirport) {
-    vector<vector<Airport>> res;
+list<vector<Airport>> Logic::AirportToAirport(const Airport& initialAirport, const Airport& destAirport) {
+    list<vector<Airport>> res;
     Vertex<Airport>* initialVertex;
     Vertex<Airport>* finalVertex;
 
@@ -639,9 +639,9 @@ vector<vector<Airport>> Logic::AirportToAirport(const Airport& initialAirport, c
     return res;
 }
 
-vector<vector<Airport>>
+list<vector<Airport>>
 Logic::AirportToAirportAirlineOnlyFilters(const Airport& initialAirport, const Airport& destAirport, unordered_set<std::string> airlines) {
-    vector<vector<Airport>> res;
+    list<vector<Airport>> res;
     Vertex<Airport>* initialVertex;
     Vertex<Airport>* finalVertex;
 
@@ -701,11 +701,11 @@ Logic::AirportToAirportAirlineOnlyFilters(const Airport& initialAirport, const A
     return res;
 }
 
-vector<vector<Airport>>
+list<vector<Airport>>
 Logic::AirportToAirportAirlineAvoidFilters(const Airport &initialAirport, const Airport &destAirport,
                                            unordered_set<std::string> airlines) {
 
-    vector<vector<Airport>> res;
+    list<vector<Airport>> res;
     Vertex<Airport>* initialVertex;
     Vertex<Airport>* finalVertex;
 
@@ -766,8 +766,8 @@ Logic::AirportToAirportAirlineAvoidFilters(const Airport &initialAirport, const 
 }
 
 
-vector<vector<Airport>> Logic::AirportToCity(const Airport& initialAirport, const std::string& city ,const std::string& country) {
-    vector<vector<Airport>> res;
+list<vector<Airport>> Logic::AirportToCity(const Airport& initialAirport, const std::string& city ,const std::string& country) {
+    list<vector<Airport>> res;
     Vertex<Airport>* initialVertex;
 
     for(auto v : graph.getVertexSet())
@@ -818,9 +818,9 @@ vector<vector<Airport>> Logic::AirportToCity(const Airport& initialAirport, cons
     return res;
 }
 
-vector<vector<Airport>> Logic::AirportToCityAirlineAvoidFilter(const Airport& initialAirport, const std::string& city,
+list<vector<Airport>> Logic::AirportToCityAirlineAvoidFilter(const Airport& initialAirport, const std::string& city,
                                                           const std::string& country , unordered_set<std::string> airlines) {
-    vector<vector<Airport>> res;
+    list<vector<Airport>> res;
     Vertex<Airport>* initialVertex;
 
     for(auto v : graph.getVertexSet())
@@ -875,10 +875,10 @@ vector<vector<Airport>> Logic::AirportToCityAirlineAvoidFilter(const Airport& in
     return res;
 }
 
-vector<vector<Airport>>
+list<vector<Airport>>
 Logic::AirportToCityAirlineOnlyFilter(const Airport& initialAirport, const std::string& city, const std::string& country,
                                       unordered_set<std::string> airlines) {
-    vector<vector<Airport>> res;
+    list<vector<Airport>> res;
     Vertex<Airport>* initialVertex;
 
     for(auto v : graph.getVertexSet())
@@ -936,8 +936,8 @@ Logic::AirportToCityAirlineOnlyFilter(const Airport& initialAirport, const std::
 
 //||||||||||||||||||||||||||||||||||| AIRPORTS TO COUNTRY |||||||||||||||||||||||||||||||||||||||||
 
-vector<vector<Airport>> Logic::AirportToCountry(const Airport& initialAirport, const std::string& country) {
-    vector<vector<Airport>> res;
+list<vector<Airport>> Logic::AirportToCountry(const Airport& initialAirport, const std::string& country) {
+    list<vector<Airport>> res;
     Vertex<Airport>* initialVertex;
 
     for(auto v : graph.getVertexSet())
@@ -988,9 +988,9 @@ vector<vector<Airport>> Logic::AirportToCountry(const Airport& initialAirport, c
     return res;
 }
 
-vector<vector<Airport>> Logic::AirportToCountryAirlineAvoidFilter(Airport initialAirport, std::string country,
+list<vector<Airport>> Logic::AirportToCountryAirlineAvoidFilter(Airport initialAirport, std::string country,
                                                                   unordered_set<std::string> airlines) {
-    vector<vector<Airport>> res;
+    list<vector<Airport>> res;
     Vertex<Airport>* initialVertex;
 
     for(auto v : graph.getVertexSet())
@@ -1045,9 +1045,9 @@ vector<vector<Airport>> Logic::AirportToCountryAirlineAvoidFilter(Airport initia
     return res;
 }
 
-vector<vector<Airport>> Logic::AirportToCountryAirlineOnlyFilter(Airport initialAirport, std::string country,
+list<vector<Airport>> Logic::AirportToCountryAirlineOnlyFilter(Airport initialAirport, std::string country,
                                                                  unordered_set<std::string> airlines){
-    vector<vector<Airport>> res;
+    list<vector<Airport>> res;
     Vertex<Airport>* initialVertex;
 
     for(auto v : graph.getVertexSet())
@@ -1102,7 +1102,7 @@ vector<vector<Airport>> Logic::AirportToCountryAirlineOnlyFilter(Airport initial
     return res;
 }
 
-vector<vector<Airport>>
+list<vector<Airport>>
 Logic::CityToAirport(const Airport& destAirport , const std::string& city, const std::string& country, int choice, unordered_set<std::string> airlines) {
     vector<Vertex<Airport>*> initialAirports;
     for(auto v : graph.getVertexSet())
@@ -1113,8 +1113,8 @@ Logic::CityToAirport(const Airport& destAirport , const std::string& city, const
         }
     }
 
-    vector<vector<Airport>> res;
-    vector<vector<Airport>> temp;
+    list<vector<Airport>> res;
+    list<vector<Airport>> temp;
 
     switch (choice) {
         case 1:
@@ -1155,7 +1155,7 @@ Logic::CityToAirport(const Airport& destAirport , const std::string& city, const
     return res;
 }
 
-vector<vector<Airport>>
+list<vector<Airport>>
 Logic::CityToCity(const std::string& InitialCity, const std::string& InitialCountry,const std::string& FinalCity, const std::string& FinalCountry, int choice, const unordered_set<std::string>& airlines) {
 
     vector<Vertex<Airport>*> initialAirports;
@@ -1167,8 +1167,8 @@ Logic::CityToCity(const std::string& InitialCity, const std::string& InitialCoun
         }
     }
 
-    vector<vector<Airport>> res;
-    vector<vector<Airport>> temp;
+    list<vector<Airport>> res;
+    list<vector<Airport>> temp;
 
     switch (choice) {
         case 1:
@@ -1210,7 +1210,7 @@ Logic::CityToCity(const std::string& InitialCity, const std::string& InitialCoun
 }
 
 
-vector<vector<Airport>>
+list<vector<Airport>>
 Logic::CityToCountry(const std::string& Initialcity, const std::string& InitialCountry, const std::string& FinalCountry, int choice, const unordered_set<string>& airlines) {
     vector<Vertex<Airport>*> initialAirports;
     for(auto v : graph.getVertexSet())
@@ -1221,8 +1221,8 @@ Logic::CityToCountry(const std::string& Initialcity, const std::string& InitialC
         }
     }
 
-    vector<vector<Airport>> res;
-    vector<vector<Airport>> temp;
+    list<vector<Airport>> res;
+    list<vector<Airport>> temp;
 
     switch (choice) {
         case 1:
@@ -1263,7 +1263,7 @@ Logic::CityToCountry(const std::string& Initialcity, const std::string& InitialC
     return res;
 }
 
-vector<vector<Airport>>
+list<vector<Airport>>
 Logic::CountryToAirport(const Airport &destAirport, const string &country, int choice,
                         unordered_set<std::string> airlines) {
 
@@ -1276,8 +1276,8 @@ Logic::CountryToAirport(const Airport &destAirport, const string &country, int c
         }
     }
 
-    vector<vector<Airport>> res;
-    vector<vector<Airport>> temp;
+    list<vector<Airport>> res;
+    list<vector<Airport>> temp;
 
     switch (choice) {
         case 1:
@@ -1318,7 +1318,7 @@ Logic::CountryToAirport(const Airport &destAirport, const string &country, int c
     return res;
 }
 
-vector<vector<Airport>>
+list<vector<Airport>>
 Logic::CountryToCity(const string &InitialCountry, const string &FinalCity,
                      const string &FinalCountry, int choice, const unordered_set<std::string> &airlines) {
 
@@ -1331,8 +1331,8 @@ Logic::CountryToCity(const string &InitialCountry, const string &FinalCity,
         }
     }
 
-    vector<vector<Airport>> res;
-    vector<vector<Airport>> temp;
+    list<vector<Airport>> res;
+    list<vector<Airport>> temp;
 
     switch (choice) {
         case 1:
@@ -1373,7 +1373,7 @@ Logic::CountryToCity(const string &InitialCountry, const string &FinalCity,
     return res;
 }
 
-vector<vector<Airport>>
+list<vector<Airport>>
 Logic::CountryToCountry(const string &InitialCountry, const string &country, int choice,
                         const unordered_set<std::string> &airlines) {
 
@@ -1386,8 +1386,8 @@ Logic::CountryToCountry(const string &InitialCountry, const string &country, int
         }
     }
 
-    vector<vector<Airport>> res;
-    vector<vector<Airport>> temp;
+    list<vector<Airport>> res;
+    list<vector<Airport>> temp;
 
     switch (choice) {
         case 1:
@@ -1426,5 +1426,15 @@ Logic::CountryToCountry(const string &InitialCountry, const string &country, int
     }
 
     return res;
-    return vector<vector<Airport>>();
+}
+
+void Logic::NormaliseList(list<vector<Airport>>& list1) {
+    int max_ = INT_MAX;
+
+    for (const auto& it : list1) {
+        if (it.size() < max_)
+            max_ = it.size();
+    }
+
+    list1.remove_if([max_](const auto& vec) { return vec.size() != max_; });
 }
