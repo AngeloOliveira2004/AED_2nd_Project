@@ -147,5 +147,32 @@ void UI::number_out() {
 
 void UI::number_flights() {
     char op;
-    cout << "Would you like to consult the flights per city?: ";
+    cout << "Would you like to consult the flights per: " << endl;
+    cout << "A. City";
+    cout << "B. Airlines" << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl;
+    std::cout << "Insert the letter: ";
+    validate_input(op,'A','B');
+    switch(op){
+        case 'A':{
+            bool validate = false;
+            string city_name;
+            while(!validate){
+                city_name = "";
+                cout << "What's the name of the city you would like to know the information?: ";
+                cin >> city_name;
+            }
+            logic.NumberOfFlightsPerCity(city_name);
+            break;
+        }
+        case 'B':
+            bool validate = false;
+            string airline_name;
+            while(!validate){
+                airline_name = "";
+                cout << "What's the name of the airline you would like to know the information?: ";
+                cin >> airline_name;
+            }
+            logic.NumberOfFlightsPerAirline(airline_name);
+            break;
+    }
 }
