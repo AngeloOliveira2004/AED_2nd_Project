@@ -7,6 +7,19 @@ UI::UI() {}
 void UI::loading_stuff(UI &ui) {
     LoadingFunctions::LoadFlights(g);
     this->logic = Logic(g);
+    ui.load_sets();
+    for(auto airline : LoadingFunctions::getArlines()){
+        airlines.insert(airline.getCallSign());
+    }
+    diameter = g.calculateDiameter();
+}
+
+void UI::load_sets(){
+    for(auto airport: g.getVertexSet()){
+        this->cities.insert(airport->getInfo().getCity());
+        this->airport_codes.insert(airport->getInfo().getCode());
+        this->countries.insert(airport->getInfo().getCountry());
+    }
 }
 
 void UI::clear_screen() {
@@ -83,7 +96,7 @@ void UI::menu_options() {
          << "I. Consult essential airports to the network's circulation capability" << endl
          << "J. Consult best flight option(s) for a given source and destination locations" << endl
          << "Insert the letter: ";
-    validate_input(op,'A','B');
+    validate_input(op,'A','J');
     switch(op){
         case 'A':
             global_numbers();
@@ -95,20 +108,33 @@ void UI::menu_options() {
             number_flights();
             break;
         case 'D':
+            number_countries();
             break;
         case 'E':
+            number_reachable_destinations();
             break;
         case 'F':
+            number_reachable_destinations_k();
             break;
         case 'G':
+            longest_trip();
             break;
         case 'H':
+            greatest_traffic();
             break;
         case 'I':
+            essential_airports();
             break;
         case 'J':
             break;
     }
+}
+
+void UI::back_menu(){
+    char op;
+    std::cout << "Press A to go back to the menu: ";
+    validate_input(op,'A','A');
+    menu_options();
 }
 
 void UI::global_numbers() {
@@ -140,39 +166,168 @@ void UI::number_out() {
     cout << endl;
     z = logic.FlightsOutOfAirportAndDifferentAirlines(airport_code);
     std::cout << "Number of flights: " << z.first << endl << "Number of different airlines: " << z.second << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl;
-    std::cout << "Press A to go back to the menu: ";
-    validate_input(op,'A','A');
-    menu_options();
+    back_menu();
 }
 
 void UI::number_flights() {
     char op;
     cout << "Would you like to consult the flights per: " << endl;
-    cout << "A. City";
-    cout << "B. Airlines" << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl;
+    cout << "A. City" << endl;
+    cout << "B. Airlines" << endl << endl << endl << endl << endl << endl << endl << endl << endl;
     std::cout << "Insert the letter: ";
     validate_input(op,'A','B');
     switch(op){
         case 'A':{
-            bool validate = false;
             string city_name;
-            while(!validate){
+            while(true){
                 city_name = "";
                 cout << "What's the name of the city you would like to know the information?: ";
                 cin >> city_name;
+                if(this->cities.find(city_name) != this->cities.end()){
+                    break;
+                }
             }
-            logic.NumberOfFlightsPerCity(city_name);
+            std::cout << "Number of flights of " << city_name << " : " <<logic.NumberOfFlightsPerCity(city_name) << endl;
+            back_menu();
+        }
+        case 'B':{
+            string airline_name;
+            while(true){
+                airline_name = "";
+                cout << "What's the callsign of the airline you would like to know the information?: ";
+                cin >> airline_name;
+                if(this->airlines.find(airline_name) != this->airlines.end()){
+                    break;
+                }
+            }
+            std::cout << "Number of flights of " << airline_name << " airline : " << logic.NumberOfFlightsPerAirline(airline_name) << endl;
+            back_menu();
+        }
+    }
+}
+
+void UI::number_countries() {
+    char op;
+    cout << "Would you like to consult the number of different countries reachable from: " << endl;
+    cout << "A. City" << endl;
+    cout << "B. Airport" << endl << endl << endl << endl << endl << endl << endl << endl << endl;
+    std::cout << "Insert the letter: ";
+    validate_input(op,'A','B');
+    switch(op){
+        case 'A':{
+            string city_name;
+            while(true){
+                city_name = "";
+                cout << "What's the name of the city you would like to know the information?: ";
+                cin >> city_name;
+                if(this->cities.find(city_name) != this->cities.end()){
+                    break;
+                }
+            }
+            std::cout << "Number of flights of " << city_name << " : " <<logic.NumberOfCountriesThatCityFliesTo(city_name) << endl;
+            back_menu();
+        }
+        case 'B':{
+            string airport_code;
+            while(true){
+                airport_code = "";
+                cout << "What's the code of the airport you would like to know the information?: ";
+                cin >> airport_code;
+                if(this->airport_codes.find(airport_code) != this->airlines.end()){
+                    break;
+                }
+            }
+            std::cout << "Number of flights of " << airport_code << " airport : " << logic.NumberOfCountries(airport_code) << endl;
+            back_menu();
+        }
+    }
+}
+
+void UI::number_reachable_destinations() {
+    string airport_code;
+    while(true){
+        airport_code = "";
+        cout << "What's the code of the airport you would like to know the information?: ";
+        cin >> airport_code;
+        if(this->airport_codes.find(airport_code) != this->airlines.end()){
             break;
         }
-        case 'B':
-            bool validate = false;
-            string airline_name;
-            while(!validate){
-                airline_name = "";
-                cout << "What's the name of the airline you would like to know the information?: ";
-                cin >> airline_name;
-            }
-            logic.NumberOfFlightsPerAirline(airline_name);
-            break;
     }
+    vector<Airport> tempVector = logic.nodesAtDistanceBFS(airport_code, diameter);
+
+    vector<int> tempValues = logic.analyzeReachableAirports(tempVector);
+
+    cout << "Number of distinct airports: " << tempValues[0] << endl;
+    cout << "Number of distinct countries: " << tempValues[1] << endl;
+    cout << "Number of distinct cities: " << tempValues[2] << endl;
+    back_menu();
+
+}
+
+void UI::number_reachable_destinations_k() {
+    string airport_code;
+    int k;
+    while(true){
+        airport_code = "";
+        cout << "What's the code of the airport you would like to know the information?: ";
+        cin >> airport_code;
+        if(this->airport_codes.find(airport_code) != this->airlines.end()){
+            break;
+        }
+    }
+    while(true){
+        k = INT_MIN;
+        cout << "What's the max number of lay-overs?: ";
+        cin >> k;
+        if(k >= 0 && k <= diameter){
+            break;
+        }
+    }
+    vector<Airport> tempVector = logic.nodesAtDistanceBFS(airport_code, k);
+
+    vector<int> tempValues = logic.analyzeReachableAirports(tempVector);
+
+    cout << "The " << airport_code << " airport within " << k << " lay-over(s) can reach:" << endl;
+    cout << "Number of distinct airports: " << tempValues[0] << endl;
+    cout << "Number of distinct countries: " << tempValues[1] << endl;
+    cout << "Number of distinct cities: " << tempValues[2] << endl;
+    back_menu();
+}
+
+void UI::longest_trip(){
+    cout << "The longest distance is: " << diameter << endl << "Here are the longest flights:" << endl;
+    for(auto v : g.getVertexSet())
+    {
+        vector<vector<Airport>> a = logic.FindMaxTripBfs(v->getInfo() , diameter);
+        if(!a.empty()) {
+            for (auto v: a) {
+                vector<Airport> d = v;
+                Airport z = d[0];
+                Airport p = d[d.size() -1];
+                cout << z.getCode() << " to " << p.getCode();
+                cout << endl;
+            }
+        }
+    }
+    back_menu();
+}
+
+void UI::greatest_traffic(){
+    int k;
+    while(true){
+        k = INT_MIN;
+        cout << "What's the number of top airports you want to get information about?: ";
+        cin >> k;
+        if(k >= 0 && k <= airport_codes.size()){
+            break;
+        }
+    }
+    logic.GreatestKIndeegrees(k);
+    back_menu();
+}
+
+void UI::essential_airports() {
+    unordered_set<Airport> result = logic.findArticulationPoints();
+    cout << "There are a total of " << result.size() << " essential airports" << endl;
+    back_menu();
 }

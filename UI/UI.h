@@ -7,6 +7,7 @@
 #include <iostream>
 #include "../Logic/LoadingFunctions.h"
 #include "../Logic/Logic.h"
+#include <climits>
 
 class UI {
 public:
@@ -22,15 +23,36 @@ public:
 
     void menu_options();
 
-private:
-    Graph<Airport> g;
-    Logic logic = Logic(g);
-
     void global_numbers();
 
     void number_out();
 
     void number_flights();
+
+    void load_sets();
+
+    void back_menu();
+
+    void number_countries();
+
+    void number_reachable_destinations();
+
+    void number_reachable_destinations_k();
+
+    void longest_trip();
+
+    void greatest_traffic();
+
+private:
+    Graph<Airport> g;
+    Logic logic = Logic(g);
+    unordered_set<string> cities;
+    unordered_set<string> airport_codes;
+    unordered_set<string> countries;
+    unordered_set<string> airlines;
+    int diameter;
+
+    void essential_airports();
 };
 
 

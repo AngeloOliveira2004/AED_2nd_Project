@@ -448,7 +448,7 @@ vector<string> Logic::GreatestKIndeegrees(int k) {
     std::sort(airport_to_traffic.rbegin(), airport_to_traffic.rend());
     for (int i = 0; i < k; i++){
         result.push_back(airport_to_traffic[i].second);
-        std::cout << airport_to_traffic[i].second << " " << airport_to_traffic[i].first << endl;
+        std::cout << i+1 << ". " << airport_to_traffic[i].second << " " << airport_to_traffic[i].first << endl;
     }
     return result;
 }
