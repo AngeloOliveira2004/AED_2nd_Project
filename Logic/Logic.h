@@ -66,9 +66,17 @@ public:
     vector<vector<Airport>> LocationToCountry(double source_latitude, double source_longitude, const std::string country);
     vector<vector<Airport>> AirportToLocation(Airport source, double dest_latitude, double dest_longitude);
     vector<vector<Airport>> CityToLocation(const std::string city, const std::string country, double dest_latitude, double dest_longitude);
-    vector<vector<Airport>> CountryToLocation(const std::string country, double dest_latitude, double dest_longitude);
 
     vector<Airport> FindClosestAirportsToLocation(double Latitude, double Longitude);
+
+    vector<vector<Airport>> LocationToAirportAirlineOnlyFilters(double source_latitude, double source_longitude, Airport dest, unordered_set<std::string> airlines);
+    vector<vector<Airport>> LocationToAirportAirlineAvoidFilters(double source_latitude, double source_longitude, Airport dest, unordered_set<std::string> airlines);
+    vector<vector<Airport>> LocationToCityAirlineOnlyFilters(double source_latitude, double source_longitude, const std::string city, const std::string& country, unordered_set<std::string> airlines);
+    vector<vector<Airport>> LocationToCityAirlineAvoidFilters(double source_latitude, double source_longitude, const std::string city, const std::string& country, unordered_set<std::string> airlines);
+    vector<vector<Airport>> LocationToCountryAirlineOnlyFilter(double source_latitude, double source_longitude, const std::string country, unordered_set<std::string> airlines);
+    vector<vector<Airport>> LocationToCountryAirlineAvoidFilter(double source_latitude, double source_longitude, const std::string country, unordered_set<std::string> airlines);
+    vector<vector<Airport>> AirportToLocationAirlineOnlyFilters(Airport source, double dest_latitude, double dest_longitude, unordered_set<std::string> airline);
+    vector<vector<Airport>> AirportToLocationAirlineAvoidFilters(Airport source, double dest_latitude, double dest_longitude, unordered_set<std::string> airline);
 
     //Auxiliary functions
     double HaversineAlgorithm(double lat1, double lon1,double lat2, double lon2);

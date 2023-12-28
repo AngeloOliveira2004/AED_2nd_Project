@@ -654,6 +654,90 @@ vector<vector<Airport>> Logic::CityToLocation(const std::string city, const std:
     return res;
 }
 
+vector<vector<Airport>> Logic::LocationToAirportAirlineOnlyFilters(double source_latitude, double source_longitude, Airport dest, unordered_set<std::string> airlines){
+    vector<Airport> sources = FindClosestAirportsToLocation(source_latitude, source_longitude);
+    vector<vector<Airport>> res;
+    for(auto airport: sources){
+        for(auto trip: AirportToAirportAirlineOnlyFilters(airport, dest, airlines))
+            res.push_back(trip);
+    }
+    return res;
+}
+
+vector<vector<Airport>> Logic::LocationToAirportAirlineAvoidFilters(double source_latitude, double source_longitude, Airport dest, unordered_set<std::string> airlines){
+    vector<Airport> sources = FindClosestAirportsToLocation(source_latitude, source_longitude);
+    vector<vector<Airport>> res;
+    for(auto airport: sources){
+        for(auto trip: AirportToAirportAirlineAvoidFilters(airport, dest, airlines))
+            res.push_back(trip);
+    }
+    return res;
+}
+
+vector<vector<Airport>> Logic::LocationToCityAirlineOnlyFilters(double source_latitude, double source_longitude, const std::string city, const std::string& country, unordered_set<std::string> airlines){
+    vector<Airport> sources = FindClosestAirportsToLocation(source_latitude, source_longitude);
+    vector<vector<Airport>> res;
+    for(auto airport: sources){
+        for(auto trip: AirportToCityAirlineOnlyFilter(airport, city, country, airlines))
+            res.push_back(trip);
+    }
+    return res;
+}
+
+vector<vector<Airport>> Logic::LocationToCityAirlineAvoidFilters(double source_latitude, double source_longitude, const std::string city, const std::string& country, unordered_set<std::string> airlines){
+    vector<Airport> sources = FindClosestAirportsToLocation(source_latitude, source_longitude);
+    vector<vector<Airport>> res;
+    for(auto airport: sources){
+        for(auto trip: AirportToCityAirlineAvoidFilter(airport, city, country, airlines))
+            res.push_back(trip);
+    }
+    return res;
+}
+
+vector<vector<Airport>> Logic::LocationToCountryAirlineOnlyFilter(double source_latitude, double source_longitude, const std::string country, unordered_set<std::string> airlines){
+    vector<Airport> sources = FindClosestAirportsToLocation(source_latitude, source_longitude);
+    vector<vector<Airport>> res;
+    for(auto airport: sources){
+        for(auto trip: AirportToCountryAirlineOnlyFilter(airport, country, airlines)) {
+            res.push_back(trip);
+        }
+    }
+    return res;
+}
+
+vector<vector<Airport>> Logic::LocationToCountryAirlineAvoidFilter(double source_latitude, double source_longitude, const std::string country, unordered_set<std::string> airlines){
+    vector<Airport> sources = FindClosestAirportsToLocation(source_latitude, source_longitude);
+    vector<vector<Airport>> res;
+    for(auto airport: sources){
+        for(auto trip: AirportToCountryAirlineAvoidFilter(airport, country, airlines)) {
+            res.push_back(trip);
+        }
+    }
+    return res;
+}
+
+vector<vector<Airport>> Logic::AirportToLocationAirlineOnlyFilters(Airport source, double dest_latitude, double dest_longitude, unordered_set<std::string> airline){
+    vector<Airport> destinies = FindClosestAirportsToLocation(dest_latitude, dest_longitude);
+    vector<vector<Airport>> res;
+    for(auto airport: destinies){
+        for(auto trip: AirportToAirportAirlineOnlyFilters(source, airport, airline)){
+            res.push_back(trip);
+        }
+    }
+    return res;
+}
+
+vector<vector<Airport>> Logic::AirportToLocationAirlineAvoidFilters(Airport source, double dest_latitude, double dest_longitude, unordered_set<std::string> airline){
+    vector<Airport> destinies = FindClosestAirportsToLocation(dest_latitude, dest_longitude);
+    vector<vector<Airport>> res;
+    for(auto airport: destinies){
+        for(auto trip: AirportToAirportAirlineAvoidFilters(source, airport, airline)){
+            res.push_back(trip);
+        }
+    }
+    return res;
+}
+
 
 //|||||||||||||||||| FILTERS ||||||||||||||||||
 
