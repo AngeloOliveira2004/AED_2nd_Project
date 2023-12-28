@@ -144,10 +144,14 @@
             cout << endl;
         }
 */
-        vector<Airport> a = logic.FindClosestAirportsToLocation(38.781311,-9.135919);
-        for (auto b: a ){
-            cout << b.getName() << endl;
-        }
+        Airport ar = Airport("OPO");
+        vector<vector<Airport>> a = logic.LocationToAirport(38.781311,-9.135919, ar);
+        vector<vector<Airport>> b = logic.LocationToCity(38.781311, -9.135919, "Porto", "Portugal");
+        vector<vector<Airport>> c = logic.LocationToCountry(38.781311,-9.135919, "Portugal");
+        vector<vector<Airport>> d = logic.AirportToLocation(ar, 38.781311,-9.135919);
+        vector<vector<Airport>> e = logic.CityToLocation("Porto", "Portugal", 38.781311,-9.135919);
+        vector<vector<Airport>> f = logic.CountryToLocation("Portugal", 39.553610,2.727778);
+        std::cout << a.size() << "|" << b.size() << "|" << c.size() << "|" << d.size() << "|" << e.size() << "|" << f.size();
 
         return 0;
     }

@@ -654,22 +654,6 @@ vector<vector<Airport>> Logic::CityToLocation(const std::string city, const std:
     return res;
 }
 
-vector<vector<Airport>> Logic::CountryToLocation(const std::string country, double dest_latitude, double dest_longitude){
-    vector<Airport> destinies = FindClosestAirportsToLocation(dest_latitude, dest_longitude);
-    vector<vector<Airport>> res;
-    vector<Airport> country_airports;
-    for(auto v: graph.getVertexSet()){
-        if (v->getInfo().getCountry() == country){
-            country_airports.push_back(v->getInfo());
-        }
-    }
-    for(auto dest : destinies){
-        for(auto source: country_airports){
-            for(auto trip: AirportToAirport(source, dest));
-        }
-    }
-    return res;
-}
 
 //|||||||||||||||||| FILTERS ||||||||||||||||||
 
