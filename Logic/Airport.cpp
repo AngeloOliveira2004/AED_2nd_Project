@@ -7,7 +7,7 @@
 Airport::Airport(): code("") , name(" ") , city(" ") , latitude(0.0) , longitude(0.0) {}
 
 Airport::Airport(const std::string &code,const std::string name,const std::string city,const std::string country,
-                 double longitude, double latitude)
+                 double latitude, double longitude)
         : code(code), name(name), city(city), country(country), latitude(latitude), longitude(longitude) {}
 
 Airport::Airport(std::string  code) : code(std::move(code)) , name(" ") , city(" ") , latitude(0.0) , longitude(0.0) {}
