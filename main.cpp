@@ -128,7 +128,7 @@
 
 
         std::cout << "Time taken by everything: " << duration1.count()/1000 << " seconds" << std::endl;
-*/
+
         //TODO NORMALISE LIST OF VECTORS FUNCTION
         Airport airport = Airport("INL");
         Airport airport1 = Airport("LIS");
@@ -143,7 +143,11 @@
                 cout << pair.getCode() << " - ";
             cout << endl;
         }
-
+*/
+        vector<Airport> a = logic.FindClosestAirportsToLocation(38.781311,-9.135919);
+        for (auto b: a ){
+            cout << b.getName() << endl;
+        }
 
         return 0;
     }

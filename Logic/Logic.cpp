@@ -582,11 +582,16 @@ vector<Airport> Logic::shortestPath(const Airport& initialAirport, const Airport
 
 vector<Airport> Logic::FindClosestAirportsToLocation(double Latitude, double Longitude){
     vector<Airport> res;
-    double min_distance = INT64_MAX;
+    double min_distance = numeric_limits<double>::max();
     for(auto v: graph.getVertexSet()){
         Airport temp = v->getInfo();
-        if(HaversineAlgorithm(temp.getLatitude(), temp.getLongitude(), Latitude, Longitude) <= min_distance){
-            min_distance = HaversineAlgorithm(temp.getLatitude(), temp.getLongitude(), Latitude, Longitude);
+        double dist = HaversineAlgorithm( Latitude, Longitude, temp.getLatitude(), temp.getLongitude());
+        std::cout << temp.getName()<< " | " << temp.getLatitude() << " | " << temp.getLongitude() << " | " << dist << endl;
+        if(dist < min_distance){
+            res.clear();
+            min_distance = dist;
+        }
+        if(dist == min_distance){
             res.push_back(temp);
         }
     }
