@@ -313,7 +313,7 @@ void UI::flight_consultation() {
     char op;
     cout << "How would you like to search for your flight? " << endl
          << "A. Consult number of flights out of an airport and from how many different airlines;" << endl
-         << "B.Consult number of flights per city/airline " << endl
+         << "B. Consult number of flights per city/airline " << endl
          << "Insert your choice: ";
 
     validate_input(op, 'A', 'B');

@@ -35,6 +35,16 @@ int Logic::GlobalNumbers() {
     return GlobalNumberOfAirports() + GlobalNumberOfFlights();
 }
 
+void Logic::MapAirports(){
+    for(auto v: graph.getVertexSet()){
+        this->NamesToCodes[v->getInfo().getName()] = v->getInfo().getCode();
+    }
+}
+
+unordered_map<std::string , std::string> Logic::getNamesToCodes(){
+    return this->NamesToCodes;
+}
+
 //O(1)
 int Logic::GlobalNumberOfAirports() {
     return graph.getVertexSet().size();

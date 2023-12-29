@@ -21,6 +21,9 @@ public:
     Logic();
     Logic(Graph<Airport>& g);
 
+    void MapAirports();
+    unordered_map<std::string , std::string> getNamesToCodes();
+
     int GlobalNumbers();
     int GlobalNumberOfAirports();
     int NumberOfFlightsPerCity(std::string city);
