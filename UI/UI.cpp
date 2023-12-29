@@ -126,11 +126,13 @@ void UI::trip_planner(){
 
     std::string city;
     std::string country;
+    std::string second_city;
+    std::string second_country;
 
     auto commaPos = country.begin();
     switch ((op)) {
         case 'A':
-            cout << "Insert the code of the airport where you would like to go from:" << endl;
+            cout << "Insert the code of the airport where you would like to depart from:" << endl;
             cin >> initial_Airport;
             get_destination(destination , choice , filters);
             switch (choice) {
@@ -153,10 +155,6 @@ void UI::trip_planner(){
                     main_menu();
                     break;
                 case 2:
-                    //list<vector<Airport>> AirportToCountry(const Airport& initialAirport, const std::string& country);
-                    //list<vector<Airport>> AirportToCountryAirlineAvoidFilter(Airport initialAirport , std::string country,unordered_set<std::string> airlines);
-                    //list<vector<Airport>> AirportToCountryAirlineOnlyFilter(Airport initialAirport , std::string country,unordered_set<std::string> airlines);
-
                     filters = get_Filters(Avoid_Or_Only , Yes_or_No);
 
                     commaPos = std::find(destination.begin(), destination.end(), ',');
@@ -173,10 +171,6 @@ void UI::trip_planner(){
 
                     if(Yes_or_No)
                     {
-                        list<vector<Airport>> CityToAirport(const Airport& destAirport , const std::string& city, const std::string& country , int choice , unordered_set<std::string> airlines);
-                        list<vector<Airport>> CityToCity(const std::string& InitialCity, const std::string& InitialCountry,const std::string& FinalCity, const std::string& FinalCountry, int choice , const unordered_set<std::string>& airlines);
-                        list<vector<Airport>> CityToCountry(const std::string& Initialcity, const std::string& InitialCountry, const std::string& country , int choice , const unordered_set<std::string>& airlines);
-
                         if(Avoid_Or_Only)
                         {
                             printList(logic.AirportToCityAirlineOnlyFilter(Airport(initial_Airport) , city , country , filters));
@@ -192,12 +186,212 @@ void UI::trip_planner(){
                     main_menu();
                     break;
                 case 3:
+                    filters = get_Filters(Avoid_Or_Only , Yes_or_No);
+                    if(Yes_or_No)
+                    {
+                        if(Avoid_Or_Only)
+                        {
+                            printList(logic.AirportToCountryAirlineOnlyFilter(Airport(initial_Airport) , destination , filters));
+                        }else
+                        {
+                            printList(logic.AirportToCountryAirlineAvoidFilter(Airport(initial_Airport) , destination , filters));
+                        }
+                    }
+                    else
+                    {
+                        printList(logic.AirportToCountry(initial_Airport , destination));
+                    }
+                    main_menu();
+                    break;
+
                     break;
                 case 4:
+
                     break;
             }
             break;
         case 'B':
+            std::cin.ignore(); // Clear the input stream
+            cout << "Insert the city of the airport where you would like to depart from:" << endl;
+            std::getline(std::cin, initial_Airport);
+            get_destination(destination , choice , filters);
+
+            commaPos = std::find(initial_Airport.begin(), initial_Airport.end(), ',');
+            if (commaPos != initial_Airport.end()) {
+                // Extract the first part (before the comma) and remove spaces
+                city = std::string(initial_Airport.begin(), commaPos);
+
+                // Extract the second part (after the comma) and remove spaces
+                country = std::string(std::find_if_not(commaPos + 1, initial_Airport.end(), ::isspace), initial_Airport.end());
+            } else {
+                std::cout << "Input not valid";
+                main_menu();
+            }
+
+            switch (choice) {
+                //list<vector<Airport>> CityToCity(const std::string& InitialCity, const std::string& InitialCountry,const std::string& FinalCity, const std::string& FinalCountry, int choice , const unordered_set<std::string>& airlines);
+                //list<vector<Airport>> CityToCountry(const std::string& Initialcity, const std::string& InitialCountry, const std::string& country , int choice , const unordered_set<std::string>& airlines);
+
+                case 1:
+                    filters = get_Filters(Avoid_Or_Only , Yes_or_No);
+                    if(Yes_or_No)
+                    {
+                        if(Avoid_Or_Only)
+                        {
+                            printList(logic.CityToAirport(Airport(destination) , city , country , 3 , airlines));
+                        }else
+                        {
+                            printList(logic.CityToAirport(Airport(destination) , city , country , 2 , airlines));
+                        }
+                    }
+                    else
+                    {
+                        printList(logic.CityToAirport(Airport(destination) , city , country , 1 , airlines));
+                    }
+                    main_menu();
+                    break;
+                case 2:
+                    filters = get_Filters(Avoid_Or_Only , Yes_or_No);
+
+                    commaPos = std::find(destination.begin(), destination.end(), ',');
+                    if (commaPos != destination.end()) {
+                        // Extract the first part (before the comma) and remove spaces
+                        second_city = std::string(destination.begin(), commaPos);
+
+                        // Extract the second part (after the comma) and remove spaces
+                        second_country = std::string(std::find_if_not(commaPos + 1, destination.end(), ::isspace), destination.end());
+                    } else {
+                        std::cout << "Input not valid";
+                        main_menu();
+                    }
+
+                    if(Yes_or_No)
+                    {
+                        if(Avoid_Or_Only)
+                        {
+                            printList(logic.CityToCity(city , country , second_city , second_country , 3 , airlines));
+                        }else
+                        {
+                            printList(logic.CityToCity(city , country , second_city , second_country , 2 , airlines));
+                        }
+                    }
+                    else
+                    {
+                        printList(logic.CityToCity(city , country , second_city , second_country , 1 , airlines));
+                    }
+                    main_menu();
+                    break;
+                case 3:
+                    filters = get_Filters(Avoid_Or_Only , Yes_or_No);
+                    if(Yes_or_No)
+                    {
+                        if(Avoid_Or_Only)
+                        {
+                            printList(logic.CityToCountry(city , country , destination , 3 , airlines));
+                        }else
+                        {
+                            printList(logic.CityToCountry(city , country , destination , 2 , airlines));
+                        }
+                    }
+                    else
+                    {
+                        //list<vector<Airport>> CityToCountry(const std::string& Initialcity, const std::string& InitialCountry, const std::string& country , int choice , const unordered_set<std::string>& airlines);
+                        printList(logic.CityToCountry(city , country , destination , 1 , airlines));
+                    }
+                    main_menu();
+                    break;
+
+                    break;
+                case 4:
+
+                    break;
+            }
+            break;
+        case 'C':
+            cout << "Insert the country where you would like to depart from:" << endl;
+            cin >> country;
+            get_destination(destination , choice , filters);
+
+            switch (choice) {
+
+                case 1:
+                    filters = get_Filters(Avoid_Or_Only , Yes_or_No);
+                    if(Yes_or_No)
+                    {
+                        if(Avoid_Or_Only)
+                        {
+                            printList(logic.CountryToAirport(Airport(destination) , country , 3 , airlines));
+                        }else
+                        {
+                            printList(logic.CountryToAirport(Airport(destination) , country , 2 , airlines));
+                        }
+                    }
+                    else
+                    {
+                        printList(logic.CountryToAirport(Airport(destination) , country , 1 , airlines));
+                    }
+                    main_menu();
+                    break;
+                case 2:
+
+                    filters = get_Filters(Avoid_Or_Only , Yes_or_No);
+
+                    commaPos = std::find(destination.begin(), destination.end(), ',');
+                    if (commaPos != destination.end()) {
+                        // Extract the first part (before the comma) and remove spaces
+                        second_city = std::string(destination.begin(), commaPos);
+
+                        // Extract the second part (after the comma) and remove spaces
+                        second_country = std::string(std::find_if_not(commaPos + 1, destination.end(), ::isspace), destination.end());
+                    } else {
+                        std::cout << "Input not valid";
+                        main_menu();
+                    }
+
+                    if(Yes_or_No)
+                    {
+                        if(Avoid_Or_Only)
+                        {
+                            printList(logic.CountryToCity(country , second_city , second_country , 3 , airlines));
+                        }else
+                        {
+                            printList(logic.CountryToCity(country , second_city , second_country , 2 , airlines));
+                        }
+                    }
+                    else
+                    {
+                        printList(logic.CountryToCity(country , second_city , second_country , 1 , airlines));
+                    }
+                    main_menu();
+                    break;
+                case 3:
+                    //list<vector<Airport>> CountryToCountry(const std::string& InitialCountry, const std::string& country , int choice , const unordered_set<std::string>& airlines);
+
+                    filters = get_Filters(Avoid_Or_Only , Yes_or_No);
+                    if(Yes_or_No)
+                    {
+                        if(Avoid_Or_Only)
+                        {
+                            printList(logic.CountryToCountry(country , destination , 3 , airlines));
+                        }else
+                        {
+                            printList(logic.CountryToCountry(country , destination , 2 , airlines));
+                        }
+                    }
+                    else
+                    {
+                        printList(logic.CountryToCountry(country , destination , 1 , airlines));
+                    }
+                    main_menu();
+                    break;
+
+                    break;
+                case 4:
+
+                    break;
+            }
+            break;
+        case 'D':
 
             break;
     }
@@ -628,4 +822,15 @@ void UI::essential_airports() {
     unordered_set<Airport> result = logic.findArticulationPoints();
     cout << "There are a total of " << result.size() << " essential airports" << endl;
     back_menu();
+}
+
+void UI::NormaliseList(list<vector<Airport>> &list1) {
+    int max_ = INT_MAX;
+
+    for (const auto& it : list1) {
+        if (it.size() < max_)
+            max_ = it.size();
+    }
+
+    list1.remove_if([max_](const auto& vec) { return vec.size() != max_; });
 }

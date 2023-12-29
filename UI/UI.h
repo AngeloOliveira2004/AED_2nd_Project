@@ -51,6 +51,7 @@ public:
 
     unordered_set<std::string> get_Filters(bool & Avoid_Or_Only , bool& Yes_or_No);
     bool valid_airline(std::string& airline);
+    void NormaliseList(list<vector<Airport>>& list1);
 private:
     Graph<Airport> g;
     Logic logic = Logic(g);
