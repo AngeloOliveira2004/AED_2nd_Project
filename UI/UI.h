@@ -24,7 +24,9 @@ public:
     void main_menu();
     void statistics_menu();
     void airport_statistics();
-    void airline_statistics();
+    void flight_consultation();
+    void trip_planner();
+
 
     void menu_options();
 

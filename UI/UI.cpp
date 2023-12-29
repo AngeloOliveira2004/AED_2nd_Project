@@ -94,13 +94,57 @@ void UI::main_menu(){
     validate_input(op, 'A', 'D');
     switch(op){
         case 'A':
-            //flight_consultation()
+            flight_consultation();
         case 'B':
-            //statistics_menu()
+            statistics_menu();
         case 'C':
             //trip_planner()
         case 'D':
             //exit_menu()
+    }
+}
+
+void UI::trip_planner(){
+    char op;
+    cout << "How would you like to chose your starting point?" << endl
+         << "A. Origin Airport" << endl
+         << "B. Origin Country" << endl
+         << "C: Origin City" << endl
+         << "C. Origin Coordinates" << endl
+         << "Insert your option:";
+    validate_input(op, 'A', 'D');
+    switch ((op)) {
+        case 'A':
+            string airport_code;
+            cout << "Insert the code of the airport where you would like to go from:" << endl;
+            cin >> airport_code;
+            if(!g.findVertex(airport_code)){
+                cout << "Airport not found. Please enter a valid airport code" << endl;
+            }
+            else{
+                Airport source_airport = Airport(airport_code);
+            }
+            break;
+        case 'B':
+    }
+}
+
+void UI::flight_consultation() {
+    char op;
+    cout << "How would you like to search for your flight? " << endl
+    << "A. Consult number of flights out of an airport and from how many different airlines;" << endl
+    << "B.Consult number of flights per city/airline " << endl
+    << "Insert your choice: ";
+
+    validate_input(op, 'A', 'B');
+    switch(op){
+        case 'A':
+            number_out();
+            break;
+        case 'B':
+            number_flights();
+            break;
+
     }
 }
 
@@ -109,9 +153,8 @@ void UI::statistics_menu(){
     cout << "What statistics would you like to see?" << endl
     << "A. Global Statistics" << endl
     << "B. Airport Statistics" << endl
-    << "C. Airline Statistics" << endl
+    << "C. Airline/City Statistics" << endl
     << "D. Country Statistics" << endl
-    << "E. City Statistics" << endl
     << "Insert your choice:";
 
     validate_input(op, 'A', 'E');
@@ -120,47 +163,38 @@ void UI::statistics_menu(){
             global_numbers();
             break;
         case 'B':
-            //airport_statistics()
+            airport_statistics();
             break;
         case 'C':
-            //airline_statistics()
+            number_flights();
             break;
         case 'D':
-            //country_statistics()
-            break;
-        case 'E':
-            //city_statistics()
+            number_countries();
             break;
     }
 }
+
 
 void UI::airport_statistics(){
-    string code;
-    std::pair<int, int> z = logic.FlightsOutOfAirportAndDifferentAirlines(code);
-    cout << "What airport do you wish to know the statistics?" << endl
-    << "Please enter the airport code:" << endl;
-    cin >> code;
-    Airport chosen = Airport(code);
-    if(!g.findVertex(chosen)){
-        cout << "Airport not found! Please enter a valid airport code";
-        airport_statistics();
+    char op;
+    cout << "Which statistics would you like to know?" << endl
+         <<"A. Consult number of destinations (airports, cities or countries) available for a given airport;" << endl
+         <<"B. Consult number of reachable destinations from a given airport in a maximum of X lay-overs" << endl
+         <<"C. Consult top-k airport with the greatest air traffic capacity, " << endl
+         <<"D. Consult essential airports to the network's circulation capability" << endl
+         << "Insert your option:";
+    validate_input(op, 'A', 'D');
+    switch (op){
+        case 'A':
+            number_reachable_destinations();
+        case 'B':
+            number_reachable_destinations_k();
+        case 'C':
+            greatest_traffic();
+        case 'D':
+            essential_airports();
     }
-    cout << "Here's what we found about the airport you chose:" << endl
-    << "Airport Name: " << chosen.getName() << endl
-    << "Aiport Code: " << code << endl
-    << "Airport Location: " << chosen.getCity() << ", " << chosen.getCountry() << endl
-    << "Flights Comming in: " << g.findVertex(chosen)->getIndegree() << endl
-    << "Flights Going out: " << g.findVertex(chosen)->getAdj().size() << endl
-    << "Number of flights: " << z.first << endl << "Number of different airlines: " << z.second << endl;
-}
 
-void UI::airline_statistics(){
-    string callsign;
-    cout << "What airline do you wish to know the statistics?" << endl
-         << "Please enter the airline callsign:" << endl;
-    cin >> callsign;
-    std::cout << "Number of flights of " << callsign << " airline : " << logic.NumberOfFlightsPerAirline(callsign) << endl;
-    //acrescentar airline(callsign) para poder dar display ao pais etc da airline
 }
 
 
@@ -168,16 +202,16 @@ void UI::menu_options() {
     char op;
     clear_screen();
     cout << "What option would you like to choose?" << endl << '\n'
-         << "A. Consult global number of airports and number of available flights" << endl
-         << "B. Consult number of flights out of an airport and from how many different airlines;" << endl
-         << "C. Consult number of flights per city/airline" << endl
-         << "D. Consult number of different countries that a given airport/city flies to" << endl
-         << "E. Consult number of destinations (airports, cities or countries) available for a given airport;" << endl
-         << "F. Consult number of reachable destinations from a given airport in a maximum of X lay-overs" << endl
+         << "A. Consult global number of airports and number of available flights" << endl //Global statistics
+         << "B. Consult number of flights out of an airport and from how many different airlines;" << endl //flight consultation
+         << "C. Consult number of flights per city/airline" << endl //flight consultation
+         << "D. Consult number of different countries that a given airport/city flies to" << endl //Country statistics
+         << "E. Consult number of destinations (airports, cities or countries) available for a given airport;" << endl // airport statistics
+         << "F. Consult number of reachable destinations from a given airport in a maximum of X lay-overs" << endl // airport statistics
          << "G. Consult trip(s) with the greatest number of stops in between them" << endl
-         << "H. Consult top-k airport with the greatest air traffic capacity, " << endl
-         << "I. Consult essential airports to the network's circulation capability" << endl
-         << "J. Consult best flight option(s) for a given source and destination locations" << endl
+         << "H. Consult top-k airport with the greatest air traffic capacity, " << endl //airport statistics
+         << "I. Consult essential airports to the network's circulation capability" << endl //airport statistics
+         << "J. Consult best flight option(s) for a given source and destination locations" << endl //trip planner (ToDo)
          << "Insert the letter: ";
     validate_input(op,'A','J');
     switch(op){
