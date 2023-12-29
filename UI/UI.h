@@ -21,6 +21,11 @@ public:
 
     bool validate_input(char &op, const char lower_bound, const char upper_bound);
 
+    void main_menu();
+    void statistics_menu();
+    void airport_statistics();
+    void airline_statistics();
+
     void menu_options();
 
     void global_numbers();

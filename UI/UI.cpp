@@ -81,6 +81,89 @@ void UI::menu_start() {
     }
 }
 
+void UI::main_menu(){
+    char op;
+    clear_screen();
+    cout << "What would you like to know?" << endl;
+    cout << "A. Consult Flights" << endl
+         << "B. Consult Flight Statistics" << endl
+         << "C. Plan a Trip" << endl
+         << "D. Exit the Application" << endl
+         << "Insert your choice:";
+
+    validate_input(op, 'A', 'D');
+    switch(op){
+        case 'A':
+            //flight_consultation()
+        case 'B':
+            //statistics_menu()
+        case 'C':
+            //trip_planner()
+        case 'D':
+            //exit_menu()
+    }
+}
+
+void UI::statistics_menu(){
+    char op;
+    cout << "What statistics would you like to see?" << endl
+    << "A. Global Statistics" << endl
+    << "B. Airport Statistics" << endl
+    << "C. Airline Statistics" << endl
+    << "D. Country Statistics" << endl
+    << "E. City Statistics" << endl
+    << "Insert your choice:";
+
+    validate_input(op, 'A', 'E');
+    switch(op){
+        case 'A':
+            global_numbers();
+            break;
+        case 'B':
+            //airport_statistics()
+            break;
+        case 'C':
+            //airline_statistics()
+            break;
+        case 'D':
+            //country_statistics()
+            break;
+        case 'E':
+            //city_statistics()
+            break;
+    }
+}
+
+void UI::airport_statistics(){
+    string code;
+    std::pair<int, int> z = logic.FlightsOutOfAirportAndDifferentAirlines(code);
+    cout << "What airport do you wish to know the statistics?" << endl
+    << "Please enter the airport code:" << endl;
+    cin >> code;
+    Airport chosen = Airport(code);
+    if(!g.findVertex(chosen)){
+        cout << "Airport not found! Please enter a valid airport code";
+        airport_statistics();
+    }
+    cout << "Here's what we found about the airport you chose:" << endl
+    << "Airport Name: " << chosen.getName() << endl
+    << "Aiport Code: " << code << endl
+    << "Airport Location: " << chosen.getCity() << ", " << chosen.getCountry() << endl
+    << "Flights Comming in: " << g.findVertex(chosen)->getIndegree() << endl
+    << "Flights Going out: " << g.findVertex(chosen)->getAdj().size() << endl
+    << "Number of flights: " << z.first << endl << "Number of different airlines: " << z.second << endl;
+}
+
+void UI::airline_statistics(){
+    string callsign;
+    cout << "What airline do you wish to know the statistics?" << endl
+         << "Please enter the airline callsign:" << endl;
+    cin >> callsign;
+    std::cout << "Number of flights of " << callsign << " airline : " << logic.NumberOfFlightsPerAirline(callsign) << endl;
+    //acrescentar airline(callsign) para poder dar display ao pais etc da airline
+}
+
+
 void UI::menu_options() {
     char op;
     clear_screen();
