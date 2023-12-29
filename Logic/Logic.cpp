@@ -1599,11 +1599,6 @@ vector<vector<Airport>> Logic::AirportToLocationAirlineAvoidFilters(Airport sour
     return res;
 }
 
-
-
-
-
-
 void Logic::NormaliseList(list<vector<Airport>>& list1) {
     int max_ = INT_MAX;
 
