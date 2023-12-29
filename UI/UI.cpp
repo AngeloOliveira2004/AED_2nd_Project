@@ -67,7 +67,7 @@ void UI::menu_start() {
     validate_input(op,'A','B');
     switch(op){
         case 'A':
-            menu_options();
+            main_menu();
             break;
         case 'B':
             cout << "Thanks for using our management system app!" << endl << "\n"
@@ -83,7 +83,6 @@ void UI::menu_start() {
 
 void UI::main_menu(){
     char op;
-    clear_screen();
     cout << "What would you like to know?" << endl;
     cout << "A. Consult Flights" << endl
          << "B. Consult Flight Statistics" << endl
@@ -99,7 +98,7 @@ void UI::main_menu(){
             statistics_menu();
             break;
         case 'C':
-            //trip_planner()
+            trip_planner();
             break;
         case 'D':
             //exit_menu()
@@ -112,26 +111,201 @@ void UI::main_menu(){
 void UI::trip_planner(){
     char op;
     cout << "How would you like to chose your starting point?" << endl
-         << "A. Origin Airport" << endl
-         << "B. Origin Country" << endl
-         << "C: Origin City" << endl
-         << "C. Origin Coordinates" << endl
+         << "A. Origin Airport (You may use the name or the code of the airport)" << endl
+         << "B: Origin City (We'll pick all airports in the city)" << endl
+         << "C. Origin Country (We'll pick all airports in the country)" << endl
+         << "D. Origin Coordinates (We'll pick the closest airport/s to the given coordinates)" << endl
          << "Insert your option:";
     validate_input(op, 'A', 'D');
-    string airport_code;
+    string initial_Airport;
+    string destination;
+    unordered_set<string> filters;
+    int choice = 0;
+    bool Avoid_Or_Only ;
+    bool Yes_or_No;
+
+    std::string city;
+    std::string country;
+
+    auto commaPos = country.begin();
     switch ((op)) {
         case 'A':
             cout << "Insert the code of the airport where you would like to go from:" << endl;
-            cin >> airport_code;
-            if(!g.findVertex(airport_code)){
-                cout << "Airport not found. Please enter a valid airport code" << endl;
-            }
-            else{
-                Airport source_airport = Airport(airport_code);
+            cin >> initial_Airport;
+            get_destination(destination , choice , filters);
+            switch (choice) {
+                case 1:
+                    filters = get_Filters(Avoid_Or_Only , Yes_or_No);
+                    if(Yes_or_No)
+                    {
+                        if(Avoid_Or_Only)
+                        {
+                            printList(logic.AirportToAirportAirlineOnlyFilters(Airport(initial_Airport) , Airport(destination) , filters));
+                        }else
+                        {
+                            printList(logic.AirportToAirportAirlineAvoidFilters(Airport(initial_Airport) , Airport(destination) , filters));
+                        }
+                    }
+                    else
+                    {
+                        printList(logic.AirportToAirport(Airport(initial_Airport) , Airport(destination)));
+                    }
+                    main_menu();
+                    break;
+                case 2:
+                    //list<vector<Airport>> AirportToCountry(const Airport& initialAirport, const std::string& country);
+                    //list<vector<Airport>> AirportToCountryAirlineAvoidFilter(Airport initialAirport , std::string country,unordered_set<std::string> airlines);
+                    //list<vector<Airport>> AirportToCountryAirlineOnlyFilter(Airport initialAirport , std::string country,unordered_set<std::string> airlines);
+
+                    filters = get_Filters(Avoid_Or_Only , Yes_or_No);
+
+                    commaPos = std::find(destination.begin(), destination.end(), ',');
+                    if (commaPos != destination.end()) {
+                        // Extract the first part (before the comma) and remove spaces
+                        city = std::string(destination.begin(), commaPos);
+
+                        // Extract the second part (after the comma) and remove spaces
+                        country = std::string(std::find_if_not(commaPos + 1, destination.end(), ::isspace), destination.end());
+                    } else {
+                        std::cout << "Input not valid";
+                        main_menu();
+                    }
+
+                    if(Yes_or_No)
+                    {
+                        list<vector<Airport>> CityToAirport(const Airport& destAirport , const std::string& city, const std::string& country , int choice , unordered_set<std::string> airlines);
+                        list<vector<Airport>> CityToCity(const std::string& InitialCity, const std::string& InitialCountry,const std::string& FinalCity, const std::string& FinalCountry, int choice , const unordered_set<std::string>& airlines);
+                        list<vector<Airport>> CityToCountry(const std::string& Initialcity, const std::string& InitialCountry, const std::string& country , int choice , const unordered_set<std::string>& airlines);
+
+                        if(Avoid_Or_Only)
+                        {
+                            printList(logic.AirportToCityAirlineOnlyFilter(Airport(initial_Airport) , city , country , filters));
+                        }else
+                        {
+                            printList(logic.AirportToCityAirlineAvoidFilter(Airport(initial_Airport) , city , country , filters));
+                        }
+                    }
+                    else
+                    {
+                        printList(logic.AirportToCity(Airport(initial_Airport) , city , country));
+                    }
+                    main_menu();
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
             }
             break;
         case 'B':
+
             break;
+    }
+}
+
+void UI::get_destination(std::string& input , int& choice , unordered_set<std::string>& filters)
+{
+    char op;
+    cout << "Which of these would you like to choose for destination point?" << endl
+         << "A. Destination Airport (You may use the name or the code of the airport)" << endl
+         << "B: Destination City (We'll pick all airports in the city)" << endl
+         << "C. Destination Country (We'll pick all airports in the country)" << endl
+         << "D. Destination Coordinates (We'll pick the closest airport/s to the given coordinates)" << endl
+         << "Insert your option:";
+    validate_input(op, 'A', 'D');
+    switch ((op)) {
+        case 'A':
+            cout << "Insert the code of the airport where you would like to go to:" << endl;
+            cin >> input;
+            choice = 1;
+            break;
+        case 'B':
+            std::cin.ignore(); // Clear the input stream
+            cout << "Insert the city where you would like to go to(Introduce it in the format [City,Country] :" << endl;
+            std::getline(std::cin, input);
+            choice = 2;
+            break;
+        case 'C':
+            cout << "Insert the country of the airport where you would like to go to:" << endl;
+            cin >> input;
+            choice = 3;
+            break;
+        case 'D':
+            cout << "Insert the coordinates of the closest airport where you would like to go to:" << endl;
+            cin >> input;
+            choice = 4;
+            break;
+    }
+}
+
+unordered_set<string> UI::get_Filters(bool& Avoid_Or_Only , bool& Yes_or_No)
+{
+    unordered_set<std::string> filters;
+    string input;
+    char op;
+    cout << "Do you want to use airline filters?"<< endl;
+    cout << "A - Yes" << endl
+         << "B - No" << endl;
+    validate_input(op , 'A' , 'B');
+
+    Yes_or_No = op == 'A';
+    string airline;
+    if(Yes_or_No)
+    {
+        cout << "Introduce all airlines codes that you wish to include. Press 'd' when you're done" << endl;
+        while (airline[0] != 'd')
+        {
+            std::cin >> airline;
+            if(valid_airline(airline))
+            {
+                filters.insert(airline);
+            }else
+            {
+                cout << "Please introduce a proper airline code" << endl;
+            }
+        }
+
+        cout << "Do you wish to travel ONLY by these Airlines or to AVOID them?" << endl;
+        cout << "A - ONLY" << endl
+             << "B - AVOID" << endl;
+        validate_input(op , 'A' , 'B');
+
+        if(op == 'A'){
+            Avoid_Or_Only = true;
+        }else
+        {
+            Avoid_Or_Only = false;
+        }
+    }
+
+    return filters;
+}
+
+bool UI::valid_airline(std::string& airline)
+{
+    if(airline[0] == 'd' && airline.size() == 1)
+        return true;
+
+    if (airline.length() != 3) {
+        return false;
+    }
+
+    return std::all_of(airline.begin(), airline.end(), [](char c) {
+        return std::isupper(c);
+    });
+}
+
+void UI::printList(list<vector<Airport>> a)
+{
+    if(a.empty())
+    {
+        std::cout << "No trip available" << endl;
+    }
+    for(auto v : a){
+        for(int i = 0 ; i < v.size()-1 ; i++){
+            cout << v[i].getCode() << "->";
+        }
+        cout << v[v.size()-1].getCode() << endl;
     }
 }
 
@@ -266,7 +440,7 @@ void UI::global_numbers() {
     cout << "Number of Flights: " << logic.GlobalNumberOfFlights() << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl;
     std::cout << "Press A to go back to the menu: ";
     validate_input(op,'A','A');
-    menu_options();
+    main_menu();
 }
 
 void UI::number_out() {
@@ -289,7 +463,7 @@ void UI::number_out() {
     cout << endl;
     z = logic.FlightsOutOfAirportAndDifferentAirlines(airport_code);
     std::cout << "Number of flights: " << z.first << endl << "Number of different airlines: " << z.second << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl;
-    back_menu();
+    main_menu();
 }
 
 void UI::number_flights() {
@@ -327,6 +501,7 @@ void UI::number_flights() {
             back_menu();
         }
     }
+    main_menu();
 }
 
 void UI::number_countries() {

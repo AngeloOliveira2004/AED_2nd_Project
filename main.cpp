@@ -1,10 +1,12 @@
-    #include <iostream>
-    #include <chrono>
-    #include "Logic/Graph.h"
-    #include "Logic/LoadingFunctions.h"
-    #include "Logic/Logic.h"
+#include <iostream>
+#include <chrono>
+#include "Logic/Graph.h"
+#include "Logic/LoadingFunctions.h"
+#include "Logic/Logic.h"
+#include "UI/UI.h"
 
-    int main() {
+int main() {
+    /*
         Graph<Airport> g;
 
         auto start_time = std::chrono::high_resolution_clock::now();
@@ -18,7 +20,6 @@
         std::cout << "Time taken by LoadFlights: " << duration.count()/1000 << " seconds" << std::endl;
 
         Logic logic = Logic(g);
-        /*
         cout << "Number of Airports: " << logic.GlobalNumberOfAirports() << endl;
 
         cout << "Number of Flights: " << logic.GlobalNumberOfFlights() << endl;
@@ -128,7 +129,7 @@
 
 
         std::cout << "Time taken by everything: " << duration1.count()/1000 << " seconds" << std::endl;
-*/
+
         //TODO NORMALISE LIST OF VECTORS FUNCTION
         Airport airport = Airport("INL");
         Airport airport1 = Airport("LIS");
@@ -147,5 +148,12 @@
         }
 
 
-        return 0;
-    }
+         */
+
+    UI ui;
+    ui.loading_stuff(ui);
+    ui.clear_screen();
+    ui.menu_start();
+    return 0;
+
+}

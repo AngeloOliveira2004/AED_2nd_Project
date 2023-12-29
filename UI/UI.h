@@ -25,8 +25,8 @@ public:
     void airport_statistics();
     void flight_consultation();
     void trip_planner();
-
-
+    void get_destination(std::string &input , int& choice , unordered_set<std::string>& filters);
+    void printList(list<vector<Airport>> a);
     void menu_options();
 
     void global_numbers();
@@ -49,6 +49,8 @@ public:
 
     void greatest_traffic();
 
+    unordered_set<std::string> get_Filters(bool & Avoid_Or_Only , bool& Yes_or_No);
+    bool valid_airline(std::string& airline);
 private:
     Graph<Airport> g;
     Logic logic = Logic(g);
