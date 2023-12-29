@@ -67,6 +67,24 @@ public:
     list<vector<Airport>> CountryToCity(const string &InitialCountry, const string &FinalCity,const string &FinalCountry, int choice, const unordered_set<std::string> &airlines);
     list<vector<Airport>> CountryToCountry(const std::string& InitialCountry, const std::string& country , int choice , const unordered_set<std::string>& airlines);
 
+    vector<vector<Airport>> LocationToAirport(double source_latitude, double source_longitude, Airport dest);
+    vector<vector<Airport>> LocationToCity(double source_latitude, double source_longitude, const std::string city, const std::string& country);
+    vector<vector<Airport>> LocationToCountry(double source_latitude, double source_longitude, const std::string country);
+    vector<vector<Airport>> AirportToLocation(Airport source, double dest_latitude, double dest_longitude);
+    vector<vector<Airport>> CityToLocation(const std::string city, const std::string country, double dest_latitude, double dest_longitude);
+
+    vector<Airport> FindClosestAirportsToLocation(double Latitude, double Longitude);
+
+    vector<vector<Airport>> LocationToAirportAirlineOnlyFilters(double source_latitude, double source_longitude, Airport dest, unordered_set<std::string> airlines);
+    vector<vector<Airport>> LocationToAirportAirlineAvoidFilters(double source_latitude, double source_longitude, Airport dest, unordered_set<std::string> airlines);
+    vector<vector<Airport>> LocationToCityAirlineOnlyFilters(double source_latitude, double source_longitude, const std::string city, const std::string& country, unordered_set<std::string> airlines);
+    vector<vector<Airport>> LocationToCityAirlineAvoidFilters(double source_latitude, double source_longitude, const std::string city, const std::string& country, unordered_set<std::string> airlines);
+    vector<vector<Airport>> LocationToCountryAirlineOnlyFilter(double source_latitude, double source_longitude, const std::string country, unordered_set<std::string> airlines);
+    vector<vector<Airport>> LocationToCountryAirlineAvoidFilter(double source_latitude, double source_longitude, const std::string country, unordered_set<std::string> airlines);
+    vector<vector<Airport>> AirportToLocationAirlineOnlyFilters(Airport source, double dest_latitude, double dest_longitude, unordered_set<std::string> airline);
+    vector<vector<Airport>> AirportToLocationAirlineAvoidFilters(Airport source, double dest_latitude, double dest_longitude, unordered_set<std::string> airline);
+
+
     //Auxiliary functions
     double HaversineAlgorithm(double lat1, double lon1,double lat2, double lon2);
     vector<Airport> nodesAtDistanceBFS(const string &airportCode, int k);
