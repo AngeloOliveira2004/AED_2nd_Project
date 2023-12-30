@@ -718,8 +718,7 @@ vector<Airport> Logic::FindClosestAirportsToLocation(double Latitude, double Lon
     double min_distance = numeric_limits<double>::max();
     for(auto v: graph.getVertexSet()){
         Airport temp = v->getInfo();
-        double dist = HaversineAlgorithm( Latitude, Longitude, temp.getLatitude(), temp.getLongitude());
-        std::cout << temp.getName()<< " | " << temp.getLatitude() << " | " << temp.getLongitude() << " | " << dist << endl;
+        double dist = HaversineAlgorithm(Latitude, Longitude, temp.getLatitude(), temp.getLongitude());
         if(dist < min_distance){
             res.clear();
             min_distance = dist;
@@ -1098,9 +1097,13 @@ Logic::AirportToAirportAirlineOnlyFilters(const Airport& initialAirport, const A
         }
 
         for (const Edge<Airport> &e : v->getAdj()) {
-
+            for(auto strig : airlines)
+            {
+                string temp1 = strig;
+            }
             if(airlines.find(e.getAirline()) != airlines.end())
             {
+                string temp = e.getAirline();
                 Vertex<Airport>* w = e.getDest();
                 if (!w->isVisited()) {
                     w->setParent(v);
@@ -1951,12 +1954,6 @@ Logic::CountryToCountry(const string &InitialCountry, const string &country, int
 }
 
 
-//||||||||||||||||||||||||| Coordinates functions ||||||||||||||||||||||||||||||||||
-/**
- * @brief Normalizes a list of vectors by keeping only the vectors with the maximum size.
- * @param list1 The list of vectors to be normalized.
- * @details O(N) where n is the size of the input
- */
 void Logic::NormaliseList(list<vector<Airport>>& list1) {
     int max_ = INT_MAX;
 

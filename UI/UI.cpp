@@ -9,7 +9,7 @@ void UI::loading_stuff(UI &ui) {
     this->logic = Logic(g);
     ui.load_sets();
     for(auto airline : LoadingFunctions::getAirlines()){
-        airlines.insert(airline.getCallSign());
+        airlines.insert(airline.getCode());
     }
     diameter = g.calculateDiameter();
 }
@@ -203,11 +203,8 @@ void UI::trip_planner(){
                     }
                     main_menu();
                     break;
-
-                    break;
                 case 4:
                     filters = get_Filters(Avoid_Or_Only , Yes_or_No);
-                    filters = get_Filters(Avoid_Or_Only, Yes_or_No);
                     double dest_lat, dest_lon;
                     string str_lat, str_lon;
                     commaPos = std::find(destination.begin(), destination.end(), ',');
@@ -251,9 +248,6 @@ void UI::trip_planner(){
             }
 
             switch (choice) {
-                //list<vector<Airport>> CityToCity(const std::string& InitialCity, const std::string& InitialCountry,const std::string& FinalCity, const std::string& FinalCountry, int choice , const unordered_set<std::string>& airlines);
-                //list<vector<Airport>> CityToCountry(const std::string& Initialcity, const std::string& InitialCountry, const std::string& country , int choice , const unordered_set<std::string>& airlines);
-
                 case 1:
                     filters = get_Filters(Avoid_Or_Only , Yes_or_No);
                     if(Yes_or_No)
@@ -322,8 +316,6 @@ void UI::trip_planner(){
                     }
                     main_menu();
                     break;
-
-                    break;
                 case 4:
                     double dest_lat, dest_lon;
                     string str_lat, str_lon;
@@ -340,15 +332,19 @@ void UI::trip_planner(){
                     if(Yes_or_No){
                         if(Avoid_Or_Only){
                             for(auto dest: destinations){
-                                printList(logic.CityToAirport(Airport(destination) , city , country , 3 , airlines));
+                                printList(logic.CityToAirport(dest, city , country , 3, airlines));
                             }
                         }
                         else{
-                            printList(logic.CityToAirport(Airport(destination) , city , country , 2 , airlines));
+                            for(auto dest: destinations){
+                                printList(logic.CityToAirport(dest , city , country , 2 , airlines));
+                            }
                         }
                     }
                     else{
-                        printList(logic.CityToAirport(Airport(destination) , city , country , 1 , airlines));
+                        for(auto dest: destinations){
+                            printList(logic.CityToAirport(dest , city , country , 1 , airlines));
+                        }
                     }
                     main_menu();
                     break;
@@ -471,10 +467,12 @@ void UI::trip_planner(){
             cout << "Insert the coordinates where you would like to depart from:" << endl;
             double latitude, longitude;
             string str_lat, str_lon;
-            commaPos = std::find(destination.begin(), destination.end(), ',');
-            if (commaPos != destination.end()) {
-                str_lat = std::string(destination.begin(), commaPos);
-                str_lon = std::string(std::find_if_not(commaPos + 1, destination.end(), ::isspace), destination.end());
+            string latlong;
+            cin >> latlong;
+            commaPos = std::find(latlong.begin(), latlong.end(), ',');
+            if (commaPos != latlong.end()) {
+                str_lat = std::string(latlong.begin(), commaPos);
+                str_lon = std::string(std::find_if_not(commaPos + 1, latlong.end(), ::isspace), latlong.end());
             }
             latitude = stod(str_lat);
             longitude = stod(str_lon);
@@ -675,11 +673,13 @@ bool UI::valid_airline(std::string& airline)
 
 void UI::printList(list<vector<Airport>> a)
 {
-    if(a.empty())
+    list<vector<Airport>> normalised;
+    normalised = NormaliseList(a);
+    if(normalised.empty())
     {
         std::cout << "No trip available" << endl;
     }
-    for(auto v : a){
+    for(auto v : normalised){
         for(int i = 0 ; i < v.size()-1 ; i++){
             cout << v[i].getCode() << "->";
         }
@@ -691,7 +691,7 @@ void UI::flight_consultation() {
     char op;
     cout << "How would you like to search for your flight? " << endl
          << "A. Consult number of flights out of an airport and from how many different airlines;" << endl
-         << "B.Consult number of flights per city/airline " << endl
+         << "B. Consult number of flights per city/airline " << endl
          << "Insert your choice: ";
 
     validate_input(op, 'A', 'B');
@@ -869,7 +869,7 @@ void UI::number_flights() {
             string airline_name;
             while(true){
                 airline_name = "";
-                cout << "What's the callsign of the airline you would like to know the information?: ";
+                cout << "What's the code of the airline you would like to know the information?: ";
                 cin >> airline_name;
                 if(this->airlines.find(airline_name) != this->airlines.end()){
                     break;
@@ -1008,13 +1008,21 @@ void UI::essential_airports() {
     back_menu();
 }
 
-void UI::NormaliseList(list<vector<Airport>> &list1) {
-    int max_ = INT_MAX;
+//||||||||||||||||||||||||| Coordinates functions ||||||||||||||||||||||||||||||||||
+/**
+ * @brief Normalizes a list of vectors by keeping only the vectors with the minimum size.
+ * @param list1 The list of vectors to be normalized.
+ * @details O(N) where n is the size of the input
+ */
+list<vector<Airport>> UI::NormaliseList(list<vector<Airport>> &list1) {
+    int min_ = INT_MAX;
 
     for (const auto& it : list1) {
-        if (it.size() < max_)
-            max_ = it.size();
+        if (it.size() < min_)
+            min_ = it.size();
     }
 
-    list1.remove_if([max_](const auto& vec) { return vec.size() != max_; });
+    std::list<vector<Airport>> result;
+    std::copy_if(list1.begin(),list1.end(),std::back_inserter(result),[min_](const auto& vec) { return vec.size() == min_;});
+    return result;
 }
