@@ -407,7 +407,6 @@ void UI::trip_planner(){
                     back_menu();
                     break;
                 case 3:
-                    //list<vector<Airport>> CountryToCountry(const std::string& InitialCountry, const std::string& country , int choice , const unordered_set<std::string>& airlines);
 
                     filters = get_Filters(Avoid_Or_Only , Yes_or_No);
                     if(Yes_or_No)
@@ -765,7 +764,7 @@ void UI::menu_options() {
          << "D. Consult number of different countries that a given airport/city flies to" << endl //Country statistics
          << "E. Consult number of destinations (airports, cities or countries) available for a given airport;" << endl // airport statistics
          << "F. Consult number of reachable destinations from a given airport in a maximum of X lay-overs" << endl // airport statistics
-         << "G. Consult trip(s) with the greatest number of stops in between them" << endl
+         << "G. Consult trip(s) with the greatest number of stops in between them" << endl //
          << "H. Consult top-k airport with the greatest air traffic capacity, " << endl //airport statistics
          << "I. Consult essential airports to the network's circulation capability" << endl //airport statistics
          << "J. Consult best flight option(s) for a given source and destination locations" << endl //trip planner (ToDo)
