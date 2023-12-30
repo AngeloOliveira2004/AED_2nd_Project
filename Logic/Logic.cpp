@@ -979,7 +979,13 @@ vector<vector<Airport>> Logic::AirportToLocationAirlineAvoidFilters(Airport sour
 }
 
 //|||||||||||||||||| FILTERS ||||||||||||||||||
-
+/**
+ * @brief Finds trips from the specified airport to the given airport.
+ * @param initialAirport The source airport.
+ * @param destAirport The destination airport.
+ * @return A list of trips, each represented as a vector of airports.
+ * @details Time complexity: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph.
+ */
 list<vector<Airport>> Logic::AirportToAirport(const Airport& initialAirport, const Airport& destAirport) {
     list<vector<Airport>> res;
     Vertex<Airport>* initialVertex;
@@ -1038,7 +1044,14 @@ list<vector<Airport>> Logic::AirportToAirport(const Airport& initialAirport, con
 
     return res;
 }
-
+/**
+ * @brief Finds trips from the specified airport to the given airport, considering airline filters.
+ * @param initialAirport The source airport.
+ * @param destAirport The destination airport.
+ * @param airlines A set of airline codes to include in the trips.
+ * @return A list of trips, each represented as a vector of airports.
+ * @details Time complexity: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph.
+ */
 list<vector<Airport>>
 Logic::AirportToAirportAirlineOnlyFilters(const Airport& initialAirport, const Airport& destAirport, unordered_set<std::string> airlines) {
     list<vector<Airport>> res;
@@ -1100,7 +1113,14 @@ Logic::AirportToAirportAirlineOnlyFilters(const Airport& initialAirport, const A
 
     return res;
 }
-
+/**
+ * @brief Finds trips from the specified airport to the given airport, avoiding specified airlines.
+ * @param initialAirport The source airport.
+ * @param destAirport The destination airport.
+ * @param airlines A set of airline codes to avoid in the trips.
+ * @return A list of trips, each represented as a vector of airports.
+ * @details Time complexity: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph.
+ */
 list<vector<Airport>>
 Logic::AirportToAirportAirlineAvoidFilters(const Airport &initialAirport, const Airport &destAirport,
                                            unordered_set<std::string> airlines) {
@@ -1544,7 +1564,17 @@ list<vector<Airport>> Logic::AirportToCountryAirlineOnlyFilter(Airport initialAi
 
     return res;
 }
-
+/**
+ * @brief Finds trips from airports in a city to the specified airport.
+ * @param destAirport The destination airport.
+ * @param city The city where the initial airports are located.
+ * @param country The country where the initial airports are located.
+ * @param choice The choice of filter (1: No filter, 2: Airline Avoidance, 3: Airline Only).
+ * @param airlines Set of airlines to avoid or include based on the choice.
+ * @return A list of trips, each represented as a vector of airports.
+ * @details Time complexity: O(I * (V + E)), where I is the number of initial airports, V is the number of vertices (airports),
+ * and E is the number of edges (flights) in the graph.
+ */
 list<vector<Airport>>
 Logic::CityToAirport(const Airport& destAirport , const std::string& city, const std::string& country, int choice, unordered_set<std::string> airlines) {
     vector<Vertex<Airport>*> initialAirports;
@@ -1597,7 +1627,18 @@ Logic::CityToAirport(const Airport& destAirport , const std::string& city, const
 
     return res;
 }
-
+/**
+ * @brief Finds trips from airports in an initial city to airports in a final city.
+ * @param InitialCity The initial city.
+ * @param InitialCountry The country where the initial city is located.
+ * @param FinalCity The final city.
+ * @param FinalCountry The country where the final city is located.
+ * @param choice The choice of filter (1: No filter, 2: Airline Avoidance, 3: Airline Only).
+ * @param airlines Set of airlines to avoid or include based on the choice.
+ * @return A list of trips, each represented as a vector of airports.
+ * @details Time complexity: O(I * (V + E)), where I is the number of initial airports, V is the number of vertices (airports),
+ * and E is the number of edges (flights) in the graph.
+ */
 list<vector<Airport>>
 Logic::CityToCity(const std::string& InitialCity, const std::string& InitialCountry,const std::string& FinalCity, const std::string& FinalCountry, int choice, const unordered_set<std::string>& airlines) {
 
@@ -1652,7 +1693,17 @@ Logic::CityToCity(const std::string& InitialCity, const std::string& InitialCoun
     return res;
 }
 
-
+/**
+ * @brief Finds trips from airports in an initial city to airports in a final country.
+ * @param Initialcity The initial city.
+ * @param InitialCountry The country where the initial city is located.
+ * @param FinalCountry The country where the final city is located.
+ * @param choice The choice of filter (1: No filter, 2: Airline Avoidance, 3: Airline Only).
+ * @param airlines Set of airlines to avoid or include based on the choice.
+ * @return A list of trips, each represented as a vector of airports.
+ * @details Time complexity: O(I * (V + E)), where I is the number of initial airports, V is the number of vertices (airports),
+ * and E is the number of edges (flights) in the graph.
+ */
 list<vector<Airport>>
 Logic::CityToCountry(const std::string& Initialcity, const std::string& InitialCountry, const std::string& FinalCountry, int choice, const unordered_set<string>& airlines) {
     vector<Vertex<Airport>*> initialAirports;
@@ -1705,7 +1756,16 @@ Logic::CityToCountry(const std::string& Initialcity, const std::string& InitialC
 
     return res;
 }
-
+/**
+ * @brief Finds trips from airports in a country to the specified airport.
+ * @param destAirport The destination airport.
+ * @param country The country where the initial airports are located.
+ * @param choice The choice of filter (1: No filter, 2: Airline Avoidance, 3: Airline Only).
+ * @param airlines Set of airlines to avoid or include based on the choice.
+ * @return A list of trips, each represented as a vector of airports.
+ * @details Time complexity: O(I * (V + E)), where I is the number of initial airports, V is the number of vertices (airports),
+ * and E is the number of edges (flights) in the graph.
+ */
 list<vector<Airport>>
 Logic::CountryToAirport(const Airport &destAirport, const string &country, int choice,
                         unordered_set<std::string> airlines) {
@@ -1760,7 +1820,17 @@ Logic::CountryToAirport(const Airport &destAirport, const string &country, int c
 
     return res;
 }
-
+/**
+ * @brief Finds trips from airports in a country to airports in the specified city.
+ * @param InitialCountry The country where the initial airports are located.
+ * @param FinalCity The final city.
+ * @param FinalCountry The country where the final city is located.
+ * @param choice The choice of filter (1: No filter, 2: Airline Avoidance, 3: Airline Only).
+ * @param airlines Set of airlines to avoid or include based on the choice.
+ * @return A list of trips, each represented as a vector of airports.
+ * @details Time complexity: O(I * (V + E)), where I is the number of initial airports, V is the number of vertices (airports),
+ * and E is the number of edges (flights) in the graph.
+ */
 list<vector<Airport>>
 Logic::CountryToCity(const string &InitialCountry, const string &FinalCity,
                      const string &FinalCountry, int choice, const unordered_set<std::string> &airlines) {
@@ -1815,7 +1885,16 @@ Logic::CountryToCity(const string &InitialCountry, const string &FinalCity,
 
     return res;
 }
-
+/**
+ * @brief Finds trips from airports in a country to airports in another country.
+ * @param InitialCountry The country where the initial airports are located.
+ * @param country The country where the final airports are located.
+ * @param choice The choice of filter (1: No filter, 2: Airline Avoidance, 3: Airline Only).
+ * @param airlines Set of airlines to avoid or include based on the choice.
+ * @return A list of trips, each represented as a vector of airports.
+ * @details Time complexity: O(I * (V + E)), where I is the number of initial airports, V is the number of vertices (airports),
+ * and E is the number of edges (flights) in the graph.
+ */
 list<vector<Airport>>
 Logic::CountryToCountry(const string &InitialCountry, const string &country, int choice,
                         const unordered_set<std::string> &airlines) {
@@ -1873,7 +1952,11 @@ Logic::CountryToCountry(const string &InitialCountry, const string &country, int
 
 
 //||||||||||||||||||||||||| Coordinates functions ||||||||||||||||||||||||||||||||||
-
+/**
+ * @brief Normalizes a list of vectors by keeping only the vectors with the maximum size.
+ * @param list1 The list of vectors to be normalized.
+ * @details O(N) where n is the size of the input
+ */
 void Logic::NormaliseList(list<vector<Airport>>& list1) {
     int max_ = INT_MAX;
 

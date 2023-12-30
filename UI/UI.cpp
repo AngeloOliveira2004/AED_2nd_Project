@@ -8,7 +8,7 @@ void UI::loading_stuff(UI &ui) {
     LoadingFunctions::LoadFlights(g);
     this->logic = Logic(g);
     ui.load_sets();
-    for(auto airline : LoadingFunctions::getArlines()){
+    for(auto airline : LoadingFunctions::getAirlines()){
         airlines.insert(airline.getCallSign());
     }
     diameter = g.calculateDiameter();
