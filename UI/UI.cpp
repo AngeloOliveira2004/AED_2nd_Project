@@ -152,7 +152,7 @@ void UI::trip_planner(){
                     {
                         printList(logic.AirportToAirport(Airport(initial_Airport) , Airport(destination)));
                     }
-                    main_menu();
+                    back_menu();
                     break;
                 case 2:
                     filters = get_Filters(Avoid_Or_Only , Yes_or_No);
@@ -166,7 +166,7 @@ void UI::trip_planner(){
                         country = std::string(std::find_if_not(commaPos + 1, destination.end(), ::isspace), destination.end());
                     } else {
                         std::cout << "Input not valid";
-                        main_menu();
+                        back_menu();
                     }
 
                     if(Yes_or_No)
@@ -183,7 +183,7 @@ void UI::trip_planner(){
                     {
                         printList(logic.AirportToCity(Airport(initial_Airport) , city , country));
                     }
-                    main_menu();
+                    back_menu();
                     break;
                 case 3:
                     filters = get_Filters(Avoid_Or_Only , Yes_or_No);
@@ -201,7 +201,7 @@ void UI::trip_planner(){
                     {
                         printList(logic.AirportToCountry(initial_Airport , destination));
                     }
-                    main_menu();
+                    back_menu();
                     break;
                 case 4:
                     filters = get_Filters(Avoid_Or_Only , Yes_or_No);
@@ -225,7 +225,7 @@ void UI::trip_planner(){
                     else{
                         printList(logic.AirportToLocation(Airport(initial_Airport), dest_lat, dest_lon));
                     }
-                    main_menu();
+                    back_menu();
                     break;
             }
             break;
@@ -244,7 +244,7 @@ void UI::trip_planner(){
                 country = std::string(std::find_if_not(commaPos + 1, initial_Airport.end(), ::isspace), initial_Airport.end());
             } else {
                 std::cout << "Input not valid";
-                main_menu();
+                back_menu();
             }
 
             switch (choice) {
@@ -264,7 +264,7 @@ void UI::trip_planner(){
                     {
                         printList(logic.CityToAirport(Airport(destination) , city , country , 1 , filters));
                     }
-                    main_menu();
+                    back_menu();
                     break;
                 case 2:
                     filters = get_Filters(Avoid_Or_Only , Yes_or_No);
@@ -278,7 +278,7 @@ void UI::trip_planner(){
                         second_country = std::string(std::find_if_not(commaPos + 1, destination.end(), ::isspace), destination.end());
                     } else {
                         std::cout << "Input not valid";
-                        main_menu();
+                        back_menu();
                     }
 
                     if(Yes_or_No)
@@ -295,7 +295,7 @@ void UI::trip_planner(){
                     {
                         printList(logic.CityToCity(city , country , second_city , second_country , 1 , filters));
                     }
-                    main_menu();
+                    back_menu();
                     break;
                 case 3:
                     filters = get_Filters(Avoid_Or_Only , Yes_or_No);
@@ -313,7 +313,7 @@ void UI::trip_planner(){
                     {
                         printList(logic.CityToCountry(city , country , destination , 1 , filters));
                     }
-                    main_menu();
+                    back_menu();
                     break;
                 case 4:
                     double dest_lat, dest_lon;
@@ -345,7 +345,7 @@ void UI::trip_planner(){
                             printList(logic.CityToAirport(dest , city , country , 1 , filters));
                         }
                     }
-                    main_menu();
+                    back_menu();
                     break;
             }
             break;
@@ -372,7 +372,7 @@ void UI::trip_planner(){
                     {
                         printList(logic.CountryToAirport(Airport(destination) , country , 1 , filters));
                     }
-                    main_menu();
+                    back_menu();
                     break;
                 case 2:
 
@@ -387,7 +387,7 @@ void UI::trip_planner(){
                         second_country = std::string(std::find_if_not(commaPos + 1, destination.end(), ::isspace), destination.end());
                     } else {
                         std::cout << "Input not valid";
-                        main_menu();
+                        back_menu();
                     }
 
                     if(Yes_or_No)
@@ -404,7 +404,7 @@ void UI::trip_planner(){
                     {
                         printList(logic.CountryToCity(country , second_city , second_country , 1 , filters));
                     }
-                    main_menu();
+                    back_menu();
                     break;
                 case 3:
                     //list<vector<Airport>> CountryToCountry(const std::string& InitialCountry, const std::string& country , int choice , const unordered_set<std::string>& airlines);
@@ -424,7 +424,7 @@ void UI::trip_planner(){
                     {
                         printList(logic.CountryToCountry(country , destination , 1 , filters));
                     }
-                    main_menu();
+                    back_menu();
                     break;
 
                     break;
@@ -457,7 +457,7 @@ void UI::trip_planner(){
                             printList(logic.CountryToAirport(dest,  country, 1, filters));
                         }
                     }
-                    main_menu();
+                    back_menu();
                     break;
 
             }
@@ -496,7 +496,7 @@ void UI::trip_planner(){
 
                         printList(logic.LocationToAirport(latitude, longitude, destination));
                     }
-                    main_menu();
+                    back_menu();
                     break;
                 case 2:
                     filters = get_Filters(Avoid_Or_Only, Yes_or_No);
@@ -509,7 +509,7 @@ void UI::trip_planner(){
                         country = std::string(std::find_if_not(commaPos + 1, destination.end(), ::isspace), destination.end());
                     } else {
                         std::cout << "Input not valid";
-                        main_menu();
+                        back_menu();
                     }
 
                     if(Yes_or_No){
@@ -524,7 +524,7 @@ void UI::trip_planner(){
                     else{
                         printList(logic.LocationToCity(latitude, longitude, city, country));
                     }
-                    main_menu();
+                    back_menu();
                     break;
                 case 3:
                     filters = get_Filters(Avoid_Or_Only, Yes_or_No);
@@ -539,7 +539,7 @@ void UI::trip_planner(){
                     else{
                         printList(logic.LocationToCountry(latitude, longitude, country));
                     }
-                    main_menu();
+                    back_menu();
                     break;
                 case 4:
                     filters = get_Filters(Avoid_Or_Only, Yes_or_No);
@@ -808,16 +808,14 @@ void UI::back_menu(){
     char op;
     std::cout << "Press A to go back to the menu: ";
     validate_input(op,'A','A');
-    menu_options();
+    main_menu();
 }
 
 void UI::global_numbers() {
     char op;
     cout << "Number of Airports: " << logic.GlobalNumberOfAirports() << endl;
     cout << "Number of Flights: " << logic.GlobalNumberOfFlights() << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl;
-    std::cout << "Press A to go back to the menu: ";
-    validate_input(op,'A','A');
-    main_menu();
+    back_menu();
 }
 
 void UI::number_out() {
@@ -839,8 +837,8 @@ void UI::number_out() {
 
     cout << endl;
     z = logic.FlightsOutOfAirportAndDifferentAirlines(airport_code);
-    std::cout << "Number of flights: " << z.first << endl << "Number of different airlines: " << z.second << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl;
-    main_menu();
+    std::cout << "Number of flights: " << z.first << endl << "Number of different airlines: " << z.second << endl << endl << endl << endl << endl << endl << endl << endl << endl;
+    back_menu();
 }
 
 void UI::number_flights() {
@@ -878,7 +876,6 @@ void UI::number_flights() {
             back_menu();
         }
     }
-    main_menu();
 }
 
 void UI::number_countries() {
