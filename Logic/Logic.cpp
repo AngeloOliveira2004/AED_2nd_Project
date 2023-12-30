@@ -739,9 +739,9 @@ vector<Airport> Logic::FindClosestAirportsToLocation(double Latitude, double Lon
  * @return A vector of trips, each represented as a vector of airports.
  * @details Time complexity: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph.
  */
-vector<vector<Airport>> Logic::LocationToAirport(double source_latitude, double source_longitude, Airport dest){
+list<vector<Airport>> Logic::LocationToAirport(double source_latitude, double source_longitude, Airport dest){
     vector<Airport> sources = FindClosestAirportsToLocation(source_latitude, source_longitude);
-    vector<vector<Airport>> res;
+    list<vector<Airport>> res;
     for(auto airport: sources){
         for(auto trip: AirportToAirport(airport, dest)){
             res.push_back(trip);
@@ -759,9 +759,9 @@ vector<vector<Airport>> Logic::LocationToAirport(double source_latitude, double 
  * @return A vector of trips, each represented as a vector of airports.
  * @details Time complexity: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph.
  */
-vector<vector<Airport>> Logic::LocationToCity(double source_latitude, double source_longitude, const std::string city, const std::string& country){
+list<vector<Airport>> Logic::LocationToCity(double source_latitude, double source_longitude, const std::string city, const std::string& country){
     vector<Airport> sources = FindClosestAirportsToLocation(source_latitude, source_longitude);
-    vector<vector<Airport>> res;
+    list<vector<Airport>> res;
     for(auto airport: sources){
         for(auto trip: AirportToCity(airport, city, country)){
             res.push_back(trip);
@@ -778,9 +778,9 @@ vector<vector<Airport>> Logic::LocationToCity(double source_latitude, double sou
  * @return A vector of trips, each represented as a vector of airports.
  * @details Time complexity: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph.
  */
-vector<vector<Airport>> Logic::LocationToCountry(double source_latitude, double source_longitude, const std::string country){
+list<vector<Airport>> Logic::LocationToCountry(double source_latitude, double source_longitude, const std::string country){
     vector<Airport> sources = FindClosestAirportsToLocation(source_latitude, source_longitude);
-    vector<vector<Airport>> res;
+    list<vector<Airport>> res;
     for(auto airport: sources){
         for(auto trip: AirportToCountry(airport, country)){
             res.push_back(trip);
@@ -797,9 +797,9 @@ vector<vector<Airport>> Logic::LocationToCountry(double source_latitude, double 
  * @return A vector of trips, each represented as a vector of airports.
  * @details Time complexity: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph.
  */
-vector<vector<Airport>> Logic::AirportToLocation(Airport source, double dest_latitude, double dest_longitude){
+list<vector<Airport>> Logic::AirportToLocation(Airport source, double dest_latitude, double dest_longitude){
     vector<Airport> destinies = FindClosestAirportsToLocation(dest_latitude, dest_longitude);
-    vector<vector<Airport>> res;
+    list<vector<Airport>> res;
     for(auto airport: destinies){
         for(auto trip: AirportToAirport(source, airport)){
             res.push_back(trip);
@@ -816,9 +816,9 @@ vector<vector<Airport>> Logic::AirportToLocation(Airport source, double dest_lat
  * @return A vector of trips, each represented as a vector of airports.
  * @details Time complexity: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph.
  */
-vector<vector<Airport>> Logic::CityToLocation(const std::string city, const std::string country, double dest_latitude, double dest_longitude){
+list<vector<Airport>> Logic::CityToLocation(const std::string city, const std::string country, double dest_latitude, double dest_longitude){
     vector<Airport> destinies = FindClosestAirportsToLocation(dest_latitude, dest_longitude);
-    vector<vector<Airport>> res;
+    list<vector<Airport>> res;
     unordered_set<std::string> airline_names;
     for(auto airport: destinies){
         for(auto trip: CityToAirport(airport, city, country, 1, airline_names)){
@@ -836,9 +836,9 @@ vector<vector<Airport>> Logic::CityToLocation(const std::string city, const std:
  * @return A vector of trips, each represented as a vector of airports.
  * @details Time complexity: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph.
  */
-vector<vector<Airport>> Logic::LocationToAirportAirlineOnlyFilters(double source_latitude, double source_longitude, Airport dest, unordered_set<std::string> airlines){
+list<vector<Airport>> Logic::LocationToAirportAirlineOnlyFilters(double source_latitude, double source_longitude, Airport dest, unordered_set<std::string> airlines){
     vector<Airport> sources = FindClosestAirportsToLocation(source_latitude, source_longitude);
-    vector<vector<Airport>> res;
+    list<vector<Airport>> res;
     for(auto airport: sources){
         for(auto trip: AirportToAirportAirlineOnlyFilters(airport, dest, airlines))
             res.push_back(trip);
@@ -854,9 +854,9 @@ vector<vector<Airport>> Logic::LocationToAirportAirlineOnlyFilters(double source
  * @return A vector of trips, each represented as a vector of airports.
  * @details Time complexity: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph.
  */
-vector<vector<Airport>> Logic::LocationToAirportAirlineAvoidFilters(double source_latitude, double source_longitude, Airport dest, unordered_set<std::string> airlines){
+list<vector<Airport>> Logic::LocationToAirportAirlineAvoidFilters(double source_latitude, double source_longitude, Airport dest, unordered_set<std::string> airlines){
     vector<Airport> sources = FindClosestAirportsToLocation(source_latitude, source_longitude);
-    vector<vector<Airport>> res;
+    list<vector<Airport>> res;
     for(auto airport: sources){
         for(auto trip: AirportToAirportAirlineAvoidFilters(airport, dest, airlines))
             res.push_back(trip);
@@ -873,9 +873,9 @@ vector<vector<Airport>> Logic::LocationToAirportAirlineAvoidFilters(double sourc
  * @return A vector of trips, each represented as a vector of airports.
  * @details Time complexity: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph.
  */
-vector<vector<Airport>> Logic::LocationToCityAirlineOnlyFilters(double source_latitude, double source_longitude, const std::string city, const std::string& country, unordered_set<std::string> airlines){
+list<vector<Airport>> Logic::LocationToCityAirlineOnlyFilters(double source_latitude, double source_longitude, const std::string city, const std::string& country, unordered_set<std::string> airlines){
     vector<Airport> sources = FindClosestAirportsToLocation(source_latitude, source_longitude);
-    vector<vector<Airport>> res;
+    list<vector<Airport>> res;
     for(auto airport: sources){
         for(auto trip: AirportToCityAirlineOnlyFilter(airport, city, country, airlines))
             res.push_back(trip);
@@ -892,9 +892,9 @@ vector<vector<Airport>> Logic::LocationToCityAirlineOnlyFilters(double source_la
  * @return A vector of trips, each represented as a vector of airports.
  * @details Time complexity: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph.
  */
-vector<vector<Airport>> Logic::LocationToCityAirlineAvoidFilters(double source_latitude, double source_longitude, const std::string city, const std::string& country, unordered_set<std::string> airlines){
+list<vector<Airport>> Logic::LocationToCityAirlineAvoidFilters(double source_latitude, double source_longitude, const std::string city, const std::string& country, unordered_set<std::string> airlines){
     vector<Airport> sources = FindClosestAirportsToLocation(source_latitude, source_longitude);
-    vector<vector<Airport>> res;
+    list<vector<Airport>> res;
     for(auto airport: sources){
         for(auto trip: AirportToCityAirlineAvoidFilter(airport, city, country, airlines))
             res.push_back(trip);
@@ -910,9 +910,9 @@ vector<vector<Airport>> Logic::LocationToCityAirlineAvoidFilters(double source_l
  * @return A vector of trips, each represented as a vector of airports.
  * @details Time complexity: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph.
  */
-vector<vector<Airport>> Logic::LocationToCountryAirlineOnlyFilter(double source_latitude, double source_longitude, const std::string country, unordered_set<std::string> airlines){
+list<vector<Airport>> Logic::LocationToCountryAirlineOnlyFilter(double source_latitude, double source_longitude, const std::string country, unordered_set<std::string> airlines){
     vector<Airport> sources = FindClosestAirportsToLocation(source_latitude, source_longitude);
-    vector<vector<Airport>> res;
+    list<vector<Airport>> res;
     for(auto airport: sources){
         for(auto trip: AirportToCountryAirlineOnlyFilter(airport, country, airlines)) {
             res.push_back(trip);
@@ -929,9 +929,9 @@ vector<vector<Airport>> Logic::LocationToCountryAirlineOnlyFilter(double source_
 * @return A vector of trips, each represented as a vector of airports.
 * @details Time complexity: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph.
 */
-vector<vector<Airport>> Logic::LocationToCountryAirlineAvoidFilter(double source_latitude, double source_longitude, const std::string country, unordered_set<std::string> airlines){
+list<vector<Airport>> Logic::LocationToCountryAirlineAvoidFilter(double source_latitude, double source_longitude, const std::string country, unordered_set<std::string> airlines){
     vector<Airport> sources = FindClosestAirportsToLocation(source_latitude, source_longitude);
-    vector<vector<Airport>> res;
+    list<vector<Airport>> res;
     for(auto airport: sources){
         for(auto trip: AirportToCountryAirlineAvoidFilter(airport, country, airlines)) {
             res.push_back(trip);
@@ -948,9 +948,9 @@ vector<vector<Airport>> Logic::LocationToCountryAirlineAvoidFilter(double source
  * @return A vector of trips, each represented as a vector of airports.
  * @details Time complexity: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph.
  */
-vector<vector<Airport>> Logic::AirportToLocationAirlineOnlyFilters(Airport source, double dest_latitude, double dest_longitude, unordered_set<std::string> airline){
+list<vector<Airport>> Logic::AirportToLocationAirlineOnlyFilters(Airport source, double dest_latitude, double dest_longitude, unordered_set<std::string> airline){
     vector<Airport> destinies = FindClosestAirportsToLocation(dest_latitude, dest_longitude);
-    vector<vector<Airport>> res;
+    list<vector<Airport>> res;
     for(auto airport: destinies){
         for(auto trip: AirportToAirportAirlineOnlyFilters(source, airport, airline)){
             res.push_back(trip);
@@ -967,9 +967,9 @@ vector<vector<Airport>> Logic::AirportToLocationAirlineOnlyFilters(Airport sourc
  * @return A vector of trips, each represented as a vector of airports.
  * @details Time complexity: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph.
  */
-vector<vector<Airport>> Logic::AirportToLocationAirlineAvoidFilters(Airport source, double dest_latitude, double dest_longitude, unordered_set<std::string> airline){
+list<vector<Airport>> Logic::AirportToLocationAirlineAvoidFilters(Airport source, double dest_latitude, double dest_longitude, unordered_set<std::string> airline){
     vector<Airport> destinies = FindClosestAirportsToLocation(dest_latitude, dest_longitude);
-    vector<vector<Airport>> res;
+    list<vector<Airport>> res;
     for(auto airport: destinies){
         for(auto trip: AirportToAirportAirlineAvoidFilters(source, airport, airline)){
             res.push_back(trip);

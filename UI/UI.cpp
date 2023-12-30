@@ -206,7 +206,29 @@ void UI::trip_planner(){
 
                     break;
                 case 4:
-
+                    filters = get_Filters(Avoid_Or_Only , Yes_or_No);
+                    filters = get_Filters(Avoid_Or_Only, Yes_or_No);
+                    double dest_lat, dest_lon;
+                    string str_lat, str_lon;
+                    commaPos = std::find(destination.begin(), destination.end(), ',');
+                    if (commaPos != destination.end()) {
+                        str_lat = std::string(destination.begin(), commaPos);
+                        str_lon = std::string(std::find_if_not(commaPos + 1, destination.end(), ::isspace), destination.end());
+                    }
+                    dest_lat = stod(str_lat);
+                    dest_lon = stod(str_lon);
+                    if(Yes_or_No){
+                        if(Avoid_Or_Only){
+                            printList(logic.AirportToLocationAirlineOnlyFilters(Airport(initial_Airport), dest_lat, dest_lon, filters));
+                        }
+                        else{
+                            printList(logic.AirportToLocationAirlineAvoidFilters(Airport(initial_Airport), dest_lat, dest_lon, filters));
+                        }
+                    }
+                    else{
+                        printList(logic.AirportToLocation(Airport(initial_Airport), dest_lat, dest_lon));
+                    }
+                    main_menu();
                     break;
             }
             break;
@@ -303,7 +325,32 @@ void UI::trip_planner(){
 
                     break;
                 case 4:
-
+                    double dest_lat, dest_lon;
+                    string str_lat, str_lon;
+                    commaPos = std::find(destination.begin(), destination.end(), ',');
+                    if (commaPos != destination.end()) {
+                        str_lat = std::string(destination.begin(), commaPos);
+                        str_lon = std::string(std::find_if_not(commaPos + 1, destination.end(), ::isspace), destination.end());
+                    }
+                    dest_lat = stod(str_lat);
+                    dest_lon = stod(str_lon);
+                    vector<Airport> destinations = logic.FindClosestAirportsToLocation(dest_lat, dest_lon);
+                    //CIty to location
+                    filters = get_Filters(Avoid_Or_Only , Yes_or_No);
+                    if(Yes_or_No){
+                        if(Avoid_Or_Only){
+                            for(auto dest: destinations){
+                                printList(logic.CityToAirport(Airport(destination) , city , country , 3 , airlines));
+                            }
+                        }
+                        else{
+                            printList(logic.CityToAirport(Airport(destination) , city , country , 2 , airlines));
+                        }
+                    }
+                    else{
+                        printList(logic.CityToAirport(Airport(destination) , city , country , 1 , airlines));
+                    }
+                    main_menu();
                     break;
             }
             break;
@@ -387,13 +434,149 @@ void UI::trip_planner(){
 
                     break;
                 case 4:
-
+                    filters = get_Filters(Avoid_Or_Only, Yes_or_No);
+                    double dest_lat, dest_lon;
+                    string str_lat, str_lon;
+                    commaPos = std::find(destination.begin(), destination.end(), ',');
+                    if (commaPos != destination.end()) {
+                        str_lat = std::string(destination.begin(), commaPos);
+                        str_lon = std::string(std::find_if_not(commaPos + 1, destination.end(), ::isspace), destination.end());
+                    }
+                    dest_lat = stod(str_lat);
+                    dest_lon = stod(str_lon);
+                    vector<Airport> destinations = logic.FindClosestAirportsToLocation(dest_lat, dest_lon);
+                    if(Yes_or_No){
+                        if(Avoid_Or_Only){
+                            for(auto dest: destinations){
+                                printList(logic.CountryToAirport(dest,  country, 3, airlines));
+                            }
+                        }
+                        else{
+                            for(auto dest: destinations){
+                                printList(logic.CountryToAirport(dest,  country, 2, airlines));
+                            }
+                        }
+                    }
+                    else{
+                        for(auto dest: destinations){
+                            printList(logic.CountryToAirport(dest,  country, 1, airlines));
+                        }
+                    }
+                    main_menu();
                     break;
+
             }
             break;
         case 'D':
+            cout << "Insert the coordinates where you would like to depart from:" << endl;
+            double latitude, longitude;
+            string str_lat, str_lon;
+            commaPos = std::find(destination.begin(), destination.end(), ',');
+            if (commaPos != destination.end()) {
+                str_lat = std::string(destination.begin(), commaPos);
+                str_lon = std::string(std::find_if_not(commaPos + 1, destination.end(), ::isspace), destination.end());
+            }
+            latitude = stod(str_lat);
+            longitude = stod(str_lon);
+            get_destination(destination , choice , filters);
 
-            break;
+
+            switch(choice){
+                case 1:
+                    filters = get_Filters(Avoid_Or_Only , Yes_or_No);
+                    if(Yes_or_No)
+                    {
+                        if(Avoid_Or_Only)
+                        {
+                            printList(logic.LocationToAirportAirlineOnlyFilters(latitude, longitude, Airport(destination), filters));
+
+                        }else{
+                            printList(logic.LocationToAirportAirlineAvoidFilters(latitude, longitude, Airport(destination), filters));
+                        }
+                    }
+                    else
+                    {
+
+                        printList(logic.LocationToAirport(latitude, longitude, destination));
+                    }
+                    main_menu();
+                    break;
+                case 2:
+                    filters = get_Filters(Avoid_Or_Only, Yes_or_No);
+                    commaPos = std::find(destination.begin(), destination.end(), ',');
+                    if (commaPos != destination.end()) {
+                        // Extract the first part (before the comma) and remove spaces
+                        city = std::string(destination.begin(), commaPos);
+
+                        // Extract the second part (after the comma) and remove spaces
+                        country = std::string(std::find_if_not(commaPos + 1, destination.end(), ::isspace), destination.end());
+                    } else {
+                        std::cout << "Input not valid";
+                        main_menu();
+                    }
+
+                    if(Yes_or_No){
+                        if(Avoid_Or_Only){
+                            printList(logic.LocationToCityAirlineOnlyFilters(latitude, longitude, city, country, filters));
+
+                        }
+                        else{
+                            printList(logic.LocationToCityAirlineAvoidFilters(latitude, longitude, city, country, filters));
+                        }
+                    }
+                    else{
+                        printList(logic.LocationToCity(latitude, longitude, city, country));
+                    }
+                    main_menu();
+                    break;
+                case 3:
+                    filters = get_Filters(Avoid_Or_Only, Yes_or_No);
+                    if(Yes_or_No){
+                        if(Avoid_Or_Only){
+                            printList(logic.LocationToCountryAirlineOnlyFilter(latitude, longitude, country, filters));
+                        }
+                        else{
+                            printList(logic.LocationToCountryAirlineAvoidFilter(latitude, longitude, country, filters));
+                        }
+                    }
+                    else{
+                        printList(logic.LocationToCountry(latitude, longitude, country));
+                    }
+                    main_menu();
+                    break;
+                case 4:
+                    filters = get_Filters(Avoid_Or_Only, Yes_or_No);
+                    double dest_lat, dest_lon;
+                    string str_lat, str_lon;
+                    commaPos = std::find(destination.begin(), destination.end(), ',');
+                    if (commaPos != destination.end()) {
+                        str_lat = std::string(destination.begin(), commaPos);
+                        str_lon = std::string(std::find_if_not(commaPos + 1, destination.end(), ::isspace), destination.end());
+                    }
+                    dest_lat = stod(str_lat);
+                    dest_lon = stod(str_lon);
+                    vector<Airport> destinations = logic.FindClosestAirportsToLocation(dest_lat, dest_lon);
+                    if(Yes_or_No){
+                        if(Avoid_Or_Only){
+                            for (auto dest: destinations){
+                                printList(logic.LocationToAirportAirlineOnlyFilters(latitude, longitude, dest, airlines));
+                            }
+                        }
+                        else{
+
+                            for (auto dest: destinations){
+                                printList(logic.LocationToAirportAirlineAvoidFilters(latitude, longitude, dest, airlines));
+                            }
+
+                        }
+                    }
+                    else{
+                        for (auto dest: destinations){
+                            printList(logic.LocationToAirport(latitude, longitude, dest));
+                        }
+
+                    }
+            }
     }
 }
 
@@ -425,8 +608,9 @@ void UI::get_destination(std::string& input , int& choice , unordered_set<std::s
             choice = 3;
             break;
         case 'D':
+            std::cin.ignore();
             cout << "Insert the coordinates of the closest airport where you would like to go to:" << endl;
-            cin >> input;
+            std::getline(std::cin, input);
             choice = 4;
             break;
     }
