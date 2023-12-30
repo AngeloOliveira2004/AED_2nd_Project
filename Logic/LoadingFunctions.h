@@ -40,7 +40,8 @@ public:
      * @return The set of loaded airlines.
      * @details Time complexity: O(1)
      */
-    static std::unordered_set<Airline> getAirlines() { return airlines; };
+    static std::unordered_set<Airline> getAirlines();
+
 
 private:
     static std::unordered_set<Airport> airports;

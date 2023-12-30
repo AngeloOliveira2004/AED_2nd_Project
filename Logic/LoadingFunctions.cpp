@@ -180,3 +180,8 @@ double LoadingFunctions::HaversineAlgorithm(double lat1, double lon1,double lat2
     double c = 2 * asin(sqrt(a));
     return rad * c;
 }
+
+std::unordered_set<Airline> LoadingFunctions::getAirlines() {
+     return airlines;
+}
+
