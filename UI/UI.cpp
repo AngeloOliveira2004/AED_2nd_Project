@@ -101,7 +101,13 @@ void UI::main_menu(){
             trip_planner();
             break;
         case 'D':
-            //exit_menu()
+            cout << "Thanks for using our management system app!" << endl << "\n"
+                 << "Made by: " << endl
+                 << "Ângelo Oliveira || 202207798" << endl
+                 << "José Costa      || 202207871" << endl
+                 << "Bernardo Sousa  || 202206009" << endl;
+            this_thread::sleep_for(chrono::seconds(2)); // Espera 2 segundos antes de fechar o terminal
+            exit(0);
             break;
         default:
             std::cerr << "Error";
@@ -711,6 +717,7 @@ void UI::statistics_menu(){
          << "B. Airport Statistics" << endl
          << "C. Airline/City Statistics" << endl
          << "D. Country Statistics" << endl
+         << "E. Consult longest possible flights" << endl
          << "Insert your choice:";
 
     validate_input(op, 'A', 'E');
@@ -726,6 +733,9 @@ void UI::statistics_menu(){
             break;
         case 'D':
             number_countries();
+            break;
+        case 'E':
+            longest_trip();
             break;
     }
 }
