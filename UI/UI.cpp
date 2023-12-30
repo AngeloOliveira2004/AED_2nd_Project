@@ -5,6 +5,33 @@
 UI::UI() {}
 
 void UI::loading_stuff(UI &ui) {
+    std::cout << "                                                                                                    ###Loading###" << endl << endl << endl << endl;
+    std::cout << "Once upon a time, there lived a huge apple tree. There was a little boy who loved to come and play around the tree every day. He used to climb to the treetop, eat the apples, and take naps under its shade. He loved the tree and the tree also loved to play with him. As time went by, the little boy grew up and he would no longer play around the tree every day.\n"
+                 "One fine day, the boy returned to the tree; he was looking sad. The tree asked the boy to come and play with it.\n"
+                 "The boy replied that he was no longer a kid and he did not like to play around trees any more. He also mentioned that he wished to buy toys, for which he needed money.\n"
+                 "The tree apologised and said, “I am sorry…but I do not have any money. However, you can pick out all my apples and sell them so that you can earn some money”.\n"
+                 "The boy was so excited that he quickly grabbed all the apples hanging from the tree and left merrily. The boy never returned after he got what he needed, the apples.\n"
+                 "The Little Boy Plucking Apples From the Tree\n"
+                 "The tree felt lonely and sad.\n"
+                 "One day, the boy, who had now turned into a man, returned, and the tree was excited again.\n"
+                 "The tree asked the boy to play with it as usual.\n"
+                 "“I haven’t got any time to play. I need to work to take care of my family. We are in need of a house to shelter us. Can you please help me?”, asked the boy.\n"
+                 "The tree was distressed and replied, “Sorry…but I do not have any house to give to you. However, you can chop off my branches and take them with you. They will help you build your house”.\n"
+                 "So, the man hastily cut all the branches off the tree and left satisfied. The tree was glad to see him happy, but, as usual, the man did not care to come back since then. The tree was once again lonely and sorrowful.\n"
+                 "It was a hot summer day; to the tree’s delight, the man had returned! \n"
+                 "“Come and play with me!”, the tree exclaimed in a joyful tone.\n"
+                 "The man replied deeply, “I am getting old. I wish I could go sailing and spend some leisure time all by myself. Do you have a boat I can use?”.\n"
+                 "“You can use my trunk to build your boat and sail far away, and you’ll be happy”, said the tree. \n"
+                 "Like his usual routine, the man once again cut the tree trunk and built a boat out of it. He went sailing. And guess what? He didn’t show up for a very long time.\n"
+                 "Finally, the man came back to the tree after many years. \n"
+                 "“Sorry, my boy. But I have nothing that I can give you anymore. There are no more apples left for you”, the tree said.\n"
+                 "“That won’t be a problem, I do not have any teeth left to bite on them anyway”, the man replied.\n"
+                 "“No more trunk for you to climb on”, said the tree. \n"
+                 "The man smiled and replied, “I am too old for that too”.\n"
+                 "The tree said while shedding tears that it really could not give him anything except for its dying roots.\n"
+                 "“I do not need much now, just a place where I can rest. I am weary after these long years”, the man replied with a sigh.\n"
+                 "“Good then! Old tree roots can serve as excellent resting places. Come, sit down with me and relax”.\n"
+                 "The man sat down comfortably. This made the tree really glad and it smiled with tears of joy.\n";
     LoadingFunctions::LoadFlights(g);
     this->logic = Logic(g);
     ui.load_sets();
@@ -12,6 +39,10 @@ void UI::loading_stuff(UI &ui) {
         airlines.insert(airline.getCode());
     }
     diameter = g.calculateDiameter();
+    cout << "Load Finished" << endl;
+    cout << "Press A to start the program: ";
+    char op;
+    validate_input(op,'A','A');
 }
 
 void UI::load_sets(){
