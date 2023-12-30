@@ -51,6 +51,7 @@ public:
 
     unordered_set<std::string> get_Filters(bool & Avoid_Or_Only , bool& Yes_or_No);
     bool valid_airline(std::string& airline);
+    std::string find_apCode(std::string& name);
     list<vector<Airport>> NormaliseList(list<vector<Airport>>& list1);
 private:
     Graph<Airport> g;

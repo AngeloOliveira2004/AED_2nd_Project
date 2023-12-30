@@ -171,6 +171,7 @@ void UI::trip_planner(){
         case 'A':
             cout << "Insert the code of the airport where you would like to depart from:" << endl;
             cin >> initial_Airport;
+            initial_Airport = find_apCode(initial_Airport);
             get_destination(destination , choice , filters);
             switch (choice) {
                 case 1:
@@ -627,6 +628,7 @@ void UI::get_destination(std::string& input , int& choice , unordered_set<std::s
         case 'A':
             cout << "Insert the code of the airport where you would like to go to:" << endl;
             cin >> input;
+            input = find_apCode(input);
             choice = 1;
             break;
         case 'B':
@@ -704,6 +706,19 @@ bool UI::valid_airline(std::string& airline)
     return std::all_of(airline.begin(), airline.end(), [](char c) {
         return std::isupper(c);
     });
+}
+
+std::string UI::find_apCode(std::string& name){
+    if(name.length() == 3){
+        return name;
+    }
+    else{
+        for(auto air: logic.getNamesToCodes()){
+            if(air.first == name){
+                return air.second;
+            }
+        }
+    }
 }
 
 void UI::printList(list<vector<Airport>> a)
