@@ -254,15 +254,15 @@ void UI::trip_planner(){
                     {
                         if(Avoid_Or_Only)
                         {
-                            printList(logic.CityToAirport(Airport(destination) , city , country , 3 , airlines));
+                            printList(logic.CityToAirport(Airport(destination) , city , country , 3 , filters));
                         }else
                         {
-                            printList(logic.CityToAirport(Airport(destination) , city , country , 2 , airlines));
+                            printList(logic.CityToAirport(Airport(destination) , city , country , 2 , filters));
                         }
                     }
                     else
                     {
-                        printList(logic.CityToAirport(Airport(destination) , city , country , 1 , airlines));
+                        printList(logic.CityToAirport(Airport(destination) , city , country , 1 , filters));
                     }
                     main_menu();
                     break;
@@ -285,15 +285,15 @@ void UI::trip_planner(){
                     {
                         if(Avoid_Or_Only)
                         {
-                            printList(logic.CityToCity(city , country , second_city , second_country , 3 , airlines));
+                            printList(logic.CityToCity(city , country , second_city , second_country , 3 , filters));
                         }else
                         {
-                            printList(logic.CityToCity(city , country , second_city , second_country , 2 , airlines));
+                            printList(logic.CityToCity(city , country , second_city , second_country , 2 , filters));
                         }
                     }
                     else
                     {
-                        printList(logic.CityToCity(city , country , second_city , second_country , 1 , airlines));
+                        printList(logic.CityToCity(city , country , second_city , second_country , 1 , filters));
                     }
                     main_menu();
                     break;
@@ -303,16 +303,15 @@ void UI::trip_planner(){
                     {
                         if(Avoid_Or_Only)
                         {
-                            printList(logic.CityToCountry(city , country , destination , 3 , airlines));
+                            printList(logic.CityToCountry(city , country , destination , 3 , filters));
                         }else
                         {
-                            printList(logic.CityToCountry(city , country , destination , 2 , airlines));
+                            printList(logic.CityToCountry(city , country , destination , 2 , filters));
                         }
                     }
                     else
                     {
-                        //list<vector<Airport>> CityToCountry(const std::string& Initialcity, const std::string& InitialCountry, const std::string& country , int choice , const unordered_set<std::string>& airlines);
-                        printList(logic.CityToCountry(city , country , destination , 1 , airlines));
+                        printList(logic.CityToCountry(city , country , destination , 1 , filters));
                     }
                     main_menu();
                     break;
@@ -332,18 +331,18 @@ void UI::trip_planner(){
                     if(Yes_or_No){
                         if(Avoid_Or_Only){
                             for(auto dest: destinations){
-                                printList(logic.CityToAirport(dest, city , country , 3, airlines));
+                                printList(logic.CityToAirport(dest, city , country , 3, filters));
                             }
                         }
                         else{
                             for(auto dest: destinations){
-                                printList(logic.CityToAirport(dest , city , country , 2 , airlines));
+                                printList(logic.CityToAirport(dest , city , country , 2 , filters));
                             }
                         }
                     }
                     else{
                         for(auto dest: destinations){
-                            printList(logic.CityToAirport(dest , city , country , 1 , airlines));
+                            printList(logic.CityToAirport(dest , city , country , 1 , filters));
                         }
                     }
                     main_menu();
@@ -363,15 +362,15 @@ void UI::trip_planner(){
                     {
                         if(Avoid_Or_Only)
                         {
-                            printList(logic.CountryToAirport(Airport(destination) , country , 3 , airlines));
+                            printList(logic.CountryToAirport(Airport(destination) , country , 3 , filters));
                         }else
                         {
-                            printList(logic.CountryToAirport(Airport(destination) , country , 2 , airlines));
+                            printList(logic.CountryToAirport(Airport(destination) , country , 2 , filters));
                         }
                     }
                     else
                     {
-                        printList(logic.CountryToAirport(Airport(destination) , country , 1 , airlines));
+                        printList(logic.CountryToAirport(Airport(destination) , country , 1 , filters));
                     }
                     main_menu();
                     break;
@@ -395,15 +394,15 @@ void UI::trip_planner(){
                     {
                         if(Avoid_Or_Only)
                         {
-                            printList(logic.CountryToCity(country , second_city , second_country , 3 , airlines));
+                            printList(logic.CountryToCity(country , second_city , second_country , 3 , filters));
                         }else
                         {
-                            printList(logic.CountryToCity(country , second_city , second_country , 2 , airlines));
+                            printList(logic.CountryToCity(country , second_city , second_country , 2 , filters));
                         }
                     }
                     else
                     {
-                        printList(logic.CountryToCity(country , second_city , second_country , 1 , airlines));
+                        printList(logic.CountryToCity(country , second_city , second_country , 1 , filters));
                     }
                     main_menu();
                     break;
@@ -415,15 +414,15 @@ void UI::trip_planner(){
                     {
                         if(Avoid_Or_Only)
                         {
-                            printList(logic.CountryToCountry(country , destination , 3 , airlines));
+                            printList(logic.CountryToCountry(country , destination , 3 , filters));
                         }else
                         {
-                            printList(logic.CountryToCountry(country , destination , 2 , airlines));
+                            printList(logic.CountryToCountry(country , destination , 2 , filters));
                         }
                     }
                     else
                     {
-                        printList(logic.CountryToCountry(country , destination , 1 , airlines));
+                        printList(logic.CountryToCountry(country , destination , 1 , filters));
                     }
                     main_menu();
                     break;
@@ -444,18 +443,18 @@ void UI::trip_planner(){
                     if(Yes_or_No){
                         if(Avoid_Or_Only){
                             for(auto dest: destinations){
-                                printList(logic.CountryToAirport(dest,  country, 3, airlines));
+                                printList(logic.CountryToAirport(dest,  country, 3, filters));
                             }
                         }
                         else{
                             for(auto dest: destinations){
-                                printList(logic.CountryToAirport(dest,  country, 2, airlines));
+                                printList(logic.CountryToAirport(dest,  country, 2, filters));
                             }
                         }
                     }
                     else{
                         for(auto dest: destinations){
-                            printList(logic.CountryToAirport(dest,  country, 1, airlines));
+                            printList(logic.CountryToAirport(dest,  country, 1, filters));
                         }
                     }
                     main_menu();
@@ -557,13 +556,13 @@ void UI::trip_planner(){
                     if(Yes_or_No){
                         if(Avoid_Or_Only){
                             for (auto dest: destinations){
-                                printList(logic.LocationToAirportAirlineOnlyFilters(latitude, longitude, dest, airlines));
+                                printList(logic.LocationToAirportAirlineOnlyFilters(latitude, longitude, dest, filters));
                             }
                         }
                         else{
 
                             for (auto dest: destinations){
-                                printList(logic.LocationToAirportAirlineAvoidFilters(latitude, longitude, dest, airlines));
+                                printList(logic.LocationToAirportAirlineAvoidFilters(latitude, longitude, dest, filters));
                             }
 
                         }

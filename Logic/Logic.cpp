@@ -1127,7 +1127,10 @@ Logic::AirportToAirportAirlineOnlyFilters(const Airport& initialAirport, const A
 list<vector<Airport>>
 Logic::AirportToAirportAirlineAvoidFilters(const Airport &initialAirport, const Airport &destAirport,
                                            unordered_set<std::string> airlines) {
-
+    for(auto string_ : airlines)
+    {
+        string temp = string_;
+    }
     list<vector<Airport>> res;
     Vertex<Airport>* initialVertex;
     Vertex<Airport>* finalVertex;
@@ -1172,7 +1175,6 @@ Logic::AirportToAirportAirlineAvoidFilters(const Airport &initialAirport, const 
         }
 
         for (const Edge<Airport> &e : v->getAdj()) {
-
             if(airlines.find(e.getAirline()) == airlines.end())
             {
                 Vertex<Airport>* w = e.getDest();
