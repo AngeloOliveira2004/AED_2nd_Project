@@ -1,7 +1,3 @@
-//
-// Created by jose-costa on 12/23/23.
-//
-
 #ifndef PROJETO_2_GRAPH_H
 #define PROJETO_2_GRAPH_H
 
