@@ -44,6 +44,7 @@ void UI::loading_stuff(UI &ui) {
                  "The man sat down comfortably. This made the tree really glad and it smiled with tears of joy.\n";
     LoadingFunctions::LoadFlights(g);
     this->logic = Logic(g);
+    logic.MapAirports();
     ui.load_sets();
     for(auto airline : LoadingFunctions::getAirlines()){
         airlines.insert(airline.getCode());
