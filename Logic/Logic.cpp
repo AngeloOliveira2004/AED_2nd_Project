@@ -1719,6 +1719,11 @@ Logic::CityToCountry(const std::string& Initialcity, const std::string& InitialC
     list<vector<Airport>> res;
     list<vector<Airport>> temp;
 
+    for(auto v : initialAirports)
+    {
+        string temp = v->getInfo().getCode();
+    }
+    string temp1 = FinalCountry;
     switch (choice) {
         case 1:
             for(auto v : initialAirports)

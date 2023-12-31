@@ -692,8 +692,9 @@ void UI::get_destination(std::string& input , int& choice , unordered_set<std::s
             choice = 2;
             break;
         case 'C':
+            std::cin.ignore();
             cout << "Insert the country of the airport where you would like to go to:" << endl;
-            cin >> input;
+            std::getline(std::cin, input);
             choice = 3;
             break;
         case 'D':
