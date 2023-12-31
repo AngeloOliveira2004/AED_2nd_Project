@@ -7,37 +7,37 @@
 \DoxyCodeLine{3 }
 \DoxyCodeLine{4 \textcolor{preprocessor}{\#include <string>}}
 \DoxyCodeLine{5 }
-\DoxyCodeLine{6 \textcolor{keyword}{class }\mbox{\hyperlink{classAirline}{Airline}} \{}
-\DoxyCodeLine{7 \textcolor{keyword}{private}:}
-\DoxyCodeLine{8     std::string code;}
-\DoxyCodeLine{9     std::string name;}
-\DoxyCodeLine{10     std::string callSign;}
-\DoxyCodeLine{11     std::string country;}
-\DoxyCodeLine{12 }
-\DoxyCodeLine{13 \textcolor{keyword}{public}:}
-\DoxyCodeLine{18     \mbox{\hyperlink{classAirline_a2e6766b5e3a4e3106062c710740a2a32}{Airline}}();}
-\DoxyCodeLine{19 }
-\DoxyCodeLine{28     \mbox{\hyperlink{classAirline_a2e6766b5e3a4e3106062c710740a2a32}{Airline}}(\textcolor{keyword}{const} std::string code, \textcolor{keyword}{const} std::string name, \textcolor{keyword}{const} std::string callSign, \textcolor{keyword}{const} std::string country);}
-\DoxyCodeLine{29 }
-\DoxyCodeLine{35     std::string \mbox{\hyperlink{classAirline_ae3a78341e134ede353f32e060033c4ee}{getCode}}() \textcolor{keyword}{const};}
-\DoxyCodeLine{36 }
-\DoxyCodeLine{42     std::string \mbox{\hyperlink{classAirline_aaaabbcbd34ed54234915325e91af0148}{getName}}() \textcolor{keyword}{const};}
-\DoxyCodeLine{43 }
-\DoxyCodeLine{49     std::string \mbox{\hyperlink{classAirline_a7b85e65a1cc83b763ff80a6a88b15ae6}{getCallSign}}() \textcolor{keyword}{const};}
-\DoxyCodeLine{50 }
-\DoxyCodeLine{56     std::string \mbox{\hyperlink{classAirline_a73e2c48e0d98eda7417b4a256881e6f1}{getCountry}}() \textcolor{keyword}{const};}
-\DoxyCodeLine{57 }
-\DoxyCodeLine{64     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classAirline_aab550db1265c3df4f66b90c2dea5f6cc}{operator==}}(\textcolor{keyword}{const} \mbox{\hyperlink{classAirline}{Airline}}\& other) \textcolor{keyword}{const};}
-\DoxyCodeLine{65 \};}
-\DoxyCodeLine{66 }
-\DoxyCodeLine{67 \textcolor{keyword}{template} <>}
-\DoxyCodeLine{68 \textcolor{keyword}{struct }std::hash<\mbox{\hyperlink{classAirline}{Airline}}> \{}
-\DoxyCodeLine{75     \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{structstd_1_1hash_3_01Airline_01_4_a154a947cc6b9f400ae98793a4bc76aae}{operator()}}(\textcolor{keyword}{const} \mbox{\hyperlink{classAirline}{Airline}}\& airline)\textcolor{keyword}{ const }\{}
-\DoxyCodeLine{76         \textcolor{keywordtype}{size\_t} airlineCode = std::hash<std::string>\{\}(airline.\mbox{\hyperlink{classAirline_ae3a78341e134ede353f32e060033c4ee}{getCode}}());}
-\DoxyCodeLine{77         \textcolor{keywordflow}{return} airlineCode; \textcolor{comment}{// Combine the hashes appropriately}}
-\DoxyCodeLine{78     \}}
-\DoxyCodeLine{79 \};}
-\DoxyCodeLine{80 }
-\DoxyCodeLine{81 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//PROJETO\_2\_AIRLINE\_H}}
+\DoxyCodeLine{10 \textcolor{keyword}{class }\mbox{\hyperlink{classAirline}{Airline}} \{}
+\DoxyCodeLine{11 \textcolor{keyword}{private}:}
+\DoxyCodeLine{12     std::string code;}
+\DoxyCodeLine{13     std::string name;}
+\DoxyCodeLine{14     std::string callSign;}
+\DoxyCodeLine{15     std::string country;}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{keyword}{public}:}
+\DoxyCodeLine{22     \mbox{\hyperlink{classAirline_a2e6766b5e3a4e3106062c710740a2a32}{Airline}}();}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{32     \mbox{\hyperlink{classAirline_a2e6766b5e3a4e3106062c710740a2a32}{Airline}}(\textcolor{keyword}{const} std::string code, \textcolor{keyword}{const} std::string name, \textcolor{keyword}{const} std::string callSign, \textcolor{keyword}{const} std::string country);}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{39     std::string \mbox{\hyperlink{classAirline_ae3a78341e134ede353f32e060033c4ee}{getCode}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{46     std::string \mbox{\hyperlink{classAirline_aaaabbcbd34ed54234915325e91af0148}{getName}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{53     std::string \mbox{\hyperlink{classAirline_a7b85e65a1cc83b763ff80a6a88b15ae6}{getCallSign}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{60     std::string \mbox{\hyperlink{classAirline_a73e2c48e0d98eda7417b4a256881e6f1}{getCountry}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{68     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classAirline_aab550db1265c3df4f66b90c2dea5f6cc}{operator==}}(\textcolor{keyword}{const} \mbox{\hyperlink{classAirline}{Airline}}\& other) \textcolor{keyword}{const};}
+\DoxyCodeLine{69 \};}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{75 \textcolor{keyword}{template} <>}
+\DoxyCodeLine{76 \textcolor{keyword}{struct }std::hash<\mbox{\hyperlink{classAirline}{Airline}}> \{}
+\DoxyCodeLine{83     \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{structstd_1_1hash_3_01Airline_01_4_a154a947cc6b9f400ae98793a4bc76aae}{operator()}}(\textcolor{keyword}{const} \mbox{\hyperlink{classAirline}{Airline}}\& airline)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{84         \textcolor{keywordtype}{size\_t} airlineCode = std::hash<std::string>\{\}(airline.\mbox{\hyperlink{classAirline_ae3a78341e134ede353f32e060033c4ee}{getCode}}());}
+\DoxyCodeLine{85         \textcolor{keywordflow}{return} airlineCode; \textcolor{comment}{// Combine the hashes appropriately}}
+\DoxyCodeLine{86     \}}
+\DoxyCodeLine{87 \};}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//PROJETO\_2\_AIRLINE\_H}}
 
 \end{DoxyCode}
