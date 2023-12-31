@@ -6,7 +6,10 @@
 #include "Graph.h"
 #include "Airport.h"
 
-
+/**
+ * @class Logic
+ * @brief Processes all the background logic of the program ranging from counting algorithm to filter functions
+ */
 class Logic {
 private:
     Graph<Airport> graph;

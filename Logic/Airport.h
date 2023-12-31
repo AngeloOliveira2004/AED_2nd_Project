@@ -3,6 +3,10 @@
 
 #include <string>
 
+/**
+ * @class Airport
+ * @brief Represents an airport with information such as code, name, city, country, location , etc...
+ */
 class Airport {
 public:
     /**
@@ -143,6 +147,11 @@ private:
     double latitude;
 };
 
+
+/**
+ * @struct std::hash<Airport>
+ * @brief Represents the Airport hashing function for the unordered maps;
+ */
 template <>
 struct std::hash<Airport> {
     /**

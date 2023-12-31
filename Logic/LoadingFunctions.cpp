@@ -9,10 +9,6 @@ std::unordered_set<Airport> LoadingFunctions::airports;
 std::unordered_set<Airline> LoadingFunctions::airlines;
 
 
-/**
- * @class LoadFiles
- * @brief A class for loading data from CSV files.
- */
 
 /**
  * @brief Finds and erases '\r' in the given string
@@ -25,11 +21,6 @@ void LoadingFunctions::NormalizeString(std::string& str) {
         str.erase(pos);
     }
 }
-
-/**
- * @class LoadFiles
- * @brief A class for loading data from CSV files.
- */
 
 /**
  * @brief Loads airports into the graph from a CSV file.

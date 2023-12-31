@@ -8,6 +8,10 @@
 #include "../Logic/Logic.h"
 #include <climits>
 
+/**
+ * @class UI
+ * @brief Represent the UI menu, where you control the background functions
+ */
 class UI {
 public:
     UI();
