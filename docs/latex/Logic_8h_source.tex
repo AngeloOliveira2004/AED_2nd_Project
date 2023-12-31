@@ -1,0 +1,98 @@
+\hypertarget{Logic_8h_source}{}\doxysection{Logic.\+h}
+\label{Logic_8h_source}\index{/home/angelo/Downloads/Universidade/Algoritmo e Estrutura de Dados/Projeto\_AED\_2/Logic/Logic.h@{/home/angelo/Downloads/Universidade/Algoritmo e Estrutura de Dados/Projeto\_AED\_2/Logic/Logic.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef PROJETO\_2\_LOGIC\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define PROJETO\_2\_LOGIC\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <unordered\_map>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}Graph.h"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}Airport.h"{}}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{keyword}{class }\mbox{\hyperlink{classLogic}{Logic}} \{}
+\DoxyCodeLine{11 \textcolor{keyword}{private}:}
+\DoxyCodeLine{12     \mbox{\hyperlink{classGraph}{Graph<Airport>}} graph;}
+\DoxyCodeLine{13     \textcolor{comment}{//maps Airport names to codes}}
+\DoxyCodeLine{14     unordered\_map<std::string , std::string> NamesToCodes;}
+\DoxyCodeLine{15     unordered\_map<std::string , Airline> AirlinesCodes;}
+\DoxyCodeLine{16 \textcolor{keyword}{public}:}
+\DoxyCodeLine{17     \mbox{\hyperlink{classLogic}{Logic}}();}
+\DoxyCodeLine{18     \mbox{\hyperlink{classLogic}{Logic}}(\mbox{\hyperlink{classGraph}{Graph<Airport>}}\& g);}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20     \textcolor{keywordtype}{void} \mbox{\hyperlink{classLogic_adfb161b4f8e376a9f0cbc9dfbb3a4511}{MapAirports}}();}
+\DoxyCodeLine{21     unordered\_map<std::string , std::string> \mbox{\hyperlink{classLogic_a352b6027a1c4b05d00520de98034b8f8}{getNamesToCodes}}();}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23     \textcolor{keywordtype}{int} \mbox{\hyperlink{classLogic_a40b6004b981e46383fa400cdd703aeb7}{GlobalNumbers}}();}
+\DoxyCodeLine{24     \textcolor{keywordtype}{int} \mbox{\hyperlink{classLogic_ab351075a02f8bb7c6f36b1922f30c88f}{GlobalNumberOfAirports}}();}
+\DoxyCodeLine{25     \textcolor{keywordtype}{int} \mbox{\hyperlink{classLogic_a245735a0ff67749f7c6cfed09e0f3e7c}{NumberOfFlightsPerCity}}(std::string city);}
+\DoxyCodeLine{26     \textcolor{keywordtype}{int} \mbox{\hyperlink{classLogic_a2d2352191ae16f7d314d2001b763762e}{NumberOfFlightsPerAirline}}(\textcolor{keyword}{const} std::string\& airlineCode);}
+\DoxyCodeLine{27     \textcolor{keywordtype}{int} \mbox{\hyperlink{classLogic_aa28b92b08ac699a2f116bbf9fbe5bbc0}{NumberOfCountries}}(std::string airportCode);}
+\DoxyCodeLine{28     \textcolor{keywordtype}{int} \mbox{\hyperlink{classLogic_a28b0175e61eeceef307fc1ad275ee0ed}{NumberOfCountriesThatCityFliesTo}}(std::string city);}
+\DoxyCodeLine{29     vector<vector<Airport>> \mbox{\hyperlink{classLogic_a3c139eb3096f35404f0373d614627c12}{FindMaxTripBfs}}(\textcolor{keyword}{const} \mbox{\hyperlink{classAirport}{Airport}} \&\mbox{\hyperlink{classAirport}{Airport}}, \textcolor{keywordtype}{int} k);}
+\DoxyCodeLine{30     vector<string> \mbox{\hyperlink{classLogic_a75f7da8caaadd0a5744af74f4ac6445e}{GreatestKIndeegrees}}(\textcolor{keywordtype}{int} k);}
+\DoxyCodeLine{31     \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{classLogic_a246f6be53b31223684b31e170079632d}{GlobalNumberOfFlights}}();}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33     std::pair<int , int> \mbox{\hyperlink{classLogic_a86667baf43e1bfd603aea91fbb79f944}{FlightsOutOfAirportAndDifferentAirlines}}(\textcolor{keyword}{const} std::string\& AirportCode);}
+\DoxyCodeLine{34     std::pair<std::vector<std::pair<Airport, Airport>> , \textcolor{keywordtype}{int}> AirportAtMaximumDistance();}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36     \textcolor{keywordtype}{int} \mbox{\hyperlink{classLogic_a2d55001581d170228606906b1808aa71}{NumberOfDestinationsForAirport}}(\textcolor{keyword}{const} \textcolor{keywordtype}{string} \&airportCode);}
+\DoxyCodeLine{37     \textcolor{keywordtype}{int} \mbox{\hyperlink{classLogic_a140a5f57ce7c000de155867cb0bfc14e}{NumberOfDestinationsForCity}}(\textcolor{keyword}{const} \textcolor{keywordtype}{string} \&airportCode);}
+\DoxyCodeLine{38     \textcolor{keywordtype}{int} \mbox{\hyperlink{classLogic_a3fa10547b9eb8397f2c51d00f35fe3fc}{NumberOfDestinationsForCountry}}(\textcolor{keyword}{const} \textcolor{keywordtype}{string} \&airportCode);}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40     unordered\_set<Airport> \mbox{\hyperlink{classLogic_a4401e789beaeb40ba7f636704268fced}{findArticulationPoints}}();}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42     \textcolor{keywordtype}{void} dfs\_articulationPoints(\mbox{\hyperlink{classVertex}{Vertex<Airport>}} *v, unordered\_set<Airport> \&articPoints, stack<\mbox{\hyperlink{classVertex}{Vertex<Airport>}} *> \&s,\textcolor{keywordtype}{int} \&index);}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44     vector<Airport> \mbox{\hyperlink{classLogic_a6e6ce64913a27966e3e23a2a75e1d8d1}{shortestPath}}(\textcolor{keyword}{const} \mbox{\hyperlink{classAirport}{Airport}}\& initialAirport , \textcolor{keyword}{const} \mbox{\hyperlink{classAirport}{Airport}}\& destAirport);}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46     list<vector<Airport>> \mbox{\hyperlink{classLogic_a847d7e4e0c4bcad31d3c6350f719b093}{AirportToAirport}}(\textcolor{keyword}{const} \mbox{\hyperlink{classAirport}{Airport}}\& initialAirport, \textcolor{keyword}{const} \mbox{\hyperlink{classAirport}{Airport}}\& destAirport);}
+\DoxyCodeLine{47     list<vector<Airport>> \mbox{\hyperlink{classLogic_aef13de13620c053137aa5770d81c66a5}{AirportToAirportAirlineOnlyFilters}}(\textcolor{keyword}{const} \mbox{\hyperlink{classAirport}{Airport}}\& initialAirport, \textcolor{keyword}{const} \mbox{\hyperlink{classAirport}{Airport}}\& destAirport , unordered\_set<std::string> airlines);}
+\DoxyCodeLine{48     list<vector<Airport>> \mbox{\hyperlink{classLogic_aa87c80778a4d471ba5fe1cb6075c63bb}{AirportToAirportAirlineAvoidFilters}}(\textcolor{keyword}{const} \mbox{\hyperlink{classAirport}{Airport}}\& initialAirport, \textcolor{keyword}{const} \mbox{\hyperlink{classAirport}{Airport}}\& destAirport , unordered\_set<std::string> airlines);}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50     list<vector<Airport>> \mbox{\hyperlink{classLogic_adaab6121280744b83c24f25fefbcc279}{AirportToCity}}(\textcolor{keyword}{const} \mbox{\hyperlink{classAirport}{Airport}}\& initialAirport, \textcolor{keyword}{const} std::string\& city , \textcolor{keyword}{const} std::string\& country);}
+\DoxyCodeLine{51     list<vector<Airport>> \mbox{\hyperlink{classLogic_ae88acdd5faf2d66f92ef1fd1501b17a2}{AirportToCityAirlineAvoidFilter}}(\textcolor{keyword}{const} \mbox{\hyperlink{classAirport}{Airport}}\& initialAirport ,\textcolor{keyword}{const} std::string\& city , \textcolor{keyword}{const} std::string\& country,unordered\_set<std::string> airlines);}
+\DoxyCodeLine{52     list<vector<Airport>> \mbox{\hyperlink{classLogic_a8ad03580484b02adc802e22c064ab906}{AirportToCityAirlineOnlyFilter}}(\textcolor{keyword}{const} \mbox{\hyperlink{classAirport}{Airport}}\& initialAirport ,\textcolor{keyword}{const} std::string\& city , \textcolor{keyword}{const} std::string\& country,unordered\_set<std::string> airlines);}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54     list<vector<Airport>> \mbox{\hyperlink{classLogic_a08548191f0728e9ec1891fd3acfbd33e}{AirportToCountry}}(\textcolor{keyword}{const} \mbox{\hyperlink{classAirport}{Airport}}\& initialAirport, \textcolor{keyword}{const} std::string\& country);}
+\DoxyCodeLine{55     list<vector<Airport>> \mbox{\hyperlink{classLogic_a176b35e1a9e6c77f4a70f1086a076c55}{AirportToCountryAirlineAvoidFilter}}(\mbox{\hyperlink{classAirport}{Airport}} initialAirport , std::string country,unordered\_set<std::string> airlines);}
+\DoxyCodeLine{56     list<vector<Airport>> \mbox{\hyperlink{classLogic_adc977f913a1bedac203b451c77ccff8b}{AirportToCountryAirlineOnlyFilter}}(\mbox{\hyperlink{classAirport}{Airport}} initialAirport , std::string country,unordered\_set<std::string> airlines);}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58     list<vector<Airport>> \mbox{\hyperlink{classLogic_ad26dcec2cd217841208c0d925c582785}{CityToAirport}}(\textcolor{keyword}{const} \mbox{\hyperlink{classAirport}{Airport}}\& destAirport , \textcolor{keyword}{const} std::string\& city, \textcolor{keyword}{const} std::string\& country , \textcolor{keywordtype}{int} choice , unordered\_set<std::string> airlines);}
+\DoxyCodeLine{59     list<vector<Airport>> \mbox{\hyperlink{classLogic_a5b7a44b0f1e07b074c0330fe73c5c0c9}{CityToCity}}(\textcolor{keyword}{const} std::string\& InitialCity, \textcolor{keyword}{const} std::string\& InitialCountry,\textcolor{keyword}{const} std::string\& FinalCity, \textcolor{keyword}{const} std::string\& FinalCountry, \textcolor{keywordtype}{int} choice , \textcolor{keyword}{const} unordered\_set<std::string>\& airlines);}
+\DoxyCodeLine{60     list<vector<Airport>> \mbox{\hyperlink{classLogic_a2baa5e8fe870b8adb69e73d64ea27e2a}{CityToCountry}}(\textcolor{keyword}{const} std::string\& Initialcity, \textcolor{keyword}{const} std::string\& InitialCountry, \textcolor{keyword}{const} std::string\& country , \textcolor{keywordtype}{int} choice , \textcolor{keyword}{const} unordered\_set<std::string>\& airlines);}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62     list<vector<Airport>> \mbox{\hyperlink{classLogic_af1cb3152c3eda8bcddd0e9500fe5dfc1}{CountryToAirport}}(\textcolor{keyword}{const} \mbox{\hyperlink{classAirport}{Airport}}\& destAirport , \textcolor{keyword}{const} std::string\& country , \textcolor{keywordtype}{int} choice , unordered\_set<std::string> airlines);}
+\DoxyCodeLine{63     list<vector<Airport>> \mbox{\hyperlink{classLogic_a08da169171672f113fd088c353b354c0}{CountryToCity}}(\textcolor{keyword}{const} \textcolor{keywordtype}{string} \&InitialCountry, \textcolor{keyword}{const} \textcolor{keywordtype}{string} \&FinalCity,\textcolor{keyword}{const} \textcolor{keywordtype}{string} \&FinalCountry, \textcolor{keywordtype}{int} choice, \textcolor{keyword}{const} unordered\_set<std::string> \&airlines);}
+\DoxyCodeLine{64     list<vector<Airport>> \mbox{\hyperlink{classLogic_a2ed7231bd17db8a478ba1f9d0a046d77}{CountryToCountry}}(\textcolor{keyword}{const} std::string\& InitialCountry, \textcolor{keyword}{const} std::string\& country , \textcolor{keywordtype}{int} choice , \textcolor{keyword}{const} unordered\_set<std::string>\& airlines);}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67     list<vector<Airport>> \mbox{\hyperlink{classLogic_abc85bac699651481f1283960183730de}{LocationToAirport}}(\textcolor{keywordtype}{double} source\_latitude, \textcolor{keywordtype}{double} source\_longitude, \mbox{\hyperlink{classAirport}{Airport}} dest);}
+\DoxyCodeLine{68     list<vector<Airport>> \mbox{\hyperlink{classLogic_aa6a5573ddaccaa0c7d85669d022d6e4c}{LocationToCity}}(\textcolor{keywordtype}{double} source\_latitude, \textcolor{keywordtype}{double} source\_longitude, \textcolor{keyword}{const} std::string city, \textcolor{keyword}{const} std::string\& country);}
+\DoxyCodeLine{69     list<vector<Airport>> \mbox{\hyperlink{classLogic_ae78a232a2422117c5964234f5a6fc6ea}{LocationToCountry}}(\textcolor{keywordtype}{double} source\_latitude, \textcolor{keywordtype}{double} source\_longitude, \textcolor{keyword}{const} std::string country);}
+\DoxyCodeLine{70     list<vector<Airport>> \mbox{\hyperlink{classLogic_a85c0e762ef00a77c53f9f33db7c36e8e}{AirportToLocation}}(\mbox{\hyperlink{classAirport}{Airport}} source, \textcolor{keywordtype}{double} dest\_latitude, \textcolor{keywordtype}{double} dest\_longitude);}
+\DoxyCodeLine{71     list<vector<Airport>> \mbox{\hyperlink{classLogic_aabbefcf484081a472009bb97dab93f69}{CityToLocation}}(\textcolor{keyword}{const} std::string city, \textcolor{keyword}{const} std::string country, \textcolor{keywordtype}{double} dest\_latitude, \textcolor{keywordtype}{double} dest\_longitude);}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73     vector<Airport> \mbox{\hyperlink{classLogic_ae5509f5bd2d89984f1e564ae26787c9a}{FindClosestAirportsToLocation}}(\textcolor{keywordtype}{double} Latitude, \textcolor{keywordtype}{double} Longitude);}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75     list<vector<Airport>> \mbox{\hyperlink{classLogic_a5c9aa9fee2e877849b8d56490fa44a78}{LocationToAirportAirlineOnlyFilters}}(\textcolor{keywordtype}{double} source\_latitude, \textcolor{keywordtype}{double} source\_longitude, \mbox{\hyperlink{classAirport}{Airport}} dest, unordered\_set<std::string> airlines);}
+\DoxyCodeLine{76     list<vector<Airport>> \mbox{\hyperlink{classLogic_aafc6274f93221174ca512d1debca15dc}{LocationToAirportAirlineAvoidFilters}}(\textcolor{keywordtype}{double} source\_latitude, \textcolor{keywordtype}{double} source\_longitude, \mbox{\hyperlink{classAirport}{Airport}} dest, unordered\_set<std::string> airlines);}
+\DoxyCodeLine{77     list<vector<Airport>> \mbox{\hyperlink{classLogic_a4aadf54d4d9c2632e85e094c00218417}{LocationToCityAirlineOnlyFilters}}(\textcolor{keywordtype}{double} source\_latitude, \textcolor{keywordtype}{double} source\_longitude, \textcolor{keyword}{const} std::string city, \textcolor{keyword}{const} std::string\& country, unordered\_set<std::string> airlines);}
+\DoxyCodeLine{78     list<vector<Airport>> \mbox{\hyperlink{classLogic_a8d23f0f6bdbf3889b1b1c538363b890d}{LocationToCityAirlineAvoidFilters}}(\textcolor{keywordtype}{double} source\_latitude, \textcolor{keywordtype}{double} source\_longitude, \textcolor{keyword}{const} std::string city, \textcolor{keyword}{const} std::string\& country, unordered\_set<std::string> airlines);}
+\DoxyCodeLine{79     list<vector<Airport>> \mbox{\hyperlink{classLogic_a56d02ea581e2ac9a6094b9949fa0785a}{LocationToCountryAirlineOnlyFilter}}(\textcolor{keywordtype}{double} source\_latitude, \textcolor{keywordtype}{double} source\_longitude, \textcolor{keyword}{const} std::string country, unordered\_set<std::string> airlines);}
+\DoxyCodeLine{80     list<vector<Airport>> \mbox{\hyperlink{classLogic_a1678d95c8252ed466b1a1f5d12d2b5dd}{LocationToCountryAirlineAvoidFilter}}(\textcolor{keywordtype}{double} source\_latitude, \textcolor{keywordtype}{double} source\_longitude, \textcolor{keyword}{const} std::string country, unordered\_set<std::string> airlines);}
+\DoxyCodeLine{81     list<vector<Airport>> \mbox{\hyperlink{classLogic_a66179a85541141e6828d10868eb0095a}{AirportToLocationAirlineOnlyFilters}}(\mbox{\hyperlink{classAirport}{Airport}} source, \textcolor{keywordtype}{double} dest\_latitude, \textcolor{keywordtype}{double} dest\_longitude, unordered\_set<std::string> airline);}
+\DoxyCodeLine{82     list<vector<Airport>> \mbox{\hyperlink{classLogic_a313b090c722cf1f5ff8b0f379fa594d8}{AirportToLocationAirlineAvoidFilters}}(\mbox{\hyperlink{classAirport}{Airport}} source, \textcolor{keywordtype}{double} dest\_latitude, \textcolor{keywordtype}{double} dest\_longitude, unordered\_set<std::string> airline);}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84     \textcolor{comment}{//Auxiliary functions}}
+\DoxyCodeLine{85     \textcolor{keywordtype}{double} \mbox{\hyperlink{classLogic_afbb850f17514a08e0f6f7fa9e78c2cee}{HaversineAlgorithm}}(\textcolor{keywordtype}{double} lat1, \textcolor{keywordtype}{double} lon1,\textcolor{keywordtype}{double} lat2, \textcolor{keywordtype}{double} lon2);}
+\DoxyCodeLine{86     vector<Airport> \mbox{\hyperlink{classLogic_a3d1ae7c4d03d46190b613e347185bf6f}{nodesAtDistanceBFS}}(\textcolor{keyword}{const} \textcolor{keywordtype}{string} \&airportCode, \textcolor{keywordtype}{int} k);}
+\DoxyCodeLine{87     vector<int> \mbox{\hyperlink{classLogic_abe2bffea6fd1ae60c3733a0077a6185d}{analyzeReachableAirports}}(\textcolor{keyword}{const} vector<Airport> \&reachableAirports);}
+\DoxyCodeLine{88     \textcolor{keywordtype}{void} NormaliseList(list<vector<Airport>>\& list1);}
+\DoxyCodeLine{89 \};}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91 }
+\DoxyCodeLine{92 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//PROJETO\_2\_LOGIC\_H}}
+
+\end{DoxyCode}

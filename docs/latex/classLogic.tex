@@ -1,0 +1,1145 @@
+\hypertarget{classLogic}{}\doxysection{Logic Class Reference}
+\label{classLogic}\index{Logic@{Logic}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classLogic_a0e169ed01dc02e592bf4fdeaf3bb9855}\label{classLogic_a0e169ed01dc02e592bf4fdeaf3bb9855}} 
+{\bfseries Logic} (\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ \&g)
+\item 
+void \mbox{\hyperlink{classLogic_adfb161b4f8e376a9f0cbc9dfbb3a4511}{Map\+Airports}} ()
+\begin{DoxyCompactList}\small\item\em Maps airport names to their corresponding codes. \end{DoxyCompactList}\item 
+unordered\+\_\+map$<$ std\+::string, std\+::string $>$ \mbox{\hyperlink{classLogic_a352b6027a1c4b05d00520de98034b8f8}{get\+Names\+To\+Codes}} ()
+\begin{DoxyCompactList}\small\item\em Gets the mapping of airport names to their codes. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classLogic_a40b6004b981e46383fa400cdd703aeb7}{Global\+Numbers}} ()
+\begin{DoxyCompactList}\small\item\em Calculates the global number of airports and flights. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classLogic_ab351075a02f8bb7c6f36b1922f30c88f}{Global\+Number\+Of\+Airports}} ()
+\begin{DoxyCompactList}\small\item\em Gets the global number of airports. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classLogic_a245735a0ff67749f7c6cfed09e0f3e7c}{Number\+Of\+Flights\+Per\+City}} (std\+::string city)
+\begin{DoxyCompactList}\small\item\em Calculates the number of flights departing from a specific city. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classLogic_a2d2352191ae16f7d314d2001b763762e}{Number\+Of\+Flights\+Per\+Airline}} (const std\+::string \&airline\+Code)
+\begin{DoxyCompactList}\small\item\em Calculates the number of flights for a specific airline. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classLogic_aa28b92b08ac699a2f116bbf9fbe5bbc0}{Number\+Of\+Countries}} (std\+::string airport\+Code)
+\begin{DoxyCompactList}\small\item\em Calculates the number of countries that flights from a specific airport fly to. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classLogic_a28b0175e61eeceef307fc1ad275ee0ed}{Number\+Of\+Countries\+That\+City\+Flies\+To}} (std\+::string city)
+\begin{DoxyCompactList}\small\item\em Calculates the number of countries that flights from a specific city fly to. \end{DoxyCompactList}\item 
+vector$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ \mbox{\hyperlink{classLogic_a3c139eb3096f35404f0373d614627c12}{Find\+Max\+Trip\+Bfs}} (const \mbox{\hyperlink{classAirport}{Airport}} \&\mbox{\hyperlink{classAirport}{Airport}}, int k)
+\begin{DoxyCompactList}\small\item\em Finds maximum trips using Breadth-\/\+First Search (BFS) starting from a specific airport with a given diameter. \end{DoxyCompactList}\item 
+vector$<$ string $>$ \mbox{\hyperlink{classLogic_a75f7da8caaadd0a5744af74f4ac6445e}{Greatest\+KIndeegrees}} (int k)
+\begin{DoxyCompactList}\small\item\em Finds the airports with the greatest in-\/degrees. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classLogic_a246f6be53b31223684b31e170079632d}{Global\+Number\+Of\+Flights}} ()
+\begin{DoxyCompactList}\small\item\em Gets the global number of flights. \end{DoxyCompactList}\item 
+std\+::pair$<$ int, int $>$ \mbox{\hyperlink{classLogic_a86667baf43e1bfd603aea91fbb79f944}{Flights\+Out\+Of\+Airport\+And\+Different\+Airlines}} (const std\+::string \&Airport\+Code)
+\begin{DoxyCompactList}\small\item\em Calculates the number of flights out of a specific airport with different airlines. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classLogic_a616066ba1ac8294aa35abefffb7d90d5}\label{classLogic_a616066ba1ac8294aa35abefffb7d90d5}} 
+std\+::pair$<$ std\+::vector$<$ std\+::pair$<$ \mbox{\hyperlink{classAirport}{Airport}}, \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$, int $>$ {\bfseries Airport\+At\+Maximum\+Distance} ()
+\item 
+int \mbox{\hyperlink{classLogic_a2d55001581d170228606906b1808aa71}{Number\+Of\+Destinations\+For\+Airport}} (const string \&airport\+Code)
+\begin{DoxyCompactList}\small\item\em Calculates the number of unique destinations for flights departing from a specific airport. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classLogic_a140a5f57ce7c000de155867cb0bfc14e}{Number\+Of\+Destinations\+For\+City}} (const string \&airport\+Code)
+\begin{DoxyCompactList}\small\item\em Calculates the number of unique destinations reachable from the specified airport by direct flights. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classLogic_a3fa10547b9eb8397f2c51d00f35fe3fc}{Number\+Of\+Destinations\+For\+Country}} (const string \&airport\+Code)
+\begin{DoxyCompactList}\small\item\em Calculates the number of unique destinations (countries) for flights departing from a specific country. \end{DoxyCompactList}\item 
+unordered\+\_\+set$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ \mbox{\hyperlink{classLogic_a4401e789beaeb40ba7f636704268fced}{find\+Articulation\+Points}} ()
+\begin{DoxyCompactList}\small\item\em Finds the articulation points in the graph. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classLogic_a70b963421ae5ba41756963ebaf04ac55}\label{classLogic_a70b963421ae5ba41756963ebaf04ac55}} 
+void {\bfseries dfs\+\_\+articulation\+Points} (\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$v, unordered\+\_\+set$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ \&artic\+Points, stack$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $\ast$ $>$ \&s, int \&index)
+\item 
+vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ \mbox{\hyperlink{classLogic_a6e6ce64913a27966e3e23a2a75e1d8d1}{shortest\+Path}} (const \mbox{\hyperlink{classAirport}{Airport}} \&initial\+Airport, const \mbox{\hyperlink{classAirport}{Airport}} \&dest\+Airport)
+\begin{DoxyCompactList}\small\item\em Finds the shortest path between two airports using Breadth-\/\+First Search (BFS). \end{DoxyCompactList}\item 
+list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ \mbox{\hyperlink{classLogic_a847d7e4e0c4bcad31d3c6350f719b093}{Airport\+To\+Airport}} (const \mbox{\hyperlink{classAirport}{Airport}} \&initial\+Airport, const \mbox{\hyperlink{classAirport}{Airport}} \&dest\+Airport)
+\begin{DoxyCompactList}\small\item\em Finds trips from the specified airport to the given airport. \end{DoxyCompactList}\item 
+list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ \mbox{\hyperlink{classLogic_aef13de13620c053137aa5770d81c66a5}{Airport\+To\+Airport\+Airline\+Only\+Filters}} (const \mbox{\hyperlink{classAirport}{Airport}} \&initial\+Airport, const \mbox{\hyperlink{classAirport}{Airport}} \&dest\+Airport, unordered\+\_\+set$<$ std\+::string $>$ airlines)
+\begin{DoxyCompactList}\small\item\em Finds trips from the specified airport to the given airport, considering airline filters. \end{DoxyCompactList}\item 
+list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ \mbox{\hyperlink{classLogic_aa87c80778a4d471ba5fe1cb6075c63bb}{Airport\+To\+Airport\+Airline\+Avoid\+Filters}} (const \mbox{\hyperlink{classAirport}{Airport}} \&initial\+Airport, const \mbox{\hyperlink{classAirport}{Airport}} \&dest\+Airport, unordered\+\_\+set$<$ std\+::string $>$ airlines)
+\begin{DoxyCompactList}\small\item\em Finds trips from the specified airport to the given airport, avoiding specified airlines. \end{DoxyCompactList}\item 
+list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ \mbox{\hyperlink{classLogic_adaab6121280744b83c24f25fefbcc279}{Airport\+To\+City}} (const \mbox{\hyperlink{classAirport}{Airport}} \&initial\+Airport, const std\+::string \&city, const std\+::string \&country)
+\begin{DoxyCompactList}\small\item\em Finds trips from the specified airport to the given city in the given country. \end{DoxyCompactList}\item 
+list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ \mbox{\hyperlink{classLogic_ae88acdd5faf2d66f92ef1fd1501b17a2}{Airport\+To\+City\+Airline\+Avoid\+Filter}} (const \mbox{\hyperlink{classAirport}{Airport}} \&initial\+Airport, const std\+::string \&city, const std\+::string \&country, unordered\+\_\+set$<$ std\+::string $>$ airlines)
+\begin{DoxyCompactList}\small\item\em Finds trips from the specified airport to the given city in the given country, avoiding specified airlines. \end{DoxyCompactList}\item 
+list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ \mbox{\hyperlink{classLogic_a8ad03580484b02adc802e22c064ab906}{Airport\+To\+City\+Airline\+Only\+Filter}} (const \mbox{\hyperlink{classAirport}{Airport}} \&initial\+Airport, const std\+::string \&city, const std\+::string \&country, unordered\+\_\+set$<$ std\+::string $>$ airlines)
+\begin{DoxyCompactList}\small\item\em Finds trips from the specified airport to the given city in the given country, considering airline filters. \end{DoxyCompactList}\item 
+list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ \mbox{\hyperlink{classLogic_a08548191f0728e9ec1891fd3acfbd33e}{Airport\+To\+Country}} (const \mbox{\hyperlink{classAirport}{Airport}} \&initial\+Airport, const std\+::string \&country)
+\begin{DoxyCompactList}\small\item\em Finds trips from the specified airport to the given country. \end{DoxyCompactList}\item 
+list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ \mbox{\hyperlink{classLogic_a176b35e1a9e6c77f4a70f1086a076c55}{Airport\+To\+Country\+Airline\+Avoid\+Filter}} (\mbox{\hyperlink{classAirport}{Airport}} initial\+Airport, std\+::string country, unordered\+\_\+set$<$ std\+::string $>$ airlines)
+\begin{DoxyCompactList}\small\item\em Finds trips from the specified airport to the given country, avoiding specified airlines. \end{DoxyCompactList}\item 
+list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ \mbox{\hyperlink{classLogic_adc977f913a1bedac203b451c77ccff8b}{Airport\+To\+Country\+Airline\+Only\+Filter}} (\mbox{\hyperlink{classAirport}{Airport}} initial\+Airport, std\+::string country, unordered\+\_\+set$<$ std\+::string $>$ airlines)
+\begin{DoxyCompactList}\small\item\em Finds trips from the specified airport to the given country, considering airline filters. \end{DoxyCompactList}\item 
+list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ \mbox{\hyperlink{classLogic_ad26dcec2cd217841208c0d925c582785}{City\+To\+Airport}} (const \mbox{\hyperlink{classAirport}{Airport}} \&dest\+Airport, const std\+::string \&city, const std\+::string \&country, int choice, unordered\+\_\+set$<$ std\+::string $>$ airlines)
+\begin{DoxyCompactList}\small\item\em Finds trips from airports in a city to the specified airport. \end{DoxyCompactList}\item 
+list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ \mbox{\hyperlink{classLogic_a5b7a44b0f1e07b074c0330fe73c5c0c9}{City\+To\+City}} (const std\+::string \&Initial\+City, const std\+::string \&Initial\+Country, const std\+::string \&Final\+City, const std\+::string \&Final\+Country, int choice, const unordered\+\_\+set$<$ std\+::string $>$ \&airlines)
+\begin{DoxyCompactList}\small\item\em Finds trips from airports in an initial city to airports in a final city. \end{DoxyCompactList}\item 
+list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ \mbox{\hyperlink{classLogic_a2baa5e8fe870b8adb69e73d64ea27e2a}{City\+To\+Country}} (const std\+::string \&Initialcity, const std\+::string \&Initial\+Country, const std\+::string \&country, int choice, const unordered\+\_\+set$<$ std\+::string $>$ \&airlines)
+\begin{DoxyCompactList}\small\item\em Finds trips from airports in an initial city to airports in a final country. \end{DoxyCompactList}\item 
+list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ \mbox{\hyperlink{classLogic_af1cb3152c3eda8bcddd0e9500fe5dfc1}{Country\+To\+Airport}} (const \mbox{\hyperlink{classAirport}{Airport}} \&dest\+Airport, const std\+::string \&country, int choice, unordered\+\_\+set$<$ std\+::string $>$ airlines)
+\begin{DoxyCompactList}\small\item\em Finds trips from airports in a country to the specified airport. \end{DoxyCompactList}\item 
+list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ \mbox{\hyperlink{classLogic_a08da169171672f113fd088c353b354c0}{Country\+To\+City}} (const string \&Initial\+Country, const string \&Final\+City, const string \&Final\+Country, int choice, const unordered\+\_\+set$<$ std\+::string $>$ \&airlines)
+\begin{DoxyCompactList}\small\item\em Finds trips from airports in a country to airports in the specified city. \end{DoxyCompactList}\item 
+list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ \mbox{\hyperlink{classLogic_a2ed7231bd17db8a478ba1f9d0a046d77}{Country\+To\+Country}} (const std\+::string \&Initial\+Country, const std\+::string \&country, int choice, const unordered\+\_\+set$<$ std\+::string $>$ \&airlines)
+\begin{DoxyCompactList}\small\item\em Finds trips from airports in a country to airports in another country. \end{DoxyCompactList}\item 
+list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ \mbox{\hyperlink{classLogic_abc85bac699651481f1283960183730de}{Location\+To\+Airport}} (double source\+\_\+latitude, double source\+\_\+longitude, \mbox{\hyperlink{classAirport}{Airport}} dest)
+\begin{DoxyCompactList}\small\item\em Finds trips from the given location to the destination airport. \end{DoxyCompactList}\item 
+list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ \mbox{\hyperlink{classLogic_aa6a5573ddaccaa0c7d85669d022d6e4c}{Location\+To\+City}} (double source\+\_\+latitude, double source\+\_\+longitude, const std\+::string city, const std\+::string \&country)
+\begin{DoxyCompactList}\small\item\em Finds trips from the given location to the specified city in the given country. \end{DoxyCompactList}\item 
+list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ \mbox{\hyperlink{classLogic_ae78a232a2422117c5964234f5a6fc6ea}{Location\+To\+Country}} (double source\+\_\+latitude, double source\+\_\+longitude, const std\+::string country)
+\begin{DoxyCompactList}\small\item\em Finds trips from the given location to the specified country. \end{DoxyCompactList}\item 
+list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ \mbox{\hyperlink{classLogic_a85c0e762ef00a77c53f9f33db7c36e8e}{Airport\+To\+Location}} (\mbox{\hyperlink{classAirport}{Airport}} source, double dest\+\_\+latitude, double dest\+\_\+longitude)
+\begin{DoxyCompactList}\small\item\em Finds trips from the specified airport to the given location. \end{DoxyCompactList}\item 
+list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ \mbox{\hyperlink{classLogic_aabbefcf484081a472009bb97dab93f69}{City\+To\+Location}} (const std\+::string city, const std\+::string country, double dest\+\_\+latitude, double dest\+\_\+longitude)
+\begin{DoxyCompactList}\small\item\em Finds trips from the specified city in the given country to the given location. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ \mbox{\hyperlink{classLogic_ae5509f5bd2d89984f1e564ae26787c9a}{Find\+Closest\+Airports\+To\+Location}} (double Latitude, double Longitude)
+\begin{DoxyCompactList}\small\item\em Finds the closest airports to a given location specified by latitude and longitude. \end{DoxyCompactList}\item 
+list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ \mbox{\hyperlink{classLogic_a5c9aa9fee2e877849b8d56490fa44a78}{Location\+To\+Airport\+Airline\+Only\+Filters}} (double source\+\_\+latitude, double source\+\_\+longitude, \mbox{\hyperlink{classAirport}{Airport}} dest, unordered\+\_\+set$<$ std\+::string $>$ airlines)
+\begin{DoxyCompactList}\small\item\em Finds trips from the given location to the destination airport, considering airline filters. \end{DoxyCompactList}\item 
+list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ \mbox{\hyperlink{classLogic_aafc6274f93221174ca512d1debca15dc}{Location\+To\+Airport\+Airline\+Avoid\+Filters}} (double source\+\_\+latitude, double source\+\_\+longitude, \mbox{\hyperlink{classAirport}{Airport}} dest, unordered\+\_\+set$<$ std\+::string $>$ airlines)
+\begin{DoxyCompactList}\small\item\em Finds trips from the given location to the destination airport, avoiding specified airlines. \end{DoxyCompactList}\item 
+list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ \mbox{\hyperlink{classLogic_a4aadf54d4d9c2632e85e094c00218417}{Location\+To\+City\+Airline\+Only\+Filters}} (double source\+\_\+latitude, double source\+\_\+longitude, const std\+::string city, const std\+::string \&country, unordered\+\_\+set$<$ std\+::string $>$ airlines)
+\begin{DoxyCompactList}\small\item\em Finds trips from the given location to the specified city in the given country, considering airline filters. \end{DoxyCompactList}\item 
+list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ \mbox{\hyperlink{classLogic_a8d23f0f6bdbf3889b1b1c538363b890d}{Location\+To\+City\+Airline\+Avoid\+Filters}} (double source\+\_\+latitude, double source\+\_\+longitude, const std\+::string city, const std\+::string \&country, unordered\+\_\+set$<$ std\+::string $>$ airlines)
+\begin{DoxyCompactList}\small\item\em Finds trips from the given location to the specified city in the given country, avoiding specified airlines. \end{DoxyCompactList}\item 
+list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ \mbox{\hyperlink{classLogic_a56d02ea581e2ac9a6094b9949fa0785a}{Location\+To\+Country\+Airline\+Only\+Filter}} (double source\+\_\+latitude, double source\+\_\+longitude, const std\+::string country, unordered\+\_\+set$<$ std\+::string $>$ airlines)
+\begin{DoxyCompactList}\small\item\em Finds trips from the given location to the specified country, considering airline filters. \end{DoxyCompactList}\item 
+list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ \mbox{\hyperlink{classLogic_a1678d95c8252ed466b1a1f5d12d2b5dd}{Location\+To\+Country\+Airline\+Avoid\+Filter}} (double source\+\_\+latitude, double source\+\_\+longitude, const std\+::string country, unordered\+\_\+set$<$ std\+::string $>$ airlines)
+\begin{DoxyCompactList}\small\item\em Finds trips from the given location to the specified country, avoiding specified airlines. \end{DoxyCompactList}\item 
+list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ \mbox{\hyperlink{classLogic_a66179a85541141e6828d10868eb0095a}{Airport\+To\+Location\+Airline\+Only\+Filters}} (\mbox{\hyperlink{classAirport}{Airport}} source, double dest\+\_\+latitude, double dest\+\_\+longitude, unordered\+\_\+set$<$ std\+::string $>$ airline)
+\begin{DoxyCompactList}\small\item\em Finds trips from the specified airport to the given location, considering airline filters. \end{DoxyCompactList}\item 
+list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ \mbox{\hyperlink{classLogic_a313b090c722cf1f5ff8b0f379fa594d8}{Airport\+To\+Location\+Airline\+Avoid\+Filters}} (\mbox{\hyperlink{classAirport}{Airport}} source, double dest\+\_\+latitude, double dest\+\_\+longitude, unordered\+\_\+set$<$ std\+::string $>$ airline)
+\begin{DoxyCompactList}\small\item\em Finds trips from the specified airport to the given location, avoiding specified airlines. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classLogic_afbb850f17514a08e0f6f7fa9e78c2cee}{Haversine\+Algorithm}} (double lat1, double lon1, double lat2, double lon2)
+\begin{DoxyCompactList}\small\item\em Calculates the Haversine distance between two sets of latitude and longitude coordinates. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ \mbox{\hyperlink{classLogic_a3d1ae7c4d03d46190b613e347185bf6f}{nodes\+At\+Distance\+BFS}} (const string \&airport\+Code, int k)
+\begin{DoxyCompactList}\small\item\em Performs a Breadth-\/\+First Search (BFS) to find airports at a given distance from a starting airport. \end{DoxyCompactList}\item 
+vector$<$ int $>$ \mbox{\hyperlink{classLogic_abe2bffea6fd1ae60c3733a0077a6185d}{analyze\+Reachable\+Airports}} (const vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ \&reachable\+Airports)
+\begin{DoxyCompactList}\small\item\em Analyzes the reachability of airports and provides information about distinct airports, countries, and cities. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classLogic_a0d4c2468a1dee9206f22e1582bdc761f}\label{classLogic_a0d4c2468a1dee9206f22e1582bdc761f}} 
+void {\bfseries Normalise\+List} (list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ \&list1)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classLogic_a847d7e4e0c4bcad31d3c6350f719b093}\label{classLogic_a847d7e4e0c4bcad31d3c6350f719b093}} 
+\index{Logic@{Logic}!AirportToAirport@{AirportToAirport}}
+\index{AirportToAirport@{AirportToAirport}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{AirportToAirport()}{AirportToAirport()}}
+{\footnotesize\ttfamily list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ Logic\+::\+Airport\+To\+Airport (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classAirport}{Airport}} \&}]{initial\+Airport,  }\item[{const \mbox{\hyperlink{classAirport}{Airport}} \&}]{dest\+Airport }\end{DoxyParamCaption})}
+
+
+
+Finds trips from the specified airport to the given airport. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em initial\+Airport} & The source airport. \\
+\hline
+{\em dest\+Airport} & The destination airport. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of trips, each represented as a vector of airports.
+\end{DoxyReturn}
+Time complexity\+: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph. \mbox{\Hypertarget{classLogic_aa87c80778a4d471ba5fe1cb6075c63bb}\label{classLogic_aa87c80778a4d471ba5fe1cb6075c63bb}} 
+\index{Logic@{Logic}!AirportToAirportAirlineAvoidFilters@{AirportToAirportAirlineAvoidFilters}}
+\index{AirportToAirportAirlineAvoidFilters@{AirportToAirportAirlineAvoidFilters}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{AirportToAirportAirlineAvoidFilters()}{AirportToAirportAirlineAvoidFilters()}}
+{\footnotesize\ttfamily list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ Logic\+::\+Airport\+To\+Airport\+Airline\+Avoid\+Filters (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classAirport}{Airport}} \&}]{initial\+Airport,  }\item[{const \mbox{\hyperlink{classAirport}{Airport}} \&}]{dest\+Airport,  }\item[{unordered\+\_\+set$<$ std\+::string $>$}]{airlines }\end{DoxyParamCaption})}
+
+
+
+Finds trips from the specified airport to the given airport, avoiding specified airlines. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em initial\+Airport} & The source airport. \\
+\hline
+{\em dest\+Airport} & The destination airport. \\
+\hline
+{\em airlines} & A set of airline codes to avoid in the trips. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of trips, each represented as a vector of airports.
+\end{DoxyReturn}
+Time complexity\+: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph. \mbox{\Hypertarget{classLogic_aef13de13620c053137aa5770d81c66a5}\label{classLogic_aef13de13620c053137aa5770d81c66a5}} 
+\index{Logic@{Logic}!AirportToAirportAirlineOnlyFilters@{AirportToAirportAirlineOnlyFilters}}
+\index{AirportToAirportAirlineOnlyFilters@{AirportToAirportAirlineOnlyFilters}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{AirportToAirportAirlineOnlyFilters()}{AirportToAirportAirlineOnlyFilters()}}
+{\footnotesize\ttfamily list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ Logic\+::\+Airport\+To\+Airport\+Airline\+Only\+Filters (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classAirport}{Airport}} \&}]{initial\+Airport,  }\item[{const \mbox{\hyperlink{classAirport}{Airport}} \&}]{dest\+Airport,  }\item[{unordered\+\_\+set$<$ std\+::string $>$}]{airlines }\end{DoxyParamCaption})}
+
+
+
+Finds trips from the specified airport to the given airport, considering airline filters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em initial\+Airport} & The source airport. \\
+\hline
+{\em dest\+Airport} & The destination airport. \\
+\hline
+{\em airlines} & A set of airline codes to include in the trips. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of trips, each represented as a vector of airports.
+\end{DoxyReturn}
+Time complexity\+: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph. \mbox{\Hypertarget{classLogic_adaab6121280744b83c24f25fefbcc279}\label{classLogic_adaab6121280744b83c24f25fefbcc279}} 
+\index{Logic@{Logic}!AirportToCity@{AirportToCity}}
+\index{AirportToCity@{AirportToCity}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{AirportToCity()}{AirportToCity()}}
+{\footnotesize\ttfamily list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ Logic\+::\+Airport\+To\+City (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classAirport}{Airport}} \&}]{initial\+Airport,  }\item[{const std\+::string \&}]{city,  }\item[{const std\+::string \&}]{country }\end{DoxyParamCaption})}
+
+
+
+Finds trips from the specified airport to the given city in the given country. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em initial\+Airport} & The source airport. \\
+\hline
+{\em city} & The destination city. \\
+\hline
+{\em country} & The destination country. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of trips, each represented as a vector of airports.
+\end{DoxyReturn}
+Time complexity\+: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph. \mbox{\Hypertarget{classLogic_ae88acdd5faf2d66f92ef1fd1501b17a2}\label{classLogic_ae88acdd5faf2d66f92ef1fd1501b17a2}} 
+\index{Logic@{Logic}!AirportToCityAirlineAvoidFilter@{AirportToCityAirlineAvoidFilter}}
+\index{AirportToCityAirlineAvoidFilter@{AirportToCityAirlineAvoidFilter}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{AirportToCityAirlineAvoidFilter()}{AirportToCityAirlineAvoidFilter()}}
+{\footnotesize\ttfamily list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ Logic\+::\+Airport\+To\+City\+Airline\+Avoid\+Filter (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classAirport}{Airport}} \&}]{initial\+Airport,  }\item[{const std\+::string \&}]{city,  }\item[{const std\+::string \&}]{country,  }\item[{unordered\+\_\+set$<$ std\+::string $>$}]{airlines }\end{DoxyParamCaption})}
+
+
+
+Finds trips from the specified airport to the given city in the given country, avoiding specified airlines. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em initial\+Airport} & The source airport. \\
+\hline
+{\em city} & The destination city. \\
+\hline
+{\em country} & The destination country. \\
+\hline
+{\em airlines} & A set of airline codes to avoid in the trips. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of trips, each represented as a vector of airports.
+\end{DoxyReturn}
+Time complexity\+: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph. \mbox{\Hypertarget{classLogic_a8ad03580484b02adc802e22c064ab906}\label{classLogic_a8ad03580484b02adc802e22c064ab906}} 
+\index{Logic@{Logic}!AirportToCityAirlineOnlyFilter@{AirportToCityAirlineOnlyFilter}}
+\index{AirportToCityAirlineOnlyFilter@{AirportToCityAirlineOnlyFilter}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{AirportToCityAirlineOnlyFilter()}{AirportToCityAirlineOnlyFilter()}}
+{\footnotesize\ttfamily list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ Logic\+::\+Airport\+To\+City\+Airline\+Only\+Filter (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classAirport}{Airport}} \&}]{initial\+Airport,  }\item[{const std\+::string \&}]{city,  }\item[{const std\+::string \&}]{country,  }\item[{unordered\+\_\+set$<$ std\+::string $>$}]{airlines }\end{DoxyParamCaption})}
+
+
+
+Finds trips from the specified airport to the given city in the given country, considering airline filters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em initial\+Airport} & The source airport. \\
+\hline
+{\em city} & The destination city. \\
+\hline
+{\em country} & The destination country. \\
+\hline
+{\em airlines} & A set of airline codes to include in the trips. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of trips, each represented as a vector of airports.
+\end{DoxyReturn}
+Time complexity\+: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph. \mbox{\Hypertarget{classLogic_a08548191f0728e9ec1891fd3acfbd33e}\label{classLogic_a08548191f0728e9ec1891fd3acfbd33e}} 
+\index{Logic@{Logic}!AirportToCountry@{AirportToCountry}}
+\index{AirportToCountry@{AirportToCountry}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{AirportToCountry()}{AirportToCountry()}}
+{\footnotesize\ttfamily list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ Logic\+::\+Airport\+To\+Country (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classAirport}{Airport}} \&}]{initial\+Airport,  }\item[{const std\+::string \&}]{country }\end{DoxyParamCaption})}
+
+
+
+Finds trips from the specified airport to the given country. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em initial\+Airport} & The source airport. \\
+\hline
+{\em country} & The destination country. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of trips, each represented as a vector of airports.
+\end{DoxyReturn}
+Time complexity\+: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph. \mbox{\Hypertarget{classLogic_a176b35e1a9e6c77f4a70f1086a076c55}\label{classLogic_a176b35e1a9e6c77f4a70f1086a076c55}} 
+\index{Logic@{Logic}!AirportToCountryAirlineAvoidFilter@{AirportToCountryAirlineAvoidFilter}}
+\index{AirportToCountryAirlineAvoidFilter@{AirportToCountryAirlineAvoidFilter}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{AirportToCountryAirlineAvoidFilter()}{AirportToCountryAirlineAvoidFilter()}}
+{\footnotesize\ttfamily list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ Logic\+::\+Airport\+To\+Country\+Airline\+Avoid\+Filter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classAirport}{Airport}}}]{initial\+Airport,  }\item[{std\+::string}]{country,  }\item[{unordered\+\_\+set$<$ std\+::string $>$}]{airlines }\end{DoxyParamCaption})}
+
+
+
+Finds trips from the specified airport to the given country, avoiding specified airlines. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em initial\+Airport} & The source airport. \\
+\hline
+{\em country} & The destination country. \\
+\hline
+{\em airlines} & A set of airline codes to avoid in the trips. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of trips, each represented as a vector of airports.
+\end{DoxyReturn}
+Time complexity\+: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph. \mbox{\Hypertarget{classLogic_adc977f913a1bedac203b451c77ccff8b}\label{classLogic_adc977f913a1bedac203b451c77ccff8b}} 
+\index{Logic@{Logic}!AirportToCountryAirlineOnlyFilter@{AirportToCountryAirlineOnlyFilter}}
+\index{AirportToCountryAirlineOnlyFilter@{AirportToCountryAirlineOnlyFilter}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{AirportToCountryAirlineOnlyFilter()}{AirportToCountryAirlineOnlyFilter()}}
+{\footnotesize\ttfamily list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ Logic\+::\+Airport\+To\+Country\+Airline\+Only\+Filter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classAirport}{Airport}}}]{initial\+Airport,  }\item[{std\+::string}]{country,  }\item[{unordered\+\_\+set$<$ std\+::string $>$}]{airlines }\end{DoxyParamCaption})}
+
+
+
+Finds trips from the specified airport to the given country, considering airline filters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em initial\+Airport} & The source airport. \\
+\hline
+{\em country} & The destination country. \\
+\hline
+{\em airlines} & A set of airline codes to include in the trips. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of trips, each represented as a vector of airports.
+\end{DoxyReturn}
+Time complexity\+: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph. \mbox{\Hypertarget{classLogic_a85c0e762ef00a77c53f9f33db7c36e8e}\label{classLogic_a85c0e762ef00a77c53f9f33db7c36e8e}} 
+\index{Logic@{Logic}!AirportToLocation@{AirportToLocation}}
+\index{AirportToLocation@{AirportToLocation}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{AirportToLocation()}{AirportToLocation()}}
+{\footnotesize\ttfamily list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ Logic\+::\+Airport\+To\+Location (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classAirport}{Airport}}}]{source,  }\item[{double}]{dest\+\_\+latitude,  }\item[{double}]{dest\+\_\+longitude }\end{DoxyParamCaption})}
+
+
+
+Finds trips from the specified airport to the given location. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & The source airport. \\
+\hline
+{\em dest\+\_\+latitude} & The latitude of the destination location. \\
+\hline
+{\em dest\+\_\+longitude} & The longitude of the destination location. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of trips, each represented as a vector of airports.
+\end{DoxyReturn}
+Time complexity\+: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph. \mbox{\Hypertarget{classLogic_a313b090c722cf1f5ff8b0f379fa594d8}\label{classLogic_a313b090c722cf1f5ff8b0f379fa594d8}} 
+\index{Logic@{Logic}!AirportToLocationAirlineAvoidFilters@{AirportToLocationAirlineAvoidFilters}}
+\index{AirportToLocationAirlineAvoidFilters@{AirportToLocationAirlineAvoidFilters}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{AirportToLocationAirlineAvoidFilters()}{AirportToLocationAirlineAvoidFilters()}}
+{\footnotesize\ttfamily list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ Logic\+::\+Airport\+To\+Location\+Airline\+Avoid\+Filters (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classAirport}{Airport}}}]{source,  }\item[{double}]{dest\+\_\+latitude,  }\item[{double}]{dest\+\_\+longitude,  }\item[{unordered\+\_\+set$<$ std\+::string $>$}]{airline }\end{DoxyParamCaption})}
+
+
+
+Finds trips from the specified airport to the given location, avoiding specified airlines. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & The source airport. \\
+\hline
+{\em dest\+\_\+latitude} & The latitude of the destination location. \\
+\hline
+{\em dest\+\_\+longitude} & The longitude of the destination location. \\
+\hline
+{\em airline} & A set of airline codes to avoid in the trips. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of trips, each represented as a vector of airports.
+\end{DoxyReturn}
+Time complexity\+: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph. \mbox{\Hypertarget{classLogic_a66179a85541141e6828d10868eb0095a}\label{classLogic_a66179a85541141e6828d10868eb0095a}} 
+\index{Logic@{Logic}!AirportToLocationAirlineOnlyFilters@{AirportToLocationAirlineOnlyFilters}}
+\index{AirportToLocationAirlineOnlyFilters@{AirportToLocationAirlineOnlyFilters}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{AirportToLocationAirlineOnlyFilters()}{AirportToLocationAirlineOnlyFilters()}}
+{\footnotesize\ttfamily list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ Logic\+::\+Airport\+To\+Location\+Airline\+Only\+Filters (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classAirport}{Airport}}}]{source,  }\item[{double}]{dest\+\_\+latitude,  }\item[{double}]{dest\+\_\+longitude,  }\item[{unordered\+\_\+set$<$ std\+::string $>$}]{airline }\end{DoxyParamCaption})}
+
+
+
+Finds trips from the specified airport to the given location, considering airline filters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & The source airport. \\
+\hline
+{\em dest\+\_\+latitude} & The latitude of the destination location. \\
+\hline
+{\em dest\+\_\+longitude} & The longitude of the destination location. \\
+\hline
+{\em airline} & A set of airline codes to include in the trips. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of trips, each represented as a vector of airports.
+\end{DoxyReturn}
+Time complexity\+: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph. \mbox{\Hypertarget{classLogic_abe2bffea6fd1ae60c3733a0077a6185d}\label{classLogic_abe2bffea6fd1ae60c3733a0077a6185d}} 
+\index{Logic@{Logic}!analyzeReachableAirports@{analyzeReachableAirports}}
+\index{analyzeReachableAirports@{analyzeReachableAirports}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{analyzeReachableAirports()}{analyzeReachableAirports()}}
+{\footnotesize\ttfamily vector$<$ int $>$ Logic\+::analyze\+Reachable\+Airports (\begin{DoxyParamCaption}\item[{const vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ \&}]{reachable\+Airports }\end{DoxyParamCaption})}
+
+
+
+Analyzes the reachability of airports and provides information about distinct airports, countries, and cities. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reachable\+Airports} & A vector of airports that are reachable. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector containing the count of distinct airports, countries, and cities.
+\end{DoxyReturn}
+Time complexity\+: O(1). \mbox{\Hypertarget{classLogic_ad26dcec2cd217841208c0d925c582785}\label{classLogic_ad26dcec2cd217841208c0d925c582785}} 
+\index{Logic@{Logic}!CityToAirport@{CityToAirport}}
+\index{CityToAirport@{CityToAirport}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{CityToAirport()}{CityToAirport()}}
+{\footnotesize\ttfamily list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ Logic\+::\+City\+To\+Airport (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classAirport}{Airport}} \&}]{dest\+Airport,  }\item[{const std\+::string \&}]{city,  }\item[{const std\+::string \&}]{country,  }\item[{int}]{choice,  }\item[{unordered\+\_\+set$<$ std\+::string $>$}]{airlines }\end{DoxyParamCaption})}
+
+
+
+Finds trips from airports in a city to the specified airport. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dest\+Airport} & The destination airport. \\
+\hline
+{\em city} & The city where the initial airports are located. \\
+\hline
+{\em country} & The country where the initial airports are located. \\
+\hline
+{\em choice} & The choice of filter (1\+: No filter, 2\+: \mbox{\hyperlink{classAirline}{Airline}} Avoidance, 3\+: \mbox{\hyperlink{classAirline}{Airline}} Only). \\
+\hline
+{\em airlines} & Set of airlines to avoid or include based on the choice. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of trips, each represented as a vector of airports.
+\end{DoxyReturn}
+Time complexity\+: O(I $\ast$ (V + E)), where I is the number of initial airports, V is the number of vertices (airports), and E is the number of edges (flights) in the graph. \mbox{\Hypertarget{classLogic_a5b7a44b0f1e07b074c0330fe73c5c0c9}\label{classLogic_a5b7a44b0f1e07b074c0330fe73c5c0c9}} 
+\index{Logic@{Logic}!CityToCity@{CityToCity}}
+\index{CityToCity@{CityToCity}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{CityToCity()}{CityToCity()}}
+{\footnotesize\ttfamily list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ Logic\+::\+City\+To\+City (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{Initial\+City,  }\item[{const std\+::string \&}]{Initial\+Country,  }\item[{const std\+::string \&}]{Final\+City,  }\item[{const std\+::string \&}]{Final\+Country,  }\item[{int}]{choice,  }\item[{const unordered\+\_\+set$<$ std\+::string $>$ \&}]{airlines }\end{DoxyParamCaption})}
+
+
+
+Finds trips from airports in an initial city to airports in a final city. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Initial\+City} & The initial city. \\
+\hline
+{\em Initial\+Country} & The country where the initial city is located. \\
+\hline
+{\em Final\+City} & The final city. \\
+\hline
+{\em Final\+Country} & The country where the final city is located. \\
+\hline
+{\em choice} & The choice of filter (1\+: No filter, 2\+: \mbox{\hyperlink{classAirline}{Airline}} Avoidance, 3\+: \mbox{\hyperlink{classAirline}{Airline}} Only). \\
+\hline
+{\em airlines} & Set of airlines to avoid or include based on the choice. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of trips, each represented as a vector of airports.
+\end{DoxyReturn}
+Time complexity\+: O(I $\ast$ (V + E)), where I is the number of initial airports, V is the number of vertices (airports), and E is the number of edges (flights) in the graph. \mbox{\Hypertarget{classLogic_a2baa5e8fe870b8adb69e73d64ea27e2a}\label{classLogic_a2baa5e8fe870b8adb69e73d64ea27e2a}} 
+\index{Logic@{Logic}!CityToCountry@{CityToCountry}}
+\index{CityToCountry@{CityToCountry}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{CityToCountry()}{CityToCountry()}}
+{\footnotesize\ttfamily list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ Logic\+::\+City\+To\+Country (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{Initialcity,  }\item[{const std\+::string \&}]{Initial\+Country,  }\item[{const std\+::string \&}]{country,  }\item[{int}]{choice,  }\item[{const unordered\+\_\+set$<$ std\+::string $>$ \&}]{airlines }\end{DoxyParamCaption})}
+
+
+
+Finds trips from airports in an initial city to airports in a final country. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Initialcity} & The initial city. \\
+\hline
+{\em Initial\+Country} & The country where the initial city is located. \\
+\hline
+{\em Final\+Country} & The country where the final city is located. \\
+\hline
+{\em choice} & The choice of filter (1\+: No filter, 2\+: \mbox{\hyperlink{classAirline}{Airline}} Avoidance, 3\+: \mbox{\hyperlink{classAirline}{Airline}} Only). \\
+\hline
+{\em airlines} & Set of airlines to avoid or include based on the choice. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of trips, each represented as a vector of airports.
+\end{DoxyReturn}
+Time complexity\+: O(I $\ast$ (V + E)), where I is the number of initial airports, V is the number of vertices (airports), and E is the number of edges (flights) in the graph. \mbox{\Hypertarget{classLogic_aabbefcf484081a472009bb97dab93f69}\label{classLogic_aabbefcf484081a472009bb97dab93f69}} 
+\index{Logic@{Logic}!CityToLocation@{CityToLocation}}
+\index{CityToLocation@{CityToLocation}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{CityToLocation()}{CityToLocation()}}
+{\footnotesize\ttfamily list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ Logic\+::\+City\+To\+Location (\begin{DoxyParamCaption}\item[{const std\+::string}]{city,  }\item[{const std\+::string}]{country,  }\item[{double}]{dest\+\_\+latitude,  }\item[{double}]{dest\+\_\+longitude }\end{DoxyParamCaption})}
+
+
+
+Finds trips from the specified city in the given country to the given location. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em city} & The source city. \\
+\hline
+{\em country} & The source country. \\
+\hline
+{\em dest\+\_\+latitude} & The latitude of the destination location. \\
+\hline
+{\em dest\+\_\+longitude} & The longitude of the destination location. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of trips, each represented as a vector of airports.
+\end{DoxyReturn}
+Time complexity\+: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph. \mbox{\Hypertarget{classLogic_af1cb3152c3eda8bcddd0e9500fe5dfc1}\label{classLogic_af1cb3152c3eda8bcddd0e9500fe5dfc1}} 
+\index{Logic@{Logic}!CountryToAirport@{CountryToAirport}}
+\index{CountryToAirport@{CountryToAirport}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{CountryToAirport()}{CountryToAirport()}}
+{\footnotesize\ttfamily list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ Logic\+::\+Country\+To\+Airport (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classAirport}{Airport}} \&}]{dest\+Airport,  }\item[{const std\+::string \&}]{country,  }\item[{int}]{choice,  }\item[{unordered\+\_\+set$<$ std\+::string $>$}]{airlines }\end{DoxyParamCaption})}
+
+
+
+Finds trips from airports in a country to the specified airport. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dest\+Airport} & The destination airport. \\
+\hline
+{\em country} & The country where the initial airports are located. \\
+\hline
+{\em choice} & The choice of filter (1\+: No filter, 2\+: \mbox{\hyperlink{classAirline}{Airline}} Avoidance, 3\+: \mbox{\hyperlink{classAirline}{Airline}} Only). \\
+\hline
+{\em airlines} & Set of airlines to avoid or include based on the choice. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of trips, each represented as a vector of airports.
+\end{DoxyReturn}
+Time complexity\+: O(I $\ast$ (V + E)), where I is the number of initial airports, V is the number of vertices (airports), and E is the number of edges (flights) in the graph. \mbox{\Hypertarget{classLogic_a08da169171672f113fd088c353b354c0}\label{classLogic_a08da169171672f113fd088c353b354c0}} 
+\index{Logic@{Logic}!CountryToCity@{CountryToCity}}
+\index{CountryToCity@{CountryToCity}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{CountryToCity()}{CountryToCity()}}
+{\footnotesize\ttfamily list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ Logic\+::\+Country\+To\+City (\begin{DoxyParamCaption}\item[{const string \&}]{Initial\+Country,  }\item[{const string \&}]{Final\+City,  }\item[{const string \&}]{Final\+Country,  }\item[{int}]{choice,  }\item[{const unordered\+\_\+set$<$ std\+::string $>$ \&}]{airlines }\end{DoxyParamCaption})}
+
+
+
+Finds trips from airports in a country to airports in the specified city. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Initial\+Country} & The country where the initial airports are located. \\
+\hline
+{\em Final\+City} & The final city. \\
+\hline
+{\em Final\+Country} & The country where the final city is located. \\
+\hline
+{\em choice} & The choice of filter (1\+: No filter, 2\+: \mbox{\hyperlink{classAirline}{Airline}} Avoidance, 3\+: \mbox{\hyperlink{classAirline}{Airline}} Only). \\
+\hline
+{\em airlines} & Set of airlines to avoid or include based on the choice. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of trips, each represented as a vector of airports.
+\end{DoxyReturn}
+Time complexity\+: O(I $\ast$ (V + E)), where I is the number of initial airports, V is the number of vertices (airports), and E is the number of edges (flights) in the graph. \mbox{\Hypertarget{classLogic_a2ed7231bd17db8a478ba1f9d0a046d77}\label{classLogic_a2ed7231bd17db8a478ba1f9d0a046d77}} 
+\index{Logic@{Logic}!CountryToCountry@{CountryToCountry}}
+\index{CountryToCountry@{CountryToCountry}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{CountryToCountry()}{CountryToCountry()}}
+{\footnotesize\ttfamily list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ Logic\+::\+Country\+To\+Country (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{Initial\+Country,  }\item[{const std\+::string \&}]{country,  }\item[{int}]{choice,  }\item[{const unordered\+\_\+set$<$ std\+::string $>$ \&}]{airlines }\end{DoxyParamCaption})}
+
+
+
+Finds trips from airports in a country to airports in another country. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Initial\+Country} & The country where the initial airports are located. \\
+\hline
+{\em country} & The country where the final airports are located. \\
+\hline
+{\em choice} & The choice of filter (1\+: No filter, 2\+: \mbox{\hyperlink{classAirline}{Airline}} Avoidance, 3\+: \mbox{\hyperlink{classAirline}{Airline}} Only). \\
+\hline
+{\em airlines} & Set of airlines to avoid or include based on the choice. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of trips, each represented as a vector of airports.
+\end{DoxyReturn}
+Time complexity\+: O(I $\ast$ (V + E)), where I is the number of initial airports, V is the number of vertices (airports), and E is the number of edges (flights) in the graph. \mbox{\Hypertarget{classLogic_a4401e789beaeb40ba7f636704268fced}\label{classLogic_a4401e789beaeb40ba7f636704268fced}} 
+\index{Logic@{Logic}!findArticulationPoints@{findArticulationPoints}}
+\index{findArticulationPoints@{findArticulationPoints}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{findArticulationPoints()}{findArticulationPoints()}}
+{\footnotesize\ttfamily unordered\+\_\+set$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ Logic\+::find\+Articulation\+Points (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Finds the articulation points in the graph. 
+
+\begin{DoxyReturn}{Returns}
+An unordered set of airports representing the articulation points.
+\end{DoxyReturn}
+Time complexity\+: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph. \mbox{\Hypertarget{classLogic_ae5509f5bd2d89984f1e564ae26787c9a}\label{classLogic_ae5509f5bd2d89984f1e564ae26787c9a}} 
+\index{Logic@{Logic}!FindClosestAirportsToLocation@{FindClosestAirportsToLocation}}
+\index{FindClosestAirportsToLocation@{FindClosestAirportsToLocation}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{FindClosestAirportsToLocation()}{FindClosestAirportsToLocation()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ Logic\+::\+Find\+Closest\+Airports\+To\+Location (\begin{DoxyParamCaption}\item[{double}]{Latitude,  }\item[{double}]{Longitude }\end{DoxyParamCaption})}
+
+
+
+Finds the closest airports to a given location specified by latitude and longitude. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Latitude} & The latitude of the location. \\
+\hline
+{\em Longitude} & The longitude of the location. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of airports closest to the specified location.
+\end{DoxyReturn}
+Time complexity\+: O(\+V), where V is the number of vertices (airports) in the graph. \mbox{\Hypertarget{classLogic_a3c139eb3096f35404f0373d614627c12}\label{classLogic_a3c139eb3096f35404f0373d614627c12}} 
+\index{Logic@{Logic}!FindMaxTripBfs@{FindMaxTripBfs}}
+\index{FindMaxTripBfs@{FindMaxTripBfs}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{FindMaxTripBfs()}{FindMaxTripBfs()}}
+{\footnotesize\ttfamily vector$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ Logic\+::\+Find\+Max\+Trip\+Bfs (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classAirport}{Airport}} \&}]{airport\+\_\+,  }\item[{int}]{diameter }\end{DoxyParamCaption})}
+
+
+
+Finds maximum trips using Breadth-\/\+First Search (BFS) starting from a specific airport with a given diameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em airport\+\_\+} & The starting airport. \\
+\hline
+{\em diameter} & The diameter parameter. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of vectors representing the maximum trips.
+\end{DoxyReturn}
+Time complexity\+: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph. \mbox{\Hypertarget{classLogic_a86667baf43e1bfd603aea91fbb79f944}\label{classLogic_a86667baf43e1bfd603aea91fbb79f944}} 
+\index{Logic@{Logic}!FlightsOutOfAirportAndDifferentAirlines@{FlightsOutOfAirportAndDifferentAirlines}}
+\index{FlightsOutOfAirportAndDifferentAirlines@{FlightsOutOfAirportAndDifferentAirlines}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{FlightsOutOfAirportAndDifferentAirlines()}{FlightsOutOfAirportAndDifferentAirlines()}}
+{\footnotesize\ttfamily std\+::pair$<$ int, int $>$ Logic\+::\+Flights\+Out\+Of\+Airport\+And\+Different\+Airlines (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{Airport\+Code }\end{DoxyParamCaption})}
+
+
+
+Calculates the number of flights out of a specific airport with different airlines. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Airport\+Code} & The code of the airport. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pair containing the number of flights and the number of different airlines.
+\end{DoxyReturn}
+Time complexity\+: O(\+E), where E is the number of edges (flights) in that \mbox{\hyperlink{classVertex}{Vertex}} of the graph. \mbox{\Hypertarget{classLogic_a352b6027a1c4b05d00520de98034b8f8}\label{classLogic_a352b6027a1c4b05d00520de98034b8f8}} 
+\index{Logic@{Logic}!getNamesToCodes@{getNamesToCodes}}
+\index{getNamesToCodes@{getNamesToCodes}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{getNamesToCodes()}{getNamesToCodes()}}
+{\footnotesize\ttfamily unordered\+\_\+map$<$ std\+::string, std\+::string $>$ Logic\+::get\+Names\+To\+Codes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the mapping of airport names to their codes. 
+
+\begin{DoxyReturn}{Returns}
+The unordered map of airport names to codes.
+\end{DoxyReturn}
+Time complexity\+: O(1) \mbox{\Hypertarget{classLogic_ab351075a02f8bb7c6f36b1922f30c88f}\label{classLogic_ab351075a02f8bb7c6f36b1922f30c88f}} 
+\index{Logic@{Logic}!GlobalNumberOfAirports@{GlobalNumberOfAirports}}
+\index{GlobalNumberOfAirports@{GlobalNumberOfAirports}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{GlobalNumberOfAirports()}{GlobalNumberOfAirports()}}
+{\footnotesize\ttfamily int Logic\+::\+Global\+Number\+Of\+Airports (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the global number of airports. 
+
+\begin{DoxyReturn}{Returns}
+The total number of airports.
+\end{DoxyReturn}
+Time complexity\+: O(1) \mbox{\Hypertarget{classLogic_a246f6be53b31223684b31e170079632d}\label{classLogic_a246f6be53b31223684b31e170079632d}} 
+\index{Logic@{Logic}!GlobalNumberOfFlights@{GlobalNumberOfFlights}}
+\index{GlobalNumberOfFlights@{GlobalNumberOfFlights}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{GlobalNumberOfFlights()}{GlobalNumberOfFlights()}}
+{\footnotesize\ttfamily size\+\_\+t Logic\+::\+Global\+Number\+Of\+Flights (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the global number of flights. 
+
+\begin{DoxyReturn}{Returns}
+The total number of flights.
+\end{DoxyReturn}
+Time complexity\+: O(\+V), where V is the number of vertices (airports) in the graph. \mbox{\Hypertarget{classLogic_a40b6004b981e46383fa400cdd703aeb7}\label{classLogic_a40b6004b981e46383fa400cdd703aeb7}} 
+\index{Logic@{Logic}!GlobalNumbers@{GlobalNumbers}}
+\index{GlobalNumbers@{GlobalNumbers}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{GlobalNumbers()}{GlobalNumbers()}}
+{\footnotesize\ttfamily int Logic\+::\+Global\+Numbers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Calculates the global number of airports and flights. 
+
+\begin{DoxyReturn}{Returns}
+The total number of airports and flights.
+\end{DoxyReturn}
+Time complexity\+: O(1) \mbox{\Hypertarget{classLogic_a75f7da8caaadd0a5744af74f4ac6445e}\label{classLogic_a75f7da8caaadd0a5744af74f4ac6445e}} 
+\index{Logic@{Logic}!GreatestKIndeegrees@{GreatestKIndeegrees}}
+\index{GreatestKIndeegrees@{GreatestKIndeegrees}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{GreatestKIndeegrees()}{GreatestKIndeegrees()}}
+{\footnotesize\ttfamily vector$<$ string $>$ Logic\+::\+Greatest\+KIndeegrees (\begin{DoxyParamCaption}\item[{int}]{k }\end{DoxyParamCaption})}
+
+
+
+Finds the airports with the greatest in-\/degrees. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em k} & The number of airports to find. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of airport codes with the greatest in-\/degrees.
+\end{DoxyReturn}
+Time complexity\+: O(V$\ast$log(V) + V$\ast$E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph. \mbox{\Hypertarget{classLogic_afbb850f17514a08e0f6f7fa9e78c2cee}\label{classLogic_afbb850f17514a08e0f6f7fa9e78c2cee}} 
+\index{Logic@{Logic}!HaversineAlgorithm@{HaversineAlgorithm}}
+\index{HaversineAlgorithm@{HaversineAlgorithm}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{HaversineAlgorithm()}{HaversineAlgorithm()}}
+{\footnotesize\ttfamily double Logic\+::\+Haversine\+Algorithm (\begin{DoxyParamCaption}\item[{double}]{lat1,  }\item[{double}]{lon1,  }\item[{double}]{lat2,  }\item[{double}]{lon2 }\end{DoxyParamCaption})}
+
+
+
+Calculates the Haversine distance between two sets of latitude and longitude coordinates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lat1} & The latitude of the first point. \\
+\hline
+{\em lon1} & The longitude of the first point. \\
+\hline
+{\em lat2} & The latitude of the second point. \\
+\hline
+{\em lon2} & The longitude of the second point. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The Haversine distance between the two points.
+\end{DoxyReturn}
+Time complexity\+: O(log n) \mbox{\Hypertarget{classLogic_abc85bac699651481f1283960183730de}\label{classLogic_abc85bac699651481f1283960183730de}} 
+\index{Logic@{Logic}!LocationToAirport@{LocationToAirport}}
+\index{LocationToAirport@{LocationToAirport}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{LocationToAirport()}{LocationToAirport()}}
+{\footnotesize\ttfamily list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ Logic\+::\+Location\+To\+Airport (\begin{DoxyParamCaption}\item[{double}]{source\+\_\+latitude,  }\item[{double}]{source\+\_\+longitude,  }\item[{\mbox{\hyperlink{classAirport}{Airport}}}]{dest }\end{DoxyParamCaption})}
+
+
+
+Finds trips from the given location to the destination airport. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em source\+\_\+latitude} & The latitude of the source location. \\
+\hline
+{\em source\+\_\+longitude} & The longitude of the source location. \\
+\hline
+{\em dest} & The destination airport. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of trips, each represented as a vector of airports.
+\end{DoxyReturn}
+Time complexity\+: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph. \mbox{\Hypertarget{classLogic_aafc6274f93221174ca512d1debca15dc}\label{classLogic_aafc6274f93221174ca512d1debca15dc}} 
+\index{Logic@{Logic}!LocationToAirportAirlineAvoidFilters@{LocationToAirportAirlineAvoidFilters}}
+\index{LocationToAirportAirlineAvoidFilters@{LocationToAirportAirlineAvoidFilters}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{LocationToAirportAirlineAvoidFilters()}{LocationToAirportAirlineAvoidFilters()}}
+{\footnotesize\ttfamily list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ Logic\+::\+Location\+To\+Airport\+Airline\+Avoid\+Filters (\begin{DoxyParamCaption}\item[{double}]{source\+\_\+latitude,  }\item[{double}]{source\+\_\+longitude,  }\item[{\mbox{\hyperlink{classAirport}{Airport}}}]{dest,  }\item[{unordered\+\_\+set$<$ std\+::string $>$}]{airlines }\end{DoxyParamCaption})}
+
+
+
+Finds trips from the given location to the destination airport, avoiding specified airlines. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em source\+\_\+latitude} & The latitude of the source location. \\
+\hline
+{\em source\+\_\+longitude} & The longitude of the source location. \\
+\hline
+{\em dest} & The destination airport. \\
+\hline
+{\em airlines} & A set of airline codes to avoid in the trips. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of trips, each represented as a vector of airports.
+\end{DoxyReturn}
+Time complexity\+: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph. \mbox{\Hypertarget{classLogic_a5c9aa9fee2e877849b8d56490fa44a78}\label{classLogic_a5c9aa9fee2e877849b8d56490fa44a78}} 
+\index{Logic@{Logic}!LocationToAirportAirlineOnlyFilters@{LocationToAirportAirlineOnlyFilters}}
+\index{LocationToAirportAirlineOnlyFilters@{LocationToAirportAirlineOnlyFilters}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{LocationToAirportAirlineOnlyFilters()}{LocationToAirportAirlineOnlyFilters()}}
+{\footnotesize\ttfamily list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ Logic\+::\+Location\+To\+Airport\+Airline\+Only\+Filters (\begin{DoxyParamCaption}\item[{double}]{source\+\_\+latitude,  }\item[{double}]{source\+\_\+longitude,  }\item[{\mbox{\hyperlink{classAirport}{Airport}}}]{dest,  }\item[{unordered\+\_\+set$<$ std\+::string $>$}]{airlines }\end{DoxyParamCaption})}
+
+
+
+Finds trips from the given location to the destination airport, considering airline filters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em source\+\_\+latitude} & The latitude of the source location. \\
+\hline
+{\em source\+\_\+longitude} & The longitude of the source location. \\
+\hline
+{\em dest} & The destination airport. \\
+\hline
+{\em airlines} & A set of airline codes to include in the trips. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of trips, each represented as a vector of airports.
+\end{DoxyReturn}
+Time complexity\+: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph. \mbox{\Hypertarget{classLogic_aa6a5573ddaccaa0c7d85669d022d6e4c}\label{classLogic_aa6a5573ddaccaa0c7d85669d022d6e4c}} 
+\index{Logic@{Logic}!LocationToCity@{LocationToCity}}
+\index{LocationToCity@{LocationToCity}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{LocationToCity()}{LocationToCity()}}
+{\footnotesize\ttfamily list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ Logic\+::\+Location\+To\+City (\begin{DoxyParamCaption}\item[{double}]{source\+\_\+latitude,  }\item[{double}]{source\+\_\+longitude,  }\item[{const std\+::string}]{city,  }\item[{const std\+::string \&}]{country }\end{DoxyParamCaption})}
+
+
+
+Finds trips from the given location to the specified city in the given country. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em source\+\_\+latitude} & The latitude of the source location. \\
+\hline
+{\em source\+\_\+longitude} & The longitude of the source location. \\
+\hline
+{\em city} & The destination city. \\
+\hline
+{\em country} & The destination country. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of trips, each represented as a vector of airports.
+\end{DoxyReturn}
+Time complexity\+: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph. \mbox{\Hypertarget{classLogic_a8d23f0f6bdbf3889b1b1c538363b890d}\label{classLogic_a8d23f0f6bdbf3889b1b1c538363b890d}} 
+\index{Logic@{Logic}!LocationToCityAirlineAvoidFilters@{LocationToCityAirlineAvoidFilters}}
+\index{LocationToCityAirlineAvoidFilters@{LocationToCityAirlineAvoidFilters}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{LocationToCityAirlineAvoidFilters()}{LocationToCityAirlineAvoidFilters()}}
+{\footnotesize\ttfamily list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ Logic\+::\+Location\+To\+City\+Airline\+Avoid\+Filters (\begin{DoxyParamCaption}\item[{double}]{source\+\_\+latitude,  }\item[{double}]{source\+\_\+longitude,  }\item[{const std\+::string}]{city,  }\item[{const std\+::string \&}]{country,  }\item[{unordered\+\_\+set$<$ std\+::string $>$}]{airlines }\end{DoxyParamCaption})}
+
+
+
+Finds trips from the given location to the specified city in the given country, avoiding specified airlines. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em source\+\_\+latitude} & The latitude of the source location. \\
+\hline
+{\em source\+\_\+longitude} & The longitude of the source location. \\
+\hline
+{\em city} & The destination city. \\
+\hline
+{\em country} & The destination country. \\
+\hline
+{\em airlines} & A set of airline codes to avoid in the trips. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of trips, each represented as a vector of airports.
+\end{DoxyReturn}
+Time complexity\+: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph. \mbox{\Hypertarget{classLogic_a4aadf54d4d9c2632e85e094c00218417}\label{classLogic_a4aadf54d4d9c2632e85e094c00218417}} 
+\index{Logic@{Logic}!LocationToCityAirlineOnlyFilters@{LocationToCityAirlineOnlyFilters}}
+\index{LocationToCityAirlineOnlyFilters@{LocationToCityAirlineOnlyFilters}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{LocationToCityAirlineOnlyFilters()}{LocationToCityAirlineOnlyFilters()}}
+{\footnotesize\ttfamily list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ Logic\+::\+Location\+To\+City\+Airline\+Only\+Filters (\begin{DoxyParamCaption}\item[{double}]{source\+\_\+latitude,  }\item[{double}]{source\+\_\+longitude,  }\item[{const std\+::string}]{city,  }\item[{const std\+::string \&}]{country,  }\item[{unordered\+\_\+set$<$ std\+::string $>$}]{airlines }\end{DoxyParamCaption})}
+
+
+
+Finds trips from the given location to the specified city in the given country, considering airline filters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em source\+\_\+latitude} & The latitude of the source location. \\
+\hline
+{\em source\+\_\+longitude} & The longitude of the source location. \\
+\hline
+{\em city} & The destination city. \\
+\hline
+{\em country} & The destination country. \\
+\hline
+{\em airlines} & A set of airline codes to include in the trips. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of trips, each represented as a vector of airports.
+\end{DoxyReturn}
+Time complexity\+: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph. \mbox{\Hypertarget{classLogic_ae78a232a2422117c5964234f5a6fc6ea}\label{classLogic_ae78a232a2422117c5964234f5a6fc6ea}} 
+\index{Logic@{Logic}!LocationToCountry@{LocationToCountry}}
+\index{LocationToCountry@{LocationToCountry}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{LocationToCountry()}{LocationToCountry()}}
+{\footnotesize\ttfamily list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ Logic\+::\+Location\+To\+Country (\begin{DoxyParamCaption}\item[{double}]{source\+\_\+latitude,  }\item[{double}]{source\+\_\+longitude,  }\item[{const std\+::string}]{country }\end{DoxyParamCaption})}
+
+
+
+Finds trips from the given location to the specified country. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em source\+\_\+latitude} & The latitude of the source location. \\
+\hline
+{\em source\+\_\+longitude} & The longitude of the source location. \\
+\hline
+{\em country} & The destination country. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of trips, each represented as a vector of airports.
+\end{DoxyReturn}
+Time complexity\+: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph. \mbox{\Hypertarget{classLogic_a1678d95c8252ed466b1a1f5d12d2b5dd}\label{classLogic_a1678d95c8252ed466b1a1f5d12d2b5dd}} 
+\index{Logic@{Logic}!LocationToCountryAirlineAvoidFilter@{LocationToCountryAirlineAvoidFilter}}
+\index{LocationToCountryAirlineAvoidFilter@{LocationToCountryAirlineAvoidFilter}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{LocationToCountryAirlineAvoidFilter()}{LocationToCountryAirlineAvoidFilter()}}
+{\footnotesize\ttfamily list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ Logic\+::\+Location\+To\+Country\+Airline\+Avoid\+Filter (\begin{DoxyParamCaption}\item[{double}]{source\+\_\+latitude,  }\item[{double}]{source\+\_\+longitude,  }\item[{const std\+::string}]{country,  }\item[{unordered\+\_\+set$<$ std\+::string $>$}]{airlines }\end{DoxyParamCaption})}
+
+
+
+Finds trips from the given location to the specified country, avoiding specified airlines. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em source\+\_\+latitude} & The latitude of the source location. \\
+\hline
+{\em source\+\_\+longitude} & The longitude of the source location. \\
+\hline
+{\em country} & The destination country. \\
+\hline
+{\em airlines} & A set of airline codes to avoid in the trips. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of trips, each represented as a vector of airports.
+\end{DoxyReturn}
+Time complexity\+: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph. \mbox{\Hypertarget{classLogic_a56d02ea581e2ac9a6094b9949fa0785a}\label{classLogic_a56d02ea581e2ac9a6094b9949fa0785a}} 
+\index{Logic@{Logic}!LocationToCountryAirlineOnlyFilter@{LocationToCountryAirlineOnlyFilter}}
+\index{LocationToCountryAirlineOnlyFilter@{LocationToCountryAirlineOnlyFilter}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{LocationToCountryAirlineOnlyFilter()}{LocationToCountryAirlineOnlyFilter()}}
+{\footnotesize\ttfamily list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ Logic\+::\+Location\+To\+Country\+Airline\+Only\+Filter (\begin{DoxyParamCaption}\item[{double}]{source\+\_\+latitude,  }\item[{double}]{source\+\_\+longitude,  }\item[{const std\+::string}]{country,  }\item[{unordered\+\_\+set$<$ std\+::string $>$}]{airlines }\end{DoxyParamCaption})}
+
+
+
+Finds trips from the given location to the specified country, considering airline filters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em source\+\_\+latitude} & The latitude of the source location. \\
+\hline
+{\em source\+\_\+longitude} & The longitude of the source location. \\
+\hline
+{\em country} & The destination country. \\
+\hline
+{\em airlines} & A set of airline codes to include in the trips. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of trips, each represented as a vector of airports.
+\end{DoxyReturn}
+Time complexity\+: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph. \mbox{\Hypertarget{classLogic_adfb161b4f8e376a9f0cbc9dfbb3a4511}\label{classLogic_adfb161b4f8e376a9f0cbc9dfbb3a4511}} 
+\index{Logic@{Logic}!MapAirports@{MapAirports}}
+\index{MapAirports@{MapAirports}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{MapAirports()}{MapAirports()}}
+{\footnotesize\ttfamily void Logic\+::\+Map\+Airports (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Maps airport names to their corresponding codes. 
+
+Time complexity\+: O(\+V), where V is the number of vertices (airports) in the graph. \mbox{\Hypertarget{classLogic_a3d1ae7c4d03d46190b613e347185bf6f}\label{classLogic_a3d1ae7c4d03d46190b613e347185bf6f}} 
+\index{Logic@{Logic}!nodesAtDistanceBFS@{nodesAtDistanceBFS}}
+\index{nodesAtDistanceBFS@{nodesAtDistanceBFS}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{nodesAtDistanceBFS()}{nodesAtDistanceBFS()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ Logic\+::nodes\+At\+Distance\+BFS (\begin{DoxyParamCaption}\item[{const string \&}]{airport\+Code,  }\item[{int}]{k }\end{DoxyParamCaption})}
+
+
+
+Performs a Breadth-\/\+First Search (BFS) to find airports at a given distance from a starting airport. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em airport\+Code} & The code of the starting airport. \\
+\hline
+{\em k} & The distance parameter. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of airports at the specified distance.
+\end{DoxyReturn}
+Time complexity\+: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph. \mbox{\Hypertarget{classLogic_aa28b92b08ac699a2f116bbf9fbe5bbc0}\label{classLogic_aa28b92b08ac699a2f116bbf9fbe5bbc0}} 
+\index{Logic@{Logic}!NumberOfCountries@{NumberOfCountries}}
+\index{NumberOfCountries@{NumberOfCountries}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{NumberOfCountries()}{NumberOfCountries()}}
+{\footnotesize\ttfamily int Logic\+::\+Number\+Of\+Countries (\begin{DoxyParamCaption}\item[{std\+::string}]{airport\+Code }\end{DoxyParamCaption})}
+
+
+
+Calculates the number of countries that flights from a specific airport fly to. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em airport\+Code} & The code of the airport. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of countries.
+\end{DoxyReturn}
+Time complexity\+: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph. \mbox{\Hypertarget{classLogic_a28b0175e61eeceef307fc1ad275ee0ed}\label{classLogic_a28b0175e61eeceef307fc1ad275ee0ed}} 
+\index{Logic@{Logic}!NumberOfCountriesThatCityFliesTo@{NumberOfCountriesThatCityFliesTo}}
+\index{NumberOfCountriesThatCityFliesTo@{NumberOfCountriesThatCityFliesTo}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{NumberOfCountriesThatCityFliesTo()}{NumberOfCountriesThatCityFliesTo()}}
+{\footnotesize\ttfamily int Logic\+::\+Number\+Of\+Countries\+That\+City\+Flies\+To (\begin{DoxyParamCaption}\item[{std\+::string}]{city }\end{DoxyParamCaption})}
+
+
+
+Calculates the number of countries that flights from a specific city fly to. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em city} & The city name. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of countries.
+\end{DoxyReturn}
+Time complexity\+: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph. \mbox{\Hypertarget{classLogic_a2d55001581d170228606906b1808aa71}\label{classLogic_a2d55001581d170228606906b1808aa71}} 
+\index{Logic@{Logic}!NumberOfDestinationsForAirport@{NumberOfDestinationsForAirport}}
+\index{NumberOfDestinationsForAirport@{NumberOfDestinationsForAirport}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{NumberOfDestinationsForAirport()}{NumberOfDestinationsForAirport()}}
+{\footnotesize\ttfamily int Logic\+::\+Number\+Of\+Destinations\+For\+Airport (\begin{DoxyParamCaption}\item[{const string \&}]{airport\+Code }\end{DoxyParamCaption})}
+
+
+
+Calculates the number of unique destinations for flights departing from a specific airport. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em airport\+Code} & The code of the airport. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of unique destinations.
+\end{DoxyReturn}
+Time complexity\+: O(V + E), where E is the number of edges (flights) in the graph and V the number of vertices. \mbox{\Hypertarget{classLogic_a140a5f57ce7c000de155867cb0bfc14e}\label{classLogic_a140a5f57ce7c000de155867cb0bfc14e}} 
+\index{Logic@{Logic}!NumberOfDestinationsForCity@{NumberOfDestinationsForCity}}
+\index{NumberOfDestinationsForCity@{NumberOfDestinationsForCity}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{NumberOfDestinationsForCity()}{NumberOfDestinationsForCity()}}
+{\footnotesize\ttfamily int Logic\+::\+Number\+Of\+Destinations\+For\+City (\begin{DoxyParamCaption}\item[{const string \&}]{airport\+Code }\end{DoxyParamCaption})}
+
+
+
+Calculates the number of unique destinations reachable from the specified airport by direct flights. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em airport\+Code} & The code of the airport to analyze. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of unique destinations reachable from the specified airport.
+\end{DoxyReturn}
+Time Complexity\+: O(\+E), where E is the number of edges in the graph. \mbox{\Hypertarget{classLogic_a3fa10547b9eb8397f2c51d00f35fe3fc}\label{classLogic_a3fa10547b9eb8397f2c51d00f35fe3fc}} 
+\index{Logic@{Logic}!NumberOfDestinationsForCountry@{NumberOfDestinationsForCountry}}
+\index{NumberOfDestinationsForCountry@{NumberOfDestinationsForCountry}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{NumberOfDestinationsForCountry()}{NumberOfDestinationsForCountry()}}
+{\footnotesize\ttfamily int Logic\+::\+Number\+Of\+Destinations\+For\+Country (\begin{DoxyParamCaption}\item[{const string \&}]{airport\+Code }\end{DoxyParamCaption})}
+
+
+
+Calculates the number of unique destinations (countries) for flights departing from a specific country. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em airport\+Code} & The code of the airport. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of unique destinations.
+\end{DoxyReturn}
+Time complexity\+: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph. \mbox{\Hypertarget{classLogic_a2d2352191ae16f7d314d2001b763762e}\label{classLogic_a2d2352191ae16f7d314d2001b763762e}} 
+\index{Logic@{Logic}!NumberOfFlightsPerAirline@{NumberOfFlightsPerAirline}}
+\index{NumberOfFlightsPerAirline@{NumberOfFlightsPerAirline}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{NumberOfFlightsPerAirline()}{NumberOfFlightsPerAirline()}}
+{\footnotesize\ttfamily int Logic\+::\+Number\+Of\+Flights\+Per\+Airline (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{airline\+Code }\end{DoxyParamCaption})}
+
+
+
+Calculates the number of flights for a specific airline. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em airline\+Code} & The code of the airline. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of flights for the specified airline.
+\end{DoxyReturn}
+Time complexity\+: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph. \mbox{\Hypertarget{classLogic_a245735a0ff67749f7c6cfed09e0f3e7c}\label{classLogic_a245735a0ff67749f7c6cfed09e0f3e7c}} 
+\index{Logic@{Logic}!NumberOfFlightsPerCity@{NumberOfFlightsPerCity}}
+\index{NumberOfFlightsPerCity@{NumberOfFlightsPerCity}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{NumberOfFlightsPerCity()}{NumberOfFlightsPerCity()}}
+{\footnotesize\ttfamily int Logic\+::\+Number\+Of\+Flights\+Per\+City (\begin{DoxyParamCaption}\item[{std\+::string}]{city }\end{DoxyParamCaption})}
+
+
+
+Calculates the number of flights departing from a specific city. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em city} & The city name. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of flights.
+\end{DoxyReturn}
+Time complexity\+: O(\+V), where V is the number of vertices (airports) in the graph. \mbox{\Hypertarget{classLogic_a6e6ce64913a27966e3e23a2a75e1d8d1}\label{classLogic_a6e6ce64913a27966e3e23a2a75e1d8d1}} 
+\index{Logic@{Logic}!shortestPath@{shortestPath}}
+\index{shortestPath@{shortestPath}!Logic@{Logic}}
+\doxysubsubsection{\texorpdfstring{shortestPath()}{shortestPath()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ Logic\+::shortest\+Path (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classAirport}{Airport}} \&}]{initial\+Airport,  }\item[{const \mbox{\hyperlink{classAirport}{Airport}} \&}]{dest\+Airport }\end{DoxyParamCaption})}
+
+
+
+Finds the shortest path between two airports using Breadth-\/\+First Search (BFS). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em initial\+Airport} & The starting airport. \\
+\hline
+{\em dest\+Airport} & The destination airport. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of airports representing the shortest path.
+\end{DoxyReturn}
+Time complexity\+: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/angelo/\+Downloads/\+Universidade/\+Algoritmo e Estrutura de Dados/\+Projeto\+\_\+\+AED\+\_\+2/\+Logic/Logic.\+h\item 
+/home/angelo/\+Downloads/\+Universidade/\+Algoritmo e Estrutura de Dados/\+Projeto\+\_\+\+AED\+\_\+2/\+Logic/Logic.\+cpp\end{DoxyCompactItemize}

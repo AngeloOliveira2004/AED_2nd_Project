@@ -1,0 +1,73 @@
+\hypertarget{UI_8h_source}{}\doxysection{UI.\+h}
+\label{UI_8h_source}\index{/home/angelo/Downloads/Universidade/Algoritmo e Estrutura de Dados/Projeto\_AED\_2/UI/UI.h@{/home/angelo/Downloads/Universidade/Algoritmo e Estrutura de Dados/Projeto\_AED\_2/UI/UI.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef PROJETO\_2\_TEMP\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define PROJETO\_2\_TEMP\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}../Logic/Airport.h"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}../Logic/Graph.h"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}../Logic/LoadingFunctions.h"{}}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}../Logic/Logic.h"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <climits>}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{keyword}{class }\mbox{\hyperlink{classUI}{UI}} \{}
+\DoxyCodeLine{12 \textcolor{keyword}{public}:}
+\DoxyCodeLine{13     \mbox{\hyperlink{classUI}{UI}}();}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15     \textcolor{keywordtype}{void} \mbox{\hyperlink{classUI_aa4f5f0000b864a5019c797b8a7da8891}{menu\_start}}();}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17     \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{classUI_a298d81ef3106436a00bed98330d4c5a8}{clear\_screen}}();}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19     \textcolor{keywordtype}{void} \mbox{\hyperlink{classUI_a19639c490c34c5b0c66684c2670b7076}{loading\_stuff}}(\mbox{\hyperlink{classUI}{UI}} \&ui);}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classUI_a83fba9739cde5eda8391c2020ab3dcff}{validate\_input}}(\textcolor{keywordtype}{char} \&op, \textcolor{keyword}{const} \textcolor{keywordtype}{char} lower\_bound, \textcolor{keyword}{const} \textcolor{keywordtype}{char} upper\_bound);}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23     \textcolor{keywordtype}{void} \mbox{\hyperlink{classUI_ae6e6f8381ec34388c4bd8811c4e86e1c}{main\_menu}}();}
+\DoxyCodeLine{24     \textcolor{keywordtype}{void} \mbox{\hyperlink{classUI_a676a2b06a1b7f91fd45ffdebfb3a7612}{statistics\_menu}}();}
+\DoxyCodeLine{25     \textcolor{keywordtype}{void} \mbox{\hyperlink{classUI_a041ad8488078a4f771b2823bcac1c8a6}{airport\_statistics}}();}
+\DoxyCodeLine{26     \textcolor{keywordtype}{void} \mbox{\hyperlink{classUI_a72a8dbf61db48fefe065e2ba7ba7059f}{flight\_consultation}}();}
+\DoxyCodeLine{27     \textcolor{keywordtype}{void} \mbox{\hyperlink{classUI_a383c59401df067d16c14dde541d621d6}{trip\_planner}}();}
+\DoxyCodeLine{28     \textcolor{keywordtype}{void} \mbox{\hyperlink{classUI_a515c51542a17e972c90fe2633647d9ee}{get\_destination}}(std::string \&input , \textcolor{keywordtype}{int}\& choice , unordered\_set<std::string>\& filters);}
+\DoxyCodeLine{29     \textcolor{keywordtype}{void} \mbox{\hyperlink{classUI_a3df5b997ed018e63e34d98bee99a7b35}{printList}}(list<vector<Airport>> a);}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31     \textcolor{keywordtype}{void} \mbox{\hyperlink{classUI_a09079f246305dfb4d909c14155d3b898}{global\_numbers}}();}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33     \textcolor{keywordtype}{void} \mbox{\hyperlink{classUI_aad206bf07f341d24820af6ddf7d11e4b}{number\_out}}();}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35     \textcolor{keywordtype}{void} \mbox{\hyperlink{classUI_aa6522d3998db076b2019ee0c787f58f4}{number\_flights}}();}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37     \textcolor{keywordtype}{void} \mbox{\hyperlink{classUI_abdcdbd35d7cfada9f512554904186b40}{load\_sets}}();}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39     \textcolor{keywordtype}{void} \mbox{\hyperlink{classUI_a7400f4d4e0b03b04121de9208070aa6b}{back\_menu}}();}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41     \textcolor{keywordtype}{void} \mbox{\hyperlink{classUI_a776dfeea07fe03185707ef00e2001248}{number\_countries}}();}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43     \textcolor{keywordtype}{void} \mbox{\hyperlink{classUI_a3337191bb8dc3a251d82e3e4b17718ba}{number\_reachable\_destinations}}();}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45     \textcolor{keywordtype}{void} \mbox{\hyperlink{classUI_a3c95dbcd56b5961f0624027ad7c757fd}{number\_reachable\_destinations\_k}}();}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47     \textcolor{keywordtype}{void} \mbox{\hyperlink{classUI_a71f0ff346c0ad8c40e50cd6d4decffa8}{longest\_trip}}();}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49     \textcolor{keywordtype}{void} \mbox{\hyperlink{classUI_a53d3808c60405686bbee611d5c90b674}{greatest\_traffic}}();}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51     unordered\_set<std::string> \mbox{\hyperlink{classUI_abc801485970d099f2792492abe91c7dd}{get\_Filters}}(\textcolor{keywordtype}{bool} \& Avoid\_Or\_Only , \textcolor{keywordtype}{bool}\& Yes\_or\_No);}
+\DoxyCodeLine{52     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classUI_aee0c3e9cc5f575e785a70310542ae003}{valid\_airline}}(std::string\& airline);}
+\DoxyCodeLine{53     std::string \mbox{\hyperlink{classUI_a1ded52ad27e7db3a699c48911ee9e1c2}{find\_apCode}}(std::string\& name);}
+\DoxyCodeLine{54     list<vector<Airport>> \mbox{\hyperlink{classUI_aea55bf6523d5ccce846a219f645e66c1}{NormaliseList}}(list<vector<Airport>>\& list1);}
+\DoxyCodeLine{55 \textcolor{keyword}{private}:}
+\DoxyCodeLine{56     \mbox{\hyperlink{classGraph}{Graph<Airport>}} g;}
+\DoxyCodeLine{57     \mbox{\hyperlink{classLogic}{Logic}} logic = \mbox{\hyperlink{classLogic}{Logic}}(g);}
+\DoxyCodeLine{58     unordered\_set<string> cities;}
+\DoxyCodeLine{59     unordered\_set<string> airport\_codes;}
+\DoxyCodeLine{60     unordered\_set<string> countries;}
+\DoxyCodeLine{61     unordered\_set<string> airlines;}
+\DoxyCodeLine{62     \textcolor{keywordtype}{int} diameter;}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64     \textcolor{keywordtype}{void} essential\_airports();}
+\DoxyCodeLine{65 \};}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//PROJETO\_2\_TEMP\_H}}
+
+\end{DoxyCode}

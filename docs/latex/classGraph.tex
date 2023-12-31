@@ -1,0 +1,392 @@
+\hypertarget{classGraph}{}\doxysection{Graph\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classGraph}\index{Graph$<$ T $>$@{Graph$<$ T $>$}}
+
+
+Represents a graph using an adjacency list.  
+
+
+
+
+{\ttfamily \#include $<$Graph.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classVertex}{Vertex}}$<$ T $>$ $\ast$ \mbox{\hyperlink{classGraph_a8b7b7465fbfd562e2a469f90a437ab75}{find\+Vertex}} (const T \&in) const
+\begin{DoxyCompactList}\small\item\em Finds a vertex with a given content. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classGraph_a0853eac15cdf0f06d63f4b8a7820ec71}{get\+Num\+Vertex}} () const
+\begin{DoxyCompactList}\small\item\em Gets the number of vertices in the graph. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classGraph_a112f8703c9c1bdfe0a46567095c3df46}{calculate\+Diameter}} () const
+\begin{DoxyCompactList}\small\item\em Calculates the diameter of the graph using BFS. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classGraph_a00be284ea2be3b3d0f0d2e493b70245b}{add\+Vertex}} (const T \&in)
+\begin{DoxyCompactList}\small\item\em Adds a vertex with a given content to the graph. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classGraph_af9c903104ad69a7782979fa9caedf163}{remove\+Vertex}} (const T \&in)
+\begin{DoxyCompactList}\small\item\em Removes a vertex with a given content from the graph, along with all outgoing and incoming edges. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classGraph_a35482269fb17b6a62075cc5a27eb0c23}{add\+Edge}} (const T \&sourc, const T \&dest, double w, string airline)
+\begin{DoxyCompactList}\small\item\em Adds an edge to the graph, given the contents of the source and destination vertices and the edge weight. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classGraph_a1106092a37366486cf55576f9ec01692}{remove\+Edge}} (const T \&sourc, const T \&dest)
+\begin{DoxyCompactList}\small\item\em Removes an edge from the graph, identified by the source and destination contents. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ T $>$ $\ast$ $>$ \mbox{\hyperlink{classGraph_a923b43995f81ad9319bbc81a1e433e64}{get\+Vertex\+Set}} () const
+\begin{DoxyCompactList}\small\item\em Gets the vector of vertices in the graph. \end{DoxyCompactList}\item 
+vector$<$ T $>$ \mbox{\hyperlink{classGraph_a911798b1a89f8c4ae90ba3eee849cff8}{dfs}} () const
+\begin{DoxyCompactList}\small\item\em Performs a depth-\/first search (dfs) traversal in the graph. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classGraph_a510522c8221b321a82e687fe2f2cb484}\label{classGraph_a510522c8221b321a82e687fe2f2cb484}} 
+vector$<$ T $>$ {\bfseries dfs} (const T \&source) const
+\item 
+vector$<$ T $>$ \mbox{\hyperlink{classGraph_aa47a4130165550e208e7a063fce6983a}{bfs}} (const T \&source) const
+\begin{DoxyCompactList}\small\item\em Performs a breadth-\/first search (bfs) in the graph, starting from the vertex with the given source contents. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGraph_a7180c5bac08d57f3d2a7bcb563a67532}{bfs\+Different}} (T \&source) const
+\begin{DoxyCompactList}\small\item\em Performs a breadth-\/first search (bfs) in the graph, starting from the vertex with the given source contents. \end{DoxyCompactList}\item 
+vector$<$ T $>$ \mbox{\hyperlink{classGraph_af1d4affd1f886bf598d0f4cf4a0cb7cb}{topsort}} () const
+\begin{DoxyCompactList}\small\item\em Performs a topological sort of the graph. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classGraph_a1ea1512afe5ab878301bc806c2eba9d2}\label{classGraph_a1ea1512afe5ab878301bc806c2eba9d2}} 
+bool {\bfseries is\+DAG} () const
+\item 
+void \mbox{\hyperlink{classGraph_a710aa994760227ca4d519c36ddf9173f}{calculate\+Indegrees}} () const
+\begin{DoxyCompactList}\small\item\em Calculates the indegree of each vertex in the graph. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$class T$>$\newline
+class Graph$<$ T $>$}
+Represents a graph using an adjacency list. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of information stored in the vertices. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classGraph_a35482269fb17b6a62075cc5a27eb0c23}\label{classGraph_a35482269fb17b6a62075cc5a27eb0c23}} 
+\index{Graph$<$ T $>$@{Graph$<$ T $>$}!addEdge@{addEdge}}
+\index{addEdge@{addEdge}!Graph$<$ T $>$@{Graph$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{addEdge()}{addEdge()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+bool \mbox{\hyperlink{classGraph}{Graph}}$<$ T $>$\+::add\+Edge (\begin{DoxyParamCaption}\item[{const T \&}]{sourc,  }\item[{const T \&}]{dest,  }\item[{double}]{w,  }\item[{string}]{airline }\end{DoxyParamCaption})}
+
+
+
+Adds an edge to the graph, given the contents of the source and destination vertices and the edge weight. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sourc} & The content of the source vertex. \\
+\hline
+{\em dest} & The content of the destination vertex. \\
+\hline
+{\em w} & The weight of the edge. \\
+\hline
+{\em airline} & The airline code associated with the edge. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the addition is successful, false if the source or destination vertex does not exist. 
+\end{DoxyReturn}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of information stored in the vertices.\\
+\hline
+\end{DoxyTemplParams}
+Time Complexity\+: O(\+V)
+\begin{DoxyItemize}
+\item The function calls the find\+Vertex method twice, each with linear time complexity. Additionally, the Vertex$<$\+T$>$\+::add\+Edge method is called, which has a constant time complexity. (V is the number of vertices in the graph.) 
+\end{DoxyItemize}\mbox{\Hypertarget{classGraph_a00be284ea2be3b3d0f0d2e493b70245b}\label{classGraph_a00be284ea2be3b3d0f0d2e493b70245b}} 
+\index{Graph$<$ T $>$@{Graph$<$ T $>$}!addVertex@{addVertex}}
+\index{addVertex@{addVertex}!Graph$<$ T $>$@{Graph$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{addVertex()}{addVertex()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+bool \mbox{\hyperlink{classGraph}{Graph}}$<$ T $>$\+::add\+Vertex (\begin{DoxyParamCaption}\item[{const T \&}]{in }\end{DoxyParamCaption})}
+
+
+
+Adds a vertex with a given content to the graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in} & The content of the new vertex. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the addition is successful, false if a vertex with the same content already exists. 
+\end{DoxyReturn}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of information stored in the vertices.\\
+\hline
+\end{DoxyTemplParams}
+Time Complexity\+: O(\+V)
+\begin{DoxyItemize}
+\item The function calls the find\+Vertex method, which has a linear time complexity. (V is the number of vertices in the graph.) 
+\end{DoxyItemize}\mbox{\Hypertarget{classGraph_aa47a4130165550e208e7a063fce6983a}\label{classGraph_aa47a4130165550e208e7a063fce6983a}} 
+\index{Graph$<$ T $>$@{Graph$<$ T $>$}!bfs@{bfs}}
+\index{bfs@{bfs}!Graph$<$ T $>$@{Graph$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{bfs()}{bfs()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+vector$<$ T $>$ \mbox{\hyperlink{classGraph}{Graph}}$<$ T $>$\+::bfs (\begin{DoxyParamCaption}\item[{const T \&}]{source }\end{DoxyParamCaption}) const}
+
+
+
+Performs a breadth-\/first search (bfs) in the graph, starting from the vertex with the given source contents. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & The content of the source vertex. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector with the contents of the vertices in bfs order. 
+\end{DoxyReturn}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of information stored in the vertices.\\
+\hline
+\end{DoxyTemplParams}
+Time Complexity\+: O(V + E)
+\begin{DoxyItemize}
+\item The function iterates through all vertices, calling the bfs\+Different method, which traverses all adjacent vertices in bfs order. (V is the number of vertices, and E is the number of edges in the graph.) 
+\end{DoxyItemize}\mbox{\Hypertarget{classGraph_a7180c5bac08d57f3d2a7bcb563a67532}\label{classGraph_a7180c5bac08d57f3d2a7bcb563a67532}} 
+\index{Graph$<$ T $>$@{Graph$<$ T $>$}!bfsDifferent@{bfsDifferent}}
+\index{bfsDifferent@{bfsDifferent}!Graph$<$ T $>$@{Graph$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{bfsDifferent()}{bfsDifferent()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{classGraph}{Graph}}$<$ T $>$\+::bfs\+Different (\begin{DoxyParamCaption}\item[{T \&}]{source }\end{DoxyParamCaption}) const}
+
+
+
+Performs a breadth-\/first search (bfs) in the graph, starting from the vertex with the given source contents. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & The content of the source vertex. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of information stored in the vertices.\\
+\hline
+\end{DoxyTemplParams}
+Time Complexity\+: O(V + E)
+\begin{DoxyItemize}
+\item The function iterates through all vertices, calling the set\+Visited and set\+Num methods, and traverses all adjacent vertices in bfs order. (V is the number of vertices, and E is the number of edges in the graph.) 
+\end{DoxyItemize}\mbox{\Hypertarget{classGraph_a112f8703c9c1bdfe0a46567095c3df46}\label{classGraph_a112f8703c9c1bdfe0a46567095c3df46}} 
+\index{Graph$<$ T $>$@{Graph$<$ T $>$}!calculateDiameter@{calculateDiameter}}
+\index{calculateDiameter@{calculateDiameter}!Graph$<$ T $>$@{Graph$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{calculateDiameter()}{calculateDiameter()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+int \mbox{\hyperlink{classGraph}{Graph}}$<$ T $>$\+::calculate\+Diameter}
+
+
+
+Calculates the diameter of the graph using BFS. 
+
+The diameter of a graph is the length of the longest shortest path between any two vertices. \begin{DoxyReturn}{Returns}
+The diameter of the graph. 
+\end{DoxyReturn}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of information stored in the vertices.\\
+\hline
+\end{DoxyTemplParams}
+Time Complexity\+: O(V$^\wedge$2 + V$\ast$E)
+\begin{DoxyItemize}
+\item V is the number of vertices in the graph.
+\item E is the number of edges in the graph.
+\item The function consists of two nested loops, where the outer loop runs V times (once for each vertex) and the inner loop runs BFS, which takes O(V + E) time.
+\item The overall complexity is O(V$^\wedge$2 + V$\ast$E). 
+\end{DoxyItemize}\mbox{\Hypertarget{classGraph_a710aa994760227ca4d519c36ddf9173f}\label{classGraph_a710aa994760227ca4d519c36ddf9173f}} 
+\index{Graph$<$ T $>$@{Graph$<$ T $>$}!calculateIndegrees@{calculateIndegrees}}
+\index{calculateIndegrees@{calculateIndegrees}!Graph$<$ T $>$@{Graph$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{calculateIndegrees()}{calculateIndegrees()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{classGraph}{Graph}}$<$ T $>$\+::calculate\+Indegrees}
+
+
+
+Calculates the indegree of each vertex in the graph. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of information stored in the vertices.\\
+\hline
+\end{DoxyTemplParams}
+Time Complexity\+: O(V + E)
+\begin{DoxyItemize}
+\item The function iterates through all vertices and edges in the graph, updating the indegree of each vertex. (V is the number of vertices, and E is the number of edges in the graph.) 
+\end{DoxyItemize}\mbox{\Hypertarget{classGraph_a911798b1a89f8c4ae90ba3eee849cff8}\label{classGraph_a911798b1a89f8c4ae90ba3eee849cff8}} 
+\index{Graph$<$ T $>$@{Graph$<$ T $>$}!dfs@{dfs}}
+\index{dfs@{dfs}!Graph$<$ T $>$@{Graph$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{dfs()}{dfs()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+vector$<$ T $>$ \mbox{\hyperlink{classGraph}{Graph}}$<$ T $>$\+::dfs}
+
+
+
+Performs a depth-\/first search (dfs) traversal in the graph. 
+
+\begin{DoxyReturn}{Returns}
+A vector with the contents of the vertices in dfs order. 
+\end{DoxyReturn}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of information stored in the vertices.\\
+\hline
+\end{DoxyTemplParams}
+Time Complexity\+: O(V + E)
+\begin{DoxyItemize}
+\item The function iterates through all vertices, calling the dfs\+Visit method for each unvisited vertex. The dfs\+Visit method, in turn, traverses all adjacent vertices. (V is the number of vertices, and E is the number of edges in the graph.) 
+\end{DoxyItemize}\mbox{\Hypertarget{classGraph_a8b7b7465fbfd562e2a469f90a437ab75}\label{classGraph_a8b7b7465fbfd562e2a469f90a437ab75}} 
+\index{Graph$<$ T $>$@{Graph$<$ T $>$}!findVertex@{findVertex}}
+\index{findVertex@{findVertex}!Graph$<$ T $>$@{Graph$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{findVertex()}{findVertex()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{classVertex}{Vertex}}$<$ T $>$ $\ast$ \mbox{\hyperlink{classGraph}{Graph}}$<$ T $>$\+::find\+Vertex (\begin{DoxyParamCaption}\item[{const T \&}]{in }\end{DoxyParamCaption}) const}
+
+
+
+Finds a vertex with a given content. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in} & The content to search for in the vertices. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the vertex if found, or nullptr if not found. 
+\end{DoxyReturn}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of information stored in the vertices.\\
+\hline
+\end{DoxyTemplParams}
+Time Complexity\+: O(\+V)
+\begin{DoxyItemize}
+\item The function has linear time complexity as it iterates through the vertex set to find the desired vertex. (V is the number of vertices in the graph.) 
+\end{DoxyItemize}\mbox{\Hypertarget{classGraph_a0853eac15cdf0f06d63f4b8a7820ec71}\label{classGraph_a0853eac15cdf0f06d63f4b8a7820ec71}} 
+\index{Graph$<$ T $>$@{Graph$<$ T $>$}!getNumVertex@{getNumVertex}}
+\index{getNumVertex@{getNumVertex}!Graph$<$ T $>$@{Graph$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getNumVertex()}{getNumVertex()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+int \mbox{\hyperlink{classGraph}{Graph}}$<$ T $>$\+::get\+Num\+Vertex}
+
+
+
+Gets the number of vertices in the graph. 
+
+\begin{DoxyReturn}{Returns}
+The number of vertices in the graph. 
+\end{DoxyReturn}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of information stored in the vertices.\\
+\hline
+\end{DoxyTemplParams}
+Time Complexity\+: O(1)
+\begin{DoxyItemize}
+\item The function has constant time complexity as it retrieves the size of the vertex set. 
+\end{DoxyItemize}\mbox{\Hypertarget{classGraph_a923b43995f81ad9319bbc81a1e433e64}\label{classGraph_a923b43995f81ad9319bbc81a1e433e64}} 
+\index{Graph$<$ T $>$@{Graph$<$ T $>$}!getVertexSet@{getVertexSet}}
+\index{getVertexSet@{getVertexSet}!Graph$<$ T $>$@{Graph$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getVertexSet()}{getVertexSet()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+vector$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ T $>$ $\ast$ $>$ \mbox{\hyperlink{classGraph}{Graph}}$<$ T $>$\+::get\+Vertex\+Set}
+
+
+
+Gets the vector of vertices in the graph. 
+
+\begin{DoxyReturn}{Returns}
+A vector containing pointers to all vertices in the graph. 
+\end{DoxyReturn}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of information stored in the vertices.\\
+\hline
+\end{DoxyTemplParams}
+Time Complexity\+: O(1)
+\begin{DoxyItemize}
+\item The function has constant time complexity as it returns a reference to the vertex set. 
+\end{DoxyItemize}\mbox{\Hypertarget{classGraph_a1106092a37366486cf55576f9ec01692}\label{classGraph_a1106092a37366486cf55576f9ec01692}} 
+\index{Graph$<$ T $>$@{Graph$<$ T $>$}!removeEdge@{removeEdge}}
+\index{removeEdge@{removeEdge}!Graph$<$ T $>$@{Graph$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{removeEdge()}{removeEdge()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+bool \mbox{\hyperlink{classGraph}{Graph}}$<$ T $>$\+::remove\+Edge (\begin{DoxyParamCaption}\item[{const T \&}]{sourc,  }\item[{const T \&}]{dest }\end{DoxyParamCaption})}
+
+
+
+Removes an edge from the graph, identified by the source and destination contents. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sourc} & The content of the source vertex. \\
+\hline
+{\em dest} & The content of the destination vertex. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the removal is successful, false if such an edge does not exist. 
+\end{DoxyReturn}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of information stored in the vertices.\\
+\hline
+\end{DoxyTemplParams}
+Time Complexity\+: O(\+V)
+\begin{DoxyItemize}
+\item The function calls the find\+Vertex method twice, each with linear time complexity. Additionally, the Vertex$<$\+T$>$\+::remove\+Edge\+To method is called, which has linear time complexity. (V is the number of vertices in the graph.) 
+\end{DoxyItemize}\mbox{\Hypertarget{classGraph_af9c903104ad69a7782979fa9caedf163}\label{classGraph_af9c903104ad69a7782979fa9caedf163}} 
+\index{Graph$<$ T $>$@{Graph$<$ T $>$}!removeVertex@{removeVertex}}
+\index{removeVertex@{removeVertex}!Graph$<$ T $>$@{Graph$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{removeVertex()}{removeVertex()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+bool \mbox{\hyperlink{classGraph}{Graph}}$<$ T $>$\+::remove\+Vertex (\begin{DoxyParamCaption}\item[{const T \&}]{in }\end{DoxyParamCaption})}
+
+
+
+Removes a vertex with a given content from the graph, along with all outgoing and incoming edges. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in} & The content of the vertex to be removed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the removal is successful, false if such a vertex does not exist. 
+\end{DoxyReturn}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of information stored in the vertices.\\
+\hline
+\end{DoxyTemplParams}
+Time Complexity\+: O(V + E)
+\begin{DoxyItemize}
+\item The function has linear time complexity as it iterates through the vertex set to find and remove the desired vertex, and then iterates through the remaining vertices to remove edges pointing to the deleted vertex. (V is the number of vertices, and E is the number of edges in the graph.) 
+\end{DoxyItemize}\mbox{\Hypertarget{classGraph_af1d4affd1f886bf598d0f4cf4a0cb7cb}\label{classGraph_af1d4affd1f886bf598d0f4cf4a0cb7cb}} 
+\index{Graph$<$ T $>$@{Graph$<$ T $>$}!topsort@{topsort}}
+\index{topsort@{topsort}!Graph$<$ T $>$@{Graph$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{topsort()}{topsort()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+vector$<$ T $>$ \mbox{\hyperlink{classGraph}{Graph}}$<$ T $>$\+::topsort}
+
+
+
+Performs a topological sort of the graph. 
+
+\begin{DoxyReturn}{Returns}
+A vector with the contents of the vertices in topological order. 
+\end{DoxyReturn}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of information stored in the vertices.\\
+\hline
+\end{DoxyTemplParams}
+Time Complexity\+: O(V + E)
+\begin{DoxyItemize}
+\item The function iterates through all vertices, calling the topsort\+Aux method for each unvisited vertex. The topsort\+Aux method, in turn, traverses all adjacent vertices in a depth-\/first search. (V is the number of vertices, and E is the number of edges in the graph.) 
+\end{DoxyItemize}
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/angelo/\+Downloads/\+Universidade/\+Algoritmo e Estrutura de Dados/\+Projeto\+\_\+\+AED\+\_\+2/\+Logic/Graph.\+h\end{DoxyCompactItemize}
