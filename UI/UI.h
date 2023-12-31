@@ -27,7 +27,6 @@ public:
     void trip_planner();
     void get_destination(std::string &input , int& choice , unordered_set<std::string>& filters);
     void printList(list<vector<Airport>> a);
-    void menu_options();
 
     void global_numbers();
 
