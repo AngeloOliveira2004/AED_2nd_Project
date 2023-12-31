@@ -49,12 +49,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/angelo/Downloads/Universidade/Algoritmo e Estrutura de Dados/Projeto_AED_2/cmake-build-debug",
-		"source" : "/home/angelo/Downloads/Universidade/Algoritmo e Estrutura de Dados/Projeto_AED_2"
+		"build" : "/home/jose-costa/Documents/Uni/AED/Projeto 2/cmake-build-debug",
+		"source" : "/home/jose-costa/Documents/Uni/AED/Projeto 2"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 6
+		"minor" : 5
 	}
 }

@@ -1,0 +1,8 @@
+# ninja log v5
+1	202	1703956900879341279	CMakeFiles/Projeto_2.dir/Logic/Airline.cpp.o	91792915a7a01fc9
+1	217	1703956900895341154	CMakeFiles/Projeto_2.dir/Logic/Airport.cpp.o	918f547879336d18
+0	684	1703956901359337528	CMakeFiles/Projeto_2.dir/main.cpp.o	32e9588a72b1831d
+1	950	1703956901627335432	CMakeFiles/Projeto_2.dir/Logic/LoadingFunctions.cpp.o	88997b66a0b0536a
+2	1266	1703956901939332992	CMakeFiles/Projeto_2.dir/UI/UI.cpp.o	716bfd00fc026a68
+1	1855	1703956902527328384	CMakeFiles/Projeto_2.dir/Logic/Logic.cpp.o	a87c1cc5550bd7b
+1855	1956	1703956902631327568	Projeto_2	424ccf015a87d6d3
