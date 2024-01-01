@@ -807,6 +807,7 @@ std::string UI::find_apCode(std::string& name){
             }
         }
     }
+    return "";
 }
 /**
  * @brief Prints a normalized list of vectors representing trips.
@@ -942,10 +943,14 @@ void UI::number_out() {
     bool validate = false;
     std::pair<int, int> z;
     string airport_code;
+    cout << "What's the code of the airport you would like to know the information?(You may use airport name as well): ";
     while(!validate){
         airport_code = "";
-        cout << "What's the code of the airport you would like to know the information?: ";
-        cin >> airport_code;
+        cin.clear();
+        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+        std::getline(cin , airport_code);
+        airport_code = find_apCode(airport_code);
         Airport airport = Airport(airport_code);
         if(g.findVertex(airport)){
             break;
@@ -1063,12 +1068,18 @@ void UI::number_countries() {
         }
         case 'B':{
             string airport_code;
+            cout << "What's the code of the airport you would like to know the information?(You may use airport name as well): ";
             while(true){
                 airport_code = "";
-                cout << "What's the code of the airport you would like to know the information?: ";
-                cin >> airport_code;
-                if(this->airport_codes.find(airport_code) != this->airlines.end()){
+                cin.clear();
+                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                std::getline(cin , airport_code);
+                airport_code = find_apCode(airport_code);
+                Airport airport = Airport(airport_code);
+                if(g.findVertex(airport)){
                     break;
+                }else{
+                    cout << "Please insert a valid airport code" << endl;
                 }
             }
             std::cout << "Number of flights of " << airport_code << " airport : " << logic.NumberOfCountries(airport_code) << endl;
@@ -1082,12 +1093,18 @@ void UI::number_countries() {
  */
 void UI::number_reachable_destinations() {
     string airport_code;
+    cout << "What's the code of the airport you would like to know the information?(You may use airport name as well): ";
     while(true){
         airport_code = "";
-        cout << "What's the code of the airport you would like to know the information?: ";
-        cin >> airport_code;
-        if(this->airport_codes.find(airport_code) != this->airlines.end()){
+        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+        std::getline(cin , airport_code);
+        airport_code = find_apCode(airport_code);
+        Airport airport = Airport(airport_code);
+        if(g.findVertex(airport)){
             break;
+        }else{
+            cout << "Please insert a valid airport code" << endl;
         }
     }
     vector<Airport> tempVector = logic.nodesAtDistanceBFS(airport_code, diameter);
@@ -1107,12 +1124,19 @@ void UI::number_reachable_destinations() {
 void UI::number_reachable_destinations_k() {
     string airport_code;
     int k;
+    cout << "What's the code of the airport you would like to know the information?(You may use airport name as well): ";
     while(true){
         airport_code = "";
-        cout << "What's the code of the airport you would like to know the information?: ";
-        cin >> airport_code;
-        if(this->airport_codes.find(airport_code) != this->airlines.end()){
+        cin.clear();
+        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+        std::getline(cin , airport_code);
+        airport_code = find_apCode(airport_code);
+        Airport airport = Airport(airport_code);
+        if(g.findVertex(airport)){
             break;
+        }else{
+            cout << "Please insert a valid airport code " << endl;
         }
     }
     while(true){
