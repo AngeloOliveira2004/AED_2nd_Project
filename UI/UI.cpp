@@ -216,7 +216,7 @@ void UI::trip_planner(){
     switch ((op)) {
         case 'A':
             cin.ignore();
-            cout << "Insert the code of the airport where you would like to depart from:" << endl;
+            cout << "Insert the code of the airport where you would like to depart from (You may use airport name as well):" << endl;
             std::getline(std::cin , initial_Airport);
 
             initial_Airport = find_apCode(initial_Airport);

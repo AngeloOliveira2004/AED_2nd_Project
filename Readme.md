@@ -55,4 +55,6 @@ If you are having troubles with running the project:
 
 Also important, if you have the problem of not loading the csv files, be sure that they are in a folder named dataset inside the cmake-build-debug.
 
+Do not fear if you see a text prompt when you start the terminal, it's normal, it's just a story while you wait for the program to fully load, just enjoy the moment. 
+
 
