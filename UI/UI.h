@@ -52,6 +52,8 @@ public:
 
     void greatest_traffic();
 
+    void different_destinations();
+
     unordered_set<std::string> get_Filters(bool & Avoid_Or_Only , bool& Yes_or_No);
     bool valid_airline(std::string& airline);
     std::string find_apCode(std::string& name);

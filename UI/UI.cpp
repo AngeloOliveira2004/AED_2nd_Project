@@ -215,8 +215,10 @@ void UI::trip_planner(){
     auto commaPos = country.begin();
     switch ((op)) {
         case 'A':
+            cin.ignore();
             cout << "Insert the code of the airport where you would like to depart from:" << endl;
-            cin >> initial_Airport;
+            std::getline(std::cin , initial_Airport);
+
             initial_Airport = find_apCode(initial_Airport);
             get_destination(destination , choice , filters);
             switch (choice) {
@@ -315,7 +317,7 @@ void UI::trip_planner(){
             break;
         case 'B':
             std::cin.ignore(); // Clear the input stream
-            cout << "Insert the city of the airport where you would like to depart from:" << endl;
+            cout << "Insert the city of the airport where you would like to depart from (Introduce the city in format [City,Country]):" << endl;
             std::getline(std::cin, initial_Airport);
             get_destination(destination , choice , filters);
 
@@ -680,8 +682,9 @@ void UI::get_destination(std::string& input , int& choice , unordered_set<std::s
     validate_input(op, 'A', 'D');
     switch ((op)) {
         case 'A':
+            cin.ignore();
             cout << "Insert the code of the airport where you would like to go to:" << endl;
-            cin >> input;
+            std::getline(std::cin , input);
             input = find_apCode(input);
             choice = 1;
             break;
@@ -838,7 +841,7 @@ void UI::flight_consultation() {
     char op;
     cout << "How would you like to search for your flight? " << endl
          << "A. Consult number of flights out of an airport and from how many different airlines;" << endl
-         << "B. Consult number of flights per city/airline " << endl
+         << "B. Consult the number of different destinations that an airport flies to; " << endl
          << "Insert your choice: ";
 
     validate_input(op, 'A', 'B');
@@ -847,10 +850,10 @@ void UI::flight_consultation() {
             number_out();
             break;
         case 'B':
-            number_flights();
+            different_destinations();
             break;
-
     }
+    main_menu();
 }
 /**
  * @brief Initiates the statistics menu.
@@ -957,6 +960,17 @@ void UI::number_out() {
     back_menu();
 }
 
+void UI::different_destinations()
+{
+    string airport;
+    std::cin.ignore();
+    std::cout << "Introduce the name of the airport that you wish to check the destinations (You may use the name or the code of the airport): "<<endl;
+    std::getline(std::cin , airport);
+    airport = find_apCode(airport);
+
+    std::cout << "Destinations: " << logic.NumberOfDestinationsForAirport(airport) << endl;
+}
+
 /**
  * @brief Displays the number of flights, either per city or per airline, as chosen by the user.
  */
@@ -970,15 +984,28 @@ void UI::number_flights() {
     switch(op){
         case 'A':{
             string city_name;
+            string country;
+            string city;
+            auto commaPos = country.begin();
             while(true){
                 city_name = "";
-                cout << "What's the name of the city you would like to know the information?: ";
-                cin >> city_name;
-                if(this->cities.find(city_name) != this->cities.end()){
-                    break;
+                cin.ignore();
+                cout << "What's the name of the city you would like to know the information?(Introduce the city in format [City,Country]) : ";
+                std::getline(std::cin, city_name);
+
+                commaPos = std::find(city_name.begin(), city_name.end(), ',');
+                if (commaPos != city_name.end()) {
+                    // Extract the first part (before the comma) and remove spaces
+                    city = std::string(city_name.begin(), commaPos);
+                    // Extract the second part (after the comma) and remove spaces
+                    country = std::string(std::find_if_not(commaPos + 1, city_name.end(), ::isspace), city_name.end());
+                } else {
+                    std::cout << "Input not valid";
+                    back_menu();
                 }
+                break;
             }
-            std::cout << "Number of flights of " << city_name << " : " <<logic.NumberOfFlightsPerCity(city_name) << endl;
+            std::cout << "Number of flights out of " << city_name << " : " <<logic.NumberOfFlightsPerCity(city , country) << endl;
             back_menu();
         }
         case 'B':{
@@ -991,7 +1018,7 @@ void UI::number_flights() {
                     break;
                 }
             }
-            std::cout << "Number of flights of " << airline_name << " airline : " << logic.NumberOfFlightsPerAirline(airline_name) << endl;
+            std::cout << "Number of flights with airline " << airline_name << " : " << logic.NumberOfFlightsPerAirline(airline_name) << endl;
             back_menu();
         }
     }
@@ -1010,15 +1037,28 @@ void UI::number_countries() {
     switch(op){
         case 'A':{
             string city_name;
+            string country;
+            string city;
+            auto commaPos = country.begin();
             while(true){
                 city_name = "";
-                cout << "What's the name of the city you would like to know the information?: ";
-                cin >> city_name;
-                if(this->cities.find(city_name) != this->cities.end()){
-                    break;
+                std::cin.ignore();
+                cout << "What's the name of the city you would like to know the information?(Introduce the city in format [City,Country]): ";
+                std::getline(std::cin, city_name);
+
+                commaPos = std::find(city_name.begin(), city_name.end(), ',');
+                if (commaPos != city_name.end()) {
+                    // Extract the first part (before the comma) and remove spaces
+                    city = std::string(city_name.begin(), commaPos);
+                    // Extract the second part (after the comma) and remove spaces
+                    country = std::string(std::find_if_not(commaPos + 1, city_name.end(), ::isspace), city_name.end());
+                } else {
+                    std::cout << "Input not valid";
+                    back_menu();
                 }
+                break;
             }
-            std::cout << "Number of flights of " << city_name << " : " <<logic.NumberOfCountriesThatCityFliesTo(city_name) << endl;
+            std::cout << "Number of different countries that " << city_name << " flies to: " <<logic.NumberOfCountriesThatCityFliesTo(city , country) << endl;
             back_menu();
         }
         case 'B':{

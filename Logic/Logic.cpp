@@ -178,7 +178,7 @@ int Logic::NumberOfCountries(std::string airportCode) {
  * @return The number of countries.
  * @details Time complexity: O(V + E), where V is the number of vertices (airports) and E is the number of edges (flights) in the graph.
  */
-int Logic::NumberOfCountriesThatCityFliesTo(std::string city) {
+int Logic::NumberOfCountriesThatCityFliesTo(std::string city , std::string country) {
 
     unordered_set<std::string> countries;
 
@@ -186,7 +186,7 @@ int Logic::NumberOfCountriesThatCityFliesTo(std::string city) {
     {
        auto airport = vertex->getInfo();
 
-       if(airport.getCity() == city)
+       if(airport.getCity() == city && airport.getCountry() == country)
        {
            for(auto edge : vertex->getAdj())
            {
@@ -205,7 +205,7 @@ int Logic::NumberOfCountriesThatCityFliesTo(std::string city) {
  * @return The number of flights.
  * @details Time complexity: O(V), where V is the number of vertices (airports) in the graph.
  */
-int Logic::NumberOfFlightsPerCity(std::string city) {
+int Logic::NumberOfFlightsPerCity(std::string city , std::string country) {
 
     int numberFlights = 0;
 
@@ -213,7 +213,7 @@ int Logic::NumberOfFlightsPerCity(std::string city) {
     {
         auto airport = vertex->getInfo();
 
-        if(vertex->getInfo().getCity() == city)
+        if(vertex->getInfo().getCity() == city && vertex->getInfo().getCountry() == country)
         {
             numberFlights += (int) vertex->getAdj().size();
         }

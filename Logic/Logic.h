@@ -50,7 +50,7 @@ public:
      * @param city City code.
      * @return Number of flights departing from the specified city.
      */
-    int NumberOfFlightsPerCity(std::string city);
+    int NumberOfFlightsPerCity(std::string city , std::string country);
     /**
      * @brief Computes the number of flights operated by a specific airline.
      * @param airlineCode Airline code.
@@ -65,10 +65,10 @@ public:
     int NumberOfCountries(std::string airportCode);
     /**
      * @brief Computes the number of different countries that a city flies to.
-     * @param city City code.
+     * @param city City code , country Country name.
      * @return Number of countries that an city flies to.
      */
-    int NumberOfCountriesThatCityFliesTo(std::string city);
+    int NumberOfCountriesThatCityFliesTo(std::string city , std::string country);
     /**
      * @brief Performs a breadth-first search (BFS) traversal to find the maximum trip with a given number of stops.
      * @param Airport Source airport for the BFS.
