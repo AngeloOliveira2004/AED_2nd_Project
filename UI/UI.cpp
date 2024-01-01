@@ -930,7 +930,7 @@ void UI::back_menu(){
  */
 void UI::global_numbers() {
     cout << "Number of Airports: " << logic.GlobalNumberOfAirports() << endl;
-    cout << "Number of Flights: " << logic.GlobalNumberOfFlights() << endl << endl << endl << endl << endl << endl << endl << endl << endl << endl;
+    cout << "Number of Flights: " << logic.GlobalNumberOfFlights() << endl << endl << endl << endl << endl << endl << endl << endl << endl;
     back_menu();
 }
 
@@ -978,7 +978,7 @@ void UI::number_flights() {
     char op;
     cout << "Would you like to consult the flights per: " << endl;
     cout << "A. City" << endl;
-    cout << "B. Airlines" << endl << endl << endl << endl << endl << endl << endl << endl << endl;
+    cout << "B. Airlines" << endl << endl << endl << endl << endl << endl << endl << endl;
     std::cout << "Insert the letter: ";
     validate_input(op,'A','B');
     switch(op){
