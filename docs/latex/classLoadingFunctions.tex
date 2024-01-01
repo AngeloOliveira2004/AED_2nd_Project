@@ -1,0 +1,145 @@
+\hypertarget{classLoadingFunctions}{}\doxysection{Loading\+Functions Class Reference}
+\label{classLoadingFunctions}\index{LoadingFunctions@{LoadingFunctions}}
+
+
+A class for loading data from CSV files.  
+
+
+
+
+{\ttfamily \#include $<$Loading\+Functions.\+h$>$}
+
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classLoadingFunctions_ae56e61a132353ec4a73ea90eb1ee838f}{Load\+Airports}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ \&g)
+\begin{DoxyCompactList}\small\item\em Load airports into the graph. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classLoadingFunctions_a42160c728a637df83c495763b98a1c4b}{Load\+Airlines}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ \&g)
+\begin{DoxyCompactList}\small\item\em Load airlines into the graph. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classLoadingFunctions_a675e2eb2148d2108debe7fbe30a835c2}{Load\+Flights}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ \&g)
+\begin{DoxyCompactList}\small\item\em Load flights into the graph. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classLoadingFunctions_acef3767bd9c7e5f9784af287e77c64b0}{Normalize\+String}} (std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Normalize a string by converting it to lowercase. \end{DoxyCompactList}\item 
+static std\+::unordered\+\_\+set$<$ \mbox{\hyperlink{classAirline}{Airline}} $>$ \mbox{\hyperlink{classLoadingFunctions_af3ed62cdd75b0fb1b1b7dc2501c6cc73}{get\+Airlines}} ()
+\begin{DoxyCompactList}\small\item\em Get the set of loaded airlines. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class for loading data from CSV files. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classLoadingFunctions_af3ed62cdd75b0fb1b1b7dc2501c6cc73}\label{classLoadingFunctions_af3ed62cdd75b0fb1b1b7dc2501c6cc73}} 
+\index{LoadingFunctions@{LoadingFunctions}!getAirlines@{getAirlines}}
+\index{getAirlines@{getAirlines}!LoadingFunctions@{LoadingFunctions}}
+\doxysubsubsection{\texorpdfstring{getAirlines()}{getAirlines()}}
+{\footnotesize\ttfamily static std\+::unordered\+\_\+set$<$ \mbox{\hyperlink{classAirline}{Airline}} $>$ Loading\+Functions\+::get\+Airlines (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Get the set of loaded airlines. 
+
+\begin{DoxyReturn}{Returns}
+The set of loaded airlines.
+\end{DoxyReturn}
+Time complexity\+: O(1) \mbox{\Hypertarget{classLoadingFunctions_a42160c728a637df83c495763b98a1c4b}\label{classLoadingFunctions_a42160c728a637df83c495763b98a1c4b}} 
+\index{LoadingFunctions@{LoadingFunctions}!LoadAirlines@{LoadAirlines}}
+\index{LoadAirlines@{LoadAirlines}!LoadingFunctions@{LoadingFunctions}}
+\doxysubsubsection{\texorpdfstring{LoadAirlines()}{LoadAirlines()}}
+{\footnotesize\ttfamily void Loading\+Functions\+::\+Load\+Airlines (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Load airlines into the graph. 
+
+Loads airlines into the set of loaded airlines.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & The graph to load airlines into.\\
+\hline
+\end{DoxyParams}
+Time complexity\+: Depends on the size of the airlines dataset and the graph operations.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & The graph (not used here).\\
+\hline
+\end{DoxyParams}
+Time complexity\+: O(m$\ast$p), where m is the number of airlines in the CSV file and p is the tokens vector size \mbox{\Hypertarget{classLoadingFunctions_ae56e61a132353ec4a73ea90eb1ee838f}\label{classLoadingFunctions_ae56e61a132353ec4a73ea90eb1ee838f}} 
+\index{LoadingFunctions@{LoadingFunctions}!LoadAirports@{LoadAirports}}
+\index{LoadAirports@{LoadAirports}!LoadingFunctions@{LoadingFunctions}}
+\doxysubsubsection{\texorpdfstring{LoadAirports()}{LoadAirports()}}
+{\footnotesize\ttfamily void Loading\+Functions\+::\+Load\+Airports (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Load airports into the graph. 
+
+Loads airports into the graph from a CSV file.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & The graph to load airports into.\\
+\hline
+\end{DoxyParams}
+Time complexity\+: Depends on the size of the airports dataset and the graph operations.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & The graph to load airports into.\\
+\hline
+\end{DoxyParams}
+Time complexity\+: O(n$\ast$p), where n is the number of airports in the CSV file and p is the tokens vector size \mbox{\Hypertarget{classLoadingFunctions_a675e2eb2148d2108debe7fbe30a835c2}\label{classLoadingFunctions_a675e2eb2148d2108debe7fbe30a835c2}} 
+\index{LoadingFunctions@{LoadingFunctions}!LoadFlights@{LoadFlights}}
+\index{LoadFlights@{LoadFlights}!LoadingFunctions@{LoadingFunctions}}
+\doxysubsubsection{\texorpdfstring{LoadFlights()}{LoadFlights()}}
+{\footnotesize\ttfamily void Loading\+Functions\+::\+Load\+Flights (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ \&}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Load flights into the graph. 
+
+Loads flights into the graph from a CSV file.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & The graph to load flights into.\\
+\hline
+\end{DoxyParams}
+Time complexity\+: Depends on the size of the flights dataset and the graph operations.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & The graph to load flights into.\\
+\hline
+\end{DoxyParams}
+Time complexity\+: O(p $\ast$ n), where p is the number of flights in the CSV file and n is the number of airports. \mbox{\Hypertarget{classLoadingFunctions_acef3767bd9c7e5f9784af287e77c64b0}\label{classLoadingFunctions_acef3767bd9c7e5f9784af287e77c64b0}} 
+\index{LoadingFunctions@{LoadingFunctions}!NormalizeString@{NormalizeString}}
+\index{NormalizeString@{NormalizeString}!LoadingFunctions@{LoadingFunctions}}
+\doxysubsubsection{\texorpdfstring{NormalizeString()}{NormalizeString()}}
+{\footnotesize\ttfamily void Loading\+Functions\+::\+Normalize\+String (\begin{DoxyParamCaption}\item[{std\+::string \&}]{str }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Normalize a string by converting it to lowercase. 
+
+Finds and erases \textquotesingle{}\textbackslash{}r\textquotesingle{} in the given string.
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & The string to normalize.\\
+\hline
+\end{DoxyParams}
+Time complexity\+: O(n), where n is the length of the string.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & A string\\
+\hline
+\end{DoxyParams}
+Time complexity\+: O(n), where n is length of the string 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/angelo/\+Downloads/\+Universidade/\+Algoritmo e Estrutura de Dados/\+Projeto\+\_\+\+AED\+\_\+2/\+Logic/Loading\+Functions.\+h\item 
+/home/angelo/\+Downloads/\+Universidade/\+Algoritmo e Estrutura de Dados/\+Projeto\+\_\+\+AED\+\_\+2/\+Logic/Loading\+Functions.\+cpp\end{DoxyCompactItemize}

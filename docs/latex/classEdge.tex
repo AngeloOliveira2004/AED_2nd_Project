@@ -1,0 +1,226 @@
+\hypertarget{classEdge}{}\doxysection{Edge\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classEdge}\index{Edge$<$ T $>$@{Edge$<$ T $>$}}
+
+
+Represents an edge in a graph.  
+
+
+
+
+{\ttfamily \#include $<$Graph.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classEdge_ab8e759379fc185bc7cec81a48a610119}{Edge}} (\mbox{\hyperlink{classVertex}{Vertex}}$<$ T $>$ $\ast$d, double w, string airline)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classEdge}{Edge}} class constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVertex}{Vertex}}$<$ T $>$ $\ast$ \mbox{\hyperlink{classEdge_a9a2de066dff8513dd788d553fc1d0c81}{get\+Dest}} () const
+\begin{DoxyCompactList}\small\item\em Gets the destination vertex of the edge. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classEdge_a163ee9f75e35701e6a04ea1c987e4094}{set\+Dest}} (\mbox{\hyperlink{classVertex}{Vertex}}$<$ T $>$ $\ast$dest)
+\begin{DoxyCompactList}\small\item\em Sets the destination vertex of the edge. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classEdge_ac705f1368db4ee6a736fb159f8767320}{getweight}} () const
+\begin{DoxyCompactList}\small\item\em Gets the weight of the edge. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classEdge_a15bfb64b347317183732d064161efce5}{setweight}} (double weight)
+\begin{DoxyCompactList}\small\item\em Sets the weight of the edge. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classEdge_a458a0900674f5639dba723f1a27726c3}{get\+Airline}} () const
+\begin{DoxyCompactList}\small\item\em Gets the airline code associated with the edge. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classEdge_aa0eeec16e0a1f8bc5204d0b0894d7a2b}{set\+Airline}} (string airline)
+\begin{DoxyCompactList}\small\item\em Sets the airline code associated with the edge. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classEdge_aefa9b76cd57411c5354e5620dc2d84dd}\label{classEdge_aefa9b76cd57411c5354e5620dc2d84dd}} 
+class {\bfseries Graph$<$ T $>$}
+\item 
+\mbox{\Hypertarget{classEdge_a2e120a12dec663fa334633b4f26cbed8}\label{classEdge_a2e120a12dec663fa334633b4f26cbed8}} 
+class {\bfseries Vertex$<$ T $>$}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$class T$>$\newline
+class Edge$<$ T $>$}
+Represents an edge in a graph. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of information stored in the vertices. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classEdge_ab8e759379fc185bc7cec81a48a610119}\label{classEdge_ab8e759379fc185bc7cec81a48a610119}} 
+\index{Edge$<$ T $>$@{Edge$<$ T $>$}!Edge@{Edge}}
+\index{Edge@{Edge}!Edge$<$ T $>$@{Edge$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Edge()}{Edge()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{classEdge}{Edge}}$<$ T $>$\mbox{\hyperlink{classEdge}{\+::\+Edge}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ T $>$ $\ast$}]{d,  }\item[{double}]{w,  }\item[{string}]{airline }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{classEdge}{Edge}} class constructor. 
+
+Initializes an edge with the given destination vertex, weight, and airline code. 
+\begin{DoxyParams}{Parameters}
+{\em d} & The destination vertex of the edge. \\
+\hline
+{\em w} & The weight of the edge. \\
+\hline
+{\em airline} & The airline code associated with the edge. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of information stored in the vertices.\\
+\hline
+\end{DoxyTemplParams}
+Time Complexity\+: O(1)
+\begin{DoxyItemize}
+\item The constructor has constant time complexity as it performs basic assignments. 
+\end{DoxyItemize}
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classEdge_a458a0900674f5639dba723f1a27726c3}\label{classEdge_a458a0900674f5639dba723f1a27726c3}} 
+\index{Edge$<$ T $>$@{Edge$<$ T $>$}!getAirline@{getAirline}}
+\index{getAirline@{getAirline}!Edge$<$ T $>$@{Edge$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getAirline()}{getAirline()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+std\+::string \mbox{\hyperlink{classEdge}{Edge}}$<$ T $>$\+::get\+Airline}
+
+
+
+Gets the airline code associated with the edge. 
+
+\begin{DoxyReturn}{Returns}
+The airline code. 
+\end{DoxyReturn}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of information stored in the vertices.\\
+\hline
+\end{DoxyTemplParams}
+Time Complexity\+: O(1)
+\begin{DoxyItemize}
+\item The function has constant time complexity as it retrieves the airline code. 
+\end{DoxyItemize}\mbox{\Hypertarget{classEdge_a9a2de066dff8513dd788d553fc1d0c81}\label{classEdge_a9a2de066dff8513dd788d553fc1d0c81}} 
+\index{Edge$<$ T $>$@{Edge$<$ T $>$}!getDest@{getDest}}
+\index{getDest@{getDest}!Edge$<$ T $>$@{Edge$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getDest()}{getDest()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{classVertex}{Vertex}}$<$ T $>$ $\ast$ \mbox{\hyperlink{classEdge}{Edge}}$<$ T $>$\+::get\+Dest}
+
+
+
+Gets the destination vertex of the edge. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the destination vertex. 
+\end{DoxyReturn}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of information stored in the vertices.\\
+\hline
+\end{DoxyTemplParams}
+Time Complexity\+: O(1)
+\begin{DoxyItemize}
+\item The function has constant time complexity as it retrieves the destination vertex. 
+\end{DoxyItemize}\mbox{\Hypertarget{classEdge_ac705f1368db4ee6a736fb159f8767320}\label{classEdge_ac705f1368db4ee6a736fb159f8767320}} 
+\index{Edge$<$ T $>$@{Edge$<$ T $>$}!getweight@{getweight}}
+\index{getweight@{getweight}!Edge$<$ T $>$@{Edge$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getweight()}{getweight()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+double \mbox{\hyperlink{classEdge}{Edge}}$<$ T $>$\+::getweight}
+
+
+
+Gets the weight of the edge. 
+
+\begin{DoxyReturn}{Returns}
+The weight of the edge. 
+\end{DoxyReturn}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of information stored in the vertices.\\
+\hline
+\end{DoxyTemplParams}
+Time Complexity\+: O(1)
+\begin{DoxyItemize}
+\item The function has constant time complexity as it retrieves the weight of the edge. 
+\end{DoxyItemize}\mbox{\Hypertarget{classEdge_aa0eeec16e0a1f8bc5204d0b0894d7a2b}\label{classEdge_aa0eeec16e0a1f8bc5204d0b0894d7a2b}} 
+\index{Edge$<$ T $>$@{Edge$<$ T $>$}!setAirline@{setAirline}}
+\index{setAirline@{setAirline}!Edge$<$ T $>$@{Edge$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{setAirline()}{setAirline()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{classEdge}{Edge}}$<$ T $>$\+::set\+Airline (\begin{DoxyParamCaption}\item[{string}]{airline }\end{DoxyParamCaption})}
+
+
+
+Sets the airline code associated with the edge. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em airline} & The new airline code. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of information stored in the vertices.\\
+\hline
+\end{DoxyTemplParams}
+Time Complexity\+: O(1)
+\begin{DoxyItemize}
+\item The function has constant time complexity as it performs a basic assignment. 
+\end{DoxyItemize}\mbox{\Hypertarget{classEdge_a163ee9f75e35701e6a04ea1c987e4094}\label{classEdge_a163ee9f75e35701e6a04ea1c987e4094}} 
+\index{Edge$<$ T $>$@{Edge$<$ T $>$}!setDest@{setDest}}
+\index{setDest@{setDest}!Edge$<$ T $>$@{Edge$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{setDest()}{setDest()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{classEdge}{Edge}}$<$ T $>$\+::set\+Dest (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ T $>$ $\ast$}]{d }\end{DoxyParamCaption})}
+
+
+
+Sets the destination vertex of the edge. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & A pointer to the new destination vertex. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of information stored in the vertices.\\
+\hline
+\end{DoxyTemplParams}
+Time Complexity\+: O(1)
+\begin{DoxyItemize}
+\item The function has constant time complexity as it performs a basic assignment. 
+\end{DoxyItemize}\mbox{\Hypertarget{classEdge_a15bfb64b347317183732d064161efce5}\label{classEdge_a15bfb64b347317183732d064161efce5}} 
+\index{Edge$<$ T $>$@{Edge$<$ T $>$}!setweight@{setweight}}
+\index{setweight@{setweight}!Edge$<$ T $>$@{Edge$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{setweight()}{setweight()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{classEdge}{Edge}}$<$ T $>$\+::setweight (\begin{DoxyParamCaption}\item[{double}]{weight }\end{DoxyParamCaption})}
+
+
+
+Sets the weight of the edge. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em weight} & The new weight of the edge. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of information stored in the vertices.\\
+\hline
+\end{DoxyTemplParams}
+Time Complexity\+: O(1)
+\begin{DoxyItemize}
+\item The function has constant time complexity as it performs a basic assignment. 
+\end{DoxyItemize}
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/angelo/\+Downloads/\+Universidade/\+Algoritmo e Estrutura de Dados/\+Projeto\+\_\+\+AED\+\_\+2/\+Logic/Graph.\+h\end{DoxyCompactItemize}

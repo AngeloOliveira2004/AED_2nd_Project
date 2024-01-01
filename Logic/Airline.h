@@ -3,6 +3,10 @@
 
 #include <string>
 
+/**
+ * @class Airline
+ * @brief Represents an airline with information such as code, name, call sign, and country.
+ */
 class Airline {
 private:
     std::string code;
@@ -64,6 +68,10 @@ public:
     bool operator==(const Airline& other) const;
 };
 
+/**
+ * @struct std::hash<Airline>
+ * @brief Represents the Airline hashing function for the unordered maps;
+ */
 template <>
 struct std::hash<Airline> {
     /**

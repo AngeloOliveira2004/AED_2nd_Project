@@ -5,6 +5,10 @@
 #include "Airport.h"
 #include <unordered_set>
 
+/**
+ * @class LoadingFunctions
+ * @brief A class for loading data from CSV files.
+ */
 class LoadingFunctions {
 public:
     /**

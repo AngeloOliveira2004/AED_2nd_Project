@@ -8,6 +8,10 @@
 #include "../Logic/Logic.h"
 #include <climits>
 
+/**
+ * @class UI
+ * @brief Represent the UI menu, where you control the background functions
+ */
 class UI {
 public:
     UI();
@@ -27,7 +31,6 @@ public:
     void trip_planner();
     void get_destination(std::string &input , int& choice , unordered_set<std::string>& filters);
     void printList(list<vector<Airport>> a);
-    void menu_options();
 
     void global_numbers();
 
@@ -49,9 +52,12 @@ public:
 
     void greatest_traffic();
 
+    void different_destinations();
+
     unordered_set<std::string> get_Filters(bool & Avoid_Or_Only , bool& Yes_or_No);
     bool valid_airline(std::string& airline);
-    void NormaliseList(list<vector<Airport>>& list1);
+    std::string find_apCode(std::string& name);
+    list<vector<Airport>> NormaliseList(list<vector<Airport>>& list1);
 private:
     Graph<Airport> g;
     Logic logic = Logic(g);

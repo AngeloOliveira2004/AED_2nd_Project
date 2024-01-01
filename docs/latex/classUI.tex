@@ -1,0 +1,259 @@
+\hypertarget{classUI}{}\doxysection{UI Class Reference}
+\label{classUI}\index{UI@{UI}}
+
+
+Represent the \mbox{\hyperlink{classUI}{UI}} menu, where you control the background functions.  
+
+
+
+
+{\ttfamily \#include $<$UI.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classUI_aa4f5f0000b864a5019c797b8a7da8891}\label{classUI_aa4f5f0000b864a5019c797b8a7da8891}} 
+void {\bfseries menu\+\_\+start} ()
+\begin{DoxyCompactList}\small\item\em Display the start menu for the Air Travel Flight Management System. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classUI_a19639c490c34c5b0c66684c2670b7076}{loading\+\_\+stuff}} (\mbox{\hyperlink{classUI}{UI}} \&ui)
+\begin{DoxyCompactList}\small\item\em Display a loading message and initialize the application data. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classUI_a83fba9739cde5eda8391c2020ab3dcff}{validate\+\_\+input}} (char \&op, const char lower\+\_\+bound, const char upper\+\_\+bound)
+\begin{DoxyCompactList}\small\item\em Validate and read a character input within a specified range. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classUI_ae6e6f8381ec34388c4bd8811c4e86e1c}\label{classUI_ae6e6f8381ec34388c4bd8811c4e86e1c}} 
+void {\bfseries main\+\_\+menu} ()
+\begin{DoxyCompactList}\small\item\em Display the main menu of the Air Travel Flight Management System. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classUI_a676a2b06a1b7f91fd45ffdebfb3a7612}\label{classUI_a676a2b06a1b7f91fd45ffdebfb3a7612}} 
+void {\bfseries statistics\+\_\+menu} ()
+\begin{DoxyCompactList}\small\item\em Initiates the statistics menu. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classUI_a041ad8488078a4f771b2823bcac1c8a6}\label{classUI_a041ad8488078a4f771b2823bcac1c8a6}} 
+void {\bfseries airport\+\_\+statistics} ()
+\begin{DoxyCompactList}\small\item\em Initiates the airport statistics menu. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classUI_a72a8dbf61db48fefe065e2ba7ba7059f}\label{classUI_a72a8dbf61db48fefe065e2ba7ba7059f}} 
+void {\bfseries flight\+\_\+consultation} ()
+\begin{DoxyCompactList}\small\item\em Initiates the flight consultation menu, receiving an input that leads to the chosen function call. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classUI_a383c59401df067d16c14dde541d621d6}{trip\+\_\+planner}} ()
+\begin{DoxyCompactList}\small\item\em Initiates the trip planning process based on user preferences. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classUI_a515c51542a17e972c90fe2633647d9ee}{get\+\_\+destination}} (std\+::string \&input, int \&choice, unordered\+\_\+set$<$ std\+::string $>$ \&filters)
+\begin{DoxyCompactList}\small\item\em Obtains user input for the destination point and sets choice variable accordingly. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classUI_a3df5b997ed018e63e34d98bee99a7b35}{print\+List}} (list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ a)
+\begin{DoxyCompactList}\small\item\em Prints a normalized list of vectors representing trips. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classUI_a09079f246305dfb4d909c14155d3b898}\label{classUI_a09079f246305dfb4d909c14155d3b898}} 
+void {\bfseries global\+\_\+numbers} ()
+\begin{DoxyCompactList}\small\item\em Displays global numbers of airports and flights. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classUI_aad206bf07f341d24820af6ddf7d11e4b}\label{classUI_aad206bf07f341d24820af6ddf7d11e4b}} 
+void {\bfseries number\+\_\+out} ()
+\begin{DoxyCompactList}\small\item\em Displays the number of flights and different airlines departing from a specified airport. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classUI_aa6522d3998db076b2019ee0c787f58f4}\label{classUI_aa6522d3998db076b2019ee0c787f58f4}} 
+void {\bfseries number\+\_\+flights} ()
+\begin{DoxyCompactList}\small\item\em Displays the number of flights, either per city or per airline, as chosen by the user. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classUI_abdcdbd35d7cfada9f512554904186b40}\label{classUI_abdcdbd35d7cfada9f512554904186b40}} 
+void {\bfseries load\+\_\+sets} ()
+\begin{DoxyCompactList}\small\item\em This function iterates over the vertices in the graph and populates sets of cities, airport codes, and countries based on the information stored in each airport. The unordered sets are member variables of the \mbox{\hyperlink{classUI}{UI}} class, allowing efficient retrieval of unique values for further use in the user interface. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classUI_a7400f4d4e0b03b04121de9208070aa6b}\label{classUI_a7400f4d4e0b03b04121de9208070aa6b}} 
+void {\bfseries back\+\_\+menu} ()
+\begin{DoxyCompactList}\small\item\em Navigates back to the main menu. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classUI_a776dfeea07fe03185707ef00e2001248}\label{classUI_a776dfeea07fe03185707ef00e2001248}} 
+void {\bfseries number\+\_\+countries} ()
+\begin{DoxyCompactList}\small\item\em Displays the number of different countries reachable from a city or airport, as chosen by the user. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classUI_a3337191bb8dc3a251d82e3e4b17718ba}\label{classUI_a3337191bb8dc3a251d82e3e4b17718ba}} 
+void {\bfseries number\+\_\+reachable\+\_\+destinations} ()
+\begin{DoxyCompactList}\small\item\em Displays the number of distinct airports, countries, and cities reachable from a specified airport. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classUI_a3c95dbcd56b5961f0624027ad7c757fd}\label{classUI_a3c95dbcd56b5961f0624027ad7c757fd}} 
+void {\bfseries number\+\_\+reachable\+\_\+destinations\+\_\+k} ()
+\begin{DoxyCompactList}\small\item\em Displays the number of distinct airports, countries, and cities reachable from a specified airport within a maximum number of layovers. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classUI_a71f0ff346c0ad8c40e50cd6d4decffa8}\label{classUI_a71f0ff346c0ad8c40e50cd6d4decffa8}} 
+void {\bfseries longest\+\_\+trip} ()
+\begin{DoxyCompactList}\small\item\em Displays the longest trips available in the network. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classUI_a53d3808c60405686bbee611d5c90b674}\label{classUI_a53d3808c60405686bbee611d5c90b674}} 
+void {\bfseries greatest\+\_\+traffic} ()
+\begin{DoxyCompactList}\small\item\em Displays information about the top airports with the greatest air traffic capacity. \end{DoxyCompactList}\item 
+unordered\+\_\+set$<$ std\+::string $>$ \mbox{\hyperlink{classUI_abc801485970d099f2792492abe91c7dd}{get\+\_\+\+Filters}} (bool \&Avoid\+\_\+\+Or\+\_\+\+Only, bool \&Yes\+\_\+or\+\_\+\+No)
+\begin{DoxyCompactList}\small\item\em Collects user input for airline filters and returns the filters value accordingly. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classUI_aee0c3e9cc5f575e785a70310542ae003}{valid\+\_\+airline}} (std\+::string \&airline)
+\begin{DoxyCompactList}\small\item\em Checks whether the airline code is valid or not. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classUI_a1ded52ad27e7db3a699c48911ee9e1c2}{find\+\_\+ap\+Code}} (std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em Finds the airport code based on its name. \end{DoxyCompactList}\item 
+list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ \mbox{\hyperlink{classUI_aea55bf6523d5ccce846a219f645e66c1}{Normalise\+List}} (list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ \&list1)
+\begin{DoxyCompactList}\small\item\em Normalizes a list of vectors by keeping only the vectors with the minimum size. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classUI_a298d81ef3106436a00bed98330d4c5a8}\label{classUI_a298d81ef3106436a00bed98330d4c5a8}} 
+static void {\bfseries clear\+\_\+screen} ()
+\begin{DoxyCompactList}\small\item\em Clears the console screen by printing empty lines. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represent the \mbox{\hyperlink{classUI}{UI}} menu, where you control the background functions. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classUI_a1ded52ad27e7db3a699c48911ee9e1c2}\label{classUI_a1ded52ad27e7db3a699c48911ee9e1c2}} 
+\index{UI@{UI}!find\_apCode@{find\_apCode}}
+\index{find\_apCode@{find\_apCode}!UI@{UI}}
+\doxysubsubsection{\texorpdfstring{find\_apCode()}{find\_apCode()}}
+{\footnotesize\ttfamily std\+::string UI\+::find\+\_\+ap\+Code (\begin{DoxyParamCaption}\item[{std\+::string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+Finds the airport code based on its name. 
+
+This function searches for the airport code corresponding to the given airport name, inside an unordered map. If the provided string is already a three-\/letter airport code, it is returned as is, since it means that it\textquotesingle{}s already an airport code. Otherwise, the function looks up the name in the map.
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & A string reference representing the airport name or code to be looked up.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The airport code corresponding to the given string. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classUI_a515c51542a17e972c90fe2633647d9ee}\label{classUI_a515c51542a17e972c90fe2633647d9ee}} 
+\index{UI@{UI}!get\_destination@{get\_destination}}
+\index{get\_destination@{get\_destination}!UI@{UI}}
+\doxysubsubsection{\texorpdfstring{get\_destination()}{get\_destination()}}
+{\footnotesize\ttfamily void UI\+::get\+\_\+destination (\begin{DoxyParamCaption}\item[{std\+::string \&}]{input,  }\item[{int \&}]{choice,  }\item[{unordered\+\_\+set$<$ std\+::string $>$ \&}]{filters }\end{DoxyParamCaption})}
+
+
+
+Obtains user input for the destination point and sets choice variable accordingly. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & String variable where the info about the destination will be stored. \\
+\hline
+{\em choice} & Integer that indicates the chosen destination type algorithm (1\+: \mbox{\hyperlink{classAirport}{Airport}}, 2\+: City, 3\+: Country, 4\+: Coordinates). \\
+\hline
+{\em filters} & An unordered set of strings where filters may be stored. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classUI_abc801485970d099f2792492abe91c7dd}\label{classUI_abc801485970d099f2792492abe91c7dd}} 
+\index{UI@{UI}!get\_Filters@{get\_Filters}}
+\index{get\_Filters@{get\_Filters}!UI@{UI}}
+\doxysubsubsection{\texorpdfstring{get\_Filters()}{get\_Filters()}}
+{\footnotesize\ttfamily unordered\+\_\+set$<$ string $>$ UI\+::get\+\_\+\+Filters (\begin{DoxyParamCaption}\item[{bool \&}]{Avoid\+\_\+\+Or\+\_\+\+Only,  }\item[{bool \&}]{Yes\+\_\+or\+\_\+\+No }\end{DoxyParamCaption})}
+
+
+
+Collects user input for airline filters and returns the filters value accordingly. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Avoid\+\_\+\+Or\+\_\+\+Only} & Boolean variable indicating whether the user wants to ONLY travel by the specified airlines (true) or to AVOID them (false). \\
+\hline
+{\em Yes\+\_\+or\+\_\+\+No} & A reference to a boolean variable indicating whether the user wants to use airline filters (true) or not (false).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An unordered set of strings containing the airline codes specified by the user as filters. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classUI_a19639c490c34c5b0c66684c2670b7076}\label{classUI_a19639c490c34c5b0c66684c2670b7076}} 
+\index{UI@{UI}!loading\_stuff@{loading\_stuff}}
+\index{loading\_stuff@{loading\_stuff}!UI@{UI}}
+\doxysubsubsection{\texorpdfstring{loading\_stuff()}{loading\_stuff()}}
+{\footnotesize\ttfamily void UI\+::loading\+\_\+stuff (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classUI}{UI}} \&}]{ui }\end{DoxyParamCaption})}
+
+
+
+Display a loading message and initialize the application data. 
+
+This function displays a loading message narrating a story about a tree and a man, while it loads flight data, initializes the application\textquotesingle{}s logic, and sets up additional data required for the program. The user is prompted to press \textquotesingle{}A\textquotesingle{} to start the program after the loading is complete. 
+\begin{DoxyParams}{Parameters}
+{\em ui} & The user interface instance. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classUI_aea55bf6523d5ccce846a219f645e66c1}\label{classUI_aea55bf6523d5ccce846a219f645e66c1}} 
+\index{UI@{UI}!NormaliseList@{NormaliseList}}
+\index{NormaliseList@{NormaliseList}!UI@{UI}}
+\doxysubsubsection{\texorpdfstring{NormaliseList()}{NormaliseList()}}
+{\footnotesize\ttfamily list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ UI\+::\+Normalise\+List (\begin{DoxyParamCaption}\item[{list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$ \&}]{list1 }\end{DoxyParamCaption})}
+
+
+
+Normalizes a list of vectors by keeping only the vectors with the minimum size. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list1} & The list of vectors to be normalized.\\
+\hline
+\end{DoxyParams}
+O(\+N) where n is the size of the input \mbox{\Hypertarget{classUI_a3df5b997ed018e63e34d98bee99a7b35}\label{classUI_a3df5b997ed018e63e34d98bee99a7b35}} 
+\index{UI@{UI}!printList@{printList}}
+\index{printList@{printList}!UI@{UI}}
+\doxysubsubsection{\texorpdfstring{printList()}{printList()}}
+{\footnotesize\ttfamily void UI\+::print\+List (\begin{DoxyParamCaption}\item[{list$<$ vector$<$ \mbox{\hyperlink{classAirport}{Airport}} $>$ $>$}]{a }\end{DoxyParamCaption})}
+
+
+
+Prints a normalized list of vectors representing trips. 
+
+This function takes a list of vectors of airports representing trips, normalizes the list, and then prints the trips. If the normalized list is empty, it prints a message indicating that no trips are available. Each trip is printed by concatenating the airport codes with \char`\"{}-\/$>$\char`\"{}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & A list of vectors of airports representing trips. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classUI_a383c59401df067d16c14dde541d621d6}\label{classUI_a383c59401df067d16c14dde541d621d6}} 
+\index{UI@{UI}!trip\_planner@{trip\_planner}}
+\index{trip\_planner@{trip\_planner}!UI@{UI}}
+\doxysubsubsection{\texorpdfstring{trip\_planner()}{trip\_planner()}}
+{\footnotesize\ttfamily void UI\+::trip\+\_\+planner (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initiates the trip planning process based on user preferences. 
+
+This function prompts the user to choose the starting point of the trip (origin airport, city, country, or coordinates), and then requests additional information for the destination. It takes into account various filters provided by the user, such as airline preferences or restrictions. The function then invokes the appropriate logic functions to plan the trip, displaying the relevant information to the user. \mbox{\Hypertarget{classUI_aee0c3e9cc5f575e785a70310542ae003}\label{classUI_aee0c3e9cc5f575e785a70310542ae003}} 
+\index{UI@{UI}!valid\_airline@{valid\_airline}}
+\index{valid\_airline@{valid\_airline}!UI@{UI}}
+\doxysubsubsection{\texorpdfstring{valid\_airline()}{valid\_airline()}}
+{\footnotesize\ttfamily bool UI\+::valid\+\_\+airline (\begin{DoxyParamCaption}\item[{std\+::string \&}]{airline }\end{DoxyParamCaption})}
+
+
+
+Checks whether the airline code is valid or not. 
+
+This function checks if the given airline code is valid. An airline code is considered valid if it meets the following criteria\+:
+\begin{DoxyItemize}
+\item It is not \textquotesingle{}d\textquotesingle{} (used to indicate the end of input during filtering).
+\item It has a length of 3 characters all being uppercase letters, since all the airline codes consists of 3 uppercase letters.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em airline} & A string with the airline code to be validated.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the airline code is valid; otherwise, false. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classUI_a83fba9739cde5eda8391c2020ab3dcff}\label{classUI_a83fba9739cde5eda8391c2020ab3dcff}} 
+\index{UI@{UI}!validate\_input@{validate\_input}}
+\index{validate\_input@{validate\_input}!UI@{UI}}
+\doxysubsubsection{\texorpdfstring{validate\_input()}{validate\_input()}}
+{\footnotesize\ttfamily bool UI\+::validate\+\_\+input (\begin{DoxyParamCaption}\item[{char \&}]{op,  }\item[{const char}]{lower\+\_\+bound,  }\item[{const char}]{upper\+\_\+bound }\end{DoxyParamCaption})}
+
+
+
+Validate and read a character input within a specified range. 
+
+This function prompts the user to input a character and validates that it is a single character. It then converts the character to uppercase and ensures it falls within the specified range \mbox{[}lower\+\_\+bound, upper\+\_\+bound\mbox{]}. If the input is not valid, the user is prompted to try again until a valid input is provided.
+
+
+\begin{DoxyParams}{Parameters}
+{\em op} & Reference to the character variable where the validated input will be stored. \\
+\hline
+{\em lower\+\_\+bound} & The lower bound of the valid range (inclusive). \\
+\hline
+{\em upper\+\_\+bound} & The upper bound of the valid range (inclusive). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true after successfully validating and storing the input. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/angelo/\+Downloads/\+Universidade/\+Algoritmo e Estrutura de Dados/\+Projeto\+\_\+\+AED\+\_\+2/\+UI/UI.\+h\item 
+/home/angelo/\+Downloads/\+Universidade/\+Algoritmo e Estrutura de Dados/\+Projeto\+\_\+\+AED\+\_\+2/\+UI/UI.\+cpp\end{DoxyCompactItemize}

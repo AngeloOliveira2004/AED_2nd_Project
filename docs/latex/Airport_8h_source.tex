@@ -1,0 +1,71 @@
+\hypertarget{Airport_8h_source}{}\doxysection{Airport.\+h}
+\label{Airport_8h_source}\index{/home/angelo/Downloads/Universidade/Algoritmo e Estrutura de Dados/Projeto\_AED\_2/Logic/Airport.h@{/home/angelo/Downloads/Universidade/Algoritmo e Estrutura de Dados/Projeto\_AED\_2/Logic/Airport.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef PROJETO\_2\_AIRPORT\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define PROJETO\_2\_AIRPORT\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{10 \textcolor{keyword}{class }\mbox{\hyperlink{classAirport}{Airport}} \{}
+\DoxyCodeLine{11 \textcolor{keyword}{public}:}
+\DoxyCodeLine{16     \mbox{\hyperlink{classAirport_a2fc0f2402c94225b9deaf76176bb887f}{Airport}}();}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{23     \mbox{\hyperlink{classAirport_a2fc0f2402c94225b9deaf76176bb887f}{Airport}}(std::string code);}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{35     \mbox{\hyperlink{classAirport_a2fc0f2402c94225b9deaf76176bb887f}{Airport}}(\textcolor{keyword}{const} std::string \&code, \textcolor{keyword}{const} std::string name, \textcolor{keyword}{const} std::string city, \textcolor{keyword}{const} std::string country,}
+\DoxyCodeLine{36             \textcolor{keywordtype}{double} latitude, \textcolor{keywordtype}{double} longitude);}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38     \textcolor{comment}{// Getters}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{45     std::string \mbox{\hyperlink{classAirport_a715d0628f3540a1a65917d55b0311757}{getCode}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{52     std::string \mbox{\hyperlink{classAirport_a5f6d1d66d9d1b5af15b67c500e444f9f}{getName}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{59     std::string \mbox{\hyperlink{classAirport_a4f8fbb5b1c5250bf0aaa77dfc25897dc}{getCity}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{66     std::string \mbox{\hyperlink{classAirport_aefabe22c551403c9ca291404eba2323b}{getCountry}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{73     \textcolor{keywordtype}{double} \mbox{\hyperlink{classAirport_ad8cd931389b14d63e5933a1658b653a3}{getLongitude}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{80     \textcolor{keywordtype}{double} \mbox{\hyperlink{classAirport_aed71ba4592b2a1401eb182931f2d3f06}{getLatitude}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{82     \textcolor{comment}{// Setters}}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{89     \textcolor{keywordtype}{void} \mbox{\hyperlink{classAirport_ab3739d0d8cbed7a8567ff207ed11f892}{setCode}}(\textcolor{keyword}{const} std::string \&newCode);}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{96     \textcolor{keywordtype}{void} \mbox{\hyperlink{classAirport_a72127d65c83cba75303e7dec96bed3d1}{setName}}(\textcolor{keyword}{const} std::string \&newName);}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{103     \textcolor{keywordtype}{void} \mbox{\hyperlink{classAirport_a19d6fee68dc855a904ffc3388134407b}{setCity}}(\textcolor{keyword}{const} std::string \&newCity);}
+\DoxyCodeLine{104 }
+\DoxyCodeLine{110     \textcolor{keywordtype}{void} \mbox{\hyperlink{classAirport_abc41d761219d91f5823fd81604e99bdd}{setCountry}}(\textcolor{keyword}{const} std::string \&newCountry);}
+\DoxyCodeLine{111 }
+\DoxyCodeLine{117     \textcolor{keywordtype}{void} \mbox{\hyperlink{classAirport_aeb5497ebe2f56849969100b16f769946}{setLongitude}}(\textcolor{keywordtype}{double} newLongitude);}
+\DoxyCodeLine{118 }
+\DoxyCodeLine{124     \textcolor{keywordtype}{void} \mbox{\hyperlink{classAirport_a24f851f0b73052a8aad6b488cab46c6e}{setLatitude}}(\textcolor{keywordtype}{double} newLatitude);}
+\DoxyCodeLine{125 }
+\DoxyCodeLine{132     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classAirport_a2d93e2cadbdb3ed9114aff48aa0bac5c}{operator==}}(\textcolor{keyword}{const} \mbox{\hyperlink{classAirport}{Airport}} \&other) \textcolor{keyword}{const};}
+\DoxyCodeLine{133 }
+\DoxyCodeLine{139     \textcolor{keywordtype}{void} \mbox{\hyperlink{classAirport_a5e29037a72b4121e224508b5e73603c7}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{classAirport}{Airport}} \&other);}
+\DoxyCodeLine{140 }
+\DoxyCodeLine{141 \textcolor{keyword}{private}:}
+\DoxyCodeLine{142     std::string code;}
+\DoxyCodeLine{143     std::string name;}
+\DoxyCodeLine{144     std::string city;}
+\DoxyCodeLine{145     std::string country;}
+\DoxyCodeLine{146     \textcolor{keywordtype}{double} longitude;}
+\DoxyCodeLine{147     \textcolor{keywordtype}{double} latitude;}
+\DoxyCodeLine{148 \};}
+\DoxyCodeLine{149 }
+\DoxyCodeLine{150 }
+\DoxyCodeLine{155 \textcolor{keyword}{template} <>}
+\DoxyCodeLine{156 \textcolor{keyword}{struct }std::hash<\mbox{\hyperlink{classAirport}{Airport}}> \{}
+\DoxyCodeLine{163     \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{structstd_1_1hash_3_01Airport_01_4_a792f922c8e9c43b4b1e899ac87191d89}{operator()}}(\textcolor{keyword}{const} \mbox{\hyperlink{classAirport}{Airport}} \&airport)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{164         \textcolor{keywordtype}{size\_t} airportCode = std::hash<std::string>\{\}(airport.\mbox{\hyperlink{classAirport_a715d0628f3540a1a65917d55b0311757}{getCode}}());}
+\DoxyCodeLine{165         \textcolor{keywordflow}{return} airportCode; \textcolor{comment}{// Combine the hashes appropriately}}
+\DoxyCodeLine{166     \}}
+\DoxyCodeLine{167 \};}
+\DoxyCodeLine{168 }
+\DoxyCodeLine{169 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//PROJETO\_2\_AIRPORT\_H}}
+
+\end{DoxyCode}
