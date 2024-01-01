@@ -128,10 +128,9 @@ public:
      * @brief Depth-First Search (DFS) traversal for finding articulation points.
      * @param v Vertex to start the DFS traversal.
      * @param articPoints Unordered set to store articulation points.
-     * @param s Stack for DFS traversal.
      * @param index Index for DFS traversal.
      */
-    void dfs_articulationPoints(Vertex<Airport> *v, unordered_set<Airport> &articPoints, stack<Vertex<Airport> *> &s,int &index);
+    void dfs_articulationPoints(Vertex<Airport> *v, unordered_set<Airport> &articPoints, int &index);
     /**
      * @brief Computes the shortest path between two airports using Dijkstra's algorithm.
      * @param initialAirport Starting airport.
@@ -430,6 +429,11 @@ public:
      * @param list1 List of vectors to be normalized.
      */
     void NormaliseList(list<vector<Airport>>& list1);
+
+    // void duplicateEdges();
+
+    // void removeDuplicateEdges();
+
 };
 
 

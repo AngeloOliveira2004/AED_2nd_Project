@@ -576,7 +576,8 @@ vector<string> Logic::GreatestKIndeegrees(int k) {
 unordered_set<Airport> Logic::findArticulationPoints() {
     int index = 1;
     unordered_set<Airport> articulationPoints;
-    stack<Vertex<Airport>*> s;
+
+    // duplicateEdges();
 
     for (Vertex<Airport>* v : graph.getVertexSet()) {
         v->setVisited(false);
@@ -585,21 +586,47 @@ unordered_set<Airport> Logic::findArticulationPoints() {
 
     for (Vertex<Airport>* v : graph.getVertexSet()) {
         if (!v->isVisited()) {
-            dfs_articulationPoints(v, articulationPoints, s, index);
+            dfs_articulationPoints(v, articulationPoints, index);
         }
     }
+
+    // removeDuplicateEdges();
 
     return articulationPoints;
 }
 
-// Helper function for findArticulationPoints
-void Logic::dfs_articulationPoints(Vertex<Airport>* v, unordered_set<Airport>& articPoints, stack<Vertex<Airport>*>& s, int& index) {
+/*
+void Logic::duplicateEdges() {
+    for (Vertex<Airport>* v : graph.getVertexSet()) {
+        for (auto &e : v->getAdj()) {
+            Vertex<Airport>* w = e.getDest();
+            graph.addEdge(v->getInfo(), w->getInfo(), e.getweight(), e.getAirline());
+        }
+    }
+}
+
+*/
+
+/*
+void Logic::removeDuplicateEdges() {
+    for (Vertex<Airport>* v : graph.getVertexSet()) {
+        vector<Edge<Airport>> originalEdges;
+        for (auto &e : v->getAdj()) {
+            originalEdges.push_back(e);
+        }
+        for (const auto &e : originalEdges) {
+            graph.removeEdge(v->getInfo(), e.getDest()->getInfo());
+        }
+    }
+}
+ */
+
+void Logic::dfs_articulationPoints(Vertex<Airport>* v, unordered_set<Airport>& articPoints, int& index) {
     v->setNum(index);
     v->setLow(index);
     v->setVisited(true);
     index++;
 
-    s.push(v);
     v->setProcessing(true);
 
     int children = 0;
@@ -609,7 +636,7 @@ void Logic::dfs_articulationPoints(Vertex<Airport>* v, unordered_set<Airport>& a
         Vertex<Airport>* w = e.getDest();
         if (!w->isVisited()) {
             children++;
-            dfs_articulationPoints(w, articPoints, s, index);
+            dfs_articulationPoints(w, articPoints,index);
             v->setLow(min(v->getLow(), w->getLow()));
 
             if (w->getLow() >= v->getNum()) {
@@ -622,16 +649,6 @@ void Logic::dfs_articulationPoints(Vertex<Airport>* v, unordered_set<Airport>& a
 
     if ((v->getNum() == v->getLow() && children > 1) || (v->getNum() != v->getLow() && isArticulationPoint)) {
         articPoints.insert(v->getInfo());
-
-        while (!s.empty()) {
-            Vertex<Airport>* poppedVertex = s.top();
-            s.pop();
-            poppedVertex->setProcessing(false);
-
-            if (poppedVertex == v) {
-                break;
-            }
-        }
     }
 
 }
