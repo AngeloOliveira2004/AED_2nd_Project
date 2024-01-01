@@ -1036,7 +1036,7 @@ void UI::number_countries() {
     char op;
     cout << "Would you like to consult the number of different countries reachable from: " << endl;
     cout << "A. City" << endl;
-    cout << "B. Airport" << endl << endl << endl << endl << endl << endl << endl << endl << endl;
+    cout << "B. Airport" << endl << endl << endl << endl << endl << endl << endl << endl;
     std::cout << "Insert the letter: ";
     validate_input(op,'A','B');
     switch(op){

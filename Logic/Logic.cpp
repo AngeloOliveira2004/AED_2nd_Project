@@ -554,7 +554,7 @@ vector<string> Logic::GreatestKIndeegrees(int k) {
     size_t s;
     graph.calculateIndegrees();
     for(auto vertex: graph.getVertexSet()){
-        s = vertex->getIndegree();
+        s = vertex->getIndegree() + vertex->getAdj().size();
         traffics.push_back(s);
         airport_to_traffic.push_back(std::make_pair(s, vertex->getInfo().getCode()));
     }
