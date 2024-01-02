@@ -656,8 +656,9 @@ void UI::trip_planner(){
                         for (auto dest: destinations){
                             printList(logic.LocationToAirport(latitude, longitude, dest));
                         }
-
                     }
+                    back_menu();
+                    break;
             }
     }
 }
