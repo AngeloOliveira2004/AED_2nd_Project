@@ -615,14 +615,14 @@ void UI::trip_planner(){
                     filters = get_Filters(Avoid_Or_Only, Yes_or_No);
                     if(Yes_or_No){
                         if(Avoid_Or_Only){
-                            printList(logic.LocationToCountryAirlineOnlyFilter(latitude, longitude, country, filters));
+                            printList(logic.LocationToCountryAirlineOnlyFilter(latitude, longitude, destination, filters));
                         }
                         else{
-                            printList(logic.LocationToCountryAirlineAvoidFilter(latitude, longitude, country, filters));
+                            printList(logic.LocationToCountryAirlineAvoidFilter(latitude, longitude, destination, filters));
                         }
                     }
                     else{
-                        printList(logic.LocationToCountry(latitude, longitude, country));
+                            printList(logic.LocationToCountry(latitude, longitude, destination));
                     }
                     back_menu();
                     break;

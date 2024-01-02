@@ -792,6 +792,10 @@ list<vector<Airport>> Logic::LocationToCity(double source_latitude, double sourc
  */
 list<vector<Airport>> Logic::LocationToCountry(double source_latitude, double source_longitude, const std::string country){
     vector<Airport> sources = FindClosestAirportsToLocation(source_latitude, source_longitude);
+    for(auto s : sources)
+    {
+        string temp = s.getCode();
+    }
     list<vector<Airport>> res;
     for(auto airport: sources){
         for(auto trip: AirportToCountry(airport, country)){
