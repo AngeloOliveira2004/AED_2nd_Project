@@ -206,6 +206,7 @@ int Logic::NumberOfCountriesThatCityFliesTo(std::string city , std::string count
  * @details Time complexity: O(V), where V is the number of vertices (airports) in the graph.
  */
 int Logic::NumberOfFlightsPerCity(std::string city , std::string country) {
+    graph.calculateIndegrees();
 
     int numberFlights = 0;
 
@@ -215,7 +216,7 @@ int Logic::NumberOfFlightsPerCity(std::string city , std::string country) {
 
         if(vertex->getInfo().getCity() == city && vertex->getInfo().getCountry() == country)
         {
-            numberFlights += (int) vertex->getAdj().size();
+            numberFlights += (int) vertex->getAdj().size() + vertex->getIndegree();
         }
     }
 
@@ -577,7 +578,8 @@ unordered_set<Airport> Logic::findArticulationPoints() {
     int index = 1;
     unordered_set<Airport> articulationPoints;
 
-    // duplicateEdges();
+    duplicateEdges();
+
 
     for (Vertex<Airport>* v : graph.getVertexSet()) {
         v->setVisited(false);
@@ -590,36 +592,43 @@ unordered_set<Airport> Logic::findArticulationPoints() {
         }
     }
 
-    // removeDuplicateEdges();
+    removeDuplicateEdges();
+
 
     return articulationPoints;
 }
 
-/*
 void Logic::duplicateEdges() {
-    for (Vertex<Airport>* v : graph.getVertexSet()) {
-        for (auto &e : v->getAdj()) {
-            Vertex<Airport>* w = e.getDest();
-            graph.addEdge(v->getInfo(), w->getInfo(), e.getweight(), e.getAirline());
+    stack<pair<Vertex<Airport>*,Vertex<Airport>*>> s;
+
+    for(auto vertex: graph.getVertexSet()){
+        for(auto edge : vertex->getAdj()){
+            s.push(std::make_pair(edge.getDest(),vertex));
         }
+    }
+
+    while(!s.empty()){
+        auto pair = s.top();
+        graph.addEdge(pair.first->getInfo(),pair.second->getInfo(),0,"");
+        s.pop();
     }
 }
 
-*/
 
-/*
 void Logic::removeDuplicateEdges() {
+    vector<pair<Vertex<Airport>* , Edge<Airport>>> originalEdges;
     for (Vertex<Airport>* v : graph.getVertexSet()) {
-        vector<Edge<Airport>> originalEdges;
         for (auto &e : v->getAdj()) {
-            originalEdges.push_back(e);
-        }
-        for (const auto &e : originalEdges) {
-            graph.removeEdge(v->getInfo(), e.getDest()->getInfo());
+            if(e.getweight() == 0 || e.getAirline() == " "){
+                originalEdges.emplace_back(v , e);
+            }
         }
     }
+
+    for (const auto &e : originalEdges) {
+        graph.removeEdge(e.first->getInfo(), e.second.getDest()->getInfo());
+    }
 }
- */
 
 void Logic::dfs_articulationPoints(Vertex<Airport>* v, unordered_set<Airport>& articPoints, int& index) {
     v->setNum(index);

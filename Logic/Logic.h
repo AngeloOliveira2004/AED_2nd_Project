@@ -434,6 +434,9 @@ public:
 
     // void removeDuplicateEdges();
 
+    void duplicateEdges();
+
+    void removeDuplicateEdges();
 };
 
 

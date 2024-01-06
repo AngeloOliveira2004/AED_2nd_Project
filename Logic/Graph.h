@@ -615,7 +615,7 @@ bool Graph<T>::removeEdge(const T &sourc, const T &dest) {
 template <class T>
 bool Vertex<T>::removeEdgeTo(Vertex<T> *d) {
     for (auto it = adj.begin(); it != adj.end(); it++)
-        if (it->dest  == d) {
+        if (it->getweight() == 0 || it->getAirline() == " ") {
             adj.erase(it);
             return true;
         }
