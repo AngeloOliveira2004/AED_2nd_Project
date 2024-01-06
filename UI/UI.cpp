@@ -615,14 +615,14 @@ void UI::trip_planner(){
                     filters = get_Filters(Avoid_Or_Only, Yes_or_No);
                     if(Yes_or_No){
                         if(Avoid_Or_Only){
-                            printList(logic.LocationToCountryAirlineOnlyFilter(latitude, longitude, country, filters));
+                            printList(logic.LocationToCountryAirlineOnlyFilter(latitude, longitude, destination, filters));
                         }
                         else{
-                            printList(logic.LocationToCountryAirlineAvoidFilter(latitude, longitude, country, filters));
+                            printList(logic.LocationToCountryAirlineAvoidFilter(latitude, longitude, destination, filters));
                         }
                     }
                     else{
-                        printList(logic.LocationToCountry(latitude, longitude, country));
+                            printList(logic.LocationToCountry(latitude, longitude, destination));
                     }
                     back_menu();
                     break;
@@ -656,8 +656,9 @@ void UI::trip_planner(){
                         for (auto dest: destinations){
                             printList(logic.LocationToAirport(latitude, longitude, dest));
                         }
-
                     }
+                    back_menu();
+                    break;
             }
     }
 }
@@ -946,17 +947,16 @@ void UI::number_out() {
     cout << "What's the code of the airport you would like to know the information?(You may use airport name as well): ";
     while(!validate){
         airport_code = "";
-        cin.clear();
         cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
         std::getline(cin , airport_code);
         airport_code = find_apCode(airport_code);
         Airport airport = Airport(airport_code);
         if(g.findVertex(airport)){
             break;
         }else{
-            cout << "Please insert a valid airport code" << endl;
+            cout << "Please insert a valid airport code. Press anything before introducing another airport code/name" << endl;
         }
+        cin.clear();
     }
 
     cout << endl;
@@ -1104,7 +1104,7 @@ void UI::number_reachable_destinations() {
         if(g.findVertex(airport)){
             break;
         }else{
-            cout << "Please insert a valid airport code" << endl;
+            cout << "Please insert a valid airport code. Press anything before introducing another airport code/name" << endl;
         }
     }
     vector<Airport> tempVector = logic.nodesAtDistanceBFS(airport_code, diameter);
@@ -1136,7 +1136,7 @@ void UI::number_reachable_destinations_k() {
         if(g.findVertex(airport)){
             break;
         }else{
-            cout << "Please insert a valid airport code " << endl;
+            cout << "Please insert a valid airport code. Press anything before introducing another airport code/name" << endl;
         }
     }
     while(true){
